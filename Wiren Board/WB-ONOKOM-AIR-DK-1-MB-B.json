@@ -1,0 +1,288 @@
+{
+    "title": "template_title",
+    "device_type": "ONOKOM-AIR-DK-1-MB-B",
+    "group": "g-air-conditioning",
+    "device": {
+        "name": "ONOKOM-AIR-DK-1-MB-B",
+        "id": "ONOKOM-AIR-DK-1-MB-B",
+        "groups": [
+            {
+                "title": "General",
+                "id": "general",
+                "order": 1
+            },
+            {
+                "title": "Temperature control",
+                "id": "temperatureControl",
+                "order": 2
+            },
+            {
+                "title": "Vanes",
+                "id": "vanes",
+                "order": 3
+            },
+            {
+                "title": "Data to the module",
+                "id": "dataToTheModule",
+                "order": 4
+            },
+            {
+                "title": "HW Info",
+                "id": "hw_info",
+                "order": 6
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 5
+            }
+        ],
+        "channels": [
+            {
+                "name": "Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 2,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "Indoor air temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "readonly": true,
+                "address": 3,
+                "scale": 0.01,
+                "format": "s16",
+                "type": "value",
+                "units": "°C"
+            },
+            {
+                "name": "Outdoor air temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 4,
+                "scale": 0.01,
+                "format": "s16",
+                "type": "value",
+                "readonly": true,
+                "units": "°C"
+            },
+            {
+                "name": "Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 5,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 18,
+                "max": 30
+            },
+            {
+                "name": "Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 6,
+                "readonly": true,
+                "type": "value",
+                "enabled": true
+            },
+            {
+                "name": "Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 7,
+                "type": "range",
+                "min": 0,
+                "max": 6
+            },
+            {
+                "name": "Horizontal vanes",
+                "group": "vanes",
+                "reg_type": "holding",
+                "address": 9,
+                "type": "range",
+                "min": 0,
+                "max": 1
+            },
+            {
+                "name": "Vertical vanes",
+                "group": "vanes",
+                "reg_type": "holding",
+                "address": 10,
+                "type": "range",
+                "min": 0,
+                "max": 1
+            },
+            {
+                "name": "Vanes swing",
+                "group": "vanes",
+                "reg_type": "holding",
+                "address": 11,
+                "type": "range",
+                "min": 0,
+                "max": 3,
+                "enabled": true
+            },
+            {
+                "name": "Screen light",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 2,
+                "type": "switch"
+            },
+            {
+                "name": "Screen low bright",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 3,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "Quiet mode",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 4,
+                "type": "switch"
+            },
+            {
+                "name": "Eco mode",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 6,
+                "type": "switch"
+            },
+            {
+                "name": "Turbo mode",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 7,
+                "type": "switch"
+            },
+            {
+                "name": "Temeperature correction",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 20,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "Target fan RPM",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 31,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 200,
+                "units": "rpm",
+                "enabled": true
+            },
+            {
+                "name": "Current fan RPM",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 32,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 200,
+                "units": "rpm",
+                "enabled": true
+            },
+            {
+                "name": "Modbus ID",
+                "group": "hw_info",
+                "reg_type": "holding",
+                "address": 128,
+                "type": "value",
+                "readonly": false,
+                "enabled": false
+            },
+            {
+                "name": "Hardware version",
+                "group": "hw_info",
+                "reg_type": "holding",
+                "address": 201,
+                "type": "value",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Software version",
+                "group": "hw_info",
+                "reg_type": "holding",
+                "address": 250,
+                "type": "value",
+                "readonly": true,
+                "enabled": false
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "ONOKOM AIR DK-1-MB-B (Adapter for household and semi-industrial Daikin systems)"
+            },
+            "ru": {
+                "template_title": "ONOKOM AIR DK-1-MB-B (Адаптер для бытовых и полупромышленных систем Daikin)",
+                "General": "Общее",
+                "Temperature control": "Контроль температуры",
+                "Vanes": "Жалюзи",
+                "Data to the module": "Данные модуля",
+                "HW Info": "Данные модуля",
+                "Debug": "Отладка",
+                "Active": "Состояние",
+                "Mode": "Режим",
+                "Active mode": "Состояние и режим",
+                "Fan speed": "Скорость вентилятора",
+                "Smart fan speed": "Скорость вентилятора расширенная",
+                "Screen": "Дисплей",
+                "Screen low bright": "Ослабить яркость экрана",
+                "Quiet mode": "Тихий режим",
+                "Eco mode": "Эко режим",
+                "Turbo mode": "Турбо режим",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Outdoor air temperature": "Температура воздуха на улице",
+                "Target temperature": "Целевая температура",
+                "Thermostat state": "Состояние термостата",
+                "Temeperature correction": "Коррекция температуры",
+                "Modbus ID": "Modbus адрес",
+                "Hardware version": "Аппаратная версия",
+                "Software version": "Программная версия",
+                "Horizontal vanes": "Горизонтальные жалюзи",
+                "Vertical vanes": "Вертикальные жалюзи",
+                "Vanes swing": "Качание жалюзи",
+                "Screen light": "Подсветка экрана",
+                "Sleep mode": "Режим сна",
+                "Ionization": "Ионизация",
+                "Target fan RPM": "Целевые обороты вентилятора",
+                "Current fan RPM": "Текущие обороты вентилятора"
+            }
+        }
+    }
+}

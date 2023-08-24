@@ -1,0 +1,181 @@
+[
+    {
+        "name": "Кондиционер",
+        "manufacturer": "ONOKOM",
+        "model": "AIR-DK-1-MB-B",
+        "services": [
+            {
+                "name": "Кондиционер",
+                "type": "Thermostat",
+                "characteristics": [
+                    {
+                        "type": "CurrentTemperature",
+                        "link": {
+                            "type": "Float",
+                            "topicSearch": "/devices/(ONOKOM-AIR-DK-1-MB-B_[0-9]{1,3})/controls/Indoor air temperature/meta/type",
+                            "topicGet": "/devices/(1)/controls/Indoor air temperature"
+                        }
+                    },
+                    {
+                        "type": "TargetTemperature",
+                        "link": {
+                            "type": "Float",
+                            "topicGet": "/devices/(1)/controls/Target temperature",
+                            "topicSet": "/devices/(1)/controls/Target temperature/on"
+                        },
+                        "minValue": 16,
+                        "maxValue": 30,
+                        "minStep": 1
+                    },
+                    {
+                        "type": "CurrentHeatingCoolingState",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Thermostat state"
+                        },
+                        "validValues": "0,1,2"
+                    },
+                    {
+                        "type": "TargetHeatingCoolingState",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Active mode",
+                            "topicSet": "/devices/(1)/controls/Active mode/on",
+                            "map": {
+                                "0": 0,
+                                "1": 1,
+                                "2": 2,
+                                "3": 3,
+                                "-2": 4,
+                                "-1": 5
+                            }
+                        },
+                        "validValues": "0,1,2,3, -1, -2"
+                    },
+                    {
+                        "type": "C_FanSpeed",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Smart fan speed",
+                            "topicSet": "/devices/(1)/controls/Smart fan speed/on"
+                        }
+                    },
+                    {
+                        "type": "SwingMode",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Vanes swing",
+                            "topicSet": "/devices/(1)/controls/Vanes swing/on",
+                            "map": {
+                                "0": 0,
+                                "1": 1,
+                                "-1": 2,
+                                "-2": 3
+                            }
+                        },
+                        "validValues": "0,1,-1,-2"
+                    }
+                ]
+            },
+            {
+                "name": "Вентилятор",
+                "type": "Fan",
+                "characteristics": [
+                    {
+                        "type": "RotationSpeed",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Fan speed",
+                            "topicSet": "/devices/(1)/controls/Fan speed/on"
+                        },
+                        "minValue": 0,
+                        "maxValue": 6
+                    },
+                    {
+                        "type": "SwingMode",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Vanes swing",
+                            "topicSet": "/devices/(1)/controls/Vanes swing/on"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Горизонтальные жалюзи",
+                "type": "Switch",
+                "characteristics": [
+                    {
+                        "type": "On",
+                        "link": {
+                            "type": "Integer",
+                            "topicSearch": "/devices/(1)/controls/Horizontal vanes/meta/type",
+                            "topicGet": "/devices/(1)/controls/Horizontal vanes",
+                            "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
+                        },
+                        "minValue": 0,
+                        "maxValue": 6
+                    }
+                ]
+            },
+            {
+                "name": "Вертикальные жалюзи",
+                "type": "Switch",
+                "characteristics": [
+                    {
+                        "type": "On",
+                        "link": {
+                            "type": "Integer",
+                            "topicSearch": "/devices/(1)/controls/Vertical vane/meta/type",
+                            "topicGet": "/devices/(1)/controls/Vertical vanes",
+                            "topicSet": "/devices/(1)/controls/Vertical vanes/on"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Подсветка экрана",
+                "type": "Switch",
+                "characteristics": [
+                    {
+                        "type": "On",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Screen light",
+                            "topicSet": "/devices/(1)/controls/Screen light/on"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Слабая яркость экрана",
+                "type": "Switch",
+                "characteristics": [
+                    {
+                        "type": "On",
+                        "link": {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Screen low bright",
+                            "topicSet": "/devices/(1)/controls/Screen low bright/on"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Режим Эко",
+                "type": "Switch",
+                "characteristics": [
+                    {
+                        "type": "On",
+                        "link": {
+                            "type": "Integer",
+                            "topicSearch": "/devices/(1)/controls/Eco mode/meta/type",
+                            "topicGet": "/devices/(1)/controls/Eco mode",
+                            "topicSet": "/devices/(1)/controls/Eco mode/on"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

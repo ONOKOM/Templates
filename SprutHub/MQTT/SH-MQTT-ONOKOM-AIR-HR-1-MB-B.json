@@ -70,6 +70,20 @@
             ]
         },
         {
+            "name": "Температура воздуха на улице",
+            "type": "Fan",
+            "visible": false,
+            "characteristics": [
+                {
+                    "type": "CurrentTemperature",
+                    "link": {
+                        "type": "Float",
+                        "topicGet": "/devices/(1)/controls/Outdoor air temperature"
+                    }
+                }
+            ]
+        },
+        {
             "name": "Вентилятор",
             "type": "Fan",
             "characteristics": [
@@ -96,6 +110,7 @@
         {
             "name": "Горизональные жалюзи",
             "type": "Fan",
+            "visible": false,
             "characteristics": [
             {
                 "type": "RotationSpeed",
@@ -154,6 +169,7 @@
         {
             "name": "Вертикальные жалюзи",
             "type": "Fan",
+            "visible": false,
             "characteristics": [
             {
                 "type": "RotationSpeed",
@@ -226,6 +242,7 @@
         {
             "name": "Режим Тихий",
             "type": "Switch",
+            "visible": false,
             "characteristics": [
             {
                 "type": "On",
@@ -254,6 +271,7 @@
         {
             "name": "Режим Турбо",
             "type": "Switch",
+            "visible": false,
             "characteristics": [
             {
                 "type": "On",

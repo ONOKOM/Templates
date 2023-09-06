@@ -22,9 +22,14 @@
                 "order": 3
             },
             {
-                "title": "Data to the module",
-                "id": "dataToTheModule",
+                "title": "Additional",
+                "id": "additional",
                 "order": 4
+            },
+            {
+                "title": "Indication",
+                "id": "indication",
+                "order": 5
             },
             {
                 "title": "HW Info",
@@ -34,7 +39,7 @@
             {
                 "title": "Debug",
                 "id": "debug",
-                "order": 5
+                "order": 7
             }
         ],
         "channels": [
@@ -66,6 +71,25 @@
                 "enabled": true
             },
             {
+                "name": "Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 7,
+                "type": "range",
+                "min": 0,
+                "max": 6
+            },
+            {
+                "name": "Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 8,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
                 "name": "Indoor air temperature",
                 "group": "temperatureControl",
                 "reg_type": "holding",
@@ -74,6 +98,7 @@
                 "scale": 0.01,
                 "format": "s16",
                 "type": "value",
+                "enabled": true,
                 "units": "°C"
             },
             {
@@ -107,15 +132,6 @@
                 "readonly": true,
                 "type": "value",
                 "enabled": true
-            },
-            {
-                "name": "Fan speed",
-                "group": "general",
-                "reg_type": "holding",
-                "address": 7,
-                "type": "range",
-                "min": 0,
-                "max": 6
             },
             {
                 "name": "Horizontal vanes",

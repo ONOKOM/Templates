@@ -164,33 +164,6 @@
                 "min": -30,
                 "max": 30,
                 "enabled": true
-            },
-            {
-                "name": "Modbus ID",
-                "group": "hw_info",
-                "reg_type": "holding",
-                "address": 128,
-                "type": "value",
-                "readonly": false,
-                "enabled": false
-            },
-            {
-                "name": "device version",
-                "group": "hw_info",
-                "reg_type": "holding",
-                "address": 201,
-                "type": "value",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "firmware version",
-                "group": "hw_info",
-                "reg_type": "holding",
-                "address": 250,
-                "type": "value",
-                "readonly": true,
-                "enabled": true
             }
         ],
         "translations": {
@@ -219,8 +192,6 @@
                 "Horizontal vanes": "Горизонтальные жалюзи",
                 "Vertical vanes": "Вертикальные жалюзи",
                 "Vanes swing": "Качание жалюзи",
-                "device version": "Версия устройства",
-                "firmware version": "Версия прошивки",
                 "Temeperature correction": "Коррекция температуры"
             }
         }

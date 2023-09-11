@@ -71,7 +71,7 @@
             },
             {
                 "name": "Температура воздуха на улице",
-                "type": "Fan",
+                "type": "TemperatureSensor",
                 "visible": false,
                 "characteristics": [
                     {

@@ -1,0 +1,307 @@
+{
+    "title": "template_title",
+    "device_type": "ONOKOM-AIR-HS-6-MB-B",
+    "group": "g-air-conditioning",
+    "device": {
+        "name": "ONOKOM-AIR-HS-6-MB-B",
+        "id": "ONOKOM-AIR-HS-6-MB-B",
+        "groups": [
+            {
+                "title": "General",
+                "id": "general",
+                "order": 1
+            },
+            {
+                "title": "Temperature control",
+                "id": "temperatureControl",
+                "order": 2
+            },
+            {
+                "title": "Vanes",
+                "id": "vanes",
+                "order": 3
+            },
+            {
+                "title": "Additional",
+                "id": "additional",
+                "order": 4
+            },
+            {
+                "title": "HW Info",
+                "id": "hw_info",
+                "order": 6
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 7
+            }
+        ],
+        "parameters": [
+            {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "temperatureControl",
+                "order": 1
+            }
+        ],
+        "channels": [
+            {
+                "name": "Active",
+                "group": "general",
+                "address": 1,
+                "reg_type": "coil",
+                "format": "u16",
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "Mode",
+                "group": "general",
+                "address": 1,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 1,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "Active mode",
+                "group": "general",
+                "address": 2,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "Fan speed",
+                "group": "general",
+                "address": 7,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 3,
+                "enabled": false
+            },
+            {
+                "name": "Smart fan speed",
+                "group": "general",
+                "address": 8,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 3,
+                "enabled": true
+            },
+            {
+                "name": "Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 3,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "°C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 3,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "°C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "Internal heat exchanger temperature",
+                "group": "temperatureControl",
+                "address": 23,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "°C",
+                "scale": 0.01,
+                "enabled": false
+            },
+            {
+                "name": "Target temperature",
+                "group": "temperatureControl",
+                "address": 5,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "range",
+                "min": 16,
+                "max": 30,
+                "scale": 0.01,
+                "enabled": true
+            },
+            {
+                "name": "Thermostat state",
+                "group": "temperatureControl",
+                "address": 6,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Horizontal vanes",
+                "group": "vanes",
+                "address": 9,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 1,
+                "enabled": true
+            },
+            {
+                "name": "Vertical vanes",
+                "group": "vanes",
+                "address": 10,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 1,
+                "enabled": true
+            },
+            {
+                "name": "Vanes swing",
+                "group": "vanes",
+                "address": 11,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 3,
+                "enabled": true
+            },
+            {
+                "name": "Sleep mode",
+                "group": "additional",
+                "address": 8,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "Current fan speed",
+                "group": "debug",
+                "address": 32,
+                "reg_type": "holding",
+                "type": "range",
+                "min": 1,
+                "max": 3,
+                "units": "rpm",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Temeperature correction",
+                "group": "debug",
+                "address": 20,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": false
+            },
+            {
+                "name": "AC connected",
+                "group": "debug",
+                "address": 20,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "HW Version",
+                "group": "hw_info",
+                "address": 200,
+                "reg_type": "holding",
+                "type": "text",
+                "format": "string",
+                "string_data_size": 20,
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "FW Version",
+                "group": "hw_info",
+                "address": 250,
+                "reg_type": "holding",
+                "type": "text",
+                "format": "string",
+                "string_data_size": 16,
+                "readonly": true,
+                "enabled": true
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "ONOKOM AIR HS-6-MB-B (Adapter for Hisense semi-industrial air conditioners)"
+            },
+            "ru": {
+                "template_title": "ONOKOM AIR HS-6-MB-B (Адаптер для полупромышленных кондиционеров Hisense)",
+
+                "General": "Основные режимы и функции",
+                "Active": "Состояние",
+                "Mode": "Режим",
+                "Active mode": "Состояние и режим",
+                "Fan speed": "Скорость вентилятора",
+                "Smart fan speed": "Скорость вентилятора расширенная",
+
+                "Temperature control": "Контроль температуры",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Internal heat exchanger temperature": "Температура внутреннего теплообменника",
+                "Target temperature": "Целевая температура",
+                "Thermostat state": "Состояние термостата",
+                "No": "Нет",
+                "Yes": "Да",
+
+                "Vanes": "Жалюзи",
+                "Horizontal vanes": "Горизонтальные жалюзи",
+                "Vertical vanes": "Вертикальные жалюзи",
+                "Vanes swing": "Качание жалюзи",
+
+                "Additional": "Дополнительные режимы и функции",
+                "Sleep mode": "Режим сна",
+
+                "HW Info": "Данные модуля",
+                "HW Version": "Версия устройства",
+                "FW Version": "Версия прошивки",
+
+                "Debug": "Диагностика",
+                "Current fan speed": "Текущая скорость вентилятора",
+                "Temeperature correction": "Коррекция температуры",
+                "AC connected": "Кондиционер подключен"
+            }
+        }
+    }
+}

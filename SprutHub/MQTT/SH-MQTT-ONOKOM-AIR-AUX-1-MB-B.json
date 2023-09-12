@@ -150,7 +150,7 @@
                             "-1": 1
                         }
                     },
-                    "validValues": "0,1"
+                    "validValues": "0,-1"
                 }
             ]
         },

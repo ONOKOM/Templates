@@ -131,7 +131,7 @@
                 "enabled": true
             },
             {
-                "name": "Internal heat exchanger temperature",
+                "name": "Indoor heat exchanger temperature",
                 "group": "temperatureControl",
                 "address": 23,
                 "reg_type": "holding",
@@ -139,6 +139,7 @@
                 "type": "value",
                 "units": "°C",
                 "scale": 0.01,
+                "readonly": true,
                 "enabled": false
             },
             {
@@ -279,7 +280,7 @@
                 "Temperature control": "Контроль температуры",
                 "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
                 "Indoor air temperature": "Температура воздуха в помещении",
-                "Internal heat exchanger temperature": "Температура внутреннего теплообменника",
+                "Indoor heat exchanger temperature": "Температура внутреннего теплообменника",
                 "Target temperature": "Целевая температура",
                 "Thermostat state": "Состояние термостата",
                 "No": "Нет",

@@ -156,6 +156,7 @@
                 "type": "value",
                 "units": "deg C",
                 "scale": 0.01,
+                "readonly": true,
                 "enabled": false
             },
             {
@@ -167,6 +168,7 @@
                 "type": "value",
                 "units": "deg C",
                 "scale": 0.01,
+                "readonly": true,
                 "enabled": false
             },
             {

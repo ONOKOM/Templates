@@ -189,9 +189,7 @@
                 "address": 10,
                 "reg_type": "holding",
                 "format": "u16",
-                "type": "range",
-                "min": 0,
-                "max": 1,
+                "type": "switch",
                 "enabled": true
             },
             {
@@ -339,10 +337,10 @@
         ],
         "translations": {
             "en": {
-                "template_title": "ONOKOM AIR MAX"
+                "template_title": "ONOKOM AIR AUX-1-MB-B (Adapter for household and semi-industrial AUX systems)"
             },
             "ru": {
-                "template_title": "ONOKOM AIR MAX",
+                "template_title": "ONOKOM AIR AUX-1-MB-B (Адаптер для бытовых и полупромышленных систем AUX)",
 
                 "General": "Основные режимы и функции",
                 "Active": "Состояние",

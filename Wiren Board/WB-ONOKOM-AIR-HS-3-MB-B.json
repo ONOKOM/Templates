@@ -258,22 +258,6 @@
                 "enabled": true
             },
             {
-                "name": "Ionization",
-                "group": "additional",
-                "address": 9,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": true
-            },
-            {
-                "name": "Self cleaning",
-                "group": "additional",
-                "address": 10,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": true
-            },
-            {
                 "name": "Screen light",
                 "group": "indication",
                 "address": 2,
@@ -292,6 +276,29 @@
                 "max": 30,
                 "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
                 "enabled": true
+            },{
+                "name": "Current compressor power",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 21,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 100,
+                "units": "%",
+                "enabled": false
+            },
+            {
+                "name": "Target compressor power",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 22,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 100,
+                "units": "%",
+                "enabled": false
             },
             {
                 "name": "AC connected",
@@ -327,10 +334,10 @@
         ],
         "translations": {
             "en": {
-                "template_title": "ONOKOM AIR MAX"
+                "template_title": "ONOKOM AIR HS-3-MB-B (Adapter for household Hisesnse systems)"
             },
             "ru": {
-                "template_title": "ONOKOM AIR MAX",
+                "template_title": "ONOKOM AIR HS-3-MB-B (Адаптер для бытовых систем Hisense)",
 
                 "General": "Основные режимы и функции",
                 "Active": "Состояние",
@@ -384,6 +391,8 @@
                 "Target fan speed": "Целевая скорость вентилятора",
                 "Current fan speed": "Текущая скорость вентилятора",
                 "Temeperature correction": "Коррекция температуры",
+				"Current compressor power": "Текущая мощность компрессора",
+                "Target compressor power": "Целевая мощность компрессора",
                 "AC connected": "Кондиционер подключен"
             }
         }

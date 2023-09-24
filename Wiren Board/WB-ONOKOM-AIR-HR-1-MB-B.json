@@ -42,6 +42,18 @@
                 "order": 7
             }
         ],
+        "parameters": [
+            {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "temperatureControl",
+                "order": 1
+            }
+        ],
         "channels": [
             {
                 "name": "Active",
@@ -94,13 +106,29 @@
             {
                 "name": "Indoor air temperature",
                 "group": "temperatureControl",
-                "reg_type": "holding",
                 "address": 3,
-                "scale": 0.01,
+                "reg_type": "holding",
                 "format": "s16",
                 "type": "value",
-                "enabled": true,
-                "units": "°C"
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 3,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
             },
             {
                 "name": "Outdoor air temperature",
@@ -141,28 +169,31 @@
             {
                 "name": "Horizontal vanes",
                 "group": "vanes",
-                "reg_type": "holding",
                 "address": 9,
+                "reg_type": "holding",
+                "format": "u16",
                 "type": "range",
-                "enabled": true,
                 "min": 1,
-                "max": 8
+                "max": 8,
+                "enabled": true
             },
             {
                 "name": "Vertical vanes",
                 "group": "vanes",
-                "reg_type": "holding",
                 "address": 10,
+                "reg_type": "holding",
+                "format": "u16",
                 "type": "range",
-                "enabled": true,
                 "min": 1,
-                "max": 6
+                "max": 6,
+                "enabled": true
             },
             {
                 "name": "Vanes swing",
                 "group": "vanes",
-                "reg_type": "holding",
                 "address": 11,
+                "reg_type": "holding",
+                "format": "u16",
                 "type": "range",
                 "min": 0,
                 "max": 3,
@@ -203,18 +234,18 @@
             {
                 "name": "Ionization",
                 "group": "additional",
-                "reg_type": "coil",
-                "enabled": true,
                 "address": 9,
-                "type": "switch"
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true
             },
             {
-                "name": "Self-clean",
+                "name": "Self cleaning",
                 "group": "additional",
-                "reg_type": "coil",
-                "enabled": true,
                 "address": 10,
-                "type": "switch"
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true
             },
             {
                 "name": "Screen light",
@@ -227,47 +258,43 @@
             {
                 "name": "Beeper",
                 "group": "indication",
-                "reg_type": "coil",
-                "enabled": true,
                 "address": 5,
-                "type": "switch"
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true
             },
             {
-                "name": "Modbus ID",
+                "name": "HW Version",
                 "group": "hw_info",
+                "address": 200,
                 "reg_type": "holding",
-                "address": 128,
-                "type": "value",
-                "readonly": false,
-                "enabled": false
-            },
-            {
-                "name": "device version",
-                "group": "hw_info",
-                "reg_type": "holding",
-                "address": 201,
-                "type": "value",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 20,
                 "readonly": true,
                 "enabled": false
             },
             {
-                "name": "firmware version",
+                "name": "FW Version",
                 "group": "hw_info",
-                "reg_type": "holding",
                 "address": 250,
-                "type": "value",
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 16,
                 "readonly": true,
-                "enabled": false
+                "enabled": true
             },
             {
                 "name": "Temeperature correction",
                 "group": "debug",
+                "address": 20,
                 "reg_type": "holding",
                 "format": "s16",
-                "address": 20,
                 "type": "value",
                 "min": -30,
                 "max": 30,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
                 "enabled": true
             },
             {
@@ -277,7 +304,7 @@
                 "address": 20,
                 "type": "switch",
                 "readonly": true,
-                "enabled": false
+                "enabled": true
             }
         ],
         "translations": {
@@ -295,6 +322,7 @@
                 "Smart fan speed": "Скорость вентилятора расширенная",
 
                 "Temperature control": "Контроль температуры",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
                 "Indoor air temperature": "Температура воздуха в помещении",
                 "Outdoor air temperature": "Температура воздуха на улице",
                 "Target temperature": "Целевая температура",
@@ -310,17 +338,17 @@
                 "Eco mode": "Режим эко",
                 "Turbo mode": "Режим турбо",
                 "Sleep mode": "Режим сна",
-                "Ionization": "Функция ионизации",
+                "Ionization": "Ионизация",
                 "Anti-fungus": "Функция антиплесени",
-                "Self-clean": "Функция самоочистки",
+                "Self cleaning": "Самоочистка",
 
                 "Indication": "Индикация",
                 "Screen light": "Подсветка экрана",
                 "Beeper": "Звуковая индикация",
 
                 "HW Info": "Данные модуля",
-                "device version": "Версия устройства",
-                "firmware version": "Версия прошивки",
+                "HW Version": "Версия устройства",
+                "FW Version": "Версия прошивки",
 
                 "Debug": "Диагностика",
                 "Compressor power": "Мощность компрессора",

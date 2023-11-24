@@ -212,6 +212,34 @@
             ]
         },
         {
+            "name": "Дежурный обогрев",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": {
+                        "type": "Integer",
+                        "topicGet": "/devices/(1)/controls/Heating 8 deg",
+                        "topicSet": "/devices/(1)/controls/Heating 8 deg/on"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Мягкий поток",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": {
+                        "type": "Integer",
+                        "topicGet": "/devices/(1)/controls/Gentle wind",
+                        "topicSet": "/devices/(1)/controls/Gentle wind/on"
+                    }
+                }
+            ]
+        },
+        {
             "name": "Режим Тихий",
             "type": "Switch",
             "visible": false,

@@ -4,6 +4,16 @@
 
 # Как установить шаблон в контроллер Wiren Board
 
+## Краткая инструкия
+
+По умолчанию шаблоны находятся **/usr/share/wb-mqtt-serial/templates** </br>
+
+Если вы загружаете шаблон самостоятельно и хотите, чтобы он не перезаписался при обновлении - то закачивайте шаблон в  **/mnt /data/etc/wb-mqtt-serial.conf.d/templates** закачиваем нужный нам шаблон </br>
+Перегружаете сервис wb-mqtt-serial командой в консоли **service wb-mqtt-serial restart**
+Версию шаблона можно посмотреть здесь.
+
+
+
 ## Видео инструкция </br></br>
 Нажмите на картинку и откроется видео!
 
@@ -72,7 +82,7 @@
 
 <img  src="https://onokom.ru/img/index/posti-novosti/podklyuchaem-kondicioner-haier-flexis-super-match-as25s2sf1fa-g-v-umnyj-dom-wirenboard-cherez-shlyuz-onokom-hr-1-mb-b-b-apple-home-yandex-alisa-spruthub-i-spruthome/105-dobavlyaem-shablon-onokom-air-me-1-mb-b-prosto-peretashchiv-ego-v-nuzhnoe-okno.webp"  alt="logo"/>
 
-  
+  Переходим в директорию **templates**
 
 Добавляем шаблон который нам потребуется, просто перетащив его в нужное окно
 

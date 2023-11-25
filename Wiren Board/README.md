@@ -5,7 +5,7 @@
 # Как установить шаблон в контроллер Wiren Board
 
 ## Видео интрукция </br></br>
-Нажми на картинку и отроется видео!ы
+Нажми на картинку и отроется видео!
 
 [![Видео инструкция](https://i.ytimg.com/vi_webp/hxfqnAGWiSA/maxresdefault.webp)](https://youtu.be/hxfqnAGWiSA)
 

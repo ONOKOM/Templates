@@ -308,6 +308,16 @@
               "input": "status",
               "write": false,
               "type": "String"
+            },
+            {
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/AC connected"
+                },
+                "name": "Кондиционер подключен",
+                "type": "Boolean",
+                "write": false,
+                "init": true
             }
         ]
     }

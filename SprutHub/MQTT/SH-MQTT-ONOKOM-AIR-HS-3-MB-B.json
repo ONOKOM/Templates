@@ -162,6 +162,82 @@
                         }
                     }
                 ]
+            },
+            {
+                "name": "Режим Эко",
+                "type": "Switch",
+                "characteristics": [
+                  {
+                    "type": "On",
+                    "link": {
+                      "type": "Integer",
+                      "topicSearch": "/devices/(1)/controls/Eco mode/meta/type",
+                      "topicGet": "/devices/(1)/controls/Eco mode",
+                      "topicSet": "/devices/(1)/controls/Eco mode/on"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Температура воздуха на улице",
+                "type":"TemperatureSensor",
+                "characteristics":[
+                   {
+                      "type":"CurrentTemperature",
+                      "link":{
+                         "type":"Float",
+                         "topicGet":"/devices/(1)/controls/Outdoor air temperature"
+                      }
+                   }
+                ]
+             },
+             {
+                "name": "Температура внутреннего теплообменника",
+                "type":"TemperatureSensor",
+                "characteristics":[
+                   {
+                      "type":"CurrentTemperature",
+                      "link":{
+                         "type":"Float",
+                         "topicGet":"/devices/(1)/controls/Indoor heat exchanger temperature"
+                      }
+                   }
+                ]
+             },
+             {
+                "name": "Температура внешнего теплообменника",
+                "type":"TemperatureSensor",
+                "characteristics":[
+                   {
+                      "type":"CurrentTemperature",
+                      "link":{
+                         "type":"Float",
+                         "topicGet":"/devices/(1)/controls/Outdoor heat exchanger temperature"
+                      }
+                   }
+                ]
+             }
+        ],
+        "options": [
+            {
+              "link": {
+                "type": "String",
+                "topicGet": "/devices/(1)/controls/FW Version"
+              },
+              "name": "Версия прошивки",
+              "input": "status",
+              "write": false,
+              "type": "String"
+            },
+            {
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/AC connected"
+                },
+                "name": "Кондиционер подключен",
+                "type": "Boolean",
+                "write": false,
+                "init": true
             }
         ]
     }

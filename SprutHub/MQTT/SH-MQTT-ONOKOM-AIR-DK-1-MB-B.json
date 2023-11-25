@@ -175,6 +175,56 @@
                         }
                     }
                 ]
+            },
+            {
+                "name": "Тихий",
+                "type": "Switch",
+                "characteristics": [
+                  {
+                    "type": "On",
+                    "link": {
+                      "type": "Integer",
+                      "topicGet": "/devices/(1)/controls/Quiet mode",
+                      "topicSet": "/devices/(1)/controls/Quiet mode/on"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Турбо",
+                "type": "Switch",
+                "characteristics": [
+                  {
+                    "type": "On",
+                    "link": {
+                      "type": "Integer",
+                      "topicGet": "/devices/(1)/controls/Turbo mode",
+                      "topicSet": "/devices/(1)/controls/Turbo mode/on"
+                    }
+                  }
+                ]
+              }
+        ],
+        "options": [
+            {
+              "link": {
+                "type": "String",
+                "topicGet": "/devices/(1)/controls/FW Version"
+              },
+              "name": "Версия прошивки",
+              "input": "status",
+              "write": false,
+              "type": "String"
+            },
+            {
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/AC connected"
+                },
+                "name": "Кондиционер подключен",
+                "type": "Boolean",
+                "write": false,
+                "init": true
             }
         ]
     }

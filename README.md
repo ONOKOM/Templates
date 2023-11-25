@@ -9,8 +9,11 @@
 Шаблоны для Loxone
 
 **Если у Вас возникли какие-то проблемы с шаблоном:**
+
 Можете написать нам:  
 Через [issues](https://github.com/Onokom/Templates/issues) 
+
+
 Через чат [Telegram](https://t.me/ONOKOM)
 
 

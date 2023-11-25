@@ -2,9 +2,9 @@
 	"name": "Кондиционер",
 	"manufacturer": "ONOKOM",
 	"manufacturerId": "ONOKOM",
-	"model": "AUX-1-MB-B",
-	"modelId": "AUX1MBB",
-    "catalogId": -1,
+	"model": "ME-1-MB-B",
+	"modelId": "ME1MBB",
+	"catalogId": -1,
     "link": "https://onokom.ru/ustroistva.html",
     "version" : "1.0",
 	"status": "Done",
@@ -100,20 +100,6 @@
 				}
 			]
 		},
-		{
-			"name": "Температура воздуха на улице",
-			"type": "TemperatureSensor",
-			"visible": true,
-			"characteristics": [{
-				"type": "CurrentTemperature",
-				"link": {
-					"address": 4,
-					"function": "Holding",
-					"scale": 0.01,
-					"pollingTime": 1000
-				}
-			}]
-		},
         {
             "name": "Вентилятор",
             "type": "Fan",
@@ -203,20 +189,7 @@
                 }
             ]
         },
-        {
-            "name": "Подсветка экрана",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "address": 2,
-                        "function": "Coil",
-                        "pollingTime": 1000
-                    }
-                }
-            ]
-        },
+        
         {
             "name": "Режим Тихий",
             "type": "Switch",
@@ -231,92 +204,8 @@
                     }
                 }
             ]
-        },
-        {
-            "name": "Режим Сон",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "address": 8,
-                        "function": "Coil",
-                        "pollingTime": 1000 
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Режим Турбо",
-            "type": "Switch",
-            "visible": false,
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "address": 7,
-                        "function": "Coil",
-                        "pollingTime": 1000 
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Режим Эко",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "address": 6,
-                        "function": "Coil",
-                        "pollingTime": 1000
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Функция Ионизации",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "address": 9,
-                        "function": "Coil",
-                        "pollingTime": 1000
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Функция самоочистки",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "address": 10,
-                        "function": "Coil",
-                        "pollingTime": 1000
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Функция антиплесени",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "address": 11,
-                        "function": "Coil",
-                        "pollingTime": 1000
-                    }
-                }
-            ]
         }
+
 	],
 	"options": [
         {

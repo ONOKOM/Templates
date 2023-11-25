@@ -5,6 +5,8 @@
 	"model": "GR-1-MB-B",
 	"modelId": "GR1MBB",
 	"catalogId": -1,
+    "link": "https://onokom.ru/ustroistva.html",
+    "version" : "1.0",
 	"status": "Done",
 	"init": [{
 		"modelId": {

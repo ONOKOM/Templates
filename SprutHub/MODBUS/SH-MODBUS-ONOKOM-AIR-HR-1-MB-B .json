@@ -5,6 +5,8 @@
 	"model": "HR-1-MB-B",
 	"modelId": "HR1MBB",
 	"catalogId": -1,
+    "link": "https://onokom.ru/ustroistva.html",
+    "version" : "1.0",
 	"status": "Done",
 	"init": [{
 		"modelId": {

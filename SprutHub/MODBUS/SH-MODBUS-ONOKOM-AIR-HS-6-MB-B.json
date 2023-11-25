@@ -4,8 +4,9 @@
 	"manufacturerId": "ONOKOM",
 	"model": "HS-6-MB-B",
 	"modelId": "HS6MBB",
-	"catalogId": -1,
+    "catalogId": -1,
     "link": "https://onokom.ru/ustroistva.html",
+    "version" : "1.0",
 	"status": "Done",
 	"init": [{
 		"modelId": {

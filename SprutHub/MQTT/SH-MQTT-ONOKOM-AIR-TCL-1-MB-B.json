@@ -5,6 +5,7 @@
         "model": "ONOKOM-AIR-TCL-1-MB-B",
         "catalogId": -1,
         "link": "https://onokom.ru/ustroistva.html",
+        "version" : "1.0",
         "services": [
         {
             "name": "Кондиционер",

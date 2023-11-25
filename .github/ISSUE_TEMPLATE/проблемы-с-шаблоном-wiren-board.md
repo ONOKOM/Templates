@@ -1,5 +1,5 @@
 ---
-name: Проблемы с шаблоном Wirenboard
+name: Проблемы с шаблоном Wiren Board
 about: Проблемы с шаблоном для контроллера Wiren Board
 title: ''
 labels: bug

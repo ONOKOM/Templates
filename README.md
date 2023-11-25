@@ -2,13 +2,13 @@
 
 ### В данном репозитории выкладываются актуальные шаблоны для наших модулей серии AIR под разные систем домашней автоматизации
 
-[Шаблоны для Wiren Board](https://github.com/Onokom/Templates/tree/main/Wiren%20Board)
+[Шаблоны для Wiren Board](https://github.com/Onokom/Templates/tree/main/Wiren%20Board) </br>
 
-[Шаблоны для SprutHub](https://github.com/Onokom/Templates/tree/main/SprutHub)
+[Шаблоны для SprutHub](https://github.com/Onokom/Templates/tree/main/SprutHub) </br>
 
-Шаблоны для Loxone
+Шаблоны для Loxone </br>
 
-
+Шаблоны для Larnitech </br>
 
 </br></br></br>
 
@@ -16,9 +16,9 @@
 
 Можете написать нам: 
  
-Через [issues](https://github.com/Onokom/Templates/issues) 
+Через [issues](https://github.com/Onokom/Templates/issues) </br>
 
 
-Через чат [Telegram](https://t.me/ONOKOM)
+Через чат [Telegram](https://t.me/ONOKOM) </br>
 
 

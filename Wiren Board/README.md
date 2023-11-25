@@ -5,14 +5,12 @@
 # Как установить шаблон в контроллер Wiren Board
 
 ## Видео инструкция </br></br>
-Нажми на картинку и отроется видео!
+Нажмите на картинку и откроется видео!
 
 [![Видео инструкция](https://i.ytimg.com/vi_webp/hxfqnAGWiSA/maxresdefault.webp)](https://youtu.be/hxfqnAGWiSA)
 
 
 ## Текстовая инструкция </br></br>
-
-<img src="https://i.ytimg.com/vi_webp/hxfqnAGWiSA/maxresdefault.webp"  alt="logo"/>
 
 <img src="https://onokom.ru/img/index/posti-novosti/podklyuchaem-kondicioner-haier-flexis-super-match-as25s2sf1fa-g-v-umnyj-dom-wirenboard-cherez-shlyuz-onokom-hr-1-mb-b-b-apple-home-yandex-alisa-spruthub-i-spruthome/100-otkryvaem-programmu-forklift-i-nazhimaem-na-knopku-podklyucheniya-znachok-molnii.webp"  alt="logo"/>
 

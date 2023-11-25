@@ -9,7 +9,7 @@
 По умолчанию шаблоны находятся **/usr/share/wb-mqtt-serial/templates** </br>
 
 Если вы загружаете шаблон самостоятельно и хотите, чтобы он не перезаписался при обновлении - то закачивайте шаблон в  **/mnt /data/etc/wb-mqtt-serial.conf.d/templates** закачиваем нужный нам шаблон </br>
-Перегружаете сервис wb-mqtt-serial командой в консоли **service wb-mqtt-serial restart**
+Перегружаете сервис wb-mqtt-serial командой в консоли **service wb-mqtt-serial restart** </br></br>
 Версию шаблона можно посмотреть здесь.
 
 

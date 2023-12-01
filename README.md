@@ -1,4 +1,4 @@
-#  <img width="200px" src="https://onokom.ru/img/index/logo-ONOKOM.svg" alt="logo"/> </br> Репозиторий шаблонов компании Onokom 
+#  <img width="200px" src="https://onokom.ru/img/index/logo-ONOKOM.svg" alt="logo"/> </br> Репозиторий шаблонов компании ONOKOM
 
 ### В данном репозитории выкладываются актуальные шаблоны для наших модулей серии AIR под разные систем домашней автоматизации
 

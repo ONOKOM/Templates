@@ -37,9 +37,14 @@
                 "order": 6
             },
             {
+                "title": "Errors",
+                "id": "errors",
+                "order": 7
+            },
+            {
                 "title": "Debug",
                 "id": "debug",
-                "order": 7
+                "order": 8
             }
         ],
         "parameters": [
@@ -251,6 +256,24 @@
                 "string_data_size": 16,
                 "readonly": true,
                 "enabled": true
+            },
+            {
+                "name": "Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 0,
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Error code",
+                "group": "errors",
+                "reg_type": "input",
+                "address": 1,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
             }
         ],
         "translations": {
@@ -291,6 +314,9 @@
                 "HW Info": "Данные модуля",
                 "HW Version": "Версия устройства",
                 "FW Version": "Версия прошивки",
+
+                "Errors": "Ошибки",
+                "Error code": "Код ошибки",
 
                 "Debug": "Диагностика",
                 "Temeperature correction": "Коррекция температуры",

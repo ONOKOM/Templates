@@ -6,7 +6,8 @@
 
 [Шаблоны для SprutHub](https://github.com/Onokom/Templates/tree/main/SprutHub) </br>
 
-Шаблоны для Loxone </br>
+[Шаблоны для Loxone](https://github.com/ONOKOM/Templates/tree/main/Loxone) </br>
+
 
 Шаблоны для Larnitech </br>
 

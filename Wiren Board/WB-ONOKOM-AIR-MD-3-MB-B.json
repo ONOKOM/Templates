@@ -220,18 +220,6 @@
                 "enabled": true
             },
             {
-                "name": "Current fan speed",
-                "group": "debug",
-                "address": 32,
-                "reg_type": "holding",
-                "type": "range",
-                "min": 0,
-                "max": 3,
-                "units": "rpm",
-                "readonly": true,
-                "enabled": true
-            },
-            {
                 "name": "Temeperature correction",
                 "group": "debug",
                 "reg_type": "holding",

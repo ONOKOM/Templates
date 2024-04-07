@@ -212,33 +212,9 @@
                 "enabled": true
             },
             {
-                "name": "Quiet mode",
-                "group": "additional",
-                "address": 4,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": false
-            },
-            {
                 "name": "Eco mode",
                 "group": "additional",
                 "address": 6,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": true
-            },
-            {
-                "name": "Turbo mode",
-                "group": "additional",
-                "address": 7,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": false
-            },
-            {
-                "name": "Sleep mode",
-                "group": "additional",
-                "address": 8,
                 "reg_type": "coil",
                 "type": "switch",
                 "enabled": true
@@ -333,254 +309,14 @@
                 "readonly": true,
                 "enabled": true
             },
-            {
-                "name": "Error 1",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 1,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 2",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 2,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 3",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 3,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 4",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 4,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 5",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 5,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 6",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 6,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 7",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 7,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 8",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 8,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 9",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 9,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 10",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 10,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 11",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 11,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 12",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 12,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 13",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 13,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 14",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 14,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 15",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 15,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 16",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 16,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 17",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 17,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 18",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 18,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 19",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 19,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 20",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 20,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 21",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 21,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 22",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 22,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 23",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 23,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Error 24",
-                "group": "errors",
-                "reg_type": "discrete",
-                "address": 24,
-                "type": "switch",
-                "readonly": true,
-                "enabled": true
-            }
+            
         ],
         "translations": {
             "en": {
                 "template_title": "WB-ONOKOM-AIR-MD-3-MB-B (Adapter for VRF Midea systems)",
 
                 "Errors": "Errors",
-                "Errors count": "Errors count",
-                "Error 1": "Error 1",
-                "Error 2": "Error 2",
-                "Error 3": "Error 3",
-                "Error 4": "Error 4",
-                "Error 5": "Error 5",
-                "Error 6": "Error 6",
-                "Error 7": "Error 7",
-                "Error 8": "Error 8",
-                "Error 9": "Error 9",
-                "Error 10": "Error 10",
-                "Error 11": "Error 11",
-                "Error 12": "Error 12",
-                "Error 13": "Error 13",
-                "Error 14": "Error 14",
-                "Error 15": "Error 15",
-                "Error 16": "Error 16",
-                "Error 17": "Error 17",
-                "Error 18": "Error 18",
-                "Error 19": "Error 19",
-                "Error 20": "Error 20",
-                "Error 21": "Error 21",
-                "Error 22": "Error 22",
-                "Error 23": "Error 23",
-                "Error 24": "Error 24",
-                "FINISH": "Конец"
+                "Errors count": "Errors count"
             },
             "ru": {
                 "template_title": "ONOKOM-AIR-MD-3-MB-B (Адаптер для мультизональных систем Midea)",
@@ -613,58 +349,14 @@
                 "Window is opened": "Окно открыто",
                 "Quiet mode": "Режим тихий",
                 "Eco mode": "Режим эко",
-                "Turbo mode": "Режим турбо",
-                "Sleep mode": "Режим сна",
-                "Ionization": "Ионизация",
-                "Defrosting": "Разморозка",
-                "Mold protection": "Защита от плесени",
-                "Self cleaning": "Самоочистка",
-                "Heating 8 deg": "Дежурный обогрев",
-                "Gentle wind": "Мягкий поток",
-                "Compressor power limit": "Ограничение мощности компрессора",
-
-                "Indication": "Индикация",
-                "Screen light": "Подсветка экрана",
-                "Screen low bright": "Ослабить яркость экрана",
-                "Beeper": "Звуковая индикация",
-                "Disable screen when power off": "Отключать экран при отключении питания",
-                "No": "Нет",
-                "Yes": "Да",
-
                 "HW Info": "Данные модуля",
                 "HW Version": "Версия устройства",
                 "FW Version": "Версия прошивки",
 
                 "Errors": "Ошибки",
                 "Errors count": "Количество ошибок",
-                "Error 1": "Ошибка 1",
-                "Error 2": "Ошибка 2",
-                "Error 3": "Ошибка 3",
-                "Error 4": "Ошибка 4",
-                "Error 5": "Ошибка 5",
-                "Error 6": "Ошибка 6",
-                "Error 7": "Ошибка 7",
-                "Error 8": "Ошибка 8",
-                "Error 9": "Ошибка 9",
-                "Error 10": "Ошибка 10",
-                "Error 11": "Ошибка 11",
-                "Error 12": "Ошибка 12",
-                "Error 13": "Ошибка 13",
-                "Error 14": "Ошибка 14",
-                "Error 15": "Ошибка 15",
-                "Error 16": "Ошибка 16",
-                "Error 17": "Ошибка 17",
-                "Error 18": "Ошибка 18",
-                "Error 19": "Ошибка 19",
-                "Error 20": "Ошибка 20",
-                "Error 21": "Ошибка 21",
-                "Error 22": "Ошибка 22",
-                "Error 23": "Ошибка 23",
-                "Error 24": "Ошибка 24",
 
                 "Debug": "Диагностика",
-                "Current compressor power": "Текущая мощность компрессора",
-                "Target compressor power": "Целевая мощность компрессора",
                 "Target fan speed": "Целевая скорость вентилятора",
                 "Current fan speed": "Текущая скорость вентилятора",
                 "Temeperature correction": "Коррекция температуры",

@@ -124,21 +124,6 @@
             ]
         },
         {
-            "name": "Режим Тихий",
-            "type": "Switch",
-            "visible": false,
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "type": "Integer",
-                        "topicGet": "/devices/(1)/controls/Quiet mode",
-                        "topicSet": "/devices/(1)/controls/Quiet mode/on"
-                    }
-                }
-            ]
-        },
-        {
             "name": "Режим Эко",
             "type": "Switch",
             "characteristics": [

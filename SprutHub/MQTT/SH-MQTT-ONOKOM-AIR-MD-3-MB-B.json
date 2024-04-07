@@ -139,35 +139,6 @@
             ]
         },
         {
-            "name": "Режим Сон",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "type": "Integer",
-                        "topicGet": "/devices/(1)/controls/Sleep mode",
-                        "topicSet": "/devices/(1)/controls/Sleep mode/on"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Режим Турбо",
-            "type": "Switch",
-            "visible": false,
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "type": "Integer",
-                        "topicGet": "/devices/(1)/controls/Turbo mode",
-                        "topicSet": "/devices/(1)/controls/Turbo mode/on"
-                    }
-                }
-            ]
-        },
-        {
             "name": "Режим Эко",
             "type": "Switch",
             "characteristics": [

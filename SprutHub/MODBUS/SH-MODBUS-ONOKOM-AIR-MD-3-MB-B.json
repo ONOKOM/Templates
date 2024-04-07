@@ -150,50 +150,6 @@
              ]
           },
           {
-             "name":"Режим Тихий",
-             "type":"Switch",
-             "visible":false,
-             "characteristics":[
-                {
-                   "type":"On",
-                   "link":{
-                      "address":4,
-                      "function":"Coil",
-                      "pollingTime":1000
-                   }
-                }
-             ]
-          },
-          {
-             "name":"Режим Сон",
-             "type":"Switch",
-             "characteristics":[
-                {
-                   "type":"On",
-                   "link":{
-                      "address":8,
-                      "function":"Coil",
-                      "pollingTime":1000
-                   }
-                }
-             ]
-          },
-          {
-             "name":"Режим Турбо",
-             "type":"Switch",
-             "visible":false,
-             "characteristics":[
-                {
-                   "type":"On",
-                   "link":{
-                      "address":7,
-                      "function":"Coil",
-                      "pollingTime":1000
-                   }
-                }
-             ]
-          },
-          {
              "name":"Режим Эко",
              "type":"Switch",
              "characteristics":[

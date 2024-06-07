@@ -2,7 +2,7 @@
     {
         "name": "Кондиционер",
         "manufacturer": "ONOKOM",
-        "model": "ONOKOM-AIR-MD-3-MB-B",
+        "model": "MD-3-MB-B",
         "catalogId": -1,
         "link": "https://onokom.ru/ustroistva.html",
         "version" : "1.0",
@@ -119,50 +119,6 @@
                         "type": "Integer",
                         "topicGet": "/devices/(1)/controls/Horizontal vanes",
                         "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Режим Тихий",
-            "type": "Switch",
-            "visible": false,
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "type": "Integer",
-                        "topicGet": "/devices/(1)/controls/Quiet mode",
-                        "topicSet": "/devices/(1)/controls/Quiet mode/on"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Режим Сон",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "type": "Integer",
-                        "topicGet": "/devices/(1)/controls/Sleep mode",
-                        "topicSet": "/devices/(1)/controls/Sleep mode/on"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Режим Турбо",
-            "type": "Switch",
-            "visible": false,
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": {
-                        "type": "Integer",
-                        "topicGet": "/devices/(1)/controls/Turbo mode",
-                        "topicSet": "/devices/(1)/controls/Turbo mode/on"
                     }
                 }
             ]

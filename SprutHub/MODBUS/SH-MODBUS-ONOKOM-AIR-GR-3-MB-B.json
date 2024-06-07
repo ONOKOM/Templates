@@ -1,0 +1,284 @@
+[
+{
+    "name": "Кондиционер",
+    "manufacturer": "ONOKOM",
+    "manufacturerId": "ONOKOM",
+    "model": "GR-3-MB-B",
+    "modelId": "GR3MBB",
+    "catalogId": -1,
+    "link": "https://onokom.ru/ustroistva.html",
+    "version" : "1.0",
+    "status": "Done",
+    "init": [{
+		"modelId": {
+			"type": "String",
+			"address": 200,
+			"function": "Holding",
+			"length": 20
+		},
+		"firmware": {
+			"type": "String",
+			"address": 250,
+			"function": "Holding",
+			"length": 16
+		}
+	}],
+    "services": [
+      {
+        "name": "Кондиционер",
+        "type": "Thermostat",
+        "characteristics": [
+          {
+            "type": "CurrentTemperature",
+            "link": {
+                "address": 3,
+                "function": "Holding",
+                "scale": 0.01,
+                "pollingTime": 1000
+            }
+          },
+          {
+            "type": "TargetTemperature",
+            "link": {
+                "address": 5,
+                "function": "Holding",
+                "scale": 0.01,
+                "minStep": 1,
+                "pollingTime": 1000
+            },
+            "minValue": 16,
+            "maxValue": 30,
+            "minStep": 1
+          },
+          {
+            "type": "CurrentHeatingCoolingState",
+            "link": {
+                "address": 6,
+                "function": "Holding",
+                "pollingTime": 1000
+            },
+            "validValues": "0,1,2"
+          },
+          {
+            "type": "TargetHeatingCoolingState",
+            "link": {
+            	"address": 2,
+				"function": "Holding",
+				"pollingTime": 1000,
+              "map": {
+                "0": 0,
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "-2": 4,
+                "-1": 5
+              }
+            },
+            "validValues": "0,1,2,3, -1, -2"
+          },
+          {
+            "type": "C_FanSpeed",
+            "link": {
+                "address": 8,
+				"function": "Holding",
+				"pollingTime": 1000
+            }
+          },
+          {
+            "type": "SwingMode",
+            "link": {
+                "address": 11,
+                "function": "Holding",
+                "pollingTime": 1000,
+              "map": {
+                "0": 0,
+                "1": 1,
+                "-1": 2,
+                "-2": 3
+              }
+            },
+            "validValues": "0,1,-1,-2"
+          }
+        ]
+      },
+      {
+        "name": "Вентилятор",
+        "type": "Fan",
+        "characteristics": [
+          {
+            "type": "RotationSpeed",
+            "link": {
+                "address": 8,
+				"function": "Holding",
+				"pollingTime": 1000
+            },
+            "minValue": 0,
+            "maxValue": 5
+          },
+          {
+            "type": "SwingMode",
+            "link": {
+                "address": 11,
+				"function": "Holding",
+				"pollingTime": 1000
+            }
+          }
+        ]
+      },
+      {
+        "name": "Горизональные жалюзи",
+        "type": "Fan",
+        "visible": false,
+        "characteristics": [
+            {
+                "type": "RotationSpeed",
+                "link": {
+                    "address": 9,
+                    "function": "Holding",
+                    "pollingTime": 1000
+                },
+                "minValue": 0,
+                "maxValue": 6
+            },
+            {
+                "type": "SwingMode",
+                "link": {
+                    "address": 9,
+                    "function": "Holding",
+                    "pollingTime": 1000,
+                    "map": {
+                        "0": "0;2;3;4;5;6",
+                        "-1": 1
+                    }
+                },
+                "validValues": "0,-1"
+            }
+        ]
+    },
+    {
+        "name": "Горизональные жалюзи",
+        "type": "C_TiltAngle",
+        "characteristics": [
+            {
+                "type": "TargetTiltAngle",
+                "link": {
+                    "address": 9,
+                    "function": "Holding",
+                    "pollingTime": 1000
+                },
+                "minValue": 0,
+                "maxValue": 6
+            },
+            {
+                "type": "SwingMode",
+                "link": {
+                    "address": 9,
+                    "function": "Holding",
+                    "pollingTime": 1000,
+                    "map": {
+                        "0": "0;2;3;4;5;6",
+                        "-1": 1
+                    }
+                },
+                "validValues": "0,-1"
+            }
+        ]
+    },
+      {
+        "name": "Вертикальные жалюзи",
+        "type": "Fan",
+        "characteristics": [
+          {
+            "type": "RotationSpeed",
+            "link": {
+                "address": 10,
+                    "function": "Holding",
+                    "pollingTime": 1000
+            },
+            "minValue": 0,
+            "maxValue": 6
+          }
+        ]
+      },
+      {
+        "name": "Тихий",
+        "type": "Switch",
+        "characteristics": [
+          {
+            "type": "On",
+            "link": {
+                "address": 4,
+                "function": "Coil",
+                "pollingTime": 1000
+            }
+          }
+        ]
+      },
+      {
+        "name": "Температура воздуха на улице",
+        "type":"TemperatureSensor",
+        "characteristics":[
+           {
+              "type":"CurrentTemperature",
+              "link":{
+                "address": 4,
+                "function": "Holding",
+                "scale": 0.01,
+                "pollingTime": 1000
+              }
+           }
+        ]
+     }
+    ],
+    "options": [
+        {
+		"link": {
+			"type": "Integer",
+			"address": 128,
+			"function": "Holding"
+		},
+		"name": "Modbus-адрес устройства",
+		"type": "Double",
+		"value": 1,
+		"minValue": 1,
+		"maxValue": 252
+	},
+    {
+		"link": {
+            "type": "String",
+            "address": 200,
+            "function": "Holding",
+            "length": 20
+		},
+		"name": "Название устройства",
+        "input": "status",
+        "write": false,
+        "type": "String"
+	},
+    {
+		"link": {
+            "type": "String",
+			"address": 250,
+			"function": "Holding",
+			"length": 16
+		},
+		"name": "Версия прошивки",
+        "input": "status",
+        "write": false,
+        "type": "String"
+	},
+    {
+		"link": {
+            "type": "Integer",
+			"address": 20,
+			"function": "Coil",
+            "pollingTime": 1000
+		},
+		"name": "Кондиционер подключен",
+        "type": "Boolean",
+        "write": false,
+        "init": true
+	}
+]
+  }
+]

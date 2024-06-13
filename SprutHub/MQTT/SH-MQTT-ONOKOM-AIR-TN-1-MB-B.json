@@ -1,0 +1,362 @@
+[
+{
+        "name": "Бризер",
+        "manufacturer": "ONOKOM",
+        "model": "ONOKOM-AIR-TN-1-MB-B",
+        "catalogId": -1,
+        "link": "https://onokom.ru/ustroistva.html",
+        "version" : "1.0",
+        "services": [
+      {
+        "type": "AirPurifier",
+        "name": "Бризер",
+        "characteristics": [
+          {
+            "type": "Active",
+            "link": {
+              "type": "Integer",
+              "topicSearch": "/devices/(ONOKOM-AIR-TN-1-MB-B_[0-9]{1,3})/controls/Active/meta/type",
+              "topicGet": "/devices/(1)/controls/Active",
+              "topicSet": "/devices/(1)/controls/Active/on"
+            }
+          },
+          {
+            "type": "CurrentAirPurifierState",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Active",
+              "map": {
+                "0": "0",
+                "2": "1"
+              }
+            },
+            "validValues": "0,2"
+          },
+          {
+            "type": "RotationSpeed",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Fan speed",
+              "topicSet": "/devices/(1)/controls/Fan speed/on"
+            },
+            "minValue": 0,
+            "maxValue": 6
+          },
+          {
+            "type": "TargetAirPurifierState",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/TargetAirPurifierState",
+              "topicSet": "/devices/(1)/controls/TargetAirPurifierState/on"
+            }
+          },
+          {
+            "type": "FilterChangeIndication",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Filter replace"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Thermostat",
+        "name": "Подогрев",
+        "characteristics": [
+          {
+            "type": "CurrentTemperature",
+            "link": {
+                "type": "Float",
+                "topicSearch": "/devices/(ONOKOM-AIR-TN-1-MB-B_[0-9]{1,3})/controls/Outlet air temperature/meta/type",
+                "topicGet": "/devices/(1)/controls/Outlet air temperature"
+            }
+          },
+          {
+            "type": "CurrentHeatingCoolingState",
+            "link": {
+                "type": "Integer",
+                "topicGet": "/devices/(1)/controls/Current heater power"
+            },
+            "validValues": "0,1"
+          },
+          {
+            "type": "TargetTemperature",
+            "link": {
+                "type": "Integer",
+                "topicGet": "/devices/(1)/controls/Target temperature",
+                "topicSet": "/devices/(1)/controls/Target temperature/on"
+            },
+            "minValue": 15,
+            "maxValue": 30,
+            "minStep": 1
+          },
+          {
+            "type": "TargetHeatingCoolingState",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Heater",
+              "topicSet": "/devices/(1)/controls/Heater/on"
+          },
+          "validValues": "0,1"
+          }
+        ]
+      },
+      {
+        "name": "Температура выходящего воздуха",
+        "type": "TemperatureSensor",
+        "visible": false,
+        "characteristics": [
+            {
+                "type": "CurrentTemperature",
+                "link": {
+                    "type": "Float",
+                    "topicGet": "/devices/(1)/controls/Outlet air temperature"
+                }
+            }
+        ]
+     },
+     {
+        "name": "Температура входящего воздуха",
+        "type": "TemperatureSensor",
+        "visible": false,
+        "characteristics": [
+            {
+                "type": "CurrentTemperature",
+                "link": {
+                    "type": "Float",
+                    "topicGet": "/devices/(1)/controls/Inlet air temperature"
+                }
+            }
+        ]
+     },
+     {
+        "type": "Switch",
+        "name": "Подача воздуха с улицы",
+        "characteristics": [
+          {
+            "type": "On",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Outdoor air supply",
+              "topicSet": "/devices/(1)/controls/Outdoor air supply/on"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Switch",
+        "name": "Подсветка экрана",
+        "characteristics": [
+          {
+            "type": "On",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Screen light",
+              "topicSet": "/devices/(1)/controls/Screen light/on"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Switch",
+        "name": "Звуковая индикация",
+        "characteristics": [
+          {
+            "type": "On",
+            "link": {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Beeper",
+              "topicSet": "/devices/(1)/controls/Beeper/on"
+            }
+          }
+        ]
+     }  
+    ],
+    "options": [
+        {
+          "link": {
+            "type": "String",
+            "topicGet": "/devices/(1)/controls/FW Version"
+          },
+          "name": "Версия прошивки",
+          "input": "status",
+          "write": false,
+          "type": "String"
+        },
+        {
+            "link": {
+              "type": "String",
+              "topicGet": "/devices/(1)/controls/Tion FW Version"
+            },
+            "name": "Версия прошивки Tion",
+            "input": "status",
+            "write": false,
+            "type": "String"
+          },
+        {
+            "link": {
+                "type": "Integer",
+                "topicGet": "/devices/(1)/controls/AC connected"
+            },
+            "name": "Бризер подключен",
+            "type": "Boolean",
+            "write": false,
+            "init": true
+        }, 
+        {
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/Filter replace"
+                },
+                "name": "Заменить фильтр",
+                "type": "Boolean",
+                "write": false,
+                "init": true
+        },
+        {
+                "link": {
+                  "type": "String",
+                  "topicGet": "/devices/(1)/controls/Heater type"
+                },
+                "name": "Тип нагревателя",
+                "input": "status",
+                "write": false,
+                "type": "String",
+                "values": [
+                    {
+                      "value": 0,
+                      "name": "Нет нагревателя"
+                    },
+                    {
+                      "value": 1,
+                      "name": "Нагреватель 1 кВт"
+                    },
+                    {
+                      "value": 2,
+                      "name": "Нагреватель 1.4 кВт"
+                    }
+                  ]
+        },
+        {
+            "link": {
+              "type": "String",
+              "topicGet": "/devices/(1)/controls/Control board temperature",
+              "inFunc": "value + ' °C" 
+            },
+            "name": "Температура платы управления",
+            "input": "status",
+            "write": false,
+            "type": "String"
+    },
+    {
+        "link": {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/Power board temperature",
+          "inFunc": "value + ' °C" 
+        },
+        "name": "Температура платы питания",
+        "input": "status",
+        "write": false,
+        "type": "String"
+    },
+    {
+        "link": {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/Electronics operating time counter",
+          "inFunc": "value + ' дней'" 
+        },
+        "name": "Счетчик наработки электроники",
+        "input": "status",
+        "write": false,
+        "type": "String"
+    },
+    {
+        "link": {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/Motor operating time counter",
+          "inFunc": "value + ' дней'" 
+        },
+        "name": "Счетчик наработки вентилятора",
+        "input": "status",
+        "write": false,
+        "type": "String"
+    },
+    {
+        "link": {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/Airflow counter",
+          "inFunc": "value + ' м³'" 
+        },
+        "name": "Счетчик наработки прибора",
+        "input": "status",
+        "write": false,
+        "type": "String"
+    },
+    {
+        "link": {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/Current heater power",
+          "inFunc": "value + ' %'" 
+        },
+        "name": "Текущая мощность нагревателя",
+        "input": "status",
+        "write": false,
+        "type": "String"
+    },
+    {
+        "link": {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/Filter life level",
+          "inFunc": "value + ' %'"
+        },
+        "name": "Состояние фильтра",
+        "input": "status",
+        "write": false,
+        "type": "String"
+    },
+    {
+        "link": {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/Days to filter replace",
+          "inFunc": "value + ' дней'" 
+        },
+        "name": "Дней до замены фильра",
+        "input": "status",
+        "write": false,
+        "type": "String"
+    },
+    {
+        "link": {
+            "topicGet": "/devices/(1)/controls/Set days to next filter replace",
+              "topicSet": "/devices/(1)/controls/Set days to next filter replace/on",
+              "inFunc": "value + ' дней'" 
+        },
+        "name": "Установить количество дней до замены фильтра",
+        "type": "Integer",
+        "value": 180,
+        "minValue": 1,
+        "maxValue": 180
+    },
+    {
+        "link": {
+            "topicGet": "/devices/(1)/controls/Set days to activate filter alarm",
+              "topicSet": "/devices/(1)/controls/Set days to activate filter alarm/on"
+        },
+        "name": "Количество дней для Активации оповещения оповещения о замене фильтра",
+        "type": "Integer",
+        "minValue": 1,
+        "maxValue": 180
+    },
+    {
+        "link": {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/Reset filter counter",
+          "topicSet": "/devices/(1)/controls/Reset filter counter/on"
+        },
+        "type": "Boolean",
+        "name": "Сборосить счетчик фильтра",
+        "input": "button"
+      }
+    ]
+  }
+]

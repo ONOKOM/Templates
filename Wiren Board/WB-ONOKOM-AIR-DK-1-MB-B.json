@@ -164,8 +164,8 @@
                 "reg_type": "holding",
                 "format": "s16",
                 "type": "range",
-                "min": 16,
-                "max": 32,
+                "min": 18,
+                "max": 30,
                 "units": "deg C",
                 "scale": 0.01,
                 "enabled": true

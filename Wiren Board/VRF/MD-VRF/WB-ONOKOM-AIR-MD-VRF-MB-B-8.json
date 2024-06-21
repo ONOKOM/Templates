@@ -1,0 +1,1367 @@
+{
+    "title": "template_title",
+    "device_type": "WB-ONOKOM-AIR-MD-VRF-MB-B-8",
+    "group": "g-air-conditioning",
+    "device": {
+        "name": "WB-ONOKOM-AIR-MD-VRF-MB-B-8",
+        "id": "ONOKOM-AIR-MD-VRF-MB-B-8",
+        "groups": [
+            {
+                "title": "General",
+                "id": "general",
+                "order": 1
+            },
+            {
+                "title": "Temperature control",
+                "id": "temperatureControl",
+                "order": 2
+            },
+            {
+                "title": "Additional",
+                "id": "additional",
+                "order": 4
+            },
+            {
+                "title": "HW Info",
+                "id": "hw_info",
+                "order": 6
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 8
+            }
+        ],
+        "parameters": [
+            {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "temperatureControl",
+                "order": 1
+            }
+        ],
+        "channels": [
+            {
+                "name": "0 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1001,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "0 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1001,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "0 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1002,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "0 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "0 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "0 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1005,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "0 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1006,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "0 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1007,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "0 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1008,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "0 - Quiet mode",
+                "group": "additional",
+                "address": 1004,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "0 - Eco mode",
+                "group": "additional",
+                "address": 1006,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "0 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1020,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "0 - AC connected",
+                "group": "debug",
+                "address": 1020,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "1 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1101,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "1 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1001,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "1 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1102,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "1 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1103,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "1 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1103,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "1 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1105,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "1 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1106,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "1 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1107,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "1 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1108,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "1 - Quiet mode",
+                "group": "additional",
+                "address": 1104,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "1 - Eco mode",
+                "group": "additional",
+                "address": 1106,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "1 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1120,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "1 - AC connected",
+                "group": "debug",
+                "address": 1120,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "2 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1201,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "2 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1201,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "2 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1202,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "2 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1203,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "2 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1203,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "2 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1205,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "2 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1206,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "2 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1207,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "2 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1208,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "2 - Quiet mode",
+                "group": "additional",
+                "address": 1204,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "2 - Eco mode",
+                "group": "additional",
+                "address": 1206,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "2 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1220,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "2 - AC connected",
+                "group": "debug",
+                "address": 1220,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "3 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1301,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "3 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1301,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "3 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1302,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "3 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1303,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "3 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1303,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "3 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1305,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "3 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1306,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "3 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1307,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "3 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1308,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "3 - Quiet mode",
+                "group": "additional",
+                "address": 1304,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "3 - Eco mode",
+                "group": "additional",
+                "address": 1306,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "3 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1320,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "3 - AC connected",
+                "group": "debug",
+                "address": 1320,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "4 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1401,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "4 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1401,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "4 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1402,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "4 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1403,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "4 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1403,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "4 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1405,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "4 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1406,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "4 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1407,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "4 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1408,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "4 - Quiet mode",
+                "group": "additional",
+                "address": 1404,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "4 - Eco mode",
+                "group": "additional",
+                "address": 1406,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "4 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1420,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "4 - AC connected",
+                "group": "debug",
+                "address": 1420,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "5 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1001,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "5 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1001,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "5 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1002,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "5 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "5 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "5 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1005,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "5 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1006,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "5 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1007,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "5 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1008,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "5 - Quiet mode",
+                "group": "additional",
+                "address": 1004,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "5 - Eco mode",
+                "group": "additional",
+                "address": 1006,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "5 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1520,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "5 - AC connected",
+                "group": "debug",
+                "address": 1020,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "6 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1601,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "6 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1601,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "6 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1602,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "6 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1603,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "6 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1603,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "6 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1605,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "6 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1606,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "6 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1607,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "6 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1608,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "6 - Quiet mode",
+                "group": "additional",
+                "address": 1604,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "6 - Eco mode",
+                "group": "additional",
+                "address": 1606,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "6 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1620,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "6 - AC connected",
+                "group": "debug",
+                "address": 1620,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "7 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 1701,
+                "type": "switch",
+                "enabled": true
+            },
+            {
+                "name": "7 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 1701,
+                "type": "range",
+                "min": 1,
+                "max": 5
+            },
+            {
+                "name": "7 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1702,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true
+            },
+            {
+                "name": "7 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1703,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "7 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 1703,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true
+            },
+            {
+                "name": "7 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1705,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 16,
+                "max": 32
+            },
+            {
+                "name": "7 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 1706,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "enabled": true
+            },
+            {
+                "name": "7 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1707,
+                "type": "range",
+                "min": 0,
+                "max": 7
+            },
+            {
+                "name": "7 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 1708,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "enabled": true
+            },
+            {
+                "name": "7 - Quiet mode",
+                "group": "additional",
+                "address": 1704,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "7 - Eco mode",
+                "group": "additional",
+                "address": 1706,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "7 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 1720,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "enabled": true
+            },
+            {
+                "name": "7 - AC connected",
+                "group": "debug",
+                "address": 1720,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "CurrentTick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 600,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "ReceiveTick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 601,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "HW Version",
+                "group": "hw_info",
+                "address": 200,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 20,
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "FW Version",
+                "group": "hw_info",
+                "address": 250,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 16,
+                "readonly": true,
+                "enabled": true
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "WB-ONOKOM-AIR-MD-VRF-MB-B-8 (Adapter for VRF Midea systems, up to 8 indoor units)",
+
+                "Errors": "Errors",
+                "Errors count": "Errors count",
+                "Error 1": "Error 1",
+                "Error 2": "Error 2",
+                "Error 3": "Error 3",
+                "Error 4": "Error 4",
+                "Error 5": "Error 5",
+                "Error 6": "Error 6",
+                "Error 7": "Error 7",
+                "Error 8": "Error 8",
+                "Error 9": "Error 9",
+                "Error 10": "Error 10",
+                "Error 11": "Error 11",
+                "Error 12": "Error 12",
+                "Error 13": "Error 13",
+                "Error 14": "Error 14",
+                "Error 15": "Error 15",
+                "Error 16": "Error 16",
+                "Error 17": "Error 17",
+                "Error 18": "Error 18",
+                "Error 19": "Error 19",
+                "Error 20": "Error 20",
+                "Error 21": "Error 21",
+                "Error 22": "Error 22",
+                "Error 23": "Error 23",
+                "Error 24": "Error 24",
+                "FINISH": "Конец"
+            },
+            "ru": {
+                "template_title": "ONOKOM-AIR-MD-VRF-MB-B-8 (Адаптер для мультизональных систем Midea, до 8 внутренних блоков)",
+                
+                "General": "Основные режимы и функции",
+                "0 - Active": "0 - Состояние",
+                "0 - Mode": "0 - Режим",
+                "0 - Active mode": "0 - Состояние и режим",
+                "0 - Fan speed": "0 - Скорость вентилятора",
+                "0 - Smart fan speed": "0 - Скорость вентилятора расширенная",
+
+                "1 - Active": "1 - Состояние",
+                "1 - Mode": "1 - Режим",
+                "1 - Active mode": "1 - Состояние и режим",
+                "1 - Fan speed": "1 - Скорость вентилятора",
+                "1 - Smart fan speed": "1 - Скорость вентилятора расширенная",
+
+                "2 - Active": "2 - Состояние",
+                "2 - Mode": "2 - Режим",
+                "2 - Active mode": "2 - Состояние и режим",
+                "2 - Fan speed": "2 - Скорость вентилятора",
+                "2 - Smart fan speed": "2 - Скорость вентилятора расширенная",
+
+                "3 - Active": "3 - Состояние",
+                "3 - Mode": "3 - Режим",
+                "3 - Active mode": "3 - Состояние и режим",
+                "3 - Fan speed": "3 - Скорость вентилятора",
+                "3 - Smart fan speed": "3 - Скорость вентилятора расширенная",
+
+                "4 - Active": "4 - Состояние",
+                "4 - Mode": "4 - Режим",
+                "4 - Active mode": "4 - Состояние и режим",
+                "4 - Fan speed": "4 - Скорость вентилятора",
+                "4 - Smart fan speed": "4 - Скорость вентилятора расширенная",
+
+                "5 - Active": "5 - Состояние",
+                "5 - Mode": "5 - Режим",
+                "5 - Active mode": "5 - Состояние и режим",
+                "5 - Fan speed": "5 - Скорость вентилятора",
+                "5 - Smart fan speed": "5 - Скорость вентилятора расширенная",
+
+                "6 - Active": "6 - Состояние",
+                "6 - Mode": "6 - Режим",
+                "6 - Active mode": "6 - Состояние и режим",
+                "6 - Fan speed": "6 - Скорость вентилятора",
+                "6 - Smart fan speed": "6 - Скорость вентилятора расширенная",
+
+                "7 - Active": "7 - Состояние",
+                "7 - Mode": "7 - Режим",
+                "7 - Active mode": "7 - Состояние и режим",
+                "7 - Fan speed": "7 - Скорость вентилятора",
+                "7 - Smart fan speed": "7 - Скорость вентилятора расширенная",
+
+                "Temperature control": "Контроль температуры",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
+                "0 - Indoor air temperature": "0 - Температура воздуха в помещении",
+                "0 - Target temperature": "0 - Целевая температура",
+                "0 - Thermostat state": "0 - Состояние термостата",
+
+                "1 - Indoor air temperature": "1 - Температура воздуха в помещении",
+                "1 - Target temperature": "1 - Целевая температура",
+                "1 - Thermostat state": "1 - Состояние термостата",
+
+                "2 - Indoor air temperature": "2 - Температура воздуха в помещении",
+                "2 - Target temperature": "2 - Целевая температура",
+                "2 - Thermostat state": "2 - Состояние термостата",
+
+                "3 - Indoor air temperature": "3 - Температура воздуха в помещении",
+                "3 - Target temperature": "3 - Целевая температура",
+                "3 - Thermostat state": "3 - Состояние термостата",
+
+                "4 - Indoor air temperature": "4 - Температура воздуха в помещении",
+                "4 - Target temperature": "4 - Целевая температура",
+                "4 - Thermostat state": "4 - Состояние термостата",
+
+                "5 - Indoor air temperature": "5 - Температура воздуха в помещении",
+                "5 - Target temperature": "5 - Целевая температура",
+                "5 - Thermostat state": "5 - Состояние термостата",
+
+                "6 - Indoor air temperature": "6 - Температура воздуха в помещении",
+                "6 - Target temperature": "6 - Целевая температура",
+                "6 - Thermostat state": "6 - Состояние термостата",
+
+                "7 - Indoor air temperature": "7 - Температура воздуха в помещении",
+                "7 - Target temperature": "7 - Целевая температура",
+                "7 - Thermostat state": "7 - Состояние термостата",
+
+                "Additional": "Дополнительные режимы и функции",
+                "Shutdown time when the window is opened": "Время отключения при открыии окна",
+                "Window is opened": "Окно открыто",
+                "0 - Quiet mode": "Режим тихий",
+                "0 - Eco mode": "Режим эко",
+
+                "1 - Quiet mode": "1 - Режим тихий",
+                "1 - Eco mode": "1 - Режим эко",
+
+                "2 - Quiet mode": "2 - Режим тихий",
+                "2 - Eco mode": "2 - Режим эко",
+
+                "3 - Quiet mode": "3 - Режим тихий",
+                "3 - Eco mode": "3 - Режим эко",
+
+                "4 - Quiet mode": "4 - Режим тихий",
+                "4 - Eco mode": "4 - Режим эко",
+
+                "5 - Quiet mode": "5 - Режим тихий",
+                "5 - Eco mode": "5 - Режим эко",
+
+                "6 - Quiet mode": "6 - Режим тихий",
+                "6 - Eco mode": "6 - Режим эко",
+
+                "7 - Quiet mode": "7 - Режим тихий",
+                "7 - Eco mode": "7 - Режим эко",
+                
+                "HW Info": "Данные модуля",
+                "HW Version": "Версия устройства",
+                "FW Version": "Версия прошивки",
+
+                "Errors": "Ошибки",
+                "Errors count": "Количество ошибок",
+                "Error 1": "Ошибка 1",
+                "Error 2": "Ошибка 2",
+                "Error 3": "Ошибка 3",
+                "Error 4": "Ошибка 4",
+                "Error 5": "Ошибка 5",
+                "Error 6": "Ошибка 6",
+                "Error 7": "Ошибка 7",
+                "Error 8": "Ошибка 8",
+                "Error 9": "Ошибка 9",
+                "Error 10": "Ошибка 10",
+                "Error 11": "Ошибка 11",
+                "Error 12": "Ошибка 12",
+                "Error 13": "Ошибка 13",
+                "Error 14": "Ошибка 14",
+                "Error 15": "Ошибка 15",
+                "Error 16": "Ошибка 16",
+                "Error 17": "Ошибка 17",
+                "Error 18": "Ошибка 18",
+                "Error 19": "Ошибка 19",
+                "Error 20": "Ошибка 20",
+                "Error 21": "Ошибка 21",
+                "Error 22": "Ошибка 22",
+                "Error 23": "Ошибка 23",
+                "Error 24": "Ошибка 24",
+
+                "Debug": "Диагностика",
+                "Current compressor power": "Текущая мощность компрессора",
+                "Target compressor power": "Целевая мощность компрессора",
+                "Target fan speed": "Целевая скорость вентилятора",
+                "Current fan speed": "Текущая скорость вентилятора",
+                "CurrentTick": "Текущий такт",
+                "ReceiveTick": "Такт последнего получения данных от кондиционера",
+                "0 - AC connected": "0 - Кондиционер подключен",
+                "1 - AC connected": "1 - Кондиционер подключен",
+                "2 - AC connected": "2 - Кондиционер подключен",
+                "3 - AC connected": "3 - Кондиционер подключен",
+                "4 - AC connected": "4 - Кондиционер подключен",
+                "5 - AC connected": "5 - Кондиционер подключен",
+                "6 - AC connected": "6 - Кондиционер подключен",
+                "7 - AC connected": "7 - Кондиционер подключен",
+                "0 - Temeperature correction": "0 - Коррекция температуры",
+                "1 - Temeperature correction": "1 - Коррекция температуры",
+                "2 - Temeperature correction": "2 - Коррекция температуры",
+                "3 - Temeperature correction": "3 - Коррекция температуры",
+                "4 - Temeperature correction": "4 - Коррекция температуры",
+                "5 - Temeperature correction": "5 - Коррекция температуры",
+                "6 - Temeperature correction": "6 - Коррекция температуры",
+                "7 - Temeperature correction": "7 - Коррекция температуры",
+
+                "Raw data": "Необработанные данные",
+
+                "FINISH": "Конец"
+            }
+        }
+    }
+}

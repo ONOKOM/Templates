@@ -154,7 +154,6 @@
                 "type": "value",
                 "units": "deg C",
                 "scale": 0.01,
-                "error_value": -40,
                 "readonly": true,
                 "enabled": false
             },
@@ -167,7 +166,7 @@
                 "type": "range",
                 "min": 16,
                 "max": 32,
-                "units": "deg C",
+                "units": "°C",
                 "scale": 0.01,
                 "enabled": true
             },

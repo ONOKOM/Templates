@@ -165,8 +165,8 @@
                 "type": "range",
                 "units": "°C",
                 "format": "s16",
-                "min": 16,
-                "max": 31
+                "min": 15,
+                "max": 30
             },
             {
                 "name": "Fan speed",
@@ -174,7 +174,7 @@
                 "reg_type": "holding",
                 "address": 7,
                 "type": "range",
-                "min": 0,
+                "min": 1,
                 "max": 6
             },
             {
@@ -183,6 +183,7 @@
                 "reg_type": "holding",
                 "address": 32,
                 "type": "range",
+                "min": 1,
                 "max": 6,
                 "readonly": true,
                 "enabled": true
@@ -359,7 +360,6 @@
                 "reg_type": "discrete",
                 "type": "switch",
                 "readonly": true,
-                "condition": "Show_filter_replace_menu==1",
                 "enabled": true
             },
             {
@@ -544,7 +544,7 @@
                 "reg_type": "holding",
                 "address": 664,
                 "type": "range",
-                "max": 24,
+                "max": 23,
                 "format": "u8",
                 "readonly": false,
                 "condition": "Show_timer_setup_menu==1",

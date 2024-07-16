@@ -2643,7 +2643,7 @@
                 "FINISH": "Конец"
             },
             "ru": {
-                "template_title": "ONOKOM-AIR-MD-VRF-MB-B (Адаптер для мультизональных систем MDV V6)",
+                "template_title": "WB-ONOKOM-AIR-MD-VRF-MB-B (Адаптер для мультизональных систем MDV V6)",
                 "IDU count": "Указать количество внутренних блоков",
                 "General": "Основные режимы и функции",
                 "0 - Active": "0 - Состояние",
@@ -2864,7 +2864,6 @@
                 "14 - Temeperature correction": "14 - Коррекция температуры",
                 "15 - AC connected": "15 - Кондиционер подключен",
                 "15 - Temeperature correction": "15 - Коррекция температуры",
-                "Raw data": "Необработанные данные",
                 "FINISH": "Конец"
             }
         }

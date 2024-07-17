@@ -57,6 +57,16 @@
                 "enum_titles": ["No", "Yes"],
                 "group": "temperatureControl",
                 "order": 1
+            },
+            {
+                "id": "Show_modes_as_drop_down_menu",
+                "title": "Show modes as drop-down menu",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "general",
+                "order": 1
             }
         ],
         "channels": [
@@ -78,6 +88,18 @@
                 "type": "range",
                 "min": 1,
                 "max": 5,
+                "condition": "Show_modes_as_drop_down_menu!=1"
+            },
+            {
+                "name": "Mode",
+                "group": "general",
+                "address": 1,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [1, 2, 3, 4, 5],
+                "enum_titles": ["Heat", "Cool", "Auto", "Dry", "Fan"],
+                "condition": "Show_modes_as_drop_down_menu==1",
                 "enabled": true
             },
             {
@@ -89,6 +111,19 @@
                 "type": "range",
                 "min": 0,
                 "max": 5,
+                "condition": "Show_modes_as_drop_down_menu!=1",
+                "enabled": true
+            },
+            {
+                "name": "Active mode",
+                "group": "general",
+                "address": 2,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5],
+                "enum_titles": ["Off", "Heat", "Cool", "Auto", "Dry", "Fan"],
+                "condition": "Show_modes_as_drop_down_menu==1",
                 "enabled": true
             },
             {
@@ -306,8 +341,15 @@
                 "template_title": "ONOKOM-AIR-ME-1-MB-B (Адаптер для бытовых и полупромышленных систем Mitsubishi Electric)",
 
                 "General": "Основные режимы и функции",
+                "Show modes as drop-down menu": "Отображать режимы как выпадающее меню",
                 "Active": "Состояние",
                 "Mode": "Режим",
+                "Off": "Выключен",
+                "Heat": "Нагрев", 
+                "Cool": "Охлаждение", 
+                "Auto": "Авто", 
+                "Dry": "Осушение", 
+                "Fan": "Вентиляция",
                 "Active mode": "Состояние и режим",
                 "Fan speed": "Скорость вентилятора",
                 "Smart fan speed": "Скорость вентилятора расширенная",

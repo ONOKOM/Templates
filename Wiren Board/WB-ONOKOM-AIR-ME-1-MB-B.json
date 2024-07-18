@@ -27,11 +27,6 @@
                 "order": 4
             },
             {
-                "title": "Indication",
-                "id": "indication",
-                "order": 5
-            },
-            {
                 "title": "HW Info",
                 "id": "hw_info",
                 "order": 6
@@ -66,6 +61,16 @@
                 "enum": [0, 1],
                 "enum_titles": ["No", "Yes"],
                 "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_vanes_as_drop_down_menu",
+                "title": "Show vanes as drop-down menu",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "vanes",
                 "order": 1
             }
         ],
@@ -209,6 +214,19 @@
                 "type": "range",
                 "min": 1,
                 "max": 6,
+                "condition": "Show_vanes_as_drop_down_menu!=1",
+                "enabled": true
+            },
+            {
+                "name": "Horizontal vanes",
+                "group": "vanes",
+                "address": 9,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5, 6],
+                "enum_titles": ["Auto", "Swing", "Lowest", "Low", "Middle", "High", "Highest"],
+                "condition": "Show_vanes_as_drop_down_menu==1",
                 "enabled": true
             },
             {
@@ -220,7 +238,20 @@
                 "type": "range",
                 "min": 1,
                 "max": 6,
-                "enabled": false
+                "condition": "Show_vanes_as_drop_down_menu!=1",
+                "enabled": true
+            },
+            {
+                "name": "Vertical vanes",
+                "group": "vanes",
+                "address": 10,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5, 6],
+                "enum_titles": ["Auto", "Swing", "Far left", "Left", "Middle", "Right", "Far right"],
+                "condition": "Show_vanes_as_drop_down_menu==1",
+                "enabled": true
             },
             {
                 "name": "Vanes swing",
@@ -231,6 +262,19 @@
                 "type": "range",
                 "min": 0,
                 "max": 3,
+                "condition": "Show_vanes_as_drop_down_menu!=1",
+                "enabled": true
+            },
+            {
+                "name": "Vanes swing",
+                "group": "vanes",
+                "address": 11,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3],
+                "enum_titles": ["Stopped", "Horizontal and Vertical swing", "Horizontal swing", "Vertical Swing"],
+                "condition": "Show_vanes_as_drop_down_menu==1",
                 "enabled": true
             },
             {
@@ -240,26 +284,6 @@
                 "reg_type": "coil",
                 "type": "switch",
                 "enabled": false
-            },
-            {
-                "name": "Screen light",
-                "group": "indication",
-                "address": 2,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": true
-            },
-            {
-                "name": "Temeperature correction",
-                "group": "debug",
-                "address": 20,
-                "reg_type": "holding",
-                "format": "s16",
-                "type": "value",
-                "min": -30,
-                "max": 30,
-                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
-                "enabled": true
             },
             {
                 "name": "AC connected",
@@ -361,9 +385,25 @@
                 "Thermostat state": "Состояние термостата",
 
                 "Vanes": "Жалюзи",
+                "Show vanes as drop-down menu": "Отображать жалюзи как выпадающее меню",
                 "Horizontal vanes": "Горизонтальные жалюзи",
                 "Vertical vanes": "Вертикальные жалюзи",
                 "Vanes swing": "Качание жалюзи",
+                "Swing": "Качание", 
+                "Lowest": "Самое низкое", 
+                "Low": "Низкое", 
+                "Middle": "Среднее", 
+                "High": "Высокое", 
+                "Highest": "Самое высокое",
+                "Far left": "Самое левое", 
+                "Left": "Левое", 
+                "Right": "Правое", 
+                "Far right": "Самое правое",
+                "Stopped": "Остановлено", 
+                "Horizontal and Vertical swing": "Качание горизонтальных и вертикальных", 
+                "Horizontal swing": "Качание горизонтальных", 
+                "Vertical Swing": "Качание вертикальных",
+
 
                 "Additional": "Дополнительные режимы и функции",
                 "Shutdown time when the window is opened": "Время отключения при открыии окна",

@@ -54,16 +54,6 @@
         ],
         "parameters": [
             {
-                "id": "Disable_screen_when_power_off",
-                "title": "Disable screen when power off",
-                "address": 41,
-                "reg_type": "coil",
-                "enum": [0, 1],
-                "enum_titles": ["No", "Yes"],
-                "group": "indication",
-                "order": 1
-            },
-            {
                 "id": "Allow_the_use_of_an_external_temperature_sensor",
                 "title": "Allow the use of an external temperature sensor",
                 "address": 100,
@@ -104,6 +94,16 @@
                 "order": 1
             },
             {
+                "id": "Show_thermostat_state_as_range",
+                "title": "Show thermostat state as range",
+                "address": 94,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "temperatureControl",
+                "order": 1
+            },
+            {
                 "title": "Show error switches",
                 "id": "Show_error_switches",
                 "address": 100,
@@ -118,40 +118,6 @@
                     "Yes"
                 ],
                 "group": "errors",
-                "order": 1
-            },
-            {
-                "title": "Show warnings",
-                "id": "Show_warnings",
-                "address": 100,
-                "reg_type": "coil",
-                "default": 1,
-                "enum": [
-                    0,
-                    1
-                ],
-                "enum_titles": [
-                    "No",
-                    "Yes"
-                ],
-                "group": "debug",
-                "order": 1
-            },
-            {
-                "title": "Show breakpoints",
-                "id": "Show_breakpoints",
-                "address": 100,
-                "reg_type": "coil",
-                "default": 1,
-                "enum": [
-                    0,
-                    1
-                ],
-                "enum_titles": [
-                    "No",
-                    "Yes"
-                ],
-                "group": "debug",
                 "order": 1
             },
             {
@@ -249,7 +215,7 @@
                 "type": "value",
                 "enum": [0, 1, 2, 3, 4, 5],
                 "enum_titles": ["Off", "Heat", "Cool", "Auto", "Dry", "Fan"],
-                "condition": "Show_modes_as_drop_down_menu!=1",
+                "condition": "Show_modes_as_range!=1",
                 "enabled": true,
                 "sporadic": true
             },
@@ -374,32 +340,6 @@
                 "sporadic": true
             },
             {
-                "name": "Additional temperature 3",
-                "group": "temperatureControl",
-                "address": 25,
-                "reg_type": "holding",
-                "format": "s16",
-                "type": "value",
-                "units": "deg C",
-                "scale": 0.01,
-                "readonly": true,
-                "enabled": false,
-                "sporadic": true
-            },
-            {
-                "name": "Additional temperature 4",
-                "group": "temperatureControl",
-                "address": 26,
-                "reg_type": "holding",
-                "format": "s16",
-                "type": "value",
-                "units": "deg C",
-                "scale": 0.01,
-                "readonly": true,
-                "enabled": false,
-                "sporadic": true
-            },
-            {
                 "name": "Target temperature",
                 "group": "temperatureControl",
                 "address": 5,
@@ -424,7 +364,7 @@
                 "max": 2,
                 "readonly": true,
                 "enabled": true,
-                "condition": "Show_vanes_as_range==1",
+                "condition": "Show_thermostat_state_as_range==1",
                 "sporadic": true
             },
             {
@@ -438,7 +378,7 @@
                 "type": "value",
                 "enum": [0, 1, 2],
                 "enum_titles": ["Idle", "Heater", "Cool"],
-                "condition": "Show_vanes_as_range!=1",
+                "condition": "Show_thermostat_state_as_range!=1",
                 "sporadic": true
             },
             {
@@ -475,7 +415,7 @@
                 "format": "u16",
                 "type": "range",
                 "min": 0,
-                "max": 6,
+                "max": 7,
                 "condition": "Show_vanes_as_range==1",
                 "enabled": true,
                 "sporadic": true
@@ -520,25 +460,6 @@
                 "enabled": true,
                 "sporadic": true
 
-            },
-
-            {
-                "name": "Shutdown time when the window is opened",
-                "group": "additional",
-                "address": 30,
-                "reg_type": "holding",
-                "format": "u16",
-                "enabled": false,
-                "sporadic": true
-            },
-            {
-                "name": "Window is opened",
-                "group": "additional",
-                "address": 30,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": false,
-                "sporadic": true
             },
             {
                 "name": "Quiet mode",
@@ -604,15 +525,6 @@
                 "sporadic": true
             },
             {
-                "name": "Defrosting",
-                "group": "additional",
-                "reg_type": "coil",
-                "address": 12,
-                "type": "switch",
-                "enabled": true,
-                "sporadic": true
-            },
-            {
                 "name": "Heating 8 deg",
                 "group": "additional",
                 "address": 13,
@@ -631,15 +543,6 @@
                 "enabled": false
             },
             {
-                "name": "Outdoor air supply",
-                "group": "general",
-                "address": 15,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": true,
-                "sporadic": true
-            },
-            {
                 "name": "Screen light",
                 "group": "indication",
                 "address": 2,
@@ -649,42 +552,11 @@
                 "sporadic": true
             },
             {
-                "name": "Disable screen when power off",
-                "group": "indication",
-                "reg_type": "coil",
-                "address": 41,
-                "type": "switch",
-                "enabled": false,
-                "sporadic": true
-            },
-            {
-                "name": "Screen low bright",
-                "group": "indication",
-                "address": 3,
-                "reg_type": "coil",
-                "type": "switch",
-                "enabled": false,
-                "sporadic": true
-            },
-            {
                 "name": "Beeper",
                 "group": "indication",
                 "address": 5,
                 "reg_type": "coil",
                 "type": "switch",
-                "enabled": true,
-                "sporadic": true
-            },
-            {
-                "name": "Target fan speed",
-                "group": "debug",
-                "address": 31,
-                "reg_type": "holding",
-                "type": "range",
-                "min": 0,
-                "max": 200,
-                "units": "rpm",
-                "readonly": true,
                 "enabled": true,
                 "sporadic": true
             },
@@ -715,33 +587,6 @@
                 "sporadic": true
             },
             {
-                "name": "Current compressor power",
-                "group": "debug",
-                "reg_type": "holding",
-                "address": 21,
-                "readonly": true,
-                "type": "range",
-                "min": 0,
-                "max": 100,
-                "units": "%",
-                "enabled": false,
-                "sporadic": true
-            },
-            {
-                "name": "Target compressor power",
-                "group": "debug",
-                "reg_type": "holding",
-                "address": 22,
-                "readonly": true,
-                "type": "range",
-                "min": 0,
-                "max": 100,
-                "units": "%",
-                "enabled": false,
-                "sporadic": true
-            },
-
-            {
                 "name": "Compressor power limit",
                 "group": "additional",
                 "address": 19,
@@ -750,28 +595,6 @@
                 "max": 100,
                 "sporadic": true,
                 "enabled": false
-            },
-            {
-                "name": "Current tick",
-                "group": "debug",
-                "reg_type": "holding",
-                "address": 1000,
-                "type": "value",
-                "units": "ms",
-                "format": "u32",
-                "readonly": true,
-                "enabled": true
-            },
-            {
-                "name": "Receive tick",
-                "group": "debug",
-                "reg_type": "holding",
-                "address": 1002,
-                "type": "value",
-                "units": "ms",
-                "format": "u32",
-                "readonly": true,
-                "enabled": true
             },
             {
                 "name": "AC connected",
@@ -887,41 +710,6 @@
                     "RED"
                 ],
                 "readonly": false,
-                "enabled": true
-            },
-            {
-                "name": "DE pin test",
-                "group": "debug",
-                "address": 460,
-                "reg_type": "holding",
-                "format": "s16",
-                "type": "value",
-                "enum": [
-                    0,
-                    1
-                ],
-                "enum_titles": [
-                    "LOW",
-                    "HIGH"
-                ],
-                "readonly": false,
-                "enabled": true
-            },
-            {
-                "name": "Button test",
-                "group": "debug",
-                "address": 461,
-                "reg_type": "holding",
-                "format": "s16",
-                "type": "value",
-                "enum": [
-                    0,
-                    1
-                ],
-                "enum_titles": [
-                    "RELEASED",
-                    "PRESSED"
-                ],
                 "enabled": true
             },
             {
@@ -1185,10 +973,10 @@
         ],
         "translations": {
             "en": {
-                "template_title": "ONOKOM-AIR-TCL-1-MB-B (Adapter for household and semi-industrial TCL systems)"
+                "template_title": "ONOKOM-AIR-TCL-1-MB-B (Adapter for household TCL systems)"
             },
             "ru": {
-                "template_title": "ONOKOM-AIR-TCL-1-MB-B (Адаптер для бытовых и полупромышленных систем TCL)",
+                "template_title": "ONOKOM-AIR-TCL-1-MB-B (Адаптер для бытовых систем TCL)",
 
                 "General": "Основные режимы и функции",
                 "Active": "Состояние",
@@ -1209,6 +997,7 @@
 
                 "Temperature control": "Контроль температуры",
                 "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
+                "Show thermostat state as range": "Отображать состояние термостата как ползунок",
                 "Indoor air temperature": "Температура воздуха в помещении",
                 "Outdoor air temperature": "Температура воздуха на улице",
                 "Indoor heat exchanger temperature": "Температура внутреннего теплообменника",
@@ -1297,14 +1086,8 @@
                 "Indication settings":"Настройка индикации",
                 "RED":"Красный",
                 "GREEN":"Зеленый",
-                "Errors":"Ошибки",
                 "OFF":"Выключить",
-                "DE pin test":"Тест пина DE",
-                "Button test":"Тест кнопки",
-                "LOW":"Низкий",
-                "HIGH":"Высокий",
-                "RELEASED":"Отпущена",
-                "PRESSED":"Нажата",
+                "Errors":"Ошибки",
                 "Errors count":"Количество Ошибок",
                 "Error 1": "E0 Сбой внутренней и внешней связи (внутренний блок)",
                 "Error 2": "E0 Сбой внутренней и внешней связи (внешний блок)",

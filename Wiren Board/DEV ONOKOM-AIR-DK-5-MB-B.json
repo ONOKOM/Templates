@@ -1,0 +1,4038 @@
+{
+    "title": "template_title",
+    "device_type": "DEV ONOKOM-AIR-DK-5-MB-B",
+    "group": "g-air-conditioning",
+    "hw": [
+        {
+            "signature": "ONOKOM-AIR-DK-5-MB-B"
+        }
+    ],
+    "device": {
+        "name": "DEV ONOKOM-AIR-DK-5-MB-B",
+        "id": "ONOKOM-AIR-DK-5-MB-B",
+        "groups": [
+            {
+                "title": "General",
+                "id": "general",
+                "order": 1
+            },
+            {
+                "title": "Temperature control",
+                "id": "temperatureControl",
+                "order": 2
+            },
+            {
+                "title": "Vanes",
+                "id": "vanes",
+                "order": 3
+            },
+            {
+                "title": "Additional",
+                "id": "additional",
+                "order": 4
+            },
+            {
+                "title": "Indication",
+                "id": "indication",
+                "order": 5
+            },
+            {
+                "title": "HW Info",
+                "id": "hw_info",
+                "order": 6
+            },
+            {
+                "title": "Errors",
+                "id": "errors",
+                "order": 7
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 8
+            },
+            {
+                "title": "Raw data",
+                "id": "raw_data",
+                "order": 9
+            }
+        ],
+        "parameters": [
+            {
+                "id": "Disable_screen_when_power_off",
+                "title": "Disable screen when power off",
+                "address": 41,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "indication",
+                "order": 1
+            },
+            {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "temperatureControl",
+                "order": 1
+            },
+            {
+                "title": "Show last rx data",
+                "id": "Show_last_rx_data",
+                "address": 99,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "raw_data",
+                "order": 1
+            }, 
+            {
+				"title": "Show rx log 0 data",
+				"id": "Show_rx_log_0_data",
+				"address": 98,
+				"reg_type": "coil",
+                "default": 1,
+				"enum": [
+					0,
+					1
+				],
+				"enum_titles": [
+					"No",
+					"Yes"
+				],
+				"group": "raw_data",
+				"order": 3
+			}, 
+            {
+				"title": "Show rx log 1 data",
+				"id": "Show_rx_log_1_data",
+				"address": 97,
+				"reg_type": "coil",
+                "default": 1,
+				"enum": [
+					0,
+					1
+				],
+				"enum_titles": [
+					"No",
+					"Yes"
+				],
+				"group": "raw_data",
+				"order": 3
+			}, 
+            {
+				"title": "Show rx log 2 data",
+				"id": "Show_rx_log_2_data",
+				"address": 96,
+				"reg_type": "coil",
+                "default": 1,
+				"enum": [
+					0,
+					1
+				],
+				"enum_titles": [
+					"No",
+					"Yes"
+				],
+				"group": "raw_data",
+				"order": 4
+			},
+            {
+                "id": "Show_modes_as_range",
+                "title": "Show modes as range",
+                "address": 95,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_fan_as_range",
+                "title": "Show fan as range",
+                "address": 92,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_vanes_as_range",
+                "title": "Show vanes as range",
+                "address": 94,
+                "reg_type": "coil",
+                "enum": [0, 1],
+                "enum_titles": ["No", "Yes"],
+                "group": "vanes",
+                "order": 1
+            },
+            {
+                "title": "Show error switches",
+                "id": "Show_error_switches",
+                "address": 100,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "errors",
+                "order": 1
+            },
+            {
+                "title": "Show warnings",
+                "id": "Show_warnings",
+                "address": 100,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "debug",
+                "order": 1
+            },
+            {
+                "title": "Show breakpoints",
+                "id": "Show_breakpoints",
+                "address": 100,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "debug",
+                "order": 1
+            },
+            {
+                "id": "baud_rate",
+                "title": "Baud rate",
+                "description": "baud_rate_description",
+                "address": 110,
+                "reg_type": "holding",
+                "enum": [96, 192, 384, 576, 1152],
+                "default": 96,
+                "enum_titles": [
+                    "9600",
+                    "19200",
+                    "38400",
+                    "57600",
+                    "115200"
+                ],
+                "group": "hw_info",
+                "order": 1
+            },
+            {
+                "id": "parity_bit",
+                "title": "Parity bit",
+                "description": "parity_bit_description",
+                "address": 111,
+                "reg_type": "holding",
+                "enum": [0, 1, 2],
+                "default": 0,
+                "enum_titles": [
+                    "none (N)",
+                    "odd (O)",
+                    "even (E)"
+                ],
+                "group": "hw_info",
+                "order": 1
+            }
+
+        ],
+        "channels": [
+            {
+                "name": "Active",
+                "group": "general",
+                "address": 1,
+                "reg_type": "coil",
+                "format": "u16",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Mode",
+                "group": "general",
+                "address": 1,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 1,
+                "max": 5,
+                "condition": "Show_modes_as_range==1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Mode",
+                "group": "general",
+                "address": 1,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [1, 2, 3, 4, 5],
+                "enum_titles": ["Heat", "Cool", "Auto", "Dry", "Fan"],
+                "condition": "Show_modes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Active mode",
+                "group": "general",
+                "address": 2,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "Show_modes_as_range==1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Active mode",
+                "group": "general",
+                "address": 2,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5],
+                "enum_titles": ["Off", "Heat", "Cool", "Auto", "Dry", "Fan"],
+                "condition": "Show_modes_as_drop_down_menu!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Fan speed",
+                "group": "general",
+                "address": 7,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "enabled": true,
+                "condition": "Show_fan_as_range==1",
+                "sporadic": true
+            },
+            {
+                "name": "Fan speed",
+                "group": "general",
+                "address": 7,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5],
+                "enum_titles": ["Auto", "1 Speed", "2 Speed","3 Speed", "4 Speed", "5 Speed" ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true
+            },
+
+            {
+                "name": "Smart fan speed",
+                "group": "general",
+                "address": 8,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 7,
+                "enabled": true,
+                "condition": "Show_fan_as_range==1",
+                "sporadic": true
+            },
+            {
+                "name": "Smart fan speed",
+                "group": "general",
+                "address": 8,
+                "reg_type": "holding",
+                "format": "u16",
+                "min": 0,
+                "max": 7,
+                "enabled": true,
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5, 6, 7],
+                "enum_titles": ["Auto","Quiet mode", "1 Speed", "2 Speed","3 Speed", "4 Speed" , "5 Speed" , "Turbo mode" ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true
+            },
+            {
+                "name": "Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 3,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 3,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Outdoor air temperature",
+                "group": "temperatureControl",
+                "address": 4,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Indoor heat exchanger temperature",
+                "group": "temperatureControl",
+                "address": 23,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Outdoor heat exchanger temperature",
+                "group": "temperatureControl",
+                "address": 24,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "scale": 0.01,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Remote controller temperature",
+                "group": "temperatureControl",
+                "address": 25,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Additional temperature 4",
+                "group": "temperatureControl",
+                "address": 26,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Target temperature",
+                "group": "temperatureControl",
+                "address": 5,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "range",
+                "min": 16,
+                "max": 32,
+                "units": "deg C",
+                "scale": 0.01,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Thermostat state",
+                "group": "temperatureControl",
+                "address": 6,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 2,
+                "readonly": true,
+                "enabled": true,
+                "condition": "Show_vanes_as_range==1",
+                "sporadic": true
+            },
+            {
+                "name": "Thermostat state",
+                "group": "temperatureControl",
+                "address": 6,
+                "reg_type": "holding",
+                "format": "u16",
+                "readonly": true,
+                "enabled": true,
+                "type": "value",
+                "enum": [0, 1, 2],
+                "enum_titles": ["Idle", "Heater", "Cool"],
+                "condition": "Show_vanes_as_range!=1",
+                "sporadic": true
+            },
+            {
+                "name": "Horizontal vanes",
+                "group": "vanes",
+                "address": 9,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 1,
+                "max": 6,
+                "condition": "Show_vanes_as_range==1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Horizontal vanes",
+                "group": "vanes",
+                "address": 9,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5, 6],
+                "enum_titles": ["Auto", "Swing", "Lowest", "Low", "Middle", "High", "Highest"],
+                "condition": "Show_vanes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Vertical vanes",
+                "group": "vanes",
+                "address": 10,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 6,
+                "condition": "Show_vanes_as_range==1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Vertical vanes",
+                "group": "vanes",
+                "address": 10,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3, 4, 5, 6],
+                "enum_titles": ["Auto", "Swing", "Far Left", "Left", "Middle", "Right", "Far Right"],
+                "condition": "Show_vanes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+
+            {
+                "name": "Vanes swing",
+                "group": "vanes",
+                "address": 11,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "range",
+                "min": 0,
+                "max": 3,
+                "condition": "Show_vanes_as_range==1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Vanes swing",
+                "group": "vanes",
+                "address": 11,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [0, 1, 2, 3],
+                "enum_titles": ["Stop", "Horizontal and vertical swing", "Swinging horizontal blinds", "Swinging vertical blinds"],
+                "condition": "Show_vanes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+
+            },
+
+            {
+                "name": "Shutdown time when the window is opened",
+                "group": "additional",
+                "address": 30,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Window is opened",
+                "group": "additional",
+                "address": 30,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Quiet mode",
+                "group": "additional",
+                "address": 4,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Eco mode",
+                "group": "additional",
+                "address": 6,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Turbo mode",
+                "group": "additional",
+                "address": 7,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Sleep mode",
+                "group": "additional",
+                "address": 8,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Ionization",
+                "group": "additional",
+                "address": 9,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Self cleaning",
+                "group": "additional",
+                "address": 10,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Mold protection",
+                "group": "additional",
+                "reg_type": "coil",
+                "address": 11,
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Defrosting",
+                "group": "additional",
+                "reg_type": "coil",
+                "address": 12,
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Heating 8 deg",
+                "group": "additional",
+                "address": 13,
+                "reg_type": "coil",
+                "type": "switch",
+                "sporadic": true,
+                "enabled": false
+            },
+            {
+                "name": "Gentle wind",
+                "group": "additional",
+                "address": 14,
+                "reg_type": "coil",
+                "type": "switch",
+                "sporadic": true,
+                "enabled": false
+            },
+            {
+                "name": "Outdoor air supply",
+                "group": "general",
+                "address": 15,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Screen light",
+                "group": "indication",
+                "address": 2,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Disable screen when power off",
+                "group": "indication",
+                "reg_type": "coil",
+                "address": 41,
+                "type": "switch",
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Screen low bright",
+                "group": "indication",
+                "address": 3,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Beeper",
+                "group": "indication",
+                "address": 5,
+                "reg_type": "coil",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Target fan speed",
+                "group": "debug",
+                "address": 31,
+                "reg_type": "holding",
+                "type": "range",
+                "min": 0,
+                "max": 200,
+                "units": "rpm",
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Current fan speed",
+                "group": "debug",
+                "address": 32,
+                "reg_type": "holding",
+                "type": "range",
+                "min": 0,
+                "max": 200,
+                "units": "rpm",
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Temeperature correction",
+                "group": "debug",
+                "address": 20,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Current compressor power",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 21,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 100,
+                "units": "%",
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Target compressor power",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 22,
+                "readonly": true,
+                "type": "range",
+                "min": 0,
+                "max": 100,
+                "units": "%",
+                "enabled": false,
+                "sporadic": true
+            },
+
+            {
+                "name": "Compressor power limit",
+                "group": "additional",
+                "address": 19,
+                "reg_type": "holding",
+                "type": "range",
+                "max": 100,
+                "sporadic": true,
+                "enabled": false
+            },
+            {
+                "name": "Current tick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1000,
+                "type": "value",
+                "units": "ms",
+                "format": "u32",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Receive tick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1002,
+                "type": "value",
+                "units": "ms",
+                "format": "u32",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Last send tick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1004,
+                "type": "value",
+                "units": "ms",
+                "format": "u32",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "AC connected",
+                "group": "debug",
+                "address": 20,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Indoor unit model",
+                "group": "hw_info",
+                "address": 2104,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 15,
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "HW Version",
+                "group": "hw_info",
+                "address": 200,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 20,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "FW Version",
+                "group": "hw_info",
+                "address": 250,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 16,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "PROTO Version",
+                "group": "hw_info",
+                "address": 400,
+                "reg_type": "input",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 16,
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Signature",
+                "group": "hw_info",
+                "address": 290,
+                "reg_type": "input",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 12,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Serial",
+                "type": "text",
+                "reg_type": "holding",
+                "address": 270,
+                "format": "u32",
+                "group": "hw_info",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Uptime",
+                "reg_type": "input",
+                "address": 104,
+                "type": "text",
+                "format": "u32",
+                "enabled": false,
+                "group": "hw_info"
+            },
+            {
+                "name": "MCU Temperature",
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "enabled": false,
+                "group": "hw_info"
+            },
+            {
+                "name": "Reboot Device",
+                "reg_type": "holding",
+                "address": 120,
+                "enabled": true,
+                "type":"pushbutton",
+                "group": "hw_info"
+            },
+            {
+                "name": "Gateway mode",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1040,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "LISTEN_ONLY",
+                    "EMULATE_M_WRC",
+                    "EMULATE_S_WRC"
+                ],
+                "enabled": true
+            },
+            {
+                "name": "FSM State",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1032,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18, 
+                    19, 
+                    20, 
+                    21, 
+                    22, 
+                    23, 
+                    24, 
+                    25, 
+                    26, 
+                    27, 
+                    28, 
+                    29, 
+                    30,
+                    40,
+                    50,
+                    51, 
+                    52, 
+                    53, 
+                    54
+                ],
+                "enum_titles": [
+                    "DO_NOTHING",
+                    "QUERY_SLAVE",
+                    "SEND_STATE",
+                    "FSM_INIT_SLAVE_0",
+                    "FSM_INIT_SLAVE_1",
+                    "FSM_INIT_SLAVE_2",
+                    "FSM_INIT_SLAVE_3",
+                    "FSM_INIT_SLAVE_4",
+                    "FSM_INIT_SLAVE_5",
+                    "FSM_INIT_SLAVE_6",
+                    "FSM_INIT_COND_0",
+                    "FSM_INIT_COND_1",
+                    "FSM_INIT_COND_2",
+                    "FSM_INIT_COND_3",
+                    "FSM_INIT_COND_4",
+                    "FSM_INIT_COND_5",
+                    "FSM_INIT_COND_6",
+                    "FSM_INIT_COND_7",
+                    "FSM_INIT_COND_8",
+                    "FSM_INIT_COND_9",
+                    "FSM_INIT_COND_10",
+                    "FSM_INIT_COND_11",
+                    "FSM_INIT_COND_12",
+                    "FSM_INIT_COND_13",
+                    "FSM_INIT_COND_14",
+                    "FSM_INIT_COND_15",
+                    "FSM_INIT_COND_16",
+                    "FSM_INIT_COND_17",
+                    "FSM_INIT_COND_18",
+                    "FSM_INIT_COND_19",
+                    "FSM_INIT_COND_20",
+                    "FSM_NOTIFY_ERROR_SLAVE",
+                    "FSM_ANS_SLAVE_0",
+                    "FSM_ANS_SLAVE_1",
+                    "FSM_ANS_SLAVE_2",
+                    "FSM_ANS_SLAVE_3",
+                    "FSM_ANS_SLAVE_4"
+                ],
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "FSM State value",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1032,
+                "type": "value",
+                "enabled": true
+            },
+            {
+                "name": "slaveConnectionTryCount",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1034,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "slaveConnectionState",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1035,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "condConnectionTryCount",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1036,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "condConnectionState",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1037,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "REPLY_TIMEOUT_MS",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1030,
+                "type": "value",
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "MIN_SEND_DELAY_MS",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1031,
+                "type": "value",
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "packets_with_broken_chk",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1038,
+                "type": "value",
+                "format": "u32",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Indication settings",
+                "group": "debug",
+                "address": 450,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    3,
+                    8,
+                    9
+                ],
+                "enum_titles": [
+                    "OFF",
+                    "GREEN",
+                    "RED"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "DE pin test",
+                "group": "debug",
+                "address": 460,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "LOW",
+                    "HIGH"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "Button test",
+                "group": "debug",
+                "address": 461,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "RELEASED",
+                    "PRESSED"
+                ],
+                "enabled": true
+            },
+            {
+                "name": "Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 0,
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Errors count",
+                "group": "errors",
+                "reg_type": "input",
+                "address": 0,
+                "type": "value",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Error 1",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 1,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 2",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 2,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 3",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 3,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 4",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 4,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 5",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 5,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 6",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 6,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 7",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 7,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 8",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 8,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 9",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 9,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 10",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 10,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 11",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 11,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 12",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 13",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 13,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 14",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 14,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 15",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 15,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 16",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 16,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 17",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 17,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 18",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 18,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 19",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 19,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 20",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 20,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 21",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 21,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 22",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 22,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 23",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 23,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "Error 24",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 24,
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_error_switches==1",
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 1",
+                "group": "debug",
+                "address": 1011,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 2",
+                "group": "debug",
+                "address": 1013,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 3",
+                "group": "debug",
+                "address": 1013,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 4",
+                "group": "debug",
+                "address": 1014,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 1",
+                "group": "debug",
+                "address": 1021,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 2",
+                "group": "debug",
+                "address": 1022,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 3",
+                "group": "debug",
+                "address": 1023,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 4",
+                "group": "debug",
+                "address": 1024,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "test 1",
+                "group": "debug",
+                "address": 1051,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "test 2",
+                "group": "debug",
+                "address": 1052,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "test 3",
+                "group": "debug",
+                "address": 1053,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "test 4",
+                "group": "debug",
+                "address": 1054,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "test_int 1",
+                "group": "debug",
+                "address": 1061,
+                "reg_type": "holding",
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "test_int 2",
+                "group": "debug",
+                "address": 1062,
+                "reg_type": "holding",
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "test_int 3",
+                "group": "debug",
+                "address": 1063,
+                "reg_type": "holding",
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "test_int 4",
+                "group": "debug",
+                "address": 1064,
+                "reg_type": "holding",
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "DB00",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1100,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB01",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1101,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB02",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1102,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB03",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1103,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB04",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1104,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB05",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1105,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB06",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1106,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB07",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1107,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB08",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1108,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB09",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1109,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB10",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1110,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB11",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1111,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB12",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1112,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB13",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1113,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB14",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1114,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB15",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1115,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB16",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1116,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB17",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1117,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB18",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1118,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB19",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1119,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB20",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1120,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB21",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1121,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB22",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1122,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB23",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1123,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB24",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1124,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB25",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1125,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB26",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1126,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB27",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1127,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB28",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1128,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB29",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1129,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB30",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1130,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB31",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1131,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB32",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1132,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB33",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1133,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB34",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1134,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB35",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1135,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB36",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1136,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB37",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1137,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB38",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1138,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB39",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1139,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB40",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1140,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB41",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1141,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB42",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1142,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB43",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1143,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB44",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1144,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB45",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1145,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB46",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1146,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB47",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1147,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB48",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1148,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB49",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1149,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB50",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1150,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB51",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1151,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB52",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1152,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB53",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1153,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB54",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1154,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB55",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1155,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB56",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1156,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB57",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1157,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB58",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1158,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB59",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1159,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB60",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1160,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB61",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1161,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB62",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1162,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB63",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1163,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB64",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1164,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB65",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1165,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB66",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1166,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB67",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1167,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB68",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1168,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB69",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1169,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB00",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1200,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB01",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1201,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB02",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1202,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB03",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1203,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB04",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1204,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB05",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1205,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB06",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1206,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB07",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1207,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB08",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1208,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB09",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1209,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB10",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1210,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB11",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1211,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB12",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1212,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB13",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1213,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB14",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1214,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB15",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1215,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB16",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1216,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB17",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1217,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB18",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1218,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB19",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1219,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB20",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1220,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB21",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1221,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB22",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1222,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB23",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1223,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB24",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1224,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB25",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1225,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB26",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1226,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB27",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1227,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB28",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1228,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB29",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1229,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB30",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1230,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB31",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1231,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB32",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1232,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB33",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1233,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB34",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1234,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB35",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1235,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB36",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1236,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB37",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1237,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB38",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1238,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB39",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1239,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB40",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1240,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB41",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1241,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB42",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1242,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB43",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1243,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB44",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1244,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB45",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1245,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB46",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1246,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB47",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1247,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB48",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1248,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB49",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1249,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB50",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1250,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_0 DB51",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1251,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_0_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB00",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1300,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB01",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1301,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB02",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1302,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB03",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1303,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB04",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1304,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB05",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1305,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB06",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1306,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB07",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1307,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB08",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1308,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB09",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1309,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB10",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1310,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB11",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1311,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB12",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1312,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB13",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1313,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB14",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1314,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB15",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1315,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB16",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1316,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB17",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1317,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB18",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1318,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB19",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1319,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB20",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1320,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB21",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1321,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB22",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1322,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB23",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1323,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB24",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1324,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB25",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1325,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB26",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1326,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB27",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1327,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB28",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1328,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB29",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1329,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB30",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1330,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB31",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1331,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB32",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1332,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB33",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1333,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB34",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1334,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB35",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1335,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB36",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1336,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB37",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1337,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB38",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1338,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB39",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1339,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB40",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1340,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB41",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1341,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB42",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1342,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB43",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1343,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB44",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1344,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB45",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1345,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB46",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1346,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB47",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1347,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB48",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1348,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB49",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1349,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB50",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1350,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_1 DB51",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1351,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_1_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB00",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1400,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB01",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1401,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB02",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1402,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB03",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1403,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB04",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1404,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB05",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1405,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB06",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1406,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB07",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1407,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB08",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1408,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB09",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1409,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB10",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1410,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB11",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1411,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB12",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1412,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB13",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1413,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB14",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1414,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB15",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1415,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB16",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1416,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB17",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1417,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB18",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1418,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB19",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1419,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB20",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1420,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB21",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1421,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB22",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1422,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB23",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1423,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB24",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1424,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB25",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1425,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB26",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1426,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB27",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1427,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB28",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1428,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB29",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1429,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB30",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1430,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB31",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1431,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB32",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1432,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB33",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1433,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB34",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1434,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB35",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1435,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB36",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1436,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB37",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1437,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB38",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1438,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB39",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1439,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB40",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1440,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB41",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1441,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB42",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1442,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB43",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1443,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB44",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1444,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB45",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1445,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB46",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1446,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB47",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1447,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB48",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1448,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB49",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1449,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB50",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1450,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            },
+            {
+                "name": "LOG_2 DB51",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1451,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_rx_log_2_data==1",
+                "enabled": true
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "DEV ONOKOM AIR DK-5-MB-B (DAIKIN VRF)"
+            },
+            "ru": {
+                "template_title": "DEV ONOKOM AIR DK-5-MB-B (DAIKIN VRF)",
+
+                "General": "Основные режимы и функции",
+                "Active": "Состояние",
+                "Mode": "Режим",
+                "Active mode": "Состояние и режим",
+                "Fan speed": "Скорость вентилятора",
+                "Smart fan speed": "Скорость вентилятора расширенная",
+                "Show modes as range": "Отображать режимы как ползунок",
+                "Off": "Выключен",
+                "Heat": "Нагрев", 
+                "Cool": "Охлаждение", 
+                "Auto": "Авто", 
+                "Dry": "Осушение", 
+                "Fan": "Вентиляция",
+                "Idle":"Простаивает",
+                 "Heater":"Нагрев", 
+           
+
+                "Temperature control": "Контроль температуры",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Outdoor air temperature": "Температура воздуха на улице",
+                "Indoor heat exchanger temperature": "Температура внутреннего теплообменника",
+                "Outdoor heat exchanger temperature": "Температура внешнего теплообменника",
+                "Remote controller temperature": "Температура главного пульта",
+                "Additional temperature 4": "Дополнительная температура 4",
+                "Target temperature": "Целевая температура",
+                "Thermostat state": "Состояние термостата",
+
+                "Vanes": "Жалюзи",
+                "Show vanes as range": "Отображать жалюзи как ползунок",
+                "Horizontal vanes": "Горизонтальные жалюзи",
+                "Swing": "Качание", 
+                "Lowest": "Самое низкое", 
+                "Low": "Низкое", 
+                "Middle": "Среднее", 
+                "High": "Высокое", 
+                "Highest": "Самое высокое",
+                "Far Left": "Самое левое", 
+                "Left": "Левое", 
+                "Right": "Правое", 
+                "Far Right": "Самое правое",
+                "Stopped": "Остановлено", 
+                "Vertical vanes": "Вертикальные жалюзи",
+                "Vanes swing": "Качание жалюзи",
+                "Stop":"Остановлены", 
+                "Horizontal and vertical swing":"Качание горизонтальное и вертикальное",
+                "Swinging horizontal blinds":"Качание горизонтальных жалюзи", 
+                "Swinging vertical blinds":"Качание вертикальных жалюзи",
+                "Show fan as range":"Отображать вентилятор как ползунок",
+
+                "Additional": "Дополнительные режимы и функции",
+                "Show gateway mode as range":"Отображать режим шлюза как ползунок",
+                "Shutdown time when the window is opened": "Время отключения при открытии окна",
+                "Window is opened": "Окно открыто",
+                "1 Speed":"1 Скорость", 
+                "2 Speed":"2 Скорость",
+                "3 Speed":"3 Скорость",
+                "4 Speed":"4 Скорость", 
+                "5 Speed":"5 Скорость",
+                "Quiet mode": "Режим тихий",
+                "Eco mode": "Режим эко",
+                "Turbo mode": "Режим турбо",
+                "Sleep mode": "Режим сна",
+                "Ionization": "Ионизация",
+                "Defrosting": "Разморозка",
+                "Mold protection": "Защита от плесени",
+                "Self cleaning": "Самоочистка",
+                "Outdoor air supply": "Подача воздуха с улицы",
+                "Heating 8 deg" : "Дежурный обогрев",
+                "Gentle wind":"Мягкий поток",
+                "Indication": "Индикация",
+                "Screen light": "Подсветка экрана",
+                "Screen low bright": "Ослабить яркость экрана",
+                "Beeper": "Звуковая индикация",
+                "Compressor power limit":"Ограничение мощности компрессора",
+                "Disable screen when power off": "Отключать экран при отключении питания",
+                "No": "Нет",
+                "Yes": "Да",
+
+                "Baud rate": "Скорость обмена",
+                "baud_rate_description": "Перед изменением параметра убедитесь, что связь с устройством установлена. Выберите нужную скорость обмена, сохраните конфигурацию, а затем укажите в настройках порта эту же скорость.",
+                "Parity bit": "Бит чётности",
+                "parity_bit_description": "Перед изменением параметра убедитесь, что связь с устройством установлена. Выберите нужный бит четности, сохраните конфигурацию, а затем укажите в настройках порта этот же бит четности.",
+
+                "HW Info": "Данные модуля",
+                "HW Version": "Версия устройства",
+                "FW Version": "Версия прошивки",
+                "PROTO Version":"Версия протокола",
+                "Signature":"Сигнатура устройства",
+                "Uptime": "Время работы с момента включения (с)",
+                "MCU Temperature": "Температура МК",
+                "MCU Voltage": "Напряжение питания МК",
+                "Serial": "Серийный номер",
+                "Reboot Device": "Перегрузить устройство",
+                "Debug": "Диагностика",
+                "Current compressor power": "Текущая мощность компрессора",
+                "Target compressor power": "Целевая мощность компрессора",
+                "Target fan speed": "Целевая скорость вентилятора",
+                "Current fan speed": "Текущая скорость вентилятора",
+                "Temeperature correction": "Коррекция температуры",
+                "AC connected": "Кондиционер подключен",
+                "Current tick": "Текущий такт",
+                "Receive tick": "Такт последнего получения данных",
+                "Last send tick": "Такт последней отправки данных",
+                "Show error switches":"Показать перключатели ошибок",
+                "Indication settings":"Настройка индикации",
+                "RED":"Красный",
+                "GREEN":"Зеленый",
+                "Errors":"Ошибки",
+                "OFF":"Выключить",
+                "DE pin test":"Тест пина DE",
+                "Button test":"Тест кнопки",
+                "LOW":"Низкий",
+                "HIGH":"Высокий",
+                "RELEASED":"Отпущена",
+                "PRESSED":"Нажата",
+                "Errors count":"Количество Ошибок",
+                "Raw data":"Сырые данные",
+                "Show last rx data":"Последний полученный пакет",
+                "Show rx log 0 data":"Последний пакет типа 0",
+                "Show rx log 1 data":"Последний пакет типа 1",
+                "Show rx log 2 data":"Последний пакет типа 2",
+                "Show breakpoints":"Показать точки остановки", 
+                "Show warnings":"Показать предепреждения",
+                "breakpoint 1":"Точка остановки 1",
+                "breakpoint 2":"Точка остановки 2",
+                "breakpoint 3":"Точка остановки 3",
+                "breakpoint 4":"Точка остановки 4",
+                "warning 1":"Предупреждение 1",
+                "warning 2":"Предупреждение 2",
+                "warning 3":"Предупреждение 3",
+                "warning 4":"Предупреждение 4",
+                "Error 1":"Ошибка 1",
+                "Error 2":"Ошибка 2",
+                "Error 3":"Ошибка 3",
+                "Error 4":"Ошибка 4",
+                "Error 5":"Ошибка 5",
+                "Error 6":"Ошибка 6",
+                "Error 7":"Ошибка 7",
+                "Error 8":"Ошибка 8",
+                "Error 9":"Ошибка 9",
+                "Error 10":"Ошибка 10",
+                "Error 11":"Ошибка 11",
+                "Error 12":"Ошибка 12",
+                "Error 13":"Ошибка 13",
+                "Error 14":"Ошибка 14",
+                "Error 15":"Ошибка 15",
+                "Error 16":"Ошибка 16",
+                "Error 17":"Ошибка 17",
+                "Error 18":"Ошибка 18",
+                "Error 19":"Ошибка 19",
+                "Error 20":"Ошибка 20",
+                "Error 21":"Ошибка 21",
+                "Error 22":"Ошибка 22",
+                "Error 23":"Ошибка 23",
+                "Error 24":"Ошибка 24"
+            }
+        }
+    }
+}

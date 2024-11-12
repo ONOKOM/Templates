@@ -623,7 +623,7 @@
         ],
         "translations": {
             "en": {
-                "template_title": "DEV ONOKOM-AIR-TCL-1-MB-B (Adapter for household and semi-industrial TCL systems)",
+                "template_title": "ONOKOM-AIR-TCL-1-MB-B (Adapter for household and semi-industrial TCL systems)",
 
                 "Errors": "Errors",
                 "Errors count": "Errors count",
@@ -654,7 +654,7 @@
                 "FINISH": "Конец"
             },
             "ru": {
-                "template_title": "DEV ONOKOM-AIR-TCL-1-MB-B (Адаптер для бытовых и полупромышленных систем TCL)",
+                "template_title": "ONOKOM-AIR-TCL-1-MB-B (Адаптер для бытовых и полупромышленных систем TCL)",
                 
                 "General": "Основные режимы и функции",
                 "Active": "Состояние",

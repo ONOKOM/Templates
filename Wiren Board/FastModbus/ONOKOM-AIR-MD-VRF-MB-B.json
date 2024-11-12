@@ -1,0 +1,1970 @@
+{
+    "title": "template_title",
+    "device_type": "ONOKOM-AIR-MD-VRF-MB-B",
+    "group": "g-air-conditioning",
+    "hw": [
+        {
+            "signature": "MD-VRF-MB-B"
+        }
+    ],
+    "device": {
+        "name": "ONOKOM-AIR-MD-VRF-MB-B",
+        "id": "ONOKOM-AIR-MD-VRF-MB-B",
+        "groups": [
+            {
+                "title": "General",
+                "id": "general",
+                "order": 1
+            },
+            {
+                "title": "Temperature control",
+                "id": "temperatureControl",
+                "order": 2
+            },
+            {
+                "title": "Vanes",
+                "id": "vanes",
+                "order": 3
+            },
+            {
+                "title": "Additional",
+                "id": "additional",
+                "order": 4
+            },
+            {
+                "title": "Indication",
+                "id": "indication",
+                "order": 5
+            },
+            {
+                "title": "HW Info",
+                "id": "hw_info",
+                "order": 6
+            },
+            {
+                "title": "Errors",
+                "id": "errors",
+                "order": 7
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 8
+            },
+            {
+                "title": "Raw data",
+                "id": "raw_data",
+                "order": 9
+            }
+        ],
+        "parameters": [
+            {
+                "id": "Disable_screen_when_power_off",
+                "title": "Disable screen when power off",
+                "address": 41,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "indication",
+                "order": 1
+            },
+            {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "temperatureControl",
+                "order": 1
+            },
+            {
+                "title": "Show last rx data",
+                "id": "Show_last_rx_data",
+                "address": 99,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "raw_data",
+                "order": 1
+            },
+            {
+                "title": "Show rx log 0 data",
+                "id": "Show_rx_log_0_data",
+                "address": 98,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "raw_data",
+                "order": 3
+            },
+            {
+                "title": "Show rx log 1 data",
+                "id": "Show_rx_log_1_data",
+                "address": 97,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "raw_data",
+                "order": 3
+            },
+            {
+                "title": "Show rx log 2 data",
+                "id": "Show_rx_log_2_data",
+                "address": 96,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "raw_data",
+                "order": 4
+            },
+            {
+                "id": "Show_modes_as_range",
+                "title": "Show modes as range",
+                "address": 95,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_fan_as_range",
+                "title": "Show fan as range",
+                "address": 92,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_vanes_as_range",
+                "title": "Show vanes as range",
+                "address": 94,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "vanes",
+                "order": 1
+            },
+            {
+                "title": "Show error switches",
+                "id": "Show_error_switches",
+                "address": 100,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "errors",
+                "order": 1
+            },
+            {
+                "title": "Show warnings",
+                "id": "Show_warnings",
+                "address": 100,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "debug",
+                "order": 1
+            },
+            {
+                "title": "Show breakpoints",
+                "id": "Show_breakpoints",
+                "address": 100,
+                "reg_type": "coil",
+                "default": 1,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "debug",
+                "order": 1
+            },
+            {
+                "id": "baud_rate",
+                "title": "Baud rate",
+                "description": "baud_rate_description",
+                "address": 110,
+                "reg_type": "holding",
+                "enum": [
+                    96,
+                    192,
+                    384,
+                    576,
+                    1152
+                ],
+                "default": 96,
+                "enum_titles": [
+                    "9600",
+                    "19200",
+                    "38400",
+                    "57600",
+                    "115200"
+                ],
+                "group": "hw_info",
+                "order": 1
+            },
+            {
+                "id": "parity_bit",
+                "title": "Parity bit",
+                "description": "parity_bit_description",
+                "address": 111,
+                "reg_type": "holding",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "default": 0,
+                "enum_titles": [
+                    "none (N)",
+                    "odd (O)",
+                    "even (E)"
+                ],
+                "group": "hw_info",
+                "order": 1
+            }
+        ],
+        "channels": [
+            {
+                "name": "0 Active",
+                "group": "general",
+                "address": 10001,
+                "reg_type": "coil",
+                "format": "u16",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "0 Mode",
+                "group": "general",
+                "address": 10001,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "0 Fan speed",
+                "group": "general",
+                "address": 10007,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true
+            },
+            {
+                "name": "0 Real fan speed",
+                "group": "general",
+                "address": 10032,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true,
+                "readonly": true
+            },
+            {
+                "name": "0 Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 10000,
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "0 Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 10003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "0 Target temperature",
+                "group": "temperatureControl",
+                "address": 10005,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "range",
+                "min": 17,
+                "max": 30,
+                "units": "deg C",
+                "scale": 0.01,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "1 Active",
+                "group": "general",
+                "address": 10101,
+                "reg_type": "coil",
+                "format": "u16",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "1 Mode",
+                "group": "general",
+                "address": 10101,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "1 Fan speed",
+                "group": "general",
+                "address": 10107,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true
+            },
+            {
+                "name": "1 Real fan speed",
+                "group": "general",
+                "address": 10132,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true,
+                "readonly": true
+            },
+            {
+                "name": "1 Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 10100,
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "1 Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 10103,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "1 Target temperature",
+                "group": "temperatureControl",
+                "address": 10105,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "range",
+                "min": 17,
+                "max": 30,
+                "units": "deg C",
+                "scale": 0.01,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "2 Active",
+                "group": "general",
+                "address": 10201,
+                "reg_type": "coil",
+                "format": "u16",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "2 Mode",
+                "group": "general",
+                "address": 10201,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "2 Fan speed",
+                "group": "general",
+                "address": 10207,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true
+            },
+            {
+                "name": "2 Real fan speed",
+                "group": "general",
+                "address": 10232,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true,
+                "readonly": true
+            },
+            {
+                "name": "2 Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 10200,
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "2 Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 10203,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "2 Target temperature",
+                "group": "temperatureControl",
+                "address": 10205,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "range",
+                "min": 17,
+                "max": 30,
+                "units": "deg C",
+                "scale": 0.01,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "3 Active",
+                "group": "general",
+                "address": 10301,
+                "reg_type": "coil",
+                "format": "u16",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "3 Mode",
+                "group": "general",
+                "address": 10301,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "3 Fan speed",
+                "group": "general",
+                "address": 10307,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true
+            },
+            {
+                "name": "3 Real fan speed",
+                "group": "general",
+                "address": 10332,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true,
+                "readonly": true
+            },
+            {
+                "name": "3 Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 10300,
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "3 Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 10303,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "3 Target temperature",
+                "group": "temperatureControl",
+                "address": 10305,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "range",
+                "min": 17,
+                "max": 30,
+                "units": "deg C",
+                "scale": 0.01,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "4 Active",
+                "group": "general",
+                "address": 10401,
+                "reg_type": "coil",
+                "format": "u16",
+                "type": "switch",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "4 Mode",
+                "group": "general",
+                "address": 10401,
+                "reg_type": "holding",
+                "format": "u16",
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1",
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "4 Fan speed",
+                "group": "general",
+                "address": 10407,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true
+            },
+            {
+                "name": "4 Real fan speed",
+                "group": "general",
+                "address": 10432,
+                "reg_type": "holding",
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1",
+                "sporadic": true,
+                "readonly": true
+            },
+            {
+                "name": "4 Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 10400,
+                "type": "switch",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "4 Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 10403,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "4 Target temperature",
+                "group": "temperatureControl",
+                "address": 10405,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "range",
+                "min": 17,
+                "max": 30,
+                "units": "deg C",
+                "scale": 0.01,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "Current tick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1000,
+                "type": "value",
+                "units": "ms",
+                "format": "u32",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Receive tick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 1002,
+                "type": "value",
+                "units": "ms",
+                "format": "u32",
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "AC connected",
+                "group": "debug",
+                "address": 20,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "HW Version",
+                "group": "hw_info",
+                "address": 200,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 20,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "FW Version",
+                "group": "hw_info",
+                "address": 250,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 16,
+                "readonly": true,
+                "enabled": true,
+                "sporadic": true
+            },
+            {
+                "name": "PROTO Version",
+                "group": "hw_info",
+                "address": 400,
+                "reg_type": "input",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 16,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Signature",
+                "group": "hw_info",
+                "address": 290,
+                "reg_type": "input",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 12,
+                "readonly": true,
+                "enabled": false,
+                "sporadic": true
+            },
+            {
+                "name": "Serial",
+                "type": "text",
+                "reg_type": "holding",
+                "address": 270,
+                "format": "u32",
+                "group": "hw_info",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Uptime",
+                "reg_type": "input",
+                "address": 104,
+                "type": "text",
+                "format": "u32",
+                "enabled": false,
+                "group": "hw_info"
+            },
+            {
+                "name": "MCU Temperature",
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "enabled": false,
+                "group": "hw_info"
+            },
+            {
+                "name": "Reboot Device",
+                "reg_type": "holding",
+                "address": 120,
+                "enabled": true,
+                "type": "pushbutton",
+                "group": "hw_info"
+            },
+            {
+                "name": "Indication settings",
+                "group": "debug",
+                "address": 450,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    3,
+                    8,
+                    9
+                ],
+                "enum_titles": [
+                    "OFF",
+                    "GREEN",
+                    "RED"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 1",
+                "group": "debug",
+                "address": 1011,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 2",
+                "group": "debug",
+                "address": 1013,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 3",
+                "group": "debug",
+                "address": 1013,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "breakpoint 4",
+                "group": "debug",
+                "address": 1014,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_breakpoints==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 1",
+                "group": "debug",
+                "address": 1021,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 2",
+                "group": "debug",
+                "address": 1022,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 3",
+                "group": "debug",
+                "address": 1023,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "warning 4",
+                "group": "debug",
+                "address": 1024,
+                "reg_type": "holding",
+                "type": "switch",
+                "readonly": false,
+                "condition": "Show_warnings==1",
+                "enabled": true
+            },
+            {
+                "name": "DB00",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1100,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB01",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1101,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB02",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1102,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB03",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1103,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB04",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1104,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB05",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1105,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB06",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1106,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB07",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1107,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB08",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1108,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB09",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1109,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB10",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1110,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB11",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1111,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB12",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1112,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB13",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1113,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB14",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1114,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB15",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1115,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB16",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1116,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB17",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1117,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB18",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1118,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB19",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1119,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB20",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1120,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB21",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1121,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB22",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1122,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB23",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1123,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB24",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1124,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB25",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1125,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB26",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1126,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB27",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1127,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB28",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1128,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB29",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1129,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB30",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1130,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB31",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1131,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB32",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1132,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB33",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1133,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB34",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1134,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB35",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1135,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB36",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1136,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB37",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1137,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB38",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1138,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB39",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1139,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB40",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1140,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB41",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1141,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB42",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1142,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB43",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1143,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB44",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1144,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB45",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1145,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB46",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1146,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB47",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1147,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB48",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1148,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB49",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1149,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB50",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1150,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB51",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1151,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB52",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1152,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB53",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1153,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB54",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1154,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB55",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1155,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB56",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1156,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB57",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1157,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB58",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1158,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB59",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1159,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB60",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1160,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB61",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1161,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB62",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1162,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB63",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1163,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB64",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1164,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB65",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1165,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB66",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1166,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB67",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1167,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB68",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1168,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            },
+            {
+                "name": "DB69",
+                "group": "raw_data",
+                "reg_type": "holding",
+                "address": 1169,
+                "type": "value",
+                "readonly": true,
+                "condition": "Show_last_rx_data==1",
+                "enabled": true
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "DEV ONOKOM AIR MD-VRF-MB-B (Adapter for VRF MDV systems)"
+            },
+            "ru": {
+                "template_title": "DEV ONOKOM AIR MD-VRF-MB-B (Адаптер для VRF систем MDV)",
+                "General": "Основные режимы и функции",
+                "0 Active": "0 Состояние",
+                "0 Mode": "0 Режим",
+                "0 Active mode": "0 Состояние и режим",
+                "0 Fan speed": "0 Скорость вентилятора",
+                "0 Real fan speed": "0 Реальная скорость вентилятора",
+                "0 Errors": "0 Ошибки",
+                "0 Indoor air temperature": "0 Температура воздуха в помещении",
+                "0 Target temperature": "0 Целевая температура",
+                "1 Active": "1 Состояние",
+                "1 Mode": "1 Режим",
+                "1 Active mode": "1 Состояние и режим",
+                "1 Fan speed": "1 Скорость вентилятора",
+                "1 Real fan speed": "1 Реальная скорость вентилятора",
+                "1 Errors": "1 Ошибки",
+                "1 Indoor air temperature": "1 Температура воздуха в помещении",
+                "1 Target temperature": "1 Целевая температура",
+                "2 Active": "2 Состояние",
+                "2 Mode": "2 Режим",
+                "2 Active mode": "2 Состояние и режим",
+                "2 Fan speed": "2 Скорость вентилятора",
+                "2 Real fan speed": "2 Реальная скорость вентилятора",
+                "2 Errors": "2 Ошибки",
+                "2 Indoor air temperature": "2 Температура воздуха в помещении",
+                "2 Target temperature": "2 Целевая температура",
+                "3 Active": "3 Состояние",
+                "3 Mode": "3 Режим",
+                "3 Active mode": "3 Состояние и режим",
+                "3 Fan speed": "3 Скорость вентилятора",
+                "3 Real fan speed": "3 Реальная скорость вентилятора",
+                "3 Errors": "3 Ошибки",
+                "3 Indoor air temperature": "3 Температура воздуха в помещении",
+                "3 Target temperature": "3 Целевая температура",
+                "4 Active": "4 Состояние",
+                "4 Mode": "4 Режим",
+                "4 Active mode": "4 Состояние и режим",
+                "4 Fan speed": "4 Скорость вентилятора",
+                "4 Real fan speed": "4 Реальная скорость вентилятора",
+                "4 Errors": "4 Ошибки",
+                "4 Indoor air temperature": "4 Температура воздуха в помещении",
+                "4 Target temperature": "4 Целевая температура",
+                "Smart fan speed": "Скорость вентилятора расширенная",
+                "Show modes as range": "Отображать режимы как ползунок",
+                "Off": "Выключен",
+                "Heat": "Нагрев",
+                "Cool": "Охлаждение",
+                "Auto": "Авто",
+                "Dry": "Осушение",
+                "Fan": "Вентиляция",
+                "Idle": "Простаивает",
+                "Heater": "Нагрев",
+                "Temperature control": "Контроль температуры",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Outdoor air temperature": "Температура воздуха на улице",
+                "Indoor heat exchanger temperature": "Температура внутреннего теплообменника",
+                "Outdoor heat exchanger temperature": "Температура внешнего теплообменника",
+                "Additional temperature 3": "Дополнительная температура 3",
+                "Additional temperature 4": "Дополнительная температура 4",
+                "Target temperature": "Целевая температура",
+                "Thermostat state": "Состояние термостата",
+                "Vanes": "Жалюзи",
+                "Show vanes as range": "Отображать жалюзи как ползунок",
+                "Horizontal vanes": "Горизонтальные жалюзи",
+                "Swing": "Качание",
+                "Lowest": "Самое низкое",
+                "Low": "Низкое",
+                "Middle": "Среднее",
+                "High": "Высокое",
+                "Highest": "Самое высокое",
+                "Far Left": "Самое левое",
+                "Left": "Левое",
+                "Right": "Правое",
+                "Far Right": "Самое правое",
+                "Stopped": "Остановлено",
+                "Vertical vanes": "Вертикальные жалюзи",
+                "Vanes swing": "Качание жалюзи",
+                "Stop": "Остановлены",
+                "Horizontal and vertical swing": "Качание горизонтальное и вертикальное",
+                "Swinging horizontal blinds": "Качание горизонтальных жалюзи",
+                "Swinging vertical blinds": "Качание вертикальных жалюзи",
+                "Show fan as range": "Отображать вентилятор как ползунок",
+                "Additional": "Дополнительные режимы и функции",
+                "Show gateway mode as range": "Отображать режим шлюза как ползунок",
+                "Shutdown time when the window is opened": "Время отключения при открытии окна",
+                "Window is opened": "Окно открыто",
+                "1 Speed": "1 Скорость",
+                "2 Speed": "2 Скорость",
+                "3 Speed": "3 Скорость",
+                "4 Speed": "4 Скорость",
+                "5 Speed": "5 Скорость",
+                "Quiet mode": "Режим тихий",
+                "Eco mode": "Режим эко",
+                "Turbo mode": "Режим турбо",
+                "Sleep mode": "Режим сна",
+                "Ionization": "Ионизация",
+                "Defrosting": "Разморозка",
+                "Mold protection": "Защита от плесени",
+                "Self cleaning": "Самоочистка",
+                "Outdoor air supply": "Подача воздуха с улицы",
+                "Heating 8 deg": "Дежурный обогрев",
+                "Gentle wind": "Мягкий поток",
+                "Indication": "Индикация",
+                "Screen light": "Подсветка экрана",
+                "Screen low bright": "Ослабить яркость экрана",
+                "Beeper": "Звуковая индикация",
+                "Compressor power limit": "Ограничение мощности компрессора",
+                "Disable screen when power off": "Отключать экран при отключении питания",
+                "No": "Нет",
+                "Yes": "Да",
+                "Baud rate": "Скорость обмена",
+                "baud_rate_description": "Перед изменением параметра убедитесь, что связь с устройством установлена. Выберите нужную скорость обмена, сохраните конфигурацию, а затем укажите в настройках порта эту же скорость.",
+                "Parity bit": "Бит чётности",
+                "parity_bit_description": "Перед изменением параметра убедитесь, что связь с устройством установлена. Выберите нужный бит четности, сохраните конфигурацию, а затем укажите в настройках порта этот же бит четности.",
+                "HW Info": "Данные модуля",
+                "HW Version": "Версия устройства",
+                "FW Version": "Версия прошивки",
+                "PROTO Version": "Версия протокола",
+                "Signature": "Сигнатура устройства",
+                "Uptime": "Время работы с момента включения (с)",
+                "MCU Temperature": "Температура МК",
+                "MCU Voltage": "Напряжение питания МК",
+                "Serial": "Серийный номер",
+                "Reboot Device": "Перегрузить устройство",
+                "Debug": "Диагностика",
+                "Current compressor power": "Текущая мощность компрессора",
+                "Target compressor power": "Целевая мощность компрессора",
+                "Target fan speed": "Целевая скорость вентилятора",
+                "Current fan speed": "Текущая скорость вентилятора",
+                "Temeperature correction": "Коррекция температуры",
+                "AC connected": "Кондиционер подключен",
+                "Current tick": "Текущий такт",
+                "Receive tick": "Такт последнего получения данных от кондиционера",
+                "Show error switches": "Показать перключатели ошибок",
+                "Indication settings": "Настройка индикации",
+                "RED": "Красный",
+                "GREEN": "Зеленый",
+                "Errors": "Ошибки",
+                "OFF": "Выключить",
+                "Off": "Выключен",
+                "DE pin test": "Тест пина DE",
+                "Button test": "Тест кнопки",
+                "LOW": "Низкий",
+                "HIGH": "Высокий",
+                "RELEASED": "Отпущена",
+                "PRESSED": "Нажата",
+                "Errors count": "Количество Ошибок",
+                "Raw data": "Сырые данные",
+                "Show last rx data": "Последний полученный пакет",
+                "Show rx log 0 data": "Последний пакет типа 0",
+                "Show rx log 1 data": "Последний пакет типа 1",
+                "Show rx log 2 data": "Последний пакет типа 2",
+                "Show breakpoints": "Показать точки остановки",
+                "Show warnings": "Показать предепреждения",
+                "breakpoint 1": "Точка остановки 1",
+                "breakpoint 2": "Точка остановки 2",
+                "breakpoint 3": "Точка остановки 3",
+                "breakpoint 4": "Точка остановки 4",
+                "warning 1": "Предупреждение 1",
+                "warning 2": "Предупреждение 2",
+                "warning 3": "Предупреждение 3",
+                "warning 4": "Предупреждение 4",
+            }
+        }
+    }
+}

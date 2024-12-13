@@ -1,6 +1,6 @@
 {
     "title": "template_title",
-    "device_type": "DEV WB-ONOKOM-AIR-MD-VRF-MB-B",
+    "device_type": "WB-ONOKOM-AIR-MD-VRF-MB-B",
     "group": "g-air-conditioning",
     "hw": [
         {
@@ -8,7 +8,7 @@
         }
     ],
     "device": {
-        "name": "DEV WB-ONOKOM-AIR-MD-VRF-MB-B",
+        "name": "WB-ONOKOM-AIR-MD-VRF-MB-B",
         "id": "ONOKOM-AIR-MD-VRF-MB-B",
         "groups": [
             {
@@ -40,11 +40,6 @@
                 "title": "Debug",
                 "id": "debug",
                 "order": 8
-            },
-            {
-                "title": "Raw data",
-                "id": "raw_data",
-                "order": 9
             }
         ],
         "parameters": [
@@ -71,23 +66,6 @@
                 "reg_type": "holding",
                 "default": 1,
                 "order": 2
-            },
-            {
-                "title": "Show packet data",
-                "id": "Show_packet_data",
-                "address": 99,
-                "reg_type": "coil",
-                "default": 1,
-                "enum": [
-                    0,
-                    1
-                ],
-                "enum_titles": [
-                    "No",
-                    "Yes"
-                ],
-                "group": "raw_data",
-                "order": 1
             }
         ],
         "channels": [
@@ -99,7 +77,7 @@
                 "type": "value",
                 "format": "u32",
                 "readonly": true,
-                "enabled": true
+                "enabled": false
             },
             {
                 "name": "Accepted packets",
@@ -109,7 +87,77 @@
                 "type": "value",
                 "format": "u32",
                 "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Gateway mode",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 656,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "LISTEN_ONLY",
+                    "EMULATE_M_WRC",
+                    "EMULATE_S_WRC"
+                ],
                 "enabled": true
+            },
+            {
+                "name": "Current tick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 600,
+                "type": "value",
+                "units": "ms",
+                "format": "u32",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Receive tick",
+                "group": "debug",
+                "reg_type": "holding",
+                "address": 602,
+                "type": "value",
+                "units": "ms",
+                "format": "u32",
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "HW Version",
+                "group": "hw_info",
+                "address": 200,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 20,
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "FW Version",
+                "group": "hw_info",
+                "address": 250,
+                "reg_type": "holding",
+                "format": "string",
+                "type": "text",
+                "string_data_size": 16,
+                "readonly": true,
+                "enabled": false
+            },
+            {
+                "name": "Reboot Device",
+                "reg_type": "holding",
+                "address": 120,
+                "enabled": true,
+                "type": "pushbutton",
+                "group": "hw_info"
             },
             {
                 "name": "0 - AC connected",
@@ -3628,6 +3676,3732 @@
                 "min": -30,
                 "max": 30,
                 "condition": "IDU_count>=17",
+                "enabled": false
+            },
+            {
+                "name": "17 - AC connected",
+                "group": "debug",
+                "address": 11720,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=18",
+                "enabled": true
+            },
+            {
+                "name": "17 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 11700,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=18",
+                "enabled": true
+            },
+            {
+                "name": "17 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 11701,
+                "type": "switch",
+                "condition": "IDU_count>=18",
+                "enabled": true
+            },
+            {
+                "name": "17 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 11701,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=18",
+                "enabled": true
+            },
+            {
+                "name": "17 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11702,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=18",
+                "enabled": false
+            },
+            {
+                "name": "17 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 11703,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=18",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "17 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 11703,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=18",
+                "enabled": true
+            },
+            {
+                "name": "17 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 11705,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=18",
+                "enabled": true
+            },
+            {
+                "name": "17 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 11706,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=18",
+                "enabled": false
+            },
+            {
+                "name": "17 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11707,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=18",
+                "enabled": true
+            },
+            {
+                "name": "17 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11732,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=18",
+                "readonly": true
+            },
+            {
+                "name": "17 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11708,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=18",
+                "enabled": false
+            },
+            {
+                "name": "17 - Quiet mode",
+                "group": "additional",
+                "address": 11704,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=18",
+                "enabled": false
+            },
+            {
+                "name": "17 - Eco mode",
+                "group": "additional",
+                "address": 11706,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=18",
+                "enabled": false
+            },
+            {
+                "name": "17 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 11720,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=18",
+                "enabled": false
+            },
+            {
+                "name": "18 - AC connected",
+                "group": "debug",
+                "address": 11820,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=19",
+                "enabled": true
+            },
+            {
+                "name": "18 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 11800,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=19",
+                "enabled": true
+            },
+            {
+                "name": "18 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 11801,
+                "type": "switch",
+                "condition": "IDU_count>=19",
+                "enabled": true
+            },
+            {
+                "name": "18 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 11801,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=19",
+                "enabled": true
+            },
+            {
+                "name": "18 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11802,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=19",
+                "enabled": false
+            },
+            {
+                "name": "18 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 11803,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=19",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "18 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 11803,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=19",
+                "enabled": true
+            },
+            {
+                "name": "18 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 11805,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=19",
+                "enabled": true
+            },
+            {
+                "name": "18 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 11806,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=19",
+                "enabled": false
+            },
+            {
+                "name": "18 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11807,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=19",
+                "enabled": true
+            },
+            {
+                "name": "18 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11832,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=19",
+                "readonly": true
+            },
+            {
+                "name": "18 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11808,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=19",
+                "enabled": false
+            },
+            {
+                "name": "18 - Quiet mode",
+                "group": "additional",
+                "address": 11804,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=19",
+                "enabled": false
+            },
+            {
+                "name": "18 - Eco mode",
+                "group": "additional",
+                "address": 11806,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=19",
+                "enabled": false
+            },
+            {
+                "name": "18 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 11820,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=19",
+                "enabled": false
+            },
+            {
+                "name": "19 - AC connected",
+                "group": "debug",
+                "address": 11920,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=20",
+                "enabled": true
+            },
+            {
+                "name": "19 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 11900,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=20",
+                "enabled": true
+            },
+            {
+                "name": "19 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 11901,
+                "type": "switch",
+                "condition": "IDU_count>=20",
+                "enabled": true
+            },
+            {
+                "name": "19 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 11901,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=20",
+                "enabled": true
+            },
+            {
+                "name": "19 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11902,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=20",
+                "enabled": false
+            },
+            {
+                "name": "19 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 11903,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=20",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "19 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 11903,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=20",
+                "enabled": true
+            },
+            {
+                "name": "19 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 11905,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=20",
+                "enabled": true
+            },
+            {
+                "name": "19 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 11906,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=20",
+                "enabled": false
+            },
+            {
+                "name": "19 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11907,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=20",
+                "enabled": true
+            },
+            {
+                "name": "19 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11932,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=20",
+                "readonly": true
+            },
+            {
+                "name": "19 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 11908,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=20",
+                "enabled": false
+            },
+            {
+                "name": "19 - Quiet mode",
+                "group": "additional",
+                "address": 11904,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=20",
+                "enabled": false
+            },
+            {
+                "name": "19 - Eco mode",
+                "group": "additional",
+                "address": 11906,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=20",
+                "enabled": false
+            },
+            {
+                "name": "19 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 11920,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=20",
+                "enabled": false
+            },
+            {
+                "name": "20 - AC connected",
+                "group": "debug",
+                "address": 12020,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=21",
+                "enabled": true
+            },
+            {
+                "name": "20 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12000,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=21",
+                "enabled": true
+            },
+            {
+                "name": "20 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12001,
+                "type": "switch",
+                "condition": "IDU_count>=21",
+                "enabled": true
+            },
+            {
+                "name": "20 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12001,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=21",
+                "enabled": true
+            },
+            {
+                "name": "20 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12002,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=21",
+                "enabled": false
+            },
+            {
+                "name": "20 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=21",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "20 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=21",
+                "enabled": true
+            },
+            {
+                "name": "20 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12005,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=21",
+                "enabled": true
+            },
+            {
+                "name": "20 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12006,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=21",
+                "enabled": false
+            },
+            {
+                "name": "20 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12007,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=21",
+                "enabled": true
+            },
+            {
+                "name": "20 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12032,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=21",
+                "readonly": true
+            },
+            {
+                "name": "20 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12008,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=21",
+                "enabled": false
+            },
+            {
+                "name": "20 - Quiet mode",
+                "group": "additional",
+                "address": 12004,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=21",
+                "enabled": false
+            },
+            {
+                "name": "20 - Eco mode",
+                "group": "additional",
+                "address": 12006,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=21",
+                "enabled": false
+            },
+            {
+                "name": "20 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12020,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=21",
+                "enabled": false
+            },
+            {
+                "name": "21 - AC connected",
+                "group": "debug",
+                "address": 12120,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=22",
+                "enabled": true
+            },
+            {
+                "name": "21 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12100,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=22",
+                "enabled": true
+            },
+            {
+                "name": "21 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12101,
+                "type": "switch",
+                "condition": "IDU_count>=22",
+                "enabled": true
+            },
+            {
+                "name": "21 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12101,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=22",
+                "enabled": true
+            },
+            {
+                "name": "21 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12102,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=22",
+                "enabled": false
+            },
+            {
+                "name": "21 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12103,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=22",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "21 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12103,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=22",
+                "enabled": true
+            },
+            {
+                "name": "21 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12105,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=22",
+                "enabled": true
+            },
+            {
+                "name": "21 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12106,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=22",
+                "enabled": false
+            },
+            {
+                "name": "21 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12107,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=22",
+                "enabled": true
+            },
+            {
+                "name": "21 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12132,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=22",
+                "readonly": true
+            },
+            {
+                "name": "21 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12108,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=22",
+                "enabled": false
+            },
+            {
+                "name": "21 - Quiet mode",
+                "group": "additional",
+                "address": 12104,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=22",
+                "enabled": false
+            },
+            {
+                "name": "21 - Eco mode",
+                "group": "additional",
+                "address": 12106,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=22",
+                "enabled": false
+            },
+            {
+                "name": "21 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12120,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=22",
+                "enabled": false
+            },
+            {
+                "name": "22 - AC connected",
+                "group": "debug",
+                "address": 12220,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=23",
+                "enabled": true
+            },
+            {
+                "name": "22 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12200,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=23",
+                "enabled": true
+            },
+            {
+                "name": "22 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12201,
+                "type": "switch",
+                "condition": "IDU_count>=23",
+                "enabled": true
+            },
+            {
+                "name": "22 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12201,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=23",
+                "enabled": true
+            },
+            {
+                "name": "22 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12202,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=23",
+                "enabled": false
+            },
+            {
+                "name": "22 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12203,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=23",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "22 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12203,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=23",
+                "enabled": true
+            },
+            {
+                "name": "22 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12205,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=23",
+                "enabled": true
+            },
+            {
+                "name": "22 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12206,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=23",
+                "enabled": false
+            },
+            {
+                "name": "22 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12207,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=23",
+                "enabled": true
+            },
+            {
+                "name": "22 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12232,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=23",
+                "readonly": true
+            },
+            {
+                "name": "22 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12208,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=23",
+                "enabled": false
+            },
+            {
+                "name": "22 - Quiet mode",
+                "group": "additional",
+                "address": 12204,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=23",
+                "enabled": false
+            },
+            {
+                "name": "22 - Eco mode",
+                "group": "additional",
+                "address": 12206,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=23",
+                "enabled": false
+            },
+            {
+                "name": "22 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12220,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=23",
+                "enabled": false
+            },
+            {
+                "name": "23 - AC connected",
+                "group": "debug",
+                "address": 12320,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=24",
+                "enabled": true
+            },
+            {
+                "name": "23 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12300,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=24",
+                "enabled": true
+            },
+            {
+                "name": "23 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12301,
+                "type": "switch",
+                "condition": "IDU_count>=24",
+                "enabled": true
+            },
+            {
+                "name": "23 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12301,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=24",
+                "enabled": true
+            },
+            {
+                "name": "23 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12302,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=24",
+                "enabled": false
+            },
+            {
+                "name": "23 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12303,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=24",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "23 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12303,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=24",
+                "enabled": true
+            },
+            {
+                "name": "23 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12305,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=24",
+                "enabled": true
+            },
+            {
+                "name": "23 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12306,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=24",
+                "enabled": false
+            },
+            {
+                "name": "23 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12307,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=24",
+                "enabled": true
+            },
+            {
+                "name": "23 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12332,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=24",
+                "readonly": true
+            },
+            {
+                "name": "23 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12308,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=24",
+                "enabled": false
+            },
+            {
+                "name": "23 - Quiet mode",
+                "group": "additional",
+                "address": 12304,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=24",
+                "enabled": false
+            },
+            {
+                "name": "23 - Eco mode",
+                "group": "additional",
+                "address": 12306,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=24",
+                "enabled": false
+            },
+            {
+                "name": "23 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12320,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=24",
+                "enabled": false
+            },
+            {
+                "name": "24 - AC connected",
+                "group": "debug",
+                "address": 12420,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=25",
+                "enabled": true
+            },
+            {
+                "name": "24 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12400,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=25",
+                "enabled": true
+            },
+            {
+                "name": "24 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12401,
+                "type": "switch",
+                "condition": "IDU_count>=25",
+                "enabled": true
+            },
+            {
+                "name": "24 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12401,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=25",
+                "enabled": true
+            },
+            {
+                "name": "24 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12402,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=25",
+                "enabled": false
+            },
+            {
+                "name": "24 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12403,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=25",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "24 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12403,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=25",
+                "enabled": true
+            },
+            {
+                "name": "24 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12405,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=25",
+                "enabled": true
+            },
+            {
+                "name": "24 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12406,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=25",
+                "enabled": false
+            },
+            {
+                "name": "24 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12407,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=25",
+                "enabled": true
+            },
+            {
+                "name": "24 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12432,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=25",
+                "readonly": true
+            },
+            {
+                "name": "24 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12408,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=25",
+                "enabled": false
+            },
+            {
+                "name": "24 - Quiet mode",
+                "group": "additional",
+                "address": 12404,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=25",
+                "enabled": false
+            },
+            {
+                "name": "24 - Eco mode",
+                "group": "additional",
+                "address": 12406,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=25",
+                "enabled": false
+            },
+            {
+                "name": "24 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12420,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=25",
+                "enabled": false
+            },
+            {
+                "name": "25 - AC connected",
+                "group": "debug",
+                "address": 12520,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=26",
+                "enabled": true
+            },
+            {
+                "name": "25 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12500,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=26",
+                "enabled": true
+            },
+            {
+                "name": "25 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12501,
+                "type": "switch",
+                "condition": "IDU_count>=26",
+                "enabled": true
+            },
+            {
+                "name": "25 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12501,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=26",
+                "enabled": true
+            },
+            {
+                "name": "25 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12502,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=26",
+                "enabled": false
+            },
+            {
+                "name": "25 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12503,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=26",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "25 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12503,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=26",
+                "enabled": true
+            },
+            {
+                "name": "25 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12505,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=26",
+                "enabled": true
+            },
+            {
+                "name": "25 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12506,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=26",
+                "enabled": false
+            },
+            {
+                "name": "25 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12507,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=26",
+                "enabled": true
+            },
+            {
+                "name": "25 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12532,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=26",
+                "readonly": true
+            },
+            {
+                "name": "25 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12508,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=26",
+                "enabled": false
+            },
+            {
+                "name": "25 - Quiet mode",
+                "group": "additional",
+                "address": 12504,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=26",
+                "enabled": false
+            },
+            {
+                "name": "25 - Eco mode",
+                "group": "additional",
+                "address": 12506,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=26",
+                "enabled": false
+            },
+            {
+                "name": "25 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12520,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=26",
+                "enabled": false
+            },
+            {
+                "name": "26 - AC connected",
+                "group": "debug",
+                "address": 12620,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=27",
+                "enabled": true
+            },
+            {
+                "name": "26 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12600,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=27",
+                "enabled": true
+            },
+            {
+                "name": "26 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12601,
+                "type": "switch",
+                "condition": "IDU_count>=27",
+                "enabled": true
+            },
+            {
+                "name": "26 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12601,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=27",
+                "enabled": true
+            },
+            {
+                "name": "26 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12602,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=27",
+                "enabled": false
+            },
+            {
+                "name": "26 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12603,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=27",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "26 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12603,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=27",
+                "enabled": true
+            },
+            {
+                "name": "26 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12605,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=27",
+                "enabled": true
+            },
+            {
+                "name": "26 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12606,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=27",
+                "enabled": false
+            },
+            {
+                "name": "26 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12607,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=27",
+                "enabled": true
+            },
+            {
+                "name": "26 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12632,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=27",
+                "readonly": true
+            },
+            {
+                "name": "26 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12608,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=27",
+                "enabled": false
+            },
+            {
+                "name": "26 - Quiet mode",
+                "group": "additional",
+                "address": 12604,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=27",
+                "enabled": false
+            },
+            {
+                "name": "26 - Eco mode",
+                "group": "additional",
+                "address": 12606,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=27",
+                "enabled": false
+            },
+            {
+                "name": "26 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12620,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=27",
+                "enabled": false
+            },
+            {
+                "name": "27 - AC connected",
+                "group": "debug",
+                "address": 12720,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=28",
+                "enabled": true
+            },
+            {
+                "name": "27 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12700,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=28",
+                "enabled": true
+            },
+            {
+                "name": "27 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12701,
+                "type": "switch",
+                "condition": "IDU_count>=28",
+                "enabled": true
+            },
+            {
+                "name": "27 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12701,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=28",
+                "enabled": true
+            },
+            {
+                "name": "27 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12702,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=28",
+                "enabled": false
+            },
+            {
+                "name": "27 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12703,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=28",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "27 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12703,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=28",
+                "enabled": true
+            },
+            {
+                "name": "27 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12705,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=28",
+                "enabled": true
+            },
+            {
+                "name": "27 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12706,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=28",
+                "enabled": false
+            },
+            {
+                "name": "27 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12707,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=28",
+                "enabled": true
+            },
+            {
+                "name": "27 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12732,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=28",
+                "readonly": true
+            },
+            {
+                "name": "27 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12708,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=28",
+                "enabled": false
+            },
+            {
+                "name": "27 - Quiet mode",
+                "group": "additional",
+                "address": 12704,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=28",
+                "enabled": false
+            },
+            {
+                "name": "27 - Eco mode",
+                "group": "additional",
+                "address": 12706,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=28",
+                "enabled": false
+            },
+            {
+                "name": "27 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12720,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=28",
+                "enabled": false
+            },
+            {
+                "name": "28 - AC connected",
+                "group": "debug",
+                "address": 12820,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=29",
+                "enabled": true
+            },
+            {
+                "name": "28 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12800,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=29",
+                "enabled": true
+            },
+            {
+                "name": "28 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12801,
+                "type": "switch",
+                "condition": "IDU_count>=29",
+                "enabled": true
+            },
+            {
+                "name": "28 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12801,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=29",
+                "enabled": true
+            },
+            {
+                "name": "28 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12802,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=29",
+                "enabled": false
+            },
+            {
+                "name": "28 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12803,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=29",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "28 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12803,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=29",
+                "enabled": true
+            },
+            {
+                "name": "28 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12805,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=29",
+                "enabled": true
+            },
+            {
+                "name": "28 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12806,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=29",
+                "enabled": false
+            },
+            {
+                "name": "28 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12807,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=29",
+                "enabled": true
+            },
+            {
+                "name": "28 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12832,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=29",
+                "readonly": true
+            },
+            {
+                "name": "28 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12808,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=29",
+                "enabled": false
+            },
+            {
+                "name": "28 - Quiet mode",
+                "group": "additional",
+                "address": 12804,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=29",
+                "enabled": false
+            },
+            {
+                "name": "28 - Eco mode",
+                "group": "additional",
+                "address": 12806,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=29",
+                "enabled": false
+            },
+            {
+                "name": "28 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12820,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=29",
+                "enabled": false
+            },
+            {
+                "name": "29 - AC connected",
+                "group": "debug",
+                "address": 12920,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=30",
+                "enabled": true
+            },
+            {
+                "name": "29 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 12900,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=30",
+                "enabled": true
+            },
+            {
+                "name": "29 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 12901,
+                "type": "switch",
+                "condition": "IDU_count>=30",
+                "enabled": true
+            },
+            {
+                "name": "29 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 12901,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=30",
+                "enabled": true
+            },
+            {
+                "name": "29 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12902,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=30",
+                "enabled": false
+            },
+            {
+                "name": "29 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12903,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=30",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "29 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 12903,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=30",
+                "enabled": true
+            },
+            {
+                "name": "29 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12905,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=30",
+                "enabled": true
+            },
+            {
+                "name": "29 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 12906,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=30",
+                "enabled": false
+            },
+            {
+                "name": "29 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12907,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=30",
+                "enabled": true
+            },
+            {
+                "name": "29 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12932,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=30",
+                "readonly": true
+            },
+            {
+                "name": "29 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 12908,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=30",
+                "enabled": false
+            },
+            {
+                "name": "29 - Quiet mode",
+                "group": "additional",
+                "address": 12904,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=30",
+                "enabled": false
+            },
+            {
+                "name": "29 - Eco mode",
+                "group": "additional",
+                "address": 12906,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=30",
+                "enabled": false
+            },
+            {
+                "name": "29 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 12920,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=30",
+                "enabled": false
+            },
+            {
+                "name": "30 - AC connected",
+                "group": "debug",
+                "address": 13020,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=31",
+                "enabled": true
+            },
+            {
+                "name": "30 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 13000,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=31",
+                "enabled": true
+            },
+            {
+                "name": "30 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 13001,
+                "type": "switch",
+                "condition": "IDU_count>=31",
+                "enabled": true
+            },
+            {
+                "name": "30 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 13001,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=31",
+                "enabled": true
+            },
+            {
+                "name": "30 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13002,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=31",
+                "enabled": false
+            },
+            {
+                "name": "30 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=31",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "30 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13003,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=31",
+                "enabled": true
+            },
+            {
+                "name": "30 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13005,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=31",
+                "enabled": true
+            },
+            {
+                "name": "30 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13006,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=31",
+                "enabled": false
+            },
+            {
+                "name": "30 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13007,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=31",
+                "enabled": true
+            },
+            {
+                "name": "30 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13032,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=31",
+                "readonly": true
+            },
+            {
+                "name": "30 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13008,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=31",
+                "enabled": false
+            },
+            {
+                "name": "30 - Quiet mode",
+                "group": "additional",
+                "address": 13004,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=31",
+                "enabled": false
+            },
+            {
+                "name": "30 - Eco mode",
+                "group": "additional",
+                "address": 13006,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=31",
+                "enabled": false
+            },
+            {
+                "name": "30 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 13020,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=31",
+                "enabled": false
+            },
+            {
+                "name": "31 - AC connected",
+                "group": "debug",
+                "address": 13120,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=32",
+                "enabled": true
+            },
+            {
+                "name": "31 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 13100,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=32",
+                "enabled": true
+            },
+            {
+                "name": "31 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 13101,
+                "type": "switch",
+                "condition": "IDU_count>=32",
+                "enabled": true
+            },
+            {
+                "name": "31 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 13101,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=32",
+                "enabled": true
+            },
+            {
+                "name": "31 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13102,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=32",
+                "enabled": false
+            },
+            {
+                "name": "31 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13103,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=32",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "31 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13103,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=32",
+                "enabled": true
+            },
+            {
+                "name": "31 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13105,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=32",
+                "enabled": true
+            },
+            {
+                "name": "31 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13106,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=32",
+                "enabled": false
+            },
+            {
+                "name": "31 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13107,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=32",
+                "enabled": true
+            },
+            {
+                "name": "31 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13132,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=32",
+                "readonly": true
+            },
+            {
+                "name": "31 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13108,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=32",
+                "enabled": false
+            },
+            {
+                "name": "31 - Quiet mode",
+                "group": "additional",
+                "address": 13104,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=32",
+                "enabled": false
+            },
+            {
+                "name": "31 - Eco mode",
+                "group": "additional",
+                "address": 13106,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=32",
+                "enabled": false
+            },
+            {
+                "name": "31 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 13120,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=32",
+                "enabled": false
+            },
+            {
+                "name": "32 - AC connected",
+                "group": "debug",
+                "address": 13220,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=33",
+                "enabled": true
+            },
+            {
+                "name": "32 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 13200,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=33",
+                "enabled": true
+            },
+            {
+                "name": "32 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 13201,
+                "type": "switch",
+                "condition": "IDU_count>=33",
+                "enabled": true
+            },
+            {
+                "name": "32 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 13201,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=33",
+                "enabled": true
+            },
+            {
+                "name": "32 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13202,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=33",
+                "enabled": false
+            },
+            {
+                "name": "32 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13203,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=33",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "32 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13203,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=33",
+                "enabled": true
+            },
+            {
+                "name": "32 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13205,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=33",
+                "enabled": true
+            },
+            {
+                "name": "32 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13206,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=33",
+                "enabled": false
+            },
+            {
+                "name": "32 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13207,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=33",
+                "enabled": true
+            },
+            {
+                "name": "32 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13232,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=33",
+                "readonly": true
+            },
+            {
+                "name": "32 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13208,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=33",
+                "enabled": false
+            },
+            {
+                "name": "32 - Quiet mode",
+                "group": "additional",
+                "address": 13204,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=33",
+                "enabled": false
+            },
+            {
+                "name": "32 - Eco mode",
+                "group": "additional",
+                "address": 13206,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=33",
+                "enabled": false
+            },
+            {
+                "name": "32 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 13220,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=33",
+                "enabled": false
+            },
+            {
+                "name": "33 - AC connected",
+                "group": "debug",
+                "address": 13320,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=34",
+                "enabled": true
+            },
+            {
+                "name": "33 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 13300,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=34",
+                "enabled": true
+            },
+            {
+                "name": "33 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 13301,
+                "type": "switch",
+                "condition": "IDU_count>=34",
+                "enabled": true
+            },
+            {
+                "name": "33 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 13301,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=34",
+                "enabled": true
+            },
+            {
+                "name": "33 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13302,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=34",
+                "enabled": false
+            },
+            {
+                "name": "33 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13303,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=34",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "33 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13303,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=34",
+                "enabled": true
+            },
+            {
+                "name": "33 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13305,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=34",
+                "enabled": true
+            },
+            {
+                "name": "33 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13306,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=34",
+                "enabled": false
+            },
+            {
+                "name": "33 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13307,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=34",
+                "enabled": true
+            },
+            {
+                "name": "33 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13332,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=34",
+                "readonly": true
+            },
+            {
+                "name": "33 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13308,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=34",
+                "enabled": false
+            },
+            {
+                "name": "33 - Quiet mode",
+                "group": "additional",
+                "address": 13304,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=34",
+                "enabled": false
+            },
+            {
+                "name": "33 - Eco mode",
+                "group": "additional",
+                "address": 13306,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=34",
+                "enabled": false
+            },
+            {
+                "name": "33 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 13320,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=34",
+                "enabled": false
+            },
+            {
+                "name": "34 - AC connected",
+                "group": "debug",
+                "address": 13420,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=35",
+                "enabled": true
+            },
+            {
+                "name": "34 - Errors",
+                "group": "errors",
+                "reg_type": "discrete",
+                "address": 13400,
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=35",
+                "enabled": true
+            },
+            {
+                "name": "34 - Active",
+                "group": "general",
+                "reg_type": "coil",
+                "address": 13401,
+                "type": "switch",
+                "condition": "IDU_count>=35",
+                "enabled": true
+            },
+            {
+                "name": "34 - Mode",
+                "reg_type": "holding",
+                "group": "general",
+                "address": 13401,
+                "type": "value",
+                "enum": [
+                    1,
+                    2,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Fan"
+                ],
+                "condition": "IDU_count>=35",
+                "enabled": true
+            },
+            {
+                "name": "34 - Active mode",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13402,
+                "type": "range",
+                "min": 0,
+                "max": 5,
+                "condition": "IDU_count>=35",
+                "enabled": false
+            },
+            {
+                "name": "34 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13403,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1&&IDU_count>=35",
+                "scale": 0.01,
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "34 - Indoor air temperature",
+                "group": "temperatureControl",
+                "address": 13403,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "min": -50,
+                "max": 50,
+                "units": "deg C",
+                "scale": 0.01,
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1&&IDU_count>=35",
+                "enabled": true
+            },
+            {
+                "name": "34 - Target temperature",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13405,
+                "scale": 0.01,
+                "type": "range",
+                "units": "°C",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "condition": "IDU_count>=35",
+                "enabled": true
+            },
+            {
+                "name": "34 - Thermostat state",
+                "group": "temperatureControl",
+                "reg_type": "holding",
+                "address": 13406,
+                "readonly": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heat",
+                    "Cool"
+                ],
+                "condition": "IDU_count>=35",
+                "enabled": false
+            },
+            {
+                "name": "34 - Fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13407,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=35",
+                "enabled": true
+            },
+            {
+                "name": "34 - Current fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13432,
+                "format": "u16",
+                "enabled": true,
+                "type": "value",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Off",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed"
+                ],
+                "condition": "IDU_count>=35",
+                "readonly": true
+            },
+            {
+                "name": "34 - Smart fan speed",
+                "group": "general",
+                "reg_type": "holding",
+                "address": 13408,
+                "type": "range",
+                "min": 0,
+                "max": 8,
+                "condition": "IDU_count>=35",
+                "enabled": false
+            },
+            {
+                "name": "34 - Quiet mode",
+                "group": "additional",
+                "address": 13404,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=35",
+                "enabled": false
+            },
+            {
+                "name": "34 - Eco mode",
+                "group": "additional",
+                "address": 13406,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "condition": "IDU_count>=35",
+                "enabled": false
+            },
+            {
+                "name": "34 - Temeperature correction",
+                "group": "debug",
+                "reg_type": "holding",
+                "format": "s16",
+                "address": 13420,
+                "type": "value",
+                "min": -30,
+                "max": 30,
+                "condition": "IDU_count>=35",
                 "enabled": false
             },
             {
@@ -9676,1812 +13450,21 @@
                 "string_data_size": 16,
                 "readonly": true,
                 "enabled": true
-            },
-            {
-              "name": "Reboot Device",
-              "reg_type": "holding",
-              "address": 120,
-              "enabled": true,
-              "type": "pushbutton",
-              "group": "hw_info"
-            },
-            {
-                "name": "Gateway mode",
-                "group": "debug",
-                "reg_type": "holding",
-                "address": 656,
-                "type": "value",
-                "enum": [
-                    0,
-                    1,
-                    2
-                ],
-                "enum_titles": [
-                    "LISTEN_ONLY",
-                    "EMULATE_M_WRC",
-                    "EMULATE_S_WRC"
-                ],
-                "enabled": true
-            },
-            {
-                "name": "PC DB000",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9000,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB001",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9004,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB002",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9008,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB003",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9012,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB004",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9016,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB005",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9020,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB006",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9024,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB007",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9028,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB008",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9032,
-                "type": "value",
-                "format": "u64",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB009",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9009,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB010",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9010,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB011",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9011,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB012",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9012,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB013",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9013,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB014",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9014,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB015",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9015,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB016",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9016,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB017",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9017,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB018",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9018,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB019",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9019,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB020",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9020,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB021",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9021,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB022",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9022,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB023",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9023,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB024",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9024,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB025",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9025,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB026",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9026,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB027",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9027,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB028",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9028,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB029",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9029,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB030",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9030,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB031",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9031,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB032",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9032,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB033",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9033,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB034",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9034,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB035",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9035,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB036",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9036,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB037",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9037,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB038",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9038,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB039",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9039,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB040",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9040,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB041",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9041,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB042",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9042,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB043",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9043,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB044",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9044,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB045",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9045,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB046",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9046,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB047",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9047,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB048",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9048,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB049",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9049,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB050",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9050,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB051",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9051,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB052",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9052,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB053",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9053,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB054",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9054,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB055",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9055,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB056",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9056,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB057",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9057,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB058",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9058,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB059",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9059,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB060",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9060,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB061",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9061,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB062",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9062,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB063",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9063,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB064",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9064,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB065",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9065,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB066",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9066,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB067",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9067,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB068",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9068,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB069",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9069,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB077",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9070,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB071",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9071,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB072",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9072,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB073",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9073,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB074",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9074,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB075",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9075,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB076",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9076,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB077",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9077,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB078",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9078,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB079",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9079,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB080",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9080,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB081",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9081,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB082",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9082,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB083",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9083,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB084",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9084,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB085",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9085,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB086",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9086,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB087",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9087,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB088",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9088,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB089",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9089,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB090",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9090,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB091",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9091,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB092",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9092,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB093",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9093,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB094",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9094,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB095",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9095,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB096",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9096,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB097",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9097,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB098",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9098,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB099",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9099,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB100",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9100,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB101",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9101,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB102",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9102,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB103",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9103,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB104",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9104,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB105",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9105,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB106",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9106,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB107",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9107,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB108",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9108,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB109",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9109,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB110",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9110,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB111",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9111,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB112",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9112,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB113",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9113,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB114",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9114,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB115",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9115,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB116",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9116,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB117",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9117,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB118",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9118,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB119",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9119,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB120",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9120,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB121",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9121,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB122",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9122,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB123",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9123,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB124",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9124,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB125",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9125,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB126",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9126,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB127",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9127,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB128",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9128,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB129",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9129,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB130",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9130,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB131",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9131,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB132",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9132,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB133",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9133,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB134",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9134,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB135",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9135,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB136",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9136,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB137",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9137,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB138",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9138,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB139",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9139,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB140",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9140,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB141",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9141,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB142",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9142,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB143",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9143,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB144",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9144,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB145",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9145,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB146",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9146,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB147",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9147,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB148",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9148,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB149",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9149,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB150",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9150,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB151",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9151,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB152",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9152,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB153",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9153,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB154",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9154,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB155",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9155,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB156",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9156,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB157",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9157,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB158",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9158,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB159",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9159,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
-            },
-            {
-                "name": "PC DB160",
-                "group": "raw_data",
-                "reg_type": "holding",
-                "address": 9160,
-                "type": "value",
-                "format": "u16",
-                "readonly": true,
-                "condition": "Show_packet_data==1",
-                "sporadic": true
             }
         ],
         "translations": {
             "en": {
-                "template_title": "DEV WB-ONOKOM-AIR-MD-VRF-MB-B (Adapter for VRF MDV V6 systems)",
+                "template_title": "WB-ONOKOM-AIR-MD-VRF-MB-B (Adapter for VRF MDV V6 systems)",
                 "FINISH": "Конец"
             },
             "ru": {
-                "template_title": "DEV WB-ONOKOM-AIR-MD-VRF-MB-B (Адаптер для мультизональных систем MDV V6)",
+                "template_title": "WB-ONOKOM-AIR-MD-VRF-MB-B (Адаптер для мультизональных систем MDV V6)",
+                "Gateway mode": "Режим шлюза",
+                "LISTEN_ONLY": "Слушатель",
+                "EMULATE_M_WRC": "Главный",
+                "EMULATE_S_WRC": "Ведомый",
+                "Current tick": "Текущий такт",
+                "Receive tick": "Такт последнего получения данных от кондиционера",
                 "IDU count": "Указать количество внутренних блоков",
                 "General": "Основные режимы и функции",
                 "Off": "Выключен",
@@ -12270,8 +14253,6 @@
                 "62 - Errors": "62 - Ошибки",
                 "63 - Errors": "63 - Ошибки",
                 "Debug": "Диагностика",
-                "Current tick": "Текущий такт",
-                "Receive tick": "Такт последнего получения данных от кондиционера",
                 "0 - AC connected": "0 - Кондиционер подключен",
                 "0 - Temeperature correction": "0 - Коррекция температуры",
                 "1 - AC connected": "1 - Кондиционер подключен",
@@ -12399,11 +14380,7 @@
                 "62 - AC connected": "62 - Кондиционер подключен",
                 "62 - Temeperature correction": "62 - Коррекция температуры",
                 "63 - AC connected": "63 - Кондиционер подключен",
-                "63 - Temeperature correction": "63 - Коррекция температуры",
-                "Gateway mode": "Режим шлюза",
-                "LISTEN_ONLY": "Слушатель",
-                "EMULATE_M_WRC": "Главный",
-                "EMULATE_S_WRC": "Ведомый"
+                "63 - Temeperature correction": "63 - Коррекция температуры"
             }
         }
     }

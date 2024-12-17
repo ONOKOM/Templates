@@ -1,0 +1,124 @@
+[
+    {
+        "name": "Кондиционер",
+        "manufacturer": "ONOKOM",
+        "model": "MD-VRF-MB-B",
+        "catalogId": -1,
+        "version" : "1.5.2",
+        "services": [
+        {
+            "name": "Термостат",
+            "type": "Thermostat",
+            "characteristics": [
+            {
+                "type": "CurrentTemperature",
+                "link": {
+                    "type": "Float",
+                    "topicSearch": "/devices/(ONOKOM-AIR-MD-VRF-MB-B_[0-9]{1,3})/controls/([x0-9]{1}) Indoor air temperature/meta/type",
+                    "topicGet": "/devices/(1)/controls/(2) Indoor air temperature"
+                }
+            },
+            {
+                "type": "TargetTemperature",
+                "link": {
+                    "type": "Float",
+                    "topicGet": "/devices/(1)/controls/(2) Target temperature",
+                    "topicSet": "/devices/(1)/controls/(2) Target temperature/on"
+                },
+                "minValue": 16,
+                "maxValue": 32,
+                "minStep": 1
+            },
+            {
+                "type": "CurrentHeatingCoolingState",
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/(2) Mode"
+                },
+                "validValues": "1,2"
+            },
+            {
+                "type": "TargetHeatingCoolingState",
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/(2) Mode",
+                    "topicSet": "/devices/(1)/controls/(2) Mode/on",
+                    "map":{
+                    "1":1,
+                    "2":2
+                    }
+                },
+                "validValues": "1,2"
+            }
+            ]
+        },
+        {
+            "name": "Кондиционер",
+            "type": "Switch",
+            "characteristics": [
+            {
+                "type": "On",
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/(2) Active",
+                    "topicSet": "/devices/(1)/controls/(2) Active/on",
+                    "map":{
+                        "true":1,
+                        "false":0
+                    },
+                    "outMap": {
+                        "true": 1,
+                        "false": 0
+                    }
+                }   
+            }
+            ]
+        },
+        {
+            "name": "Вентилятор",
+            "type": "Fan",
+            "characteristics": [
+            {
+                "type": "RotationSpeed",
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/(2) Real fan speed",
+                    "topicSet": "/devices/(1)/controls/(2) Fan speed/on",
+                    "map":{
+                        "0":0,
+                        "33":1,
+                        "66":2,
+                        "99":3
+                    }    
+                },
+                "minValue": 0,
+                "maxValue": 99,
+                "minStep": 33
+            }
+            ]
+        }
+        ],
+        "options": [
+            {
+              "link": {
+                "type": "String",
+                "topicGet": "/devices/(1)/controls/FW Version"
+              },
+              "name": "Версия прошивки",
+              "input": "status",
+              "write": false,
+              "type": "String"
+            },
+            {
+                "link": {
+                    "type": "Integer",
+                    "topicGet": "/devices/(1)/controls/AC connected"
+                },
+                "name": "Кондиционер подключен",
+                "type": "Boolean",
+                "write": false,
+                "init": true
+            }
+        ]
+    }
+]

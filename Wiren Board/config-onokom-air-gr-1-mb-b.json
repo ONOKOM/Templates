@@ -735,10 +735,10 @@
     ],
     "translations": {
       "en": {
-        "template_title": "ONOKOM AIR GR-1-MB-B (Adapter for household and semi-industrial GREE systems)"
+        "template_title": "ONOKOM AIR GR-1-MB-B (Adapter for household GREE systems)"
       },
       "ru": {
-        "template_title": "ONOKOM AIR GR-1-MB-B (Адаптер для бытовых и полупромышленных систем GREE)",
+        "template_title": "ONOKOM AIR GR-1-MB-B (Адаптер для бытовых систем GREE)",
         "General": "Основные режимы и функции",
         "Active": "Состояние",
         "Mode": "Режим",

@@ -32,6 +32,11 @@
         "order": 6
       },
       {
+        "title": "Errors",
+        "id": "errors",
+        "order": 8
+      },
+      {
         "title": "Debug",
         "id": "debug",
         "order": 9
@@ -616,6 +621,22 @@
         "address": 120,
         "type": "pushbutton",
         "group": "hw_info"
+      },
+      {
+        "name": "Errors",
+        "reg_type": "discrete",
+        "address": 0,
+        "type": "switch",
+        "group": "errors",
+        "readonly": true
+      },
+      {
+        "name": "Error code",
+        "reg_type": "input",
+        "address": 1,
+        "type": "value",
+        "group": "errors",
+        "readonly": true
       }
     ],
     "translations": {
@@ -687,7 +708,9 @@
         "Reboot Device": "Перегрузить устройство",
         "Debug": "Диагностика",
         "Temeperature correction": "Коррекция температуры",
-        "AC connected": "Кондиционер подключен"
+        "AC connected": "Кондиционер подключен",
+        "Errors": "Ошибки",
+        "Error code": "Код ошибки"
       }
     }
   }

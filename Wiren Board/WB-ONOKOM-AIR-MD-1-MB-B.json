@@ -1,15 +1,15 @@
 {
   "title": "template_title",
-  "device_type": "ONOKOM-AIR-MH-8-MB-B",
+  "device_type": "ONOKOM-AIR-MD-1-MB-B",
   "group": "g-air-conditioning",
   "hw": [
     {
-      "signature": "ME-1-MB-B"
+      "signature": "MD-1-MB-B"
     }
   ],
   "device": {
-    "name": "ONOKOM-AIR-MH-8-MB-B",
-    "id": "ONOKOM-AIR-MH-8-MB-B",
+    "name": "ONOKOM-AIR-MD-1-MB-B",
+    "id": "ONOKOM-AIR-MD-1-MB-B",
     "groups": [
       {
         "title": "General",
@@ -25,6 +25,11 @@
         "title": "Vanes",
         "id": "vanes",
         "order": 3
+      },
+      {
+        "title": "Additional",
+        "id": "additional",
+        "order": 4
       },
       {
         "title": "HW Info",
@@ -254,7 +259,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 3,
+        "max": 5,
         "sporadic": true,
         "group": "general",
         "condition": "Show_fan_as_range==1"
@@ -271,13 +276,17 @@
           0,
           1,
           2,
-          3
+          3,
+          4,
+          5
         ],
         "enum_titles": [
           "Auto",
           "1 Speed",
           "2 Speed",
-          "3 Speed"
+          "3 Speed",
+          "4 Speed",
+          "5 Speed"
         ],
         "condition": "Show_fan_as_range!=1"
       },
@@ -288,7 +297,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 4,
+        "max": 7,
         "sporadic": true,
         "group": "general",
         "condition": "Show_fan_as_range==1"
@@ -308,14 +317,20 @@
           1,
           2,
           3,
-          4
+          4,
+          5,
+          6,
+          7
         ],
         "enum_titles": [
           "Auto",
           "Quiet mode",
           "1 Speed",
           "2 Speed",
-          "3 Speed"
+          "3 Speed",
+          "4 Speed",
+          "5 Speed",
+          "Turbo mode"
         ],
         "condition": "Show_fan_as_range!=1"
       },
@@ -353,7 +368,7 @@
         "type": "range",
         "format": "s16",
         "min": 16,
-        "max": 32,
+        "max": 30,
         "scale": 0.01,
         "sporadic": true,
         "group": "temperatureControl",
@@ -387,8 +402,8 @@
         ],
         "enum_titles": [
           "Idle",
-          "Heater",
-          "Cool"
+          "Heating",
+          "Cooling"
         ],
         "readonly": true,
         "condition": "Show_thermostat_state_as_range!=1"
@@ -399,8 +414,8 @@
         "address": 9,
         "type": "range",
         "format": "u16",
-        "min": 1,
-        "max": 5,
+        "min": 0,
+        "max": 8,
         "sporadic": true,
         "group": "vanes",
         "condition": "Show_vanes_as_range==1"
@@ -414,18 +429,62 @@
         "sporadic": true,
         "group": "vanes",
         "enum": [
+          0,
           1,
           2,
           3,
           4,
-          5
+          5,
+          6
         ],
         "enum_titles": [
+          "Stop",
           "Swing",
           "Lowest",
           "Low",
+          "Middle",
           "High",
           "Highest"
+        ],
+        "condition": "Show_vanes_as_range!=1"
+      },
+      {
+        "name": "Vertical vanes",
+        "reg_type": "holding",
+        "address": 10,
+        "type": "range",
+        "format": "u16",
+        "min": 0,
+        "max": 6,
+        "sporadic": true,
+        "group": "vanes",
+        "condition": "Show_vanes_as_range==1"
+      },
+      {
+        "name": "Vertical vanes",
+        "reg_type": "holding",
+        "address": 10,
+        "type": "value",
+        "format": "u16",
+        "sporadic": true,
+        "group": "vanes",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "enum_titles": [
+          "Stop",
+          "Swing",
+          "Far Left",
+          "Left",
+          "Middle",
+          "Right",
+          "Far Right"
         ],
         "condition": "Show_vanes_as_range!=1"
       },
@@ -462,6 +521,37 @@
           "Swinging vertical blinds"
         ],
         "condition": "Show_vanes_as_range!=1"
+      },
+      {
+        "name": "Quiet mode",
+        "enabled": false,
+        "reg_type": "coil",
+        "address": 4,
+        "type": "switch",
+        "sporadic": true,
+        "group": "additional"
+      },
+      {
+        "name": "Turbo mode",
+        "enabled": false,
+        "reg_type": "coil",
+        "address": 7,
+        "type": "switch",
+        "sporadic": true,
+        "group": "additional"
+      },
+      {
+        "name": "Target fan speed",
+        "enabled": false,
+        "reg_type": "holding",
+        "address": 31,
+        "type": "range",
+        "min": 0,
+        "max": 100,
+        "sporadic": true,
+        "group": "debug",
+        "readonly": false,
+        "units": "rpm"
       },
       {
         "name": "Temeperature correction",
@@ -572,10 +662,10 @@
     ],
     "translations": {
       "en": {
-        "template_title": "ONOKOM-AIR-MH-8-MB-B (Adapter for semi-industrial and multi-split air conditioning systems Mitsubishi Heavy)"
+        "template_title": "ONOKOM AIR MD-1-MB-B (Adapter for household MDV systems)"
       },
       "ru": {
-        "template_title": "ONOKOM-AIR-MH-8-MB-B (Адаптер для  полупромышленными и мультисплит системами кондиционирования Mitsubishi Heavy)",
+        "template_title": "ONOKOM AIR MD-1-MB-B (Адаптер для бытовых систем MDV)",
         "General": "Основные режимы и функции",
         "Active": "Состояние",
         "Mode": "Режим",
@@ -590,7 +680,8 @@
         "Dry": "Осушение",
         "Fan": "Вентиляция",
         "Idle": "Простаивает",
-        "Heater": "Нагрев",
+        "Heating": "Нагрев",
+        "Cooling": "Охлаждение",
         "Temperature control": "Контроль температуры",
         "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
         "Indoor air temperature": "Температура воздуха в помещении",
@@ -603,18 +694,28 @@
         "Swing": "Качание",
         "Lowest": "Самое низкое",
         "Low": "Низкое",
+        "Middle": "Среднее",
         "High": "Высокое",
         "Highest": "Самое высокое",
+        "Far Left": "Самое левое",
+        "Left": "Левое",
+        "Right": "Правое",
+        "Far Right": "Самое правое",
+        "Vertical vanes": "Вертикальные жалюзи",
         "Vanes swing": "Качание жалюзи",
         "Stop": "Остановлены",
         "Horizontal and vertical swing": "Качание горизонтальное и вертикальное",
         "Swinging horizontal blinds": "Качание горизонтальных жалюзи",
         "Swinging vertical blinds": "Качание вертикальных жалюзи",
         "Show fan as range": "Отображать вентилятор как ползунок",
+        "Additional": "Дополнительные режимы и функции",
         "1 Speed": "1 Скорость",
         "2 Speed": "2 Скорость",
         "3 Speed": "3 Скорость",
+        "4 Speed": "4 Скорость",
+        "5 Speed": "5 Скорость",
         "Quiet mode": "Режим тихий",
+        "Turbo mode": "Режим турбо",
         "No": "Нет",
         "Yes": "Да",
         "Baud rate": "Скорость обмена",
@@ -631,6 +732,7 @@
         "Serial": "Серийный номер",
         "Reboot Device": "Перегрузить устройство",
         "Debug": "Диагностика",
+        "Target fan speed": "Целевая скорость вентилятора",
         "Temeperature correction": "Коррекция температуры",
         "AC connected": "Кондиционер подключен"
       }

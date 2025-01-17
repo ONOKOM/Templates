@@ -420,8 +420,8 @@
         ],
         "enum_titles": [
           "Idle",
-          "Heater",
-          "Cool"
+          "Heating",
+          "Cooling"
         ],
         "readonly": true,
         "condition": "Show_thermostat_state_as_range!=1"
@@ -1506,7 +1506,8 @@
         "Dry": "Осушение",
         "Fan": "Вентиляция",
         "Idle": "Простаивает",
-        "Heater": "Нагрев",
+        "Heating": "Нагрев",
+        "Cooling": "Охлаждение",
         "Temperature control": "Контроль температуры",
         "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
         "Indoor air temperature": "Температура воздуха в помещении",

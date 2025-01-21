@@ -344,7 +344,7 @@
         "condition": "Show_fan_as_range!=1"
       },
       {
-        "name": "Indoor air temperature",
+        "name": "Outlet air temperature",
         "reg_type": "holding",
         "address": 3,
         "type": "value",
@@ -353,22 +353,7 @@
         "sporadic": true,
         "group": "temperatureControl",
         "readonly": true,
-        "units": "deg C",
-        "condition": "Allow_the_use_of_an_external_temperature_sensor!=1"
-      },
-      {
-        "name": "Indoor air temperature",
-        "reg_type": "holding",
-        "address": 3,
-        "type": "value",
-        "format": "s16",
-        "min": -50,
-        "max": 50,
-        "scale": 0.01,
-        "sporadic": true,
-        "group": "temperatureControl",
-        "units": "deg C",
-        "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+        "units": "deg C"
       },
       {
         "name": "Inlet air temperature",
@@ -859,7 +844,7 @@
         "Off": "Выключен",
         "Auto": "Авто",
         "Temperature control": "Контроль температуры",
-        "Indoor air temperature": "Температура воздуха в помещении",
+        "Outlet air temperature": "Температура выходящего воздуха",
         "Outdoor air temperature": "Температура воздуха на улице",
         "Target temperature": "Целевая температура",
         "Show thermostat state as range": "Отображать состояние термостата как ползунок",

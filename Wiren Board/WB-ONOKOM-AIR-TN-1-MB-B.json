@@ -360,7 +360,7 @@
         "reg_type": "holding",
         "address": 4,
         "type": "value",
-        "format": "s8",
+        "format": "s16",
         "scale": 0.01,
         "group": "temperatureControl",
         "readonly": true,

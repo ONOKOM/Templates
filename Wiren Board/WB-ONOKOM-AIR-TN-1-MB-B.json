@@ -870,6 +870,7 @@
         "Filter life level": "Состояние фильтра",
         "Target Air purifier": "Целевое состояние очистителя воздуха",
         "Max allowed fan speed": "Максимальная доступная в данный момент скорость вентилятора",
+        "Heater": "Нагреватель",
         "Heater type": "Тип нагревателя",
         "none": "отсутствует",
         "1 kWt": "1 кВт",
@@ -915,7 +916,7 @@
         "Reboot Device": "Перегрузить устройство",
         "Debug": "Диагностика",
         "AC connected": "Кондиционер подключен",
-        "Inlet air temperature": "Температура воздуха входе в бризер",
+        "Inlet air temperature": "Температура входящего воздуха",
         "Control board temperature": "Температура платы управления",
         "Power board temperature": "Температура платы питания"
       }

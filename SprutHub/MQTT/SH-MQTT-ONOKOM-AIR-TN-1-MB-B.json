@@ -239,7 +239,7 @@
       },
       {
         "link": {
-          "type": "String",
+          "type": "Float",
           "topicGet": "/devices/(1)/controls/Control board temperature",
           "inFunc": "value + ' °C"
         },
@@ -250,7 +250,7 @@
       },
       {
         "link": {
-          "type": "String",
+          "type": "Float",
           "topicGet": "/devices/(1)/controls/Power board temperature",
           "inFunc": "value + ' °C"
         },

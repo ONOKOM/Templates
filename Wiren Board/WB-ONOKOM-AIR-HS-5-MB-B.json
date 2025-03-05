@@ -259,7 +259,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 3,
+        "max": 6,
         "sporadic": true,
         "group": "general",
         "condition": "Show_fan_as_range==1"
@@ -278,7 +278,8 @@
           2,
           3,
           4,
-          5
+          5,
+          6
         ],
         "enum_titles": [
           "Auto",
@@ -286,7 +287,8 @@
           "2 Speed",
           "3 Speed",
           "4 Speed",
-          "5 Speed"
+          "5 Speed",
+          "6 Speed"
         ],
         "condition": "Show_fan_as_range!=1"
       },
@@ -319,7 +321,8 @@
           3,
           4,
           5,
-          6
+          6,
+          7
         ],
         "enum_titles": [
           "Auto",
@@ -328,7 +331,8 @@
           "2 Speed",
           "3 Speed",
           "4 Speed",
-          "5 Speed"
+          "5 Speed",
+          "6 Speed"
         ],
         "condition": "Show_fan_as_range!=1"
       },
@@ -456,6 +460,50 @@
           "Middle",
           "High",
           "Highest"
+        ],
+        "condition": "Show_vanes_as_range!=1"
+      },
+      {
+        "name": "Vertical vanes",
+        "reg_type": "holding",
+        "address": 10,
+        "type": "range",
+        "format": "u16",
+        "min": 0,
+        "max": 8,
+        "sporadic": true,
+        "group": "vanes",
+        "condition": "Show_vanes_as_range==1"
+      },
+      {
+        "name": "Vertical vanes",
+        "reg_type": "holding",
+        "address": 10,
+        "type": "value",
+        "format": "u16",
+        "sporadic": true,
+        "group": "vanes",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "enum_titles": [
+          "Stop",
+          "Swing",
+          "Far Left",
+          "Left",
+          "Middle Left",
+          "Middle",
+          "Middle Right",
+          "Right",
+          "Far Right"
         ],
         "condition": "Show_vanes_as_range!=1"
       },
@@ -675,6 +723,11 @@
         "Middle": "Среднее",
         "High": "Высокое",
         "Highest": "Самое высокое",
+        "Far Left": "Самое левое",
+        "Left": "Левое",
+        "Right": "Правое",
+        "Far Right": "Самое правое",
+        "Vertical vanes": "Вертикальные жалюзи",
         "Vanes swing": "Качание жалюзи",
         "Stop": "Остановлены",
         "Horizontal and vertical swing": "Качание горизонтальное и вертикальное",
@@ -686,6 +739,7 @@
         "3 Speed": "3 Скорость",
         "4 Speed": "4 Скорость",
         "5 Speed": "5 Скорость",
+        "6 Speed": "6 Скорость",
         "Quiet mode": "Режим тихий",
         "No": "Нет",
         "Yes": "Да",
@@ -701,7 +755,7 @@
         "Uptime": "Время работы с момента включения (с)",
         "MCU Temperature": "Температура МК",
         "Serial": "Серийный номер",
-        "Reboot Device": "Перегрузить устройство",
+        "Reboot Device": "Перезагрузить устройство",
         "Setup": "Настройки",
         "Gateway mode": "Режим шлюза",
         "LISTEN_ONLY": "Слушатель",

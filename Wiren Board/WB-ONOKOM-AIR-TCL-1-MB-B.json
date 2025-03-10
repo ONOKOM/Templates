@@ -455,7 +455,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 8,
+        "max": 6,
         "sporadic": true,
         "group": "vanes",
         "condition": "Show_vanes_as_range==1"
@@ -475,18 +475,14 @@
           3,
           4,
           5,
-          6,
-          7,
-          8
+          6
         ],
         "enum_titles": [
           "Stop",
           "Swing",
           "Lowest",
           "Low",
-          "Middle Low",
           "Middle",
-          "Middle High",
           "High",
           "Highest"
         ],
@@ -1059,9 +1055,7 @@
         "Swing": "Качание",
         "Lowest": "Самое низкое",
         "Low": "Низкое",
-        "Middle Low": "Среднее низкое",
         "Middle": "Среднее",
-        "Middle High": "Среднее высокое",
         "High": "Высокое",
         "Highest": "Самое высокое",
         "Far Left": "Самое левое",
@@ -1107,7 +1101,7 @@
         "Uptime": "Время работы с момента включения (с)",
         "MCU Temperature": "Температура МК",
         "Serial": "Серийный номер",
-        "Reboot Device": "Перегрузить устройство",
+        "Reboot Device": "Перезагрузить устройство",
         "Debug": "Диагностика",
         "Current compressor power": "Текущая мощность компрессора",
         "Current fan speed": "Текущая скорость вентилятора",

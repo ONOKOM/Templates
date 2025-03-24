@@ -573,7 +573,7 @@
         "min": -30,
         "max": 30,
         "sporadic": true,
-        "group": "debug",
+        "group": "temperatureControl",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {

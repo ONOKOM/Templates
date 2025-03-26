@@ -302,7 +302,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 7,
+        "max": 6,
         "sporadic": true,
         "group": "general",
         "condition": "Show_fan_as_range==1"
@@ -324,8 +324,7 @@
           3,
           4,
           5,
-          6,
-          7
+          6
         ],
         "enum_titles": [
           "Auto",
@@ -334,8 +333,7 @@
           "2 Speed",
           "3 Speed",
           "4 Speed",
-          "5 Speed",
-          "Turbo mode"
+          "5 Speed"
         ],
         "condition": "Show_fan_as_range!=1"
       },
@@ -590,7 +588,7 @@
         "min": -30,
         "max": 30,
         "sporadic": true,
-        "group": "debug",
+        "group": "temperatureControl",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {
@@ -764,7 +762,6 @@
         "5 Speed": "5 Скорость",
         "Quiet mode": "Режим тихий",
         "Eco mode": "Режим эко",
-        "Turbo mode": "Режим турбо",
         "Sleep mode": "Режим сна",
         "Indication": "Индикация",
         "Screen light": "Подсветка экрана",
@@ -782,7 +779,7 @@
         "Uptime": "Время работы с момента включения (с)",
         "MCU Temperature": "Температура МК",
         "Serial": "Серийный номер",
-        "Reboot Device": "Перегрузить устройство",
+        "Reboot Device": "Перезагрузить устройство",
         "Debug": "Диагностика",
         "Current compressor power": "Текущая мощность компрессора",
         "Target compressor power": "Целевая мощность компрессора",

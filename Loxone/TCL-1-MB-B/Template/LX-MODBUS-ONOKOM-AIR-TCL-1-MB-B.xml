@@ -1,38 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Modbus Title="TCL-1-MB-B_V1" Comment="" HintText="" Baudrate="9600" Stopbits="1" Channel="1">
-	<Info templateType="7" minVersion="14040925"/>
+<Modbus Title="LX-MODBUS-ONOKOM-AIR-TCL-1-MB-B" Comment="" HintText="" Baudrate="9600" Stopbits="1" Channel="1">
+	<Info templateType="7" minVersion="15050304"/>
 	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText="" ModbusAddress="3" ModbusCmd="3" ModbusDataType="32" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
 	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText="" ModbusAddress="4" ModbusCmd="3" ModbusDataType="33" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
-	<ModbusCmd Title="Кондиционер на связи" Comment="" HintText="" ModbusAddress="20" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Подсветка экрана (статус)" Comment="" HintText="" ModbusAddress="2" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Дежурный обогрев (статус)" Comment="" HintText="" ModbusAddress="13" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Звуковая индикация (статус)" Comment="" HintText="" ModbusAddress="5" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Мягкий поток (статус)" Comment="" HintText="" ModbusAddress="14" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Функция Антиплесень (статус)" Comment="" HintText="" ModbusAddress="11" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Функция Ионизация (статус)" Comment="" HintText="" ModbusAddress="9" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Функция Самоочистки (статус)" Comment="" HintText="" ModbusAddress="10" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Режим Сон (статус)" Comment="" HintText="" ModbusAddress="8" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Режим Тихий (статус)" Comment="" HintText="" ModbusAddress="4" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Режим Турбо (статус)" Comment="" HintText="" ModbusAddress="7" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Режим Эко (Статус)" Comment="" HintText="" ModbusAddress="6" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Качание вертикальных шторок (статус)" Comment="" HintText="" ModbusAddress="10" ModbusCmd="3" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
-	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="1" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Режимы_Laxone (Управление)" Comment="" HintText="" ModbusAddress="15" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100"/>
-	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText="" ModbusAddress="8" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10"/>
-	<ModbusCmd Title="Подсветка экрана (управление)" Comment="" HintText="" ModbusAddress="2" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Уставка температуры" Comment="" HintText="" ModbusAddress="5" ModbusCmd="6" ModbusDataType="33" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100"/>
-	<ModbusCmd Title="Горизонтальные ламели" Comment="" HintText="" ModbusAddress="9" ModbusCmd="6" ModbusDataType="32" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10"/>
-	<ModbusCmd Title="Функция Ионизация (Управление)" Comment="" HintText="" ModbusAddress="9" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Режим Сон (Управление)" Comment="" HintText="" ModbusAddress="8" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Функция Самоочистки (Управление)" Comment="" HintText="" ModbusAddress="10" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Качание вертикальных шторок (Управление)" Comment="" HintText="" ModbusAddress="10" ModbusCmd="6" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Режим Тихий (управление)" Comment="" HintText="" ModbusAddress="4" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Звуковая индикация (Управление)" Comment="" HintText="" ModbusAddress="5" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Режим Эко (Управление)" Comment="" HintText="" ModbusAddress="6" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Режим Турбо (Управление)" Comment="" HintText="" ModbusAddress="7" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Функция Антиплесень (Управление)" Comment="" HintText="" ModbusAddress="11" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Дежурный обогрев (Управление)" Comment="" HintText="" ModbusAddress="13" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Мягкий поток (Управление)" Comment="" HintText="" ModbusAddress="14" ModbusCmd="5" Unit="" Analog="false" Sensor="false"/>
-	<ModbusCmd Title="Modbus скорость (Сервисный)" Comment="" HintText="" ModbusAddress="110" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100"/>
-	<ModbusCmd Title="Modbus адрес устройтсва (Сервисный)" Comment="" HintText="" ModbusAddress="128" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100"/>
+	<ModbusCmd Title="Кондиционер на связи (Статус)" Comment="" HintText="" ModbusAddress="20" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Подсветка экрана (Cтатус)" Comment="" HintText="" ModbusAddress="2" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Дежурный обогрев (Статус)" Comment="" HintText="" ModbusAddress="13" ModbusCmd="1" ModbusPollingCycle="15" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Звуковая индикация (Статус)" Comment="" HintText="" ModbusAddress="5" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Мягкий поток (Статус)" Comment="" HintText="" ModbusAddress="14" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Функция Антиплесень (Статус)" Comment="" HintText="" ModbusAddress="11" ModbusCmd="1" ModbusPollingCycle="60" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Функция Ионизация (Статус)" Comment="" HintText="" ModbusAddress="9" ModbusCmd="1" ModbusPollingCycle="60" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Функция Самоочистки (Статус)" Comment="" HintText="" ModbusAddress="10" ModbusCmd="1" ModbusPollingCycle="60" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Режим Сон (Статус)" Comment="" HintText="" ModbusAddress="8" ModbusCmd="1" ModbusPollingCycle="30" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Режим Тихий (Статус)" Comment="" HintText="" ModbusAddress="4" ModbusCmd="1" ModbusPollingCycle="30" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Режим Турбо (Статус)" Comment="" HintText="" ModbusAddress="7" ModbusCmd="1" ModbusPollingCycle="30" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Режим Эко (Статус)" Comment="" HintText="" ModbusAddress="6" ModbusCmd="1" ModbusPollingCycle="30" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Качание вертикальных ламелей (Статус)" Comment="" HintText="" ModbusAddress="11" ModbusCmd="3" ModbusPollingCycle="300" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Температура внешнего теплообменника (Статус)" Comment="" HintText="" ModbusAddress="24" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Температура внутреннего теплообменника (Статус)" Comment="" HintText="" ModbusAddress="23" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Текущие обороты вентилятора (Статус)" Comment="" HintText="" ModbusAddress="32" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="1" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText="" ModbusAddress="15" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText="" ModbusAddress="8" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Подсветка экрана (Управление)" Comment="" HintText="" ModbusAddress="2" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText="" ModbusAddress="5" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели" Comment="" HintText="" ModbusAddress="9" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Функция Ионизация (Управление)" Comment="" HintText="" ModbusAddress="9" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режим Сон (Управление)" Comment="" HintText="" ModbusAddress="8" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Функция Самоочистки (Управление)" Comment="" HintText="" ModbusAddress="10" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режим Тихий (Управление)" Comment="" HintText="" ModbusAddress="4" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Звуковая индикация (Управление)" Comment="" HintText="" ModbusAddress="5" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режим Эко (Управление)" Comment="" HintText="" ModbusAddress="6" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режим Турбо (Управление)" Comment="" HintText="" ModbusAddress="7" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Функция Антиплесень (Управление)" Comment="" HintText="" ModbusAddress="11" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Дежурный обогрев (Управление)" Comment="" HintText="" ModbusAddress="13" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Мягкий поток (Управление)" Comment="" HintText="" ModbusAddress="14" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Modbus адрес устройтсва (Сервисный)" Comment="" HintText="" ModbusAddress="128" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Вертикальные ламели (Управление)" Comment="" HintText="" ModbusAddress="10" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
 </Modbus>

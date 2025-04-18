@@ -399,7 +399,7 @@
         "type": "range",
         "format": "s16",
         "min": 16,
-        "max": 32,
+        "max": 30,
         "scale": 0.01,
         "sporadic": true,
         "group": "temperatureControl",

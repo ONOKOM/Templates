@@ -424,7 +424,7 @@
         "address": 9,
         "type": "range",
         "format": "u16",
-        "min": 1,
+        "min": 0,
         "max": 6,
         "sporadic": true,
         "group": "vanes",
@@ -532,15 +532,6 @@
         "group": "additional"
       },
       {
-        "name": "Eco mode",
-        "enabled": false,
-        "reg_type": "coil",
-        "address": 6,
-        "type": "switch",
-        "sporadic": true,
-        "group": "additional"
-      },
-      {
         "name": "Turbo mode",
         "enabled": false,
         "reg_type": "coil",
@@ -556,7 +547,8 @@
         "address": 8,
         "type": "switch",
         "sporadic": true,
-        "group": "additional"
+        "group": "additional",
+        "readonly": true
       },
       {
         "name": "Ionization",
@@ -787,7 +779,6 @@
         "2 Speed": "2 Скорость",
         "3 Speed": "3 Скорость",
         "Quiet mode": "Режим тихий",
-        "Eco mode": "Режим эко",
         "Turbo mode": "Режим турбо",
         "Sleep mode": "Режим сна",
         "Ionization": "Ионизация",

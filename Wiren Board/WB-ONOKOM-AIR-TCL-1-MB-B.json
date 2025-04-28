@@ -503,7 +503,8 @@
           3,
           4,
           5,
-          6
+          6,
+          7
         ],
         "enum_titles": [
           "Stop",
@@ -512,7 +513,8 @@
           "Left",
           "Middle",
           "Right",
-          "Far Right"
+          "Far Right",
+          "Gentle wind"
         ],
         "condition": "Show_vanes_as_range!=1"
       },
@@ -669,7 +671,7 @@
         "min": -30,
         "max": 30,
         "sporadic": true,
-        "group": "debug",
+        "group": "temperatureControl",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {
@@ -684,6 +686,16 @@
         "group": "debug",
         "readonly": true,
         "units": "%"
+      },
+      {
+        "name": "Compressor power limit",
+        "enabled": false,
+        "reg_type": "holding",
+        "address": 19,
+        "type": "range",
+        "max": 100,
+        "sporadic": true,
+        "group": "additional"
       },
       {
         "name": "AC connected",
@@ -1087,6 +1099,7 @@
         "Indication": "Индикация",
         "Screen light": "Подсветка экрана",
         "Beeper": "Звуковая индикация",
+        "Compressor power limit": "Ограничение мощности компрессора",
         "No": "Нет",
         "Yes": "Да",
         "Baud rate": "Скорость обмена",

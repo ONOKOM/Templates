@@ -18,11 +18,28 @@ const definition = {
             convert: (model, msg, publish, options, meta) => {
                 const result = {};
                 const data = msg.data;
-                //meta.logger.info(`Received data hvacThermostat: ${JSON.stringify(data)}`); // Логируем полученные данные
+                meta.logger.info(`Received data hvacThermostat: ${JSON.stringify(data)}`); // Логируем полученные данные
 
                 if ('localTemp' in data) {
                     result.current_temperature = data.localTemp / 100;
                 }
+
+                if ('18176' in data) { //vanes hor
+                    result.vanes_hor = data[0x4700];
+                }
+
+                if ('18177' in data) { // vanes ver
+                    result.vanes_ver = data[0x4701];
+                }
+
+                if ('18178' in data) { // air direction
+                    result.air_direction = data[0x4702];
+                }
+
+                if ('18208' in data) { // ionization
+                    result.ionization = !!data[0x4720];
+                }
+
 
                 if ('outdoorTemp' in data) {
                     result.outdoor_temperature = data.outdoorTemp / 100; // Конвертация в °C
@@ -55,12 +72,22 @@ const definition = {
             cluster: 'hvacFanCtrl',
             type: ['attributeReport', 'readResponse'],
             convert: (model, msg, publish, options, meta) => {
+                const result = {};
                 const data = msg.data;
                 meta.logger.info(`Received data hvacFanCtrl: ${JSON.stringify(data)}`); // Логируем полученные данные
-                return {
-                    fan_speed: msg.data.fanMode
+
+                if ('fanMode' in data){
+                    result.fan_speed = data.fanMode;
+                }   
+
+                if ('18176' in data) { // fanSpeed
+                    result.ok_fan_speed = data[0x4700];
                 }
 
+                if ('18177' in data) { // smartFanSpeed
+                    result.ok_smart_fan_speed = data[0x4701];
+                }
+                return result;
             },
         },
         {
@@ -114,6 +141,18 @@ const definition = {
             },
         },
         {
+            key: ['ok_fan_speed'],
+            convertSet: async (entity, key, value, meta) => {
+                if (value >= 0 && value <= 7) {
+                    await entity.write('hvacFanCtrl', { 0x4700: {value: value, type: 0x30}}, {manufacturerCode: 0x4703});
+                    return { state: { ok_fan_speed: value } };
+                } else {
+                    meta.logger.warn(`Invalid ok_fan_speed value: ${value}`);
+                    return { state: { ok_fan_speed: 'unknown' } };
+                }
+            },
+        },
+        {
             key: ['state'],
             convertSet: async (entity, key, value, meta) => {
                 const action = value.toLowerCase() === 'on' ? 'on' : 'off';
@@ -132,11 +171,59 @@ const definition = {
                     return { state: { ac_louver_position: 'unknown' } };
                 }
             },
+        },
+        {
+            key: ['vanes_hor'],
+            convertSet: async (entity, key, value, meta) => {
+                if (value >= 0 && value <= 6) {
+                    await entity.write('hvacThermostat', { 0x4700: {value: value, type: 0x30}}, {manufacturerCode: 0x4703});
+                    return { state: { vanes_hor: value } };
+                } else {
+                    meta.logger.warn(`Invalid vanes_hor value: ${value}`);
+                    return { state: { vanes_hor: 'unknown' } };
+                }
+            },
+        },
+        {
+            key: ['vanes_ver'],
+            convertSet: async (entity, key, value, meta) => {
+                if (value >= 0 && value <= 6) {
+                    await entity.write('hvacThermostat', { 0x4701: {value: value, type: 0x30}}, {manufacturerCode: 0x4703});
+                    return { state: { vanes_ver: value } };
+                } else {
+                    meta.logger.warn(`Invalid vanes_ver value: ${value}`);
+                    return { state: { vanes_ver: 'unknown' } };
+                }
+            },
+        },
+        {
+            key: ['air_direction'],
+            convertSet: async (entity, key, value, meta) => {
+                if (value >= 0 && value <= 3) {
+                    await entity.write('hvacThermostat', { 0x4702: {value: value, type: 0x30}}, {manufacturerCode: 0x4703});
+                    return { state: { air_direction: value } };
+                } else {
+                    meta.logger.warn(`Invalid acLouverPosition value: ${value}`);
+                    return { state: { air_direction: 'unknown' } };
+                }
+            },
+        },
+        {
+            key: ['ionization'],
+            convertSet: async (entity, key, value, meta) => {
+                //if (value >= 0 && value <= 3) {
+                    await entity.write('hvacThermostat', { 0x4720: {value: value, type: 0x10}}, {manufacturerCode: 0x4703});
+                    return { state: { ionization: value } };
+                //} else {
+                //    meta.logger.warn(`Invalid acLouverPosition value: ${value}`);
+                //    return { state: { ionization: 'unknown' } };
+                //}
+            },
         }
     ],
 
     exposes: [
-        e.switch().withState('state', true, 'Включение/выключение устройства'),
+        e.switch(),//.withState('state', true, 'Включение/выключение устройства'),
         e.numeric('current_temperature', ea.STATE)
         .withUnit('°C')
         .withDescription('Текущая температура'),
@@ -157,12 +244,36 @@ const definition = {
             .withValueMin(0)
             .withValueMax(4)
             .withDescription('Скорость вентилятора'),
+        e.numeric('ok_fan_speed', ea.ALL)
+            .withValueMin(0)
+            .withValueMax(7)
+            .withDescription('Скорость вентилятора'),
+        e.numeric('ok_smart_fan_speed', ea.ALL)
+            .withValueMin(0)
+            .withValueMax(7)
+            .withDescription('Скорость вентилятора'),
         e.numeric('ac_louver_position', ea.ALL)
             .withValueMin(0)
             .withValueMax(5)
             .withValueStep(1)
-            .withDescription('Положение жалюзи кондиционера (0-5)')
-            .withUnit('%'), // Позиция лопастей кондиционера
+            .withDescription('Положение жалюзи кондиционера (0-5)'),
+        e.numeric('vanes_hor', ea.ALL)
+            .withValueMin(0)
+            .withValueMax(6)
+            .withValueStep(1)
+            .withDescription('Положение горизонтальной шторки (0-6)'),
+        e.numeric('vanes_ver', ea.ALL)
+            .withValueMin(0)
+            .withValueMax(6)
+            .withValueStep(1)
+            .withDescription('Положение вертикальной шторки (0-6)'),
+        e.numeric('air_direction', ea.ALL)
+            .withValueMin(0)
+            .withValueMax(3)
+            .withValueStep(1)
+            .withDescription('Направление воздуха (0-3)'),
+       e.switch().withProperty('ionization')
+            .withDescription('Ионизация')
     ],
 
     configure: async (device, coordinatorEndpoint, logger) => {
@@ -174,7 +285,7 @@ const definition = {
         ]);
         await reporting.thermostatTemperature(endpoint);
         await reporting.onOff(endpoint);
-        await reporting.read(endpoint, 'hvacThermostat', ['acLouverPosition']);
+        //await reporting.read(endpoint, 'hvacThermostat', ['acLouverPosition']);
     },
 };
 

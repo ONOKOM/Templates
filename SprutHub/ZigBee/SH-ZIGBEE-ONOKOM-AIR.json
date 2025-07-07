@@ -3,7 +3,7 @@
   "manufacturer": "ONOKOM",
   "model": "ZIGBEE AIR",
   "manufacturerId": "ONOKOM",
-  "modelId": "(GR-1-ZB-S|GR-3-ZB-S|HR-1-ZB-S|MD-1-ZB-S|ME-1-ZB-S|TCL-1-ZB-S|TCL-3-ZB-S|HS-3-ZB-S)",
+  "modelId": "(DK-1-ZB-S|ME-1-ZB-S|HR-1-ZB-S|AUX-1-ZB-S|GR-1-ZB-S|GR-3-ZB-S|MD-1-ZB-S|MD-3-ZB-S|TCL-1-ZB-S|TCL-3-ZB-S|HS-3-ZB-S)",
   "init": [
     {
       "zcl": [

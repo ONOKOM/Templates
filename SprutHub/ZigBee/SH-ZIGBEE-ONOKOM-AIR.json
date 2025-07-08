@@ -3,7 +3,7 @@
   "manufacturer": "ONOKOM",
   "model": "ZIGBEE AIR",
   "manufacturerId": "ONOKOM",
-  "modelId": "(DK-1-ZB-S|ME-1-ZB-S|HR-1-ZB-S|AUX-1-ZB-S|GR-1-ZB-S|GR-3-ZB-S|MD-1-ZB-S|MD-3-ZB-S|TCL-1-ZB-S|TCL-3-ZB-S|HS-3-ZB-S)",
+  "modelId": "DK-1-ZB-S|ME-1-ZB-S|HR-1-ZB-S|AUX-1-ZB-S|GR-1-ZB-S|GR-3-ZB-S|MD-1-ZB-S|MD-3-ZB-S|TCL-1-ZB-S|TCL-3-ZB-S|HS-3-ZB-S",
   "init": [
     {
       "zcl": [
@@ -52,124 +52,150 @@
       ]
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "4720_Ionization",
-        "manufacturerCode": 18179
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4720_Ionization",
+          "manufacturerCode": 18179
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "4700_HorizontalVanes",
-        "manufacturerCode": 18179
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4700_HorizontalVanes",
+          "manufacturerCode": 18179
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "4701_VerticalVanes",
-        "manufacturerCode": 18179
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4701_VerticalVanes",
+          "manufacturerCode": 18179
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "4702_AirDirection",
-        "manufacturerCode": 18179
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4702_AirDirection",
+          "manufacturerCode": 18179
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0202_FanControl",
-        "attribute": "4701_SmartFanSpeed",
-        "manufacturerCode": 18179
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0202_FanControl",
+          "attribute": "4701_SmartFanSpeed",
+          "manufacturerCode": 18179
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "0000_LocalTemperature"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0000_LocalTemperature"
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "0001_OutdoorTemperature"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0001_OutdoorTemperature"
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "0011_OccupiedCoolingSetpoint"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0011_OccupiedCoolingSetpoint"
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "001E_ThermostatRunningMode"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "001E_ThermostatRunningMode"
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "001C_SystemMode"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "001C_SystemMode"
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0201_Thermostat",
-        "attribute": "0045_ACLouverPosition"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0045_ACLouverPosition"
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0202_FanControl",
-        "attribute": "0000_FanMode"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0202_FanControl",
+          "attribute": "0000_FanMode"
+        }
+      ],
       "bind": true,
       "report": true
     },
     {
-      "link": {
-        "endpoint": 1,
-        "cluster": "0006_OnOff",
-        "attribute": "0000_OnOff"
-      },
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "0000_OnOff"
+        }
+      ],
       "bind": true,
       "report": true
     }
@@ -181,30 +207,36 @@
       "characteristics": [
         {
           "type": "CurrentTemperature",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "0000_LocalTemperature"
-          }
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "0000_LocalTemperature"
+            }
+          ]
         },
         {
           "type": "TargetTemperature",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "0011_OccupiedCoolingSetpoint"
-          },
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "0011_OccupiedCoolingSetpoint"
+            }
+          ],
           "minValue": 16,
           "maxValue": 30,
           "minStep": 1
         },
         {
           "type": "CurrentHeatingCoolingState",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "001E_ThermostatRunningMode"
-          }
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "001E_ThermostatRunningMode"
+            }
+          ]
         },
         {
           "type": "TargetHeatingCoolingState",
@@ -233,18 +265,20 @@
         },
         {
           "type": "SwingMode",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4702_AirDirection",
-            "manufacturerCode": 18179,
-            "map": {
-              "0": 0,
-              "1": 1,
-              "-1": 2,
-              "-2": 3
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4702_AirDirection",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": 0,
+                "1": 1,
+                "-1": 2,
+                "-2": 3
+              }
             }
-          },
+          ],
           "validValues": "0,1,-1,-2"
         }
       ]
@@ -256,29 +290,33 @@
       "characteristics": [
         {
           "type": "RotationSpeed",
-          "link": {
-            "type": "Integer",
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4701_VerticalVanes",
-            "manufacturerCode": 18179
-          },
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
           "minValue": 0,
           "maxValue": 7
         },
         {
           "type": "SwingMode",
-          "link": {
-            "type": "Integer",
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4701_VerticalVanes",
-            "manufacturerCode": 18179,
-            "map": {
-              "0": "2;3;4;5;6;7",
-              "1": 1
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6;7",
+                "1": 1
+              }
             }
-          },
+          ],
           "validValues": "0,1"
         }
       ]
@@ -289,29 +327,33 @@
       "characteristics": [
         {
           "type": "TargetTiltAngle",
-          "link": {
-            "type": "Integer",
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4701_VerticalVanes",
-            "manufacturerCode": 18179
-          },
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
           "minValue": 0,
           "maxValue": 7
         },
         {
           "type": "SwingMode",
-          "link": {
-            "type": "Integer",
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4701_VerticalVanes",
-            "manufacturerCode": 18179,
-            "map": {
-              "0": "2;3;4;5;6;7",
-              "-2": 1
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6;7",
+                "-2": 1
+              }
             }
-          },
+          ],
           "validValues": "0,-2"
         }
       ]
@@ -323,29 +365,33 @@
       "characteristics": [
         {
           "type": "RotationSpeed",
-          "link": {
-            "type": "Integer",
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4700_HorizontalVanes",
-            "manufacturerCode": 18179
-          },
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
           "minValue": 0,
           "maxValue": 6
         },
         {
           "type": "SwingMode",
-          "link": {
-            "type": "Integer",
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4700_HorizontalVanes",
-            "manufacturerCode": 18179,
-            "map": {
-              "0": "2;3;4;5;6",
-              "1": 1
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6",
+                "1": 1
+              }
             }
-          },
+          ],
           "validValues": "0,1"
         }
       ]
@@ -356,27 +402,31 @@
       "characteristics": [
         {
           "type": "TargetTiltAngle",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4700_HorizontalVanes",
-            "manufacturerCode": 18179
-          },
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
           "minValue": 0,
           "maxValue": 6
         },
         {
           "type": "SwingMode",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4700_HorizontalVanes",
-            "manufacturerCode": 18179,
-            "map": {
-              "0": "2;3;4;5;6",
-              "-1": 1
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6",
+                "-1": 1
+              }
             }
-          },
+          ],
           "validValues": "0,-1"
         }
       ]
@@ -387,12 +437,14 @@
       "characteristics": [
         {
           "type": "On",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "4720_Ionization",
-            "manufacturerCode": 18179
-          }
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4720_Ionization",
+              "manufacturerCode": 18179
+            }
+          ]
         }
       ]
     },
@@ -402,12 +454,14 @@
       "characteristics": [
         {
           "type": "RotationSpeed",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0202_FanControl",
-            "attribute": "4700_FanSpeed",
-            "manufacturerCode": 18179
-          },
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0202_FanControl",
+              "attribute": "4700_FanSpeed",
+              "manufacturerCode": 18179
+            }
+          ],
           "minValue": 0,
           "maxValue": 5
         }
@@ -419,12 +473,14 @@
       "characteristics": [
         {
           "type": "RotationSpeed",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0202_FanControl",
-            "attribute": "4701_SmartFanSpeed",
-            "manufacturerCode": 18179
-          },
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0202_FanControl",
+              "attribute": "4701_SmartFanSpeed",
+              "manufacturerCode": 18179
+            }
+          ],
           "minValue": 0,
           "maxValue": 7
         }
@@ -436,18 +492,18 @@
       "characteristics": [
         {
           "type": "CurrentTemperature",
-          "link": {
-            "endpoint": 1,
-            "cluster": "0201_Thermostat",
-            "attribute": "0001_OutdoorTemperature",
-            "scale": 0.01
-          }
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "0001_OutdoorTemperature",
+              "scale": 0.01
+            }
+          ]
         }
       ]
     }
   ],
   "options": [
-
-
   ]
 }

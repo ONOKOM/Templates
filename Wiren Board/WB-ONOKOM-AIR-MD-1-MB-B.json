@@ -270,6 +270,8 @@
         "address": 7,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 5,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -415,7 +417,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 8,
+        "max": 1,
         "sporadic": true,
         "group": "vanes",
         "condition": "Show_vanes_as_range==1"
@@ -426,25 +428,17 @@
         "address": 9,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 1,
         "sporadic": true,
         "group": "vanes",
         "enum": [
           0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          1
         ],
         "enum_titles": [
           "Stop",
-          "Swing",
-          "Lowest",
-          "Low",
-          "Middle",
-          "High",
-          "Highest"
+          "Swing"
         ],
         "condition": "Show_vanes_as_range!=1"
       },
@@ -455,7 +449,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 6,
+        "max": 1,
         "sporadic": true,
         "group": "vanes",
         "condition": "Show_vanes_as_range==1"
@@ -466,25 +460,17 @@
         "address": 10,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 1,
         "sporadic": true,
         "group": "vanes",
         "enum": [
           0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          1
         ],
         "enum_titles": [
           "Stop",
-          "Swing",
-          "Far Left",
-          "Left",
-          "Middle",
-          "Right",
-          "Far Right"
+          "Swing"
         ],
         "condition": "Show_vanes_as_range!=1"
       },
@@ -562,7 +548,7 @@
         "min": -30,
         "max": 30,
         "sporadic": true,
-        "group": "debug",
+        "group": "temperatureControl",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {
@@ -692,15 +678,6 @@
         "Show vanes as range": "Отображать жалюзи как ползунок",
         "Horizontal vanes": "Горизонтальные жалюзи",
         "Swing": "Качание",
-        "Lowest": "Самое низкое",
-        "Low": "Низкое",
-        "Middle": "Среднее",
-        "High": "Высокое",
-        "Highest": "Самое высокое",
-        "Far Left": "Самое левое",
-        "Left": "Левое",
-        "Right": "Правое",
-        "Far Right": "Самое правое",
         "Vertical vanes": "Вертикальные жалюзи",
         "Vanes swing": "Качание жалюзи",
         "Stop": "Остановлены",

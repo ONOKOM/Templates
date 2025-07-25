@@ -291,6 +291,8 @@
         "address": 7,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 5,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -402,7 +404,7 @@
         "type": "range",
         "format": "s16",
         "min": 16,
-        "max": 32,
+        "max": 30,
         "scale": 0.01,
         "sporadic": true,
         "group": "temperatureControl",
@@ -460,6 +462,8 @@
         "address": 9,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 6,
         "sporadic": true,
         "group": "vanes",
         "enum": [
@@ -500,6 +504,8 @@
         "address": 10,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 6,
         "sporadic": true,
         "group": "vanes",
         "enum": [
@@ -627,7 +633,7 @@
         "min": -30,
         "max": 30,
         "sporadic": true,
-        "group": "debug",
+        "group": "temperatureControl",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {

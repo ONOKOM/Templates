@@ -129,6 +129,23 @@
         "order": 1
       },
       {
+        "title": "Show error switches",
+        "id": "Show_error_switches",
+        "address": 100,
+        "reg_type": "coil",
+        "default": 1,
+        "enum": [
+          0,
+          1
+        ],
+        "enum_titles": [
+          "No",
+          "Yes"
+        ],
+        "group": "errors",
+        "order": 1
+      },
+      {
         "id": "baud_rate",
         "title": "Baud rate",
         "description": "baud_rate_description",
@@ -275,6 +292,8 @@
         "address": 7,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 5,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -457,6 +476,8 @@
         "address": 9,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 6,
         "sporadic": true,
         "group": "vanes",
         "enum": [
@@ -497,6 +518,8 @@
         "address": 10,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 6,
         "sporadic": true,
         "group": "vanes",
         "enum": [
@@ -1588,6 +1611,7 @@
         "Debug": "Диагностика",
         "Temeperature correction": "Коррекция температуры",
         "AC connected": "Кондиционер подключен",
+        "Show error switches": "Показать переключатели ошибок",
         "Errors": "Ошибки",
         "Error 1": "Режим извлечения хладагента",
         "Error 2": "Ошибка датчика температуры пульта",

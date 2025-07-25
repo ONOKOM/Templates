@@ -275,6 +275,8 @@
         "address": 7,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 3,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -310,7 +312,7 @@
         "type": "value",
         "format": "u16",
         "min": 0,
-        "max": 7,
+        "max": 5,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -436,9 +438,12 @@
         "address": 9,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 8,
         "sporadic": true,
         "group": "vanes",
         "enum": [
+          0,
           1,
           2,
           3,
@@ -449,6 +454,7 @@
           8
         ],
         "enum_titles": [
+          "Stop",
           "Swing",
           "Lowest",
           "Low",
@@ -478,6 +484,8 @@
         "address": 10,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 6,
         "sporadic": true,
         "group": "vanes",
         "enum": [
@@ -604,7 +612,7 @@
         "min": -30,
         "max": 30,
         "sporadic": true,
-        "group": "debug",
+        "group": "temperatureControl",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {
@@ -779,7 +787,7 @@
         "Uptime": "Время работы с момента включения (с)",
         "MCU Temperature": "Температура МК",
         "Serial": "Серийный номер",
-        "Reboot Device": "Перегрузить устройство",
+        "Reboot Device": "Перезагрузить устройство",
         "Debug": "Диагностика",
         "Temeperature correction": "Коррекция температуры",
         "AC connected": "Кондиционер подключен"

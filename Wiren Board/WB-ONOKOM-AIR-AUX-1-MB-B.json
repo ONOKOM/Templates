@@ -275,6 +275,8 @@
         "address": 7,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 3,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -310,7 +312,7 @@
         "type": "value",
         "format": "u16",
         "min": 0,
-        "max": 7,
+        "max": 5,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -436,6 +438,8 @@
         "address": 9,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 6,
         "sporadic": true,
         "group": "vanes",
         "enum": [
@@ -476,6 +480,8 @@
         "address": 10,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 1,
         "sporadic": true,
         "group": "vanes",
         "enum": [
@@ -592,7 +598,7 @@
         "address": 32,
         "type": "range",
         "min": 0,
-        "max": 200,
+        "max": 100,
         "sporadic": true,
         "group": "debug",
         "readonly": true,

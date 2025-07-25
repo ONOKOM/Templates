@@ -242,19 +242,6 @@
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {
-        "name": "Outdoor air temperature",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 4,
-        "type": "value",
-        "format": "s16",
-        "scale": 0.01,
-        "sporadic": true,
-        "group": "temperatureControl",
-        "readonly": true,
-        "units": "deg C"
-      },
-      {
         "name": "Target temperature",
         "reg_type": "holding",
         "address": 5,
@@ -431,7 +418,6 @@
         "Cooling": "Охлаждение",
         "Temperature control": "Контроль температуры",
         "Indoor air temperature": "Температура воздуха в помещении",
-        "Outdoor air temperature": "Температура воздуха на улице",
         "Target temperature": "Целевая температура",
         "Thermostat state": "Состояние термостата",
         "1 Speed": "1 Скорость",

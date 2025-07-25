@@ -265,6 +265,8 @@
         "address": 7,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 3,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -300,7 +302,7 @@
         "type": "value",
         "format": "u16",
         "min": 0,
-        "max": 7,
+        "max": 4,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -353,7 +355,7 @@
         "type": "range",
         "format": "s16",
         "min": 16,
-        "max": 32,
+        "max": 30,
         "scale": 0.01,
         "sporadic": true,
         "group": "temperatureControl",
@@ -411,9 +413,12 @@
         "address": 9,
         "type": "value",
         "format": "u16",
+        "min": 0,
+        "max": 5,
         "sporadic": true,
         "group": "vanes",
         "enum": [
+          0,
           1,
           2,
           3,
@@ -421,11 +426,12 @@
           5
         ],
         "enum_titles": [
+          "Stop",
           "Swing",
           "Lowest",
           "Low",
-          "High",
-          "Highest"
+          "Middle",
+          "High"
         ],
         "condition": "Show_vanes_as_range!=1"
       },
@@ -472,7 +478,7 @@
         "min": -30,
         "max": 30,
         "sporadic": true,
-        "group": "debug",
+        "group": "temperatureControl",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {
@@ -604,8 +610,8 @@
         "Swing": "Качание",
         "Lowest": "Самое низкое",
         "Low": "Низкое",
+        "Middle": "Среднее",
         "High": "Высокое",
-        "Highest": "Самое высокое",
         "Vanes swing": "Качание жалюзи",
         "Stop": "Остановлены",
         "Horizontal and vertical swing": "Качание горизонтальное и вертикальное",
@@ -630,7 +636,7 @@
         "Uptime": "Время работы с момента включения (с)",
         "MCU Temperature": "Температура МК",
         "Serial": "Серийный номер",
-        "Reboot Device": "Перегрузить устройство",
+        "Reboot Device": "Перезагрузить устройство",
         "Debug": "Диагностика",
         "Temeperature correction": "Коррекция температуры",
         "AC connected": "Кондиционер подключен"

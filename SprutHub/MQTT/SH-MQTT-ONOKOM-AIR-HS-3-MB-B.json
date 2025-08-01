@@ -1,247 +1,325 @@
-[
+{
+  "name": "Кондиционер",
+  "manufacturer": "ONOKOM",
+  "model": "AIR-HS-3-MB-B",
+  "modelId": "/devices/(ONOKOM-AIR-HS-3-MB-B_[0-9]{1,3})/controls/Indoor air temperature/meta/type",
+  "catalogId": 0,
+  "services": [
     {
-        "name": "Кондиционер",
-        "manufacturer": "ONOKOM",
-        "model": "AIR-HS-3-MB-B",
-        "catalogId": -1,
-        "link": "https://onokom.ru/ustroistva.html",
-        "version" : "1.0",
-        "services": [
+      "name": "Кондиционер",
+      "type": "Thermostat",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
             {
-                "name": "Кондиционер",
-                "type": "Thermostat",
-                "characteristics": [
-                    {
-                        "type": "CurrentTemperature",
-                        "link": {
-                            "type": "Float",
-                            "topicSearch": "/devices/(ONOKOM-AIR-HS-3-MB-B_[0-9]{1,3})/controls/Indoor air temperature/meta/type",
-                            "topicGet": "/devices/(1)/controls/Indoor air temperature"
-                        }
-                    },
-                    {
-                        "type": "TargetTemperature",
-                        "link": {
-                            "type": "Float",
-                            "topicGet": "/devices/(1)/controls/Target temperature",
-                            "topicSet": "/devices/(1)/controls/Target temperature/on"
-                        },
-                        "minValue": 16,
-                        "maxValue": 32,
-                        "minStep": 1
-                    },
-                    {
-                        "type": "CurrentHeatingCoolingState",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Thermostat state"
-                        },
-                        "validValues": "0,1,2"
-                    },
-                    {
-                        "type": "TargetHeatingCoolingState",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Active mode",
-                            "topicSet": "/devices/(1)/controls/Active mode/on",
-                            "map": {
-                                "0": 0,
-                                "1": 1,
-                                "2": 2,
-                                "3": 3,
-                                "-2": 4,
-                                "-1": 5
-                            }
-                        },
-                        "validValues": "0,1,2,3, -1, -2"
-                    },
-                    {
-                        "type": "SwingMode",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Vanes swing",
-                            "topicSet": "/devices/(1)/controls/Vanes swing/on",
-                            "map": {
-                                "0": 0,
-                                "1": 1,
-                                "-1": 2,
-                                "-2": 3
-                            }
-                        },
-                        "validValues": "0,1,-1,-2"
-                    }
-                ]
-            },
-            {
-                "name": "Вентилятор",
-                "type": "Fan",
-                "characteristics": [
-                    {
-                        "type": "RotationSpeed",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Smart fan speed",
-                            "topicSet": "/devices/(1)/controls/Smart fan speed/on"
-                        },
-                        "minValue": 0,
-                        "maxValue": 6
-                    },
-                    {
-                        "type": "SwingMode",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Vanes swing",
-                            "topicSet": "/devices/(1)/controls/Vanes swing/on"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "Горизонтальные жалюзи",
-                "type": "Switch",
-                "characteristics": [
-                    {
-                        "type": "On",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Horizontal vanes",
-                            "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "Вертикальные жалюзи",
-                "type": "Switch",
-                "characteristics": [
-                    {
-                        "type": "On",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Vertical vanes",
-                            "topicSet": "/devices/(1)/controls/Vertical vanes/on"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "Подсветка экрана",
-                "type": "Switch",
-                "characteristics": [
-                    {
-                        "type": "On",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Screen light",
-                            "topicSet": "/devices/(1)/controls/Screen light/on"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "Режим Сон",
-                "type": "Switch",
-                "characteristics": [
-                    {
-                        "type": "On",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Sleep mode",
-                            "topicSet": "/devices/(1)/controls/Sleep mode/on"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "Режим Тихий",
-                "type": "Switch",
-                "characteristics": [
-                    {
-                        "type": "On",
-                        "link": {
-                            "type": "Integer",
-                            "topicGet": "/devices/(1)/controls/Quiet mode",
-                            "topicSet": "/devices/(1)/controls/Quiet mode/on"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "Режим Эко",
-                "type": "Switch",
-                "characteristics": [
-                  {
-                    "type": "On",
-                    "link": {
-                      "type": "Integer",
-                      "topicSearch": "/devices/(1)/controls/Eco mode/meta/type",
-                      "topicGet": "/devices/(1)/controls/Eco mode",
-                      "topicSet": "/devices/(1)/controls/Eco mode/on"
-                    }
-                  }
-                ]
-              },
-              {
-                "name": "Температура воздуха на улице",
-                "type":"TemperatureSensor",
-                "characteristics":[
-                   {
-                      "type":"CurrentTemperature",
-                      "link":{
-                         "type":"Float",
-                         "topicGet":"/devices/(1)/controls/Outdoor air temperature"
-                      }
-                   }
-                ]
-             },
-             {
-                "name": "Температура внутреннего теплообменника",
-                "type":"TemperatureSensor",
-                "characteristics":[
-                   {
-                      "type":"CurrentTemperature",
-                      "link":{
-                         "type":"Float",
-                         "topicGet":"/devices/(1)/controls/Indoor heat exchanger temperature"
-                      }
-                   }
-                ]
-             },
-             {
-                "name": "Температура внешнего теплообменника",
-                "type":"TemperatureSensor",
-                "characteristics":[
-                   {
-                      "type":"CurrentTemperature",
-                      "link":{
-                         "type":"Float",
-                         "topicGet":"/devices/(1)/controls/Outdoor heat exchanger temperature"
-                      }
-                   }
-                ]
-             }
-        ],
-        "options": [
-            {
-              "link": {
-                "type": "String",
-                "topicGet": "/devices/(1)/controls/FW Version"
-              },
-              "name": "Версия прошивки",
-              "input": "status",
-              "write": false,
-              "type": "String"
-            },
-            {
-                "link": {
-                    "type": "Integer",
-                    "topicGet": "/devices/(1)/controls/AC connected"
-                },
-                "name": "Кондиционер подключен",
-                "type": "Boolean",
-                "write": false,
-                "init": true
+              "type": "Double",
+              "topicGet": "/devices/(1)/controls/Indoor air temperature"
             }
-        ]
+          ]
+        },
+        {
+          "type": "CurrentHeatingCoolingState",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Thermostat state"
+            }
+          ],
+          "validValues": "0,1,2"
+        },
+        {
+          "type": "TargetTemperature",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Target temperature",
+              "topicSet": "/devices/(1)/controls/Target temperature/on"
+            }
+          ],
+          "minValue": 16,
+          "maxValue": 32,
+          "minStep": 1
+        },
+        {
+          "type": "TargetHeatingCoolingState",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Active mode",
+              "topicSet": "/devices/(1)/controls/Active mode/on",
+              "map": {
+                "0": 0,
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "-2": 4,
+                "-1": 5
+              }
+            }
+          ],
+          "validValues": "0,1,2,3,-1,-2"
+        },
+        {
+          "type": "C_FanSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Smart fan speed",
+              "topicSet": "/devices/(1)/controls/Smart fan speed/on",
+              "map": {
+                "0": 0,
+                "1": 1,
+                "2": 2,
+                "3": 4,
+                "4": 6
+              }
+            }
+          ],
+          "validValues": "0,1,2,3,4"
+        },
+        {
+          "type": "SwingMode",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Vanes swing",
+              "topicSet": "/devices/(1)/controls/Vanes swing/on",
+              "map": {
+                "0": 0,
+                "1": 1,
+                "-2": 2,
+                "-1": 3
+              }
+            }
+          ],
+          "validValues": "0,1,-2,-1"
+        }
+      ]
+    },
+    {
+      "name": "Температура с внешнего датчика",
+      "visible": false,
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "type": "Double",
+              "topicGet": "/devices/(1)/controls/Indoor air temperature",
+              "topicSet": "/devices/(1)/controls/Indoor air temperature/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Вентилятор",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Fan speed",
+              "topicSet": "/devices/(1)/controls/Fan speed/on"
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 5,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "name": "Вертикальные жалюзи",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Vertical vanes",
+              "topicSet": "/devices/(1)/controls/Vertical vanes/on"
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 4
+        }
+      ]
+    },
+    {
+      "name": "Горизонтальные жалюзи",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Horizontal vanes",
+              "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 7
+        }
+      ]
+    },
+    {
+      "name": "Подсветка экрана",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Screen light",
+              "topicSet": "/devices/(1)/controls/Screen light/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим Тихий",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Quiet mode",
+              "topicSet": "/devices/(1)/controls/Quiet mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим Сон",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Sleep mode",
+              "topicSet": "/devices/(1)/controls/Sleep mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим Эко",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Eco mode",
+              "topicSet": "/devices/(1)/controls/Eco mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Функция Ионизации",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Ionization",
+              "topicSet": "/devices/(1)/controls/Ionization/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Звуковая индикация",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Beeper",
+              "topicSet": "/devices/(1)/controls/Beeper/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Температура внутреннего теплообменника",
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "type": "Double",
+              "topicGet": "/devices/(1)/controls/Indoor heat exchanger temperature"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Температура внешнего теплообменника",
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "type": "Double",
+              "topicGet": "/devices/(1)/controls/Outdoor heat exchanger temperature"
+            }
+          ]
+        }
+      ]
     }
-]
+  ],
+  "options": [
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/FW Version"
+        }
+      ],
+      "name": "Версия прошивки",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String"
+    },
+    {
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/AC connected"
+        }
+      ],
+      "name": "Кондиционер подключен",
+      "type": "Boolean",
+      "write": false,
+      "init": true
+    }
+  ]
+}

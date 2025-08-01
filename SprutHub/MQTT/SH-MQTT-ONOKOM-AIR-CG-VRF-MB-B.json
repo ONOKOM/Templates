@@ -2,7 +2,7 @@
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
   "model": "AIR-CG-VRF-MB-B",
-  "modelId": "/devices/(ONOKOM-AIR-CG-VRF-MB-B_[0-9]{1,3})/controls/([x0-9]{1,3}) - Indoor air temperature/meta/type",
+  "modelId": "/devices/(ONOKOM-AIR-CG-VRF-MB-B_[0-9]{1,3})/controls/([0-9]{1,3}) - Indoor air temperature/meta/type",
   "catalogId": 0,
   "services": [
     {
@@ -38,7 +38,7 @@
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
+          "maxValue": 32,
           "minStep": 1
         },
         {
@@ -69,12 +69,13 @@
               "topicSet": "/devices/(1)/controls/(2) - Smart fan speed/on",
               "map": {
                 "0": 0,
-                "1": 3,
-                "2": 4
+                "2": 2,
+                "3": 3,
+                "4": 4
               }
             }
           ],
-          "validValues": "0,1,2,3"
+          "validValues": "0,2,3,4"
         },
         {
           "type": "SwingMode",
@@ -85,13 +86,11 @@
               "topicSet": "/devices/(1)/controls/(2) - Vanes swing/on",
               "map": {
                 "0": 0,
-                "1": 1,
-                "-1": 2,
-                "-2": 3
+                "-1": 1
               }
             }
           ],
-          "validValues": "0,1,-1,-2"
+          "validValues": "0,-1"
         }
       ]
     },
@@ -122,65 +121,30 @@
             {
               "type": "Integer",
               "topicGet": "/devices/(1)/controls/(2) - Fan speed",
-              "topicSet": "/devices/(1)/controls/(2) - Fan speed/on",
-              "minValue": 0,
-              "maxValue": 3,
-              "minStep": 1
+              "topicSet": "/devices/(1)/controls/(2) - Fan speed/on"
             }
           ],
           "minValue": 0,
-          "maxValue": 100,
+          "maxValue": 3,
           "unit": ""
         }
       ]
     },
     {
-      "name": "Горизонтальные жалюзи",
-      "type": "Switch",
+      "name": "Вертикальные жалюзи",
+      "type": "FanBasic",
       "characteristics": [
         {
           "type": "On",
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Horizontal vanes",
-              "topicSet": "/devices/(1)/controls/(2) - Horizontal vanes/on"
+              "topicGet": "/devices/(1)/controls/(2) - Vertical vanes",
+              "topicSet": "/devices/(1)/controls/(2) - Vertical vanes/on"
             }
           ],
-          "minValue": 1,
-          "maxValue": 8
-        }
-      ]
-    },
-    {
-      "name": "Режим Тихий",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Quiet mode",
-              "topicSet": "/devices/(1)/controls/(2) - Quiet mode/on"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Эко",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Eco mode",
-              "topicSet": "/devices/(1)/controls/(2) - Eco mode/on"
-            }
-          ]
+          "minValue": 0,
+          "maxValue": 1
         }
       ]
     },

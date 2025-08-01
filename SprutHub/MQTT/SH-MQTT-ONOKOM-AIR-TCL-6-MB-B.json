@@ -1,8 +1,8 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "AIR-MD-VRF-MB-B",
-  "modelId": "/devices/(ONOKOM-AIR-MD-VRF-MB-B_[0-9]{1,3})/controls/([0-9]{1,3}) - Indoor air temperature/meta/type",
+  "model": "AIR-TCL-6-MB-B",
+  "modelId": "/devices/(ONOKOM-AIR-TCL-6-MB-B_[0-9]{1,3})/controls/Indoor air temperature/meta/type",
   "catalogId": 0,
   "services": [
     {
@@ -14,7 +14,7 @@
           "link": [
             {
               "type": "Double",
-              "topicGet": "/devices/(1)/controls/(2) - Indoor air temperature"
+              "topicGet": "/devices/(1)/controls/Indoor air temperature"
             }
           ]
         },
@@ -23,7 +23,7 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Thermostat state"
+              "topicGet": "/devices/(1)/controls/Thermostat state"
             }
           ],
           "validValues": "0,1,2"
@@ -33,12 +33,12 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Target temperature",
-              "topicSet": "/devices/(1)/controls/(2) - Target temperature/on"
+              "topicGet": "/devices/(1)/controls/Target temperature",
+              "topicSet": "/devices/(1)/controls/Target temperature/on"
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
+          "maxValue": 31,
           "minStep": 1
         },
         {
@@ -46,8 +46,8 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Active mode",
-              "topicSet": "/devices/(1)/controls/(2) - Active mode/on",
+              "topicGet": "/devices/(1)/controls/Active mode",
+              "topicSet": "/devices/(1)/controls/Active mode/on",
               "map": {
                 "0": 0,
                 "1": 1,
@@ -65,33 +65,35 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Smart fan speed",
-              "topicSet": "/devices/(1)/controls/(2) - Smart fan speed/on",
+              "topicGet": "/devices/(1)/controls/Smart fan speed",
+              "topicSet": "/devices/(1)/controls/Smart fan speed/on",
               "map": {
                 "0": 0,
-                "1": 1,
                 "2": 2,
                 "3": 3,
-                "4": 4
+                "4": 4,
+                "5": 5
               }
             }
           ],
-          "validValues": "0,1,2,3,4"
+          "validValues": "0,2,3,4,5"
         },
         {
           "type": "SwingMode",
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Vanes swing",
-              "topicSet": "/devices/(1)/controls/(2) - Vanes swing/on",
+              "topicGet": "/devices/(1)/controls/Vanes swing",
+              "topicSet": "/devices/(1)/controls/Vanes swing/on",
               "map": {
                 "0": 0,
-                "-2": 1
+                "1": 1,
+                "-2": 2,
+                "-1": 3
               }
             }
           ],
-          "validValues": "0,-2"
+          "validValues": "0,1,-2,-1"
         }
       ]
     },
@@ -105,8 +107,8 @@
           "link": [
             {
               "type": "Double",
-              "topicGet": "/devices/(1)/controls/(2) - Indoor air temperature",
-              "topicSet": "/devices/(1)/controls/(2) - Indoor air temperature/on"
+              "topicGet": "/devices/(1)/controls/Indoor air temperature",
+              "topicSet": "/devices/(1)/controls/Indoor air temperature/on"
             }
           ]
         }
@@ -121,13 +123,31 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Fan speed",
-              "topicSet": "/devices/(1)/controls/(2) - Fan speed/on"
+              "topicGet": "/devices/(1)/controls/Fan speed",
+              "topicSet": "/devices/(1)/controls/Fan speed/on"
             }
           ],
           "minValue": 0,
           "maxValue": 3,
           "unit": ""
+        }
+      ]
+    },
+    {
+      "name": "Вертикальные жалюзи",
+      "type": "FanBasic",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Vertical vanes",
+              "topicSet": "/devices/(1)/controls/Vertical vanes/on"
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 1
         }
       ]
     },
@@ -140,17 +160,17 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Horizontal vanes",
-              "topicSet": "/devices/(1)/controls/(2) - Horizontal vanes/on"
+              "topicGet": "/devices/(1)/controls/Horizontal vanes",
+              "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
             }
           ],
-          "minValue": 1,
-          "maxValue": 8
+          "minValue": 0,
+          "maxValue": 1
         }
       ]
     },
     {
-      "name": "Режим Тихий",
+      "name": "Режим турбо",
       "type": "Switch",
       "characteristics": [
         {
@@ -158,8 +178,8 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Quiet mode",
-              "topicSet": "/devices/(1)/controls/(2) - Quiet mode/on"
+              "topicGet": "/devices/(1)/controls/Turbo mode",
+              "topicSet": "/devices/(1)/controls/Turbo mode/on"
             }
           ]
         }
@@ -174,8 +194,8 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Eco mode",
-              "topicSet": "/devices/(1)/controls/(2) - Eco mode/on"
+              "topicGet": "/devices/(1)/controls/Eco mode",
+              "topicSet": "/devices/(1)/controls/Eco mode/on"
             }
           ]
         }
@@ -190,22 +210,7 @@
           "link": [
             {
               "type": "Double",
-              "topicGet": "/devices/(1)/controls/(2) - Indoor heat exchanger temperature"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Температура внешнего теплообменника",
-      "type": "TemperatureSensor",
-      "characteristics": [
-        {
-          "type": "CurrentTemperature",
-          "link": [
-            {
-              "type": "Double",
-              "topicGet": "/devices/(1)/controls/(2) - Outdoor heat exchanger temperature"
+              "topicGet": "/devices/(1)/controls/Indoor heat exchanger temperature"
             }
           ]
         }
@@ -217,7 +222,7 @@
       "link": [
         {
           "type": "String",
-          "topicGet": "/devices/(1)/controls/(2) - FW Version"
+          "topicGet": "/devices/(1)/controls/FW Version"
         }
       ],
       "name": "Версия прошивки",
@@ -229,7 +234,7 @@
       "link": [
         {
           "type": "Integer",
-          "topicGet": "/devices/(1)/controls/(2) - AC connected"
+          "topicGet": "/devices/(1)/controls/AC connected"
         }
       ],
       "name": "Кондиционер подключен",

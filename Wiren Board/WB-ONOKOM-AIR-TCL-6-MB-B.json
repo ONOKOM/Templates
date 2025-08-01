@@ -364,7 +364,7 @@
         "scale": 0.01,
         "sporadic": true,
         "group": "temperatureControl",
-        "readonly": false,
+        "readonly": true,
         "units": "deg C",
         "condition": "Allow_the_use_of_an_external_temperature_sensor!=1"
       },
@@ -379,7 +379,6 @@
         "scale": 0.01,
         "sporadic": true,
         "group": "temperatureControl",
-        "readonly": false,
         "units": "deg C",
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },

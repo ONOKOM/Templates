@@ -1,0 +1,186 @@
+{
+    "title": "template_title",
+    "device_type": "ONOKOM TEST",
+    "group": "g-air-conditioning",
+    "device": {
+        "name": "ONOKOM TEST",
+        "id": "ONOKOM TEST",
+        "groups": [
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 8
+            }
+        ],
+        "channels": [
+            {
+                "name": "Active",
+                "reg_type": "coil",
+                "address": 1,
+                "type": "switch",
+                "format": "u16",
+                "sporadic": true,
+                "group": "debug"
+            },
+            {
+                "name": "AC connected",
+                "group": "debug",
+                "address": 20,
+                "reg_type": "coil",
+                "type": "switch",
+                "readonly": true,
+                "sporadic": true,
+                "enabled": true
+            },
+            {
+                "name": "Indication settings",
+                "group": "debug",
+                "address": 450,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    3,
+                    8,
+                    9
+                ],
+                "enum_titles": [
+                    "OFF",
+                    "GREEN",
+                    "RED"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "DE pin test",
+                "group": "debug",
+                "address": 460,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "LOW",
+                    "HIGH"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "Terminator test",
+                "group": "debug",
+                "address": 462,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "LOW",
+                    "HIGH"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "Failsafe test",
+                "group": "debug",
+                "address": 463,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "LOW",
+                    "HIGH"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "Receiver",
+                "group": "debug",
+                "address": 465,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "Enable",
+                    "Disable"
+                ],
+                "readonly": false,
+                "enabled": true
+            },
+            {
+                "name": "Button",
+                "group": "debug",
+                "address": 461,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "RELEASED",
+                    "PRESSED"
+                ],
+                "readonly": true,
+                "enabled": true
+            },
+            {
+                "name": "Brownout",
+                "group": "debug",
+                "address": 464,
+                "reg_type": "holding",
+                "format": "s16",
+                "type": "value",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "RELEASED",
+                    "PRESSED"
+                ],
+                "readonly": true,
+                "enabled": true
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "ONOKOM TEST (debug template for ONOKOM gateway)"
+            },
+            "ru": {
+                "template_title": "ONOKOM TEST (Отладочный шаблон для шлюзов ONOKOM)",
+                "Active": "Состояние",
+                "Debug": "Диагностика",
+                "AC connected": "Кондиционер подключен",
+                "Indication settings": "Настройки светодиода",
+                "OFF": "Выключен",
+                "GREEN": "Зеленый до перезагрузки",
+                "RED": "Красный до перезагрузки",
+                "DE pin test": "Проверка DE пина",
+                "LOW": "Низкий уровень",
+                "HIGH": "Высокий уровень",
+                "Button": "Кнопка",
+                "RELEASED": "Отпущена",
+                "PRESSED": "Нажата"
+            }
+        }
+    }
+}

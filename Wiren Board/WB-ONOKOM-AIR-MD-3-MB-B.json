@@ -295,7 +295,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 5,
+        "max": 4,
         "sporadic": true,
         "group": "general",
         "condition": "Show_fan_as_range==1"

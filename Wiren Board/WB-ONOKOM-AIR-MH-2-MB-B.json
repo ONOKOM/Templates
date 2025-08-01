@@ -319,8 +319,7 @@
           "1 Speed",
           "2 Speed",
           "3 Speed",
-          "4 Speed",
-          "5 Speed"
+          "4 Speed"
         ],
         "condition": "Show_fan_as_range!=1"
       },
@@ -675,7 +674,6 @@
         "2 Speed": "2 Скорость",
         "3 Speed": "3 Скорость",
         "4 Speed": "4 Скорость",
-        "5 Speed": "5 Скорость",
         "No": "Нет",
         "Yes": "Да",
         "Baud rate": "Скорость обмена",

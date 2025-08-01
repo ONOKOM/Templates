@@ -1,8 +1,8 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "GR-1-MB-B",
-  "modelId": "GR1MBB",
+  "model": "DK-1-MB-B",
+  "modelId": "DK1MBB",
   "catalogId": 0,
   "init": [
     {
@@ -59,8 +59,8 @@
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
-          "minStep": 1
+          "maxValue": 32,
+          "minStep": 0.5
         },
         {
           "type": "TargetHeatingCoolingState",
@@ -229,22 +229,6 @@
       ]
     },
     {
-      "name": "Режим Сон",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 8,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Режим турбо",
       "type": "Switch",
       "characteristics": [
@@ -277,14 +261,14 @@
       ]
     },
     {
-      "name": "Функция Ионизации",
+      "name": "Слабая яркость экрана",
       "type": "Switch",
       "characteristics": [
         {
           "type": "On",
           "link": [
             {
-              "address": 9,
+              "address": 2,
               "function": "Coil",
               "pollingTime": 1000
             }

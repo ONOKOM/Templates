@@ -1,8 +1,8 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "GR-1-MB-B",
-  "modelId": "GR1MBB",
+  "model": "TCL-1-MB-B",
+  "modelId": "TCL1MBB",
   "catalogId": 0,
   "init": [
     {
@@ -59,7 +59,7 @@
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
+          "maxValue": 31,
           "minStep": 1
         },
         {
@@ -285,6 +285,118 @@
           "link": [
             {
               "address": 9,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Функция самоочистки",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 10,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Функция антиплесени",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 11,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Мягкий поток",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 14,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Дежурный обогрев",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 13,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Звуковая индикация",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 5,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Температура внутреннего теплообменника",
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "address": 23,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Температура внешнего теплообменника",
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "address": 24,
               "function": "Coil",
               "pollingTime": 1000
             }

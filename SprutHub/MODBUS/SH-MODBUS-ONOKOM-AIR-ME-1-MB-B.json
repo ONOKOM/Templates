@@ -1,8 +1,8 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "GR-1-MB-B",
-  "modelId": "GR1MBB",
+  "model": "ME-1-MB-B",
+  "modelId": "ME1MBB",
   "catalogId": 0,
   "init": [
     {
@@ -59,8 +59,8 @@
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
-          "minStep": 1
+          "maxValue": 31,
+          "minStep": 0.5
         },
         {
           "type": "TargetHeatingCoolingState",
@@ -93,13 +93,12 @@
                 "0": 0,
                 "1": 1,
                 "2": 2,
-                "3": 4,
-                "4": 6,
-                "5": 7
+                "3": 3,
+                "4": 5
               }
             }
           ],
-          "validValues": "0,1,2,3,4,5"
+          "validValues": "0,1,2,3,4"
         },
         {
           "type": "SwingMode",
@@ -186,29 +185,13 @@
               "function": "Holding",
               "pollingTime": 1000,
               "minValue": 0,
-              "maxValue": 5,
+              "maxValue": 4,
               "minStep": 1
             }
           ],
           "minValue": 0,
           "maxValue": 100,
           "unit": ""
-        }
-      ]
-    },
-    {
-      "name": "Подсветка экрана",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 2,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
         }
       ]
     },
@@ -221,70 +204,6 @@
           "link": [
             {
               "address": 4,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Сон",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 8,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим турбо",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 7,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Эко",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 6,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Функция Ионизации",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 9,
               "function": "Coil",
               "pollingTime": 1000
             }

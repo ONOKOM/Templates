@@ -1,8 +1,8 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "GR-1-MB-B",
-  "modelId": "GR1MBB",
+  "model": "TCL-3-MB-B",
+  "modelId": "TCL3MBB",
   "catalogId": 0,
   "init": [
     {
@@ -59,8 +59,8 @@
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
-          "minStep": 1
+          "maxValue": 31,
+          "minStep": 0.5
         },
         {
           "type": "TargetHeatingCoolingState",
@@ -277,14 +277,14 @@
       ]
     },
     {
-      "name": "Функция Ионизации",
-      "type": "Switch",
+      "name": "Температура внутреннего теплообменника",
+      "type": "TemperatureSensor",
       "characteristics": [
         {
-          "type": "On",
+          "type": "CurrentTemperature",
           "link": [
             {
-              "address": 9,
+              "address": 23,
               "function": "Coil",
               "pollingTime": 1000
             }

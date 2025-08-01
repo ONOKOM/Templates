@@ -1,8 +1,8 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "GR-1-MB-B",
-  "modelId": "GR1MBB",
+  "model": "HR-1-MB-B",
+  "modelId": "HR1MBB",
   "catalogId": 0,
   "init": [
     {
@@ -59,7 +59,7 @@
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
+          "maxValue": 32,
           "minStep": 1
         },
         {
@@ -93,9 +93,9 @@
                 "0": 0,
                 "1": 1,
                 "2": 2,
-                "3": 4,
-                "4": 6,
-                "5": 7
+                "3": 3,
+                "4": 4,
+                "5": 5
               }
             }
           ],
@@ -186,7 +186,7 @@
               "function": "Holding",
               "pollingTime": 1000,
               "minValue": 0,
-              "maxValue": 5,
+              "maxValue": 3,
               "minStep": 1
             }
           ],
@@ -261,22 +261,6 @@
       ]
     },
     {
-      "name": "Режим Эко",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 6,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Функция Ионизации",
       "type": "Switch",
       "characteristics": [
@@ -285,6 +269,38 @@
           "link": [
             {
               "address": 9,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Функция самоочистки",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 10,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Звуковая индикация",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 5,
               "function": "Coil",
               "pollingTime": 1000
             }

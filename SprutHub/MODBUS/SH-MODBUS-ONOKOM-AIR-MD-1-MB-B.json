@@ -1,8 +1,8 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "GR-1-MB-B",
-  "modelId": "GR1MBB",
+  "model": "MD-1-MB-B",
+  "modelId": "MD1MBB",
   "catalogId": 0,
   "init": [
     {
@@ -60,7 +60,7 @@
           ],
           "minValue": 16,
           "maxValue": 30,
-          "minStep": 1
+          "minStep": 0.5
         },
         {
           "type": "TargetHeatingCoolingState",
@@ -197,22 +197,6 @@
       ]
     },
     {
-      "name": "Подсветка экрана",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 2,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Режим Тихий",
       "type": "Switch",
       "characteristics": [
@@ -229,22 +213,6 @@
       ]
     },
     {
-      "name": "Режим Сон",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 8,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Режим турбо",
       "type": "Switch",
       "characteristics": [
@@ -253,38 +221,6 @@
           "link": [
             {
               "address": 7,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Эко",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 6,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Функция Ионизации",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 9,
               "function": "Coil",
               "pollingTime": 1000
             }

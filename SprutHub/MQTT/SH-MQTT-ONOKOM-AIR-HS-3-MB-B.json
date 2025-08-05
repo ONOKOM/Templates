@@ -2,7 +2,7 @@
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
   "model": "AIR-HS-3-MB-B",
-  "modelId": "/devices/(ONOKOM-AIR-HS-3-MB-B_[0-9]{1,3})/controls/Indoor air temperature/meta/type",
+  "modelId": "/devices/(ONOKOM-AIR-HS-3-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type",
   "catalogId": 0,
   "services": [
     {
@@ -72,11 +72,12 @@
                 "1": 1,
                 "2": 2,
                 "3": 4,
-                "4": 6
+                "4": 6,
+                "5": 7
               }
             }
           ],
-          "validValues": "0,1,2,3,4"
+          "validValues": "0,1,2,3,4,5"
         },
         {
           "type": "SwingMode",
@@ -212,6 +213,22 @@
               "type": "Integer",
               "topicGet": "/devices/(1)/controls/Sleep mode",
               "topicSet": "/devices/(1)/controls/Sleep mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим турбо",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Turbo mode",
+              "topicSet": "/devices/(1)/controls/Turbo mode/on"
             }
           ]
         }

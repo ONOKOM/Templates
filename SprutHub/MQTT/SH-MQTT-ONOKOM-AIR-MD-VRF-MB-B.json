@@ -2,7 +2,7 @@
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
   "model": "AIR-MD-VRF-MB-B",
-  "modelId": "/devices/(ONOKOM-AIR-MD-VRF-MB-B_[0-9]{1,3})/controls/([0-9]{1,3}) - Indoor air temperature/meta/type",
+  "modelId": "/devices/(ONOKOM-AIR-MD-VRF-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/([0-9]{1,3}) - Indoor air temperature/meta/type",
   "catalogId": 0,
   "services": [
     {

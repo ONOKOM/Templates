@@ -331,7 +331,7 @@
         "type": "range",
         "format": "u16",
         "min": 0,
-        "max": 6,
+        "max": 7,
         "sporadic": true,
         "group": "general",
         "condition": "Show_fan_as_range==1"
@@ -343,7 +343,7 @@
         "type": "value",
         "format": "u16",
         "min": 0,
-        "max": 6,
+        "max": 7,
         "sporadic": true,
         "group": "general",
         "enum": [
@@ -353,7 +353,8 @@
           3,
           4,
           5,
-          6
+          6,
+          7
         ],
         "enum_titles": [
           "Auto",
@@ -362,7 +363,8 @@
           "2 Speed",
           "3 Speed",
           "4 Speed",
-          "5 Speed"
+          "5 Speed",
+          "Turbo mode"
         ],
         "condition": "Show_fan_as_range!=1"
       },
@@ -636,6 +638,15 @@
         "group": "additional"
       },
       {
+        "name": "Turbo mode",
+        "enabled": false,
+        "reg_type": "coil",
+        "address": 7,
+        "type": "switch",
+        "sporadic": true,
+        "group": "additional"
+      },
+      {
         "name": "Sleep mode",
         "enabled": false,
         "reg_type": "coil",
@@ -895,6 +906,7 @@
         "5 Speed": "5 Скорость",
         "Quiet mode": "Режим тихий",
         "Eco mode": "Режим эко",
+        "Turbo mode": "Режим турбо",
         "Sleep mode": "Режим сна",
         "Ionization": "Ионизация",
         "Indication": "Индикация",

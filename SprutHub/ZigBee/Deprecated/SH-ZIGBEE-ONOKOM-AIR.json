@@ -1,0 +1,509 @@
+{
+  "name": "ONOKOM AIR",
+  "manufacturer": "ONOKOM",
+  "model": "ZIGBEE AIR",
+  "manufacturerId": "ONOKOM",
+  "modelId": "DK-1-ZB-S|ME-1-ZB-S|HR-1-ZB-S|AUX-1-ZB-S|GR-1-ZB-S|GR-3-ZB-S|MD-1-ZB-S|MD-3-ZB-S|TCL-1-ZB-S|TCL-3-ZB-S|HS-3-ZB-S",
+  "init": [
+    {
+      "zcl": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4720_Ionization",
+          "zclDataType": "BOOLEAN",
+          "manufacturerCode": 18179
+        },
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4700_HorizontalVanes",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4701_VerticalVanes",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4702_AirDirection",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
+        {
+          "endpoint": 1,
+          "cluster": "0202_FanControl",
+          "attribute": "4701_SmartFanSpeed",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
+        {
+          "endpoint": 1,
+          "cluster": "0202_FanControl",
+          "attribute": "4700_FanSpeed",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        }
+      ]
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4720_Ionization",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4700_HorizontalVanes",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4701_VerticalVanes",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4702_AirDirection",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0202_FanControl",
+          "attribute": "4701_SmartFanSpeed",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0000_LocalTemperature"
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0001_OutdoorTemperature"
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0011_OccupiedCoolingSetpoint"
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "001E_ThermostatRunningMode"
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "001C_SystemMode"
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "0045_ACLouverPosition"
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0202_FanControl",
+          "attribute": "0000_FanMode"
+        }
+      ],
+      "bind": true,
+      "report": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "0000_OnOff"
+        }
+      ],
+      "bind": true,
+      "report": true
+    }
+  ],
+  "services": [
+    {
+      "name": "Кондиционер",
+      "type": "Thermostat",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "0000_LocalTemperature"
+            }
+          ]
+        },
+        {
+          "type": "TargetTemperature",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "0011_OccupiedCoolingSetpoint"
+            }
+          ],
+          "minValue": 16,
+          "maxValue": 30,
+          "minStep": 1
+        },
+        {
+          "type": "CurrentHeatingCoolingState",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "001E_ThermostatRunningMode"
+            }
+          ]
+        },
+        {
+          "type": "TargetHeatingCoolingState",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "001C_SystemMode"
+            },
+            {
+              "endpoint": 1,
+              "cluster": "0006_OnOff",
+              "attribute": "0000_OnOff",
+              "map": {
+                "LAST_VALUE": "true",
+                "OFF": "false",
+                "COOL": "true",
+                "HEAT": "true",
+                "AUTO": "true",
+                "FAN_ONLY": "true",
+                "DRY": "true"
+              }
+            }
+          ],
+          "validValues": "DRY,FAN_ONLY,HEAT,COOL,AUTO,OFF"
+        },
+        {
+          "type": "SwingMode",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4702_AirDirection",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": 0,
+                "1": 1,
+                "-1": 2,
+                "-2": 3
+              }
+            }
+          ],
+          "validValues": "0,1,-1,-2"
+        }
+      ]
+    },
+    {
+      "name": "Вертикальные жалюзи1",
+      "type": "Fan",
+      "visible": false,
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 7
+        },
+        {
+          "type": "SwingMode",
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6;7",
+                "1": 1
+              }
+            }
+          ],
+          "validValues": "0,1"
+        }
+      ]
+    },
+    {
+      "name": "Вертикальные жалюзи1",
+      "type": "C_TiltAngle",
+      "characteristics": [
+        {
+          "type": "TargetTiltAngle",
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 7
+        },
+        {
+          "type": "SwingMode",
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4701_VerticalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6;7",
+                "-2": 1
+              }
+            }
+          ],
+          "validValues": "0,-2"
+        }
+      ]
+    },
+    {
+      "name": "Горизональные жалюзи1",
+      "type": "Fan",
+      "visible": false,
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 6
+        },
+        {
+          "type": "SwingMode",
+          "link": [
+            {
+              "type": "Integer",
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6",
+                "1": 1
+              }
+            }
+          ],
+          "validValues": "0,1"
+        }
+      ]
+    },
+    {
+      "name": "Горизональные жалюзи1",
+      "type": "C_TiltAngle",
+      "characteristics": [
+        {
+          "type": "TargetTiltAngle",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 6
+        },
+        {
+          "type": "SwingMode",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4700_HorizontalVanes",
+              "manufacturerCode": 18179,
+              "map": {
+                "0": "2;3;4;5;6",
+                "-1": 1
+              }
+            }
+          ],
+          "validValues": "0,-1"
+        }
+      ]
+    },
+    {
+      "name": "Режим Ионизации",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "4720_Ionization",
+              "manufacturerCode": 18179
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Вентилятор",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0202_FanControl",
+              "attribute": "4700_FanSpeed",
+              "manufacturerCode": 18179
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 5
+        }
+      ]
+    },
+    {
+      "name": "Скорость Вентилятора расширенная",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0202_FanControl",
+              "attribute": "4701_SmartFanSpeed",
+              "manufacturerCode": 18179
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 7
+        }
+      ]
+    },
+    {
+      "name": "Внешняя температура",
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0201_Thermostat",
+              "attribute": "0001_OutdoorTemperature",
+              "scale": 0.01
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": [
+  ]
+}

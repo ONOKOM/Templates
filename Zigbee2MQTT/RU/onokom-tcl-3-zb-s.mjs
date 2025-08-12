@@ -5,12 +5,13 @@ import * as reporting from 'zigbee-herdsman-converters/lib/reporting';
 
 const manufacturerCode = 0x4703;
  export default {
-    zigbeeModel: [`GR-1-ZB-S`],
-    model: `GR-1-ZB-S`,
-    vendor: 'ONOKOM',
-    description: 'ONOKOM AIR GR-1-MB-B (Адаптер для бытовых систем GREE)',
-    ota: true,
-    extend: [m.enumLookup({
+        zigbeeModel: ["TCL-3-ZB-S"],
+        model: "TCL-3-ZB-S",
+        vendor: "ONOKOM",
+        description: "ONOKOM AIR TCL-3-MB-B (Адаптер для полупромышленных систем TCL)",
+        ota: true,
+        extend: [
+            m.enumLookup({
             name: "AC connected",
             cluster: "hvacThermostat",
             attribute: {ID: 0x4734, type: Zcl.DataType.ENUM8},
@@ -28,7 +29,7 @@ const manufacturerCode = 0x4703;
             description: "Включение/выключение устройства",
         }),
         m.numeric({
-            name: "current_temperature",
+            name: "Current temperature",
             cluster: "hvacThermostat",
             attribute: "localTemp",
             scale: 100,
@@ -37,18 +38,18 @@ const manufacturerCode = 0x4703;
             access: "STATE",
         }),
         m.numeric({
-            name: "target_temperature",
+            name: "Target temperature",
             cluster: "hvacThermostat",
             attribute: "occupiedCoolingSetpoint",
             valueMin: 16,
-            valueMax: 30,
-            valueStep: 1,
+            valueMax: 31,
+            valueStep: 0.5,
             scale: 100,
             unit: "°C",
             description: "Целевая температура",
         }),
         m.enumLookup({
-            name: "system_mode",
+            name: "System mode",
             cluster: "hvacThermostat",
             attribute: "systemMode",
             lookup: {
@@ -61,17 +62,9 @@ const manufacturerCode = 0x4703;
             },
             description: "Режим работы системы",
         }),
-            m.numeric({
-            name: "outdoor_temperature",
-            cluster: "hvacThermostat",
-            attribute: "outdoorTemp",
-            scale: 100,
-            unit: "°C",
-            description: "Температура на улице",
-            access: "STATE",
-        }),
+        
         m.numeric({
-            name: "fan_speed",
+            name: "ZB Fan speed",
             cluster: "hvacFanCtrl",
             attribute: "fanMode",
             valueMin: 1,
@@ -80,27 +73,27 @@ const manufacturerCode = 0x4703;
             description: "Стандартная скорость вентилятора: Авто(5), Минимальная(1), Средняя(2), Максимальная(3)",
         }),
         m.numeric({
-            name: "vanes_ver",
+            name: "Vertical vanes",
             cluster: "hvacThermostat",
             attribute: {ID: 0x4701, type: Zcl.DataType.ENUM8},
             valueMin: 0,
-            valueMax: 6,
+            valueMax: 1,
             valueStep: 1,
-            description: "Положение вертикальных шторок: Остановлены(0), Качание(1), Максимально влево(2), Максимально вправо(6)",
+            description: "Положение вертикальных шторок: Остановлены(0), Качание(1)",
             zigbeeCommandOptions: {manufacturerCode},
             }),
         m.numeric({
-            name: "vanes_hor",
+            name: "Horizontal vanes",
             cluster: "hvacThermostat",
             attribute: {ID: 0x4700, type: Zcl.DataType.ENUM8},
-            valueMin: 0,
-            valueMax: 6,
+            valueMin: 1,
+            valueMax: 8,
             valueStep: 1,
-            description: "Положение горизонтальных шторок: Остановлены(0), Качание(1), Самый низ(2), Самый верх(6)",
+            description: "Положение горизонтальных шторок: Остановлены(0), Качание(1), Самый низ(2), Самый верх(8)",
             zigbeeCommandOptions: {manufacturerCode},
             }),
         m.numeric({
-            name: "ok_fan_speed",
+            name: "Fan speed",
             cluster: "hvacFanCtrl",
             attribute: {ID: 0x4700, type: Zcl.DataType.ENUM8},
             valueMin: 0,
@@ -110,7 +103,7 @@ const manufacturerCode = 0x4703;
             zigbeeCommandOptions: {manufacturerCode},
             }),
         m.numeric({
-            name: "ok_smart_fan_speed",
+            name: "Smart fan speed",
             cluster: "hvacFanCtrl",
             attribute: {ID: 0x4701, type: Zcl.DataType.ENUM8},
             valueMin: 0,
@@ -120,7 +113,7 @@ const manufacturerCode = 0x4703;
             zigbeeCommandOptions: {manufacturerCode},
             }),
         m.numeric({
-            name: "air_direction",
+            name: "Vanes swing",
             cluster: "hvacThermostat",
             attribute: {ID: 0x4702, type: Zcl.DataType.ENUM8},
             valueMin: 0,
@@ -129,7 +122,7 @@ const manufacturerCode = 0x4703;
             description: "Качание шторок: Остановлены все(0), Качание всех(1), Качание горизонтальных(2), Качание вертикальных(3)",
             zigbeeCommandOptions: {manufacturerCode},
         }),m.binary({
-            name: "quiet mode",
+            name: "Quiet mode",
             cluster: "hvacFanCtrl",
             attribute: {ID: 0x4710, type: Zcl.DataType.BOOLEAN},
             valueOn: ["ON", 1],
@@ -137,7 +130,7 @@ const manufacturerCode = 0x4703;
             description: "Режим тихий",
             zigbeeCommandOptions: {manufacturerCode},
         }),m.binary({
-            name: "eco mode",
+            name: "Eco mode",
             cluster: "hvacThermostat",
             attribute: {ID: 0x4727, type: Zcl.DataType.BOOLEAN},
             valueOn: ["ON", 1],
@@ -145,7 +138,7 @@ const manufacturerCode = 0x4703;
             description: "Режим эко",
             zigbeeCommandOptions: {manufacturerCode},
         }),m.binary({
-            name: "turbo mode",
+            name: "Turbo mode",
             cluster: "hvacFanCtrl",
             attribute: {ID: 0x4711, type: Zcl.DataType.BOOLEAN},
             valueOn: ["ON", 1],
@@ -153,7 +146,7 @@ const manufacturerCode = 0x4703;
             description: "Режим турбо",
             zigbeeCommandOptions: {manufacturerCode},
         }),m.binary({
-            name: "sleep mode",
+            name: "Sleep mode",
             cluster: "hvacThermostat",
             attribute: {ID: 0x4728, type: Zcl.DataType.BOOLEAN},
             valueOn: ["ON", 1],
@@ -161,31 +154,16 @@ const manufacturerCode = 0x4703;
             description: "Режим сна",
             zigbeeCommandOptions: {manufacturerCode},
         }),m.binary({
-            name: "ionization",
-            cluster: "hvacThermostat",
-            attribute: {ID: 0x4720, type: Zcl.DataType.BOOLEAN},
-            valueOn: ["ON", 1],
-            valueOff: ["OFF", 0],
-            description: "Ионизация",
-            zigbeeCommandOptions: {manufacturerCode},
-        }),m.binary({
-            name: "screen light",
+            name: "Screen light",
             cluster: "hvacThermostat",
             attribute: {ID: 0x4731, type: Zcl.DataType.BOOLEAN},
             valueOn: ["ON", 1],
             valueOff: ["OFF", 0],
             description: "Подсветка экрана",
             zigbeeCommandOptions: {manufacturerCode},
-        }),m.binary({
-            name: "disable screen when power off",
-            cluster: "hvacThermostat",
-            attribute: {ID: 0x4732, type: Zcl.DataType.BOOLEAN},
-            valueOn: ["ON", 1],
-            valueOff: ["OFF", 0],
-            description: "Отключать экран при отключении питания",
-            zigbeeCommandOptions: {manufacturerCode},
-        }),],
-    fromZigbee: [
+        }),
+        ],
+        fromZigbee: [
         {
             cluster: 'hvacThermostat',
             type: ['attributeReport', 'readResponse'],
@@ -207,14 +185,10 @@ const manufacturerCode = 0x4703;
                 meta.logger.info(`Received data genOnOff: ${JSON.stringify(msg)}`); // Логируем полученные данные
             },
         },],
-    configure: async (device, coordinatorEndpoint, logger) => {
-    const endpoint = device.getEndpoint(1);
-    await reporting.bind(endpoint, coordinatorEndpoint, [
-        'hvacThermostat',
-        'hvacFanCtrl',
-        'genOnOff',
-    ]);
-    await reporting.thermostatTemperature(endpoint);
-    await reporting.onOff(endpoint);
+        configure: async (device, coordinatorEndpoint, logger) => {
+        const endpoint = device.getEndpoint(1);
+        await reporting.bind(endpoint, coordinatorEndpoint, ['hvacThermostat', 'hvacFanCtrl', 'genOnOff']);
+        await reporting.thermostatTemperature(endpoint);
+        await reporting.onOff(endpoint);
     },
 };

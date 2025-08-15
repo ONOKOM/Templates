@@ -69,14 +69,13 @@
               "topicSet": "/devices/(1)/controls/(2) - Smart fan speed/on",
               "map": {
                 "0": 0,
-                "1": 1,
                 "2": 2,
                 "3": 3,
                 "4": 4
               }
             }
           ],
-          "validValues": "0,1,2,3,4"
+          "validValues": "0,2,3,4"
         },
         {
           "type": "SwingMode",
@@ -146,38 +145,6 @@
           ],
           "minValue": 1,
           "maxValue": 8
-        }
-      ]
-    },
-    {
-      "name": "Режим Тихий",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Quiet mode",
-              "topicSet": "/devices/(1)/controls/(2) - Quiet mode/on"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Эко",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/(2) - Eco mode",
-              "topicSet": "/devices/(1)/controls/(2) - Eco mode/on"
-            }
-          ]
         }
       ]
     },

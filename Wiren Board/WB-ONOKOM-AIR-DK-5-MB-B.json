@@ -357,6 +357,19 @@
         "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
       },
       {
+        "name": "Remote controller temperature",
+        "enabled": false,
+        "reg_type": "holding",
+        "address": 25,
+        "type": "value",
+        "format": "s16",
+        "scale": 0.01,
+        "sporadic": true,
+        "group": "temperatureControl",
+        "readonly": false,
+        "units": "deg C"
+      },
+      {
         "name": "Target temperature",
         "reg_type": "holding",
         "address": 5,
@@ -658,6 +671,7 @@
         "Temperature control": "Контроль температуры",
         "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
         "Indoor air temperature": "Температура воздуха в помещении",
+        "Remote controller temperature": "Температура главного пульта",
         "Target temperature": "Целевая температура",
         "Show thermostat state as range": "Отображать состояние термостата как ползунок",
         "Thermostat state": "Состояние термостата",

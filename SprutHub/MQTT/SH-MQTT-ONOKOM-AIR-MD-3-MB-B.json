@@ -143,8 +143,8 @@
               "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
             }
           ],
-          "minValue": 1,
-          "maxValue": 8
+          "minValue": 0,
+          "maxValue": 1
         }
       ]
     },

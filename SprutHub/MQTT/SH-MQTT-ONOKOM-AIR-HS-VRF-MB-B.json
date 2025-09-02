@@ -38,7 +38,7 @@
             }
           ],
           "minValue": 16,
-          "maxValue": 30,
+          "maxValue": 32,
           "minStep": 1
         },
         {

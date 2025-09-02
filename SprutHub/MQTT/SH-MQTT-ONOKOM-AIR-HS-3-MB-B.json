@@ -171,6 +171,38 @@
       ]
     },
     {
+      "name": "Smart eye",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Smart eye",
+              "topicSet": "/devices/(1)/controls/Smart eye/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Smart sleep mode",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Smart sleep mode",
+              "topicSet": "/devices/(1)/controls/Smart sleep mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Подсветка экрана",
       "type": "Switch",
       "characteristics": [

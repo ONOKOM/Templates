@@ -3,7 +3,7 @@
   "manufacturer": "ONOKOM",
   "model": "AIR-ME-1-MB-B",
   "modelId": "/devices/(ONOKOM-AIR-ME-1-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type",
-  "catalogId": 0,
+  "catalogId": 4905,
   "services": [
     {
       "name": "Кондиционер",

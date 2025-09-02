@@ -3,7 +3,7 @@
   "manufacturer": "ONOKOM",
   "model": "AIR-HS-6-MB-B",
   "modelId": "/devices/(ONOKOM-AIR-HS-6-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type",
-  "catalogId": 0,
+  "catalogId": 4904,
   "services": [
     {
       "name": "Кондиционер",

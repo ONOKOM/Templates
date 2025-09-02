@@ -86,7 +86,7 @@
               "topicSet": "/devices/(1)/controls/(2) - Vanes swing/on",
               "map": {
                 "0": 0,
-                "-1": 1
+                "-1": 2
               }
             }
           ],

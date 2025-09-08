@@ -49,16 +49,16 @@
               "topicGet": "/devices/(1)/controls/Active mode",
               "topicSet": "/devices/(1)/controls/Active mode/on",
               "map": {
-                "0": 0,
-                "1": 1,
-                "2": 2,
-                "3": 3,
-                "-2": 4,
-                "-1": 5
+                "OFF": 0,
+                "HEAT": 1,
+                "COOL": 2,
+                "AUTO": 3,
+                "DRY": 4,
+                "FAN_ONLY": 5
               }
             }
           ],
-          "validValues": "0,1,2,3,-1,-2"
+          "validValues": "OFF,HEAT,COOL,AUTO,DRY,FAN_ONLY"
         },
         {
           "type": "C_FanSpeed",
@@ -68,15 +68,15 @@
               "topicGet": "/devices/(1)/controls/Smart fan speed",
               "topicSet": "/devices/(1)/controls/Smart fan speed/on",
               "map": {
-                "0": 0,
-                "2": 2,
-                "3": 3,
-                "4": 4,
-                "5": 5
+                "AUTO": 0,
+                "LOW": 2,
+                "MEDIUM": 3,
+                "HIGH": 4,
+                "TURBO": 5
               }
             }
           ],
-          "validValues": "0,2,3,4,5"
+          "validValues": "AUTO,LOW,MEDIUM,HIGH,TURBO"
         },
         {
           "type": "SwingMode",
@@ -86,14 +86,14 @@
               "topicGet": "/devices/(1)/controls/Vanes swing",
               "topicSet": "/devices/(1)/controls/Vanes swing/on",
               "map": {
-                "0": 0,
-                "1": 1,
-                "-1": 2,
-                "-2": 3
+                "SWING_DISABLED": 0,
+                "SWING_ENABLED": 1,
+                "SWING_VERTICAL": 2,
+                "SWING_HORIZONTAL": 3
               }
             }
           ],
-          "validValues": "0,1,-2,-1"
+          "validValues": "SWING_DISABLED,SWING_ENABLED,SWING_HORIZONTAL,SWING_VERTICAL"
         }
       ]
     },

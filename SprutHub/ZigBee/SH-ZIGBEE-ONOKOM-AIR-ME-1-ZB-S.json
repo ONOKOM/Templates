@@ -2,11 +2,23 @@
   "name": "ONOKOM AIR",
   "manufacturer": "ONOKOM",
   "model": "ME-1-ZB-S",
-  "manufacturerId": "ONOKOM",
-  "modelId": "ME-1-ZB-S",
+  "manufacturerIds": [
+    "ONOKOM"
+  ],
+  "modelIds": [
+    "ME-1-ZB-S"
+  ],
+  "catalogId": 5660,
   "init": [
     {
       "zcl": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4703_Mode",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
         {
           "endpoint": 1,
           "cluster": "0202_FanControl",
@@ -51,12 +63,32 @@
         },
         {
           "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "4700_StatusLed",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
+        {
+          "endpoint": 1,
           "cluster": "0201_Thermostat",
           "attribute": "4734_AcConnected",
           "manufacturerCode": 18179,
           "zclDataType": "ENUMERATION_8_BIT"
         }
       ]
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4703_Mode",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true,
+      "optional": true
     },
     {
       "link": [
@@ -129,6 +161,19 @@
           "endpoint": 1,
           "cluster": "0202_FanControl",
           "attribute": "4710_QuietMode",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true,
+      "optional": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "4700_StatusLed",
           "manufacturerCode": 18179
         }
       ],
@@ -196,18 +241,6 @@
       "bind": true,
       "report": true,
       "optional": true
-    },
-    {
-      "link": [
-        {
-          "endpoint": 1,
-          "cluster": "0006_OnOff",
-          "attribute": "0000_OnOff"
-        }
-      ],
-      "bind": true,
-      "report": true,
-      "optional": true
     }
   ],
   "services": [
@@ -255,20 +288,6 @@
               "endpoint": 1,
               "cluster": "0201_Thermostat",
               "attribute": "001C_SystemMode"
-            },
-            {
-              "endpoint": 1,
-              "cluster": "0006_OnOff",
-              "attribute": "0000_OnOff",
-              "map": {
-                "LAST_VALUE": "true",
-                "OFF": "false",
-                "COOL": "true",
-                "HEAT": "true",
-                "AUTO": "true",
-                "FAN_ONLY": "true",
-                "DRY": "true"
-              }
             }
           ],
           "validValues": "DRY,FAN_ONLY,HEAT,COOL,AUTO,OFF"
@@ -282,14 +301,14 @@
               "attribute": "4702_AirDirection",
               "manufacturerCode": 18179,
               "map": {
-                "0": 0,
-                "1": 1,
-                "-2": 2,
-                "-1": 3
+                "SWING_DISABLED": 0,
+                "SWING_ENABLED": 1,
+                "SWING_VERTICAL": 2,
+                "SWING_HORIZONTAL": 3
               }
             }
           ],
-          "validValues": "0,1,-2,-1"
+          "validValues": "SWING_DISABLED,SWING_ENABLED,SWING_HORIZONTAL,SWING_VERTICAL"
         },
         {
           "type": "C_FanSpeed",
@@ -300,15 +319,15 @@
               "attribute": "4701_SmartFanSpeed",
               "manufacturerCode": 18179,
               "map": {
-                "0": 0,
-                "1": 1,
-                "2": 2,
-                "3": 3,
-                "4": 5
+                "AUTO": 0,
+                "QUIET": 1,
+                "LOW": 2,
+                "MEDIUM": 3,
+                "HIGH": 5
               }
             }
           ],
-          "validValues": "0,1,2,3,4"
+          "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH"
         }
       ]
     },
@@ -420,6 +439,65 @@
         {
           "name": "Кондиционер подключен",
           "value": 3
+        }
+      ]
+    },
+    {
+      "name": "Версия прошивки (SW Build ID)",
+      "type": "String",
+      "write": false,
+      "value": "{{ attributes['0000_Basic/4000_SWBuildID'] }}",
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0000_Basic",
+          "attribute": "4000_SWBuildID"
+        }
+      ]
+    },
+    {
+      "name": "Аппаратная версия",
+      "type": "String",
+      "write": false,
+      "value": "{{ attributes['0000_Basic/0003_HWVersion'] }})",
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0000_Basic",
+          "attribute": "0003_HWVersion"
+        }
+      ]
+    },
+    {
+      "name": "Индикатор состояния",
+      "type": "Integer",
+      "write": true,
+      "value": 0,
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "4700_StatusLed",
+          "manufacturerCode": 18179,
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 2
+          }
+        }
+      ],
+      "values": [
+        {
+          "name": "Обычный режим",
+          "value": 0
+        },
+        {
+          "name": "Отключен если нет ошибок",
+          "value": 1
+        },
+        {
+          "name": "Отключен до перезагрузки",
+          "value": 2
         }
       ]
     }

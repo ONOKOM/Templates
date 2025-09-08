@@ -2,11 +2,23 @@
   "name": "ONOKOM AIR",
   "manufacturer": "ONOKOM",
   "model": "MD-3-ZB-S",
-  "manufacturerId": "ONOKOM",
-  "modelId": "MD-3-ZB-S",
+  "manufacturerIds": [
+    "ONOKOM"
+  ],
+  "modelIds": [
+    "MD-3-ZB-S"
+  ],
+  "catalogId": 5659,
   "init": [
     {
       "zcl": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4703_Mode",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
         {
           "endpoint": 1,
           "cluster": "0202_FanControl",
@@ -44,6 +56,13 @@
         },
         {
           "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "4700_StatusLed",
+          "manufacturerCode": 18179,
+          "zclDataType": "ENUMERATION_8_BIT"
+        },
+        {
+          "endpoint": 1,
           "cluster": "0201_Thermostat",
           "attribute": "4740_IndoorHeatExchangerTemperature",
           "manufacturerCode": 18179,
@@ -64,6 +83,19 @@
           "zclDataType": "ENUMERATION_8_BIT"
         }
       ]
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4703_Mode",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true,
+      "optional": true
     },
     {
       "link": [
@@ -123,6 +155,19 @@
           "endpoint": 1,
           "cluster": "0201_Thermostat",
           "attribute": "4727_EcoMode",
+          "manufacturerCode": 18179
+        }
+      ],
+      "bind": true,
+      "report": true,
+      "optional": true
+    },
+    {
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "4700_StatusLed",
           "manufacturerCode": 18179
         }
       ],
@@ -216,18 +261,6 @@
       "bind": true,
       "report": true,
       "optional": true
-    },
-    {
-      "link": [
-        {
-          "endpoint": 1,
-          "cluster": "0006_OnOff",
-          "attribute": "0000_OnOff"
-        }
-      ],
-      "bind": true,
-      "report": true,
-      "optional": true
     }
   ],
   "services": [
@@ -275,20 +308,6 @@
               "endpoint": 1,
               "cluster": "0201_Thermostat",
               "attribute": "001C_SystemMode"
-            },
-            {
-              "endpoint": 1,
-              "cluster": "0006_OnOff",
-              "attribute": "0000_OnOff",
-              "map": {
-                "LAST_VALUE": "true",
-                "OFF": "false",
-                "COOL": "true",
-                "HEAT": "true",
-                "AUTO": "true",
-                "FAN_ONLY": "true",
-                "DRY": "true"
-              }
             }
           ],
           "validValues": "DRY,FAN_ONLY,HEAT,COOL,AUTO,OFF"
@@ -302,12 +321,12 @@
               "attribute": "4702_AirDirection",
               "manufacturerCode": 18179,
               "map": {
-                "0": 0,
-                "-2": 1
+                "SWING_DISABLED": 0,
+                "SWING_VERTICAL": 2
               }
             }
           ],
-          "validValues": "0,-2"
+          "validValues": "SWING_DISABLED,SWING_VERTICAL"
         },
         {
           "type": "C_FanSpeed",
@@ -318,14 +337,14 @@
               "attribute": "4701_SmartFanSpeed",
               "manufacturerCode": 18179,
               "map": {
-                "0": 0,
-                "2": 2,
-                "3": 3,
-                "4": 4
+                "AUTO": 0,
+                "LOW": 2,
+                "MEDIUM": 3,
+                "HIGH": 4
               }
             }
           ],
-          "validValues": "0,2,3,4"
+          "validValues": "AUTO,LOW,MEDIUM,HIGH"
         }
       ]
     },
@@ -344,8 +363,8 @@
               "manufacturerCode": 18179
             }
           ],
-          "minValue": 1,
-          "maxValue": 8
+          "minValue": 0,
+          "maxValue": 1
         }
       ]
     },
@@ -417,6 +436,95 @@
         {
           "name": "Кондиционер подключен",
           "value": 3
+        }
+      ]
+    },
+    {
+      "name": "Версия прошивки (SW Build ID)",
+      "type": "String",
+      "write": false,
+      "value": "{{ attributes['0000_Basic/4000_SWBuildID'] }}",
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0000_Basic",
+          "attribute": "4000_SWBuildID"
+        }
+      ]
+    },
+    {
+      "name": "Аппаратная версия",
+      "type": "String",
+      "write": false,
+      "value": "{{ attributes['0000_Basic/0003_HWVersion'] }})",
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0000_Basic",
+          "attribute": "0003_HWVersion"
+        }
+      ]
+    },
+    {
+      "name": "Индикатор состояния",
+      "type": "Integer",
+      "write": true,
+      "value": 0,
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0006_OnOff",
+          "attribute": "4700_StatusLed",
+          "manufacturerCode": 18179,
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 2
+          }
+        }
+      ],
+      "values": [
+        {
+          "name": "Обычный режим",
+          "value": 0
+        },
+        {
+          "name": "Отключен если нет ошибок",
+          "value": 1
+        },
+        {
+          "name": "Отключен до перезагрузки",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "Температура внутреннего теплообменника",
+      "type": "Double",
+      "unit": " °C",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4740_IndoorHeatExchangerTemperature",
+          "manufacturerCode": 18179
+        }
+      ]
+    },
+    {
+      "name": "Температура внешнего теплообменника",
+      "type": "Double",
+      "unit": " °C",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "endpoint": 1,
+          "cluster": "0201_Thermostat",
+          "attribute": "4741_OutdoorHeatExchangerTemperature",
+          "manufacturerCode": 18179
         }
       ]
     }

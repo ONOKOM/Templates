@@ -70,16 +70,16 @@
               "function": "Holding",
               "pollingTime": 1000,
               "map": {
-                "0": 0,
-                "1": 1,
-                "2": 2,
-                "3": 3,
-                "-2": 4,
-                "-1": 5
+                "OFF": 0,
+                "HEAT": 1,
+                "COOL": 2,
+                "AUTO": 3,
+                "DRY": 4,
+                "FAN_ONLY": 5
               }
             }
           ],
-          "validValues": "0,1,2,3,-1,-2"
+          "validValues": "OFF,HEAT,COOL,AUTO,DRY,FAN_ONLY"
         },
         {
           "type": "C_FanSpeed",
@@ -90,14 +90,14 @@
               "function": "Holding",
               "pollingTime": 1000,
               "map": {
-                "0": 0,
-                "2": 2,
-                "3": 3,
-                "4": 4
+                "AUTO": 0,
+                "LOW": 2,
+                "MEDIUM": 3,
+                "HIGH": 4
               }
             }
           ],
-          "validValues": "0,2,3,4"
+          "validValues": "AUTO,LOW,MEDIUM,HIGH"
         }
       ]
     },

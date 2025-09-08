@@ -70,16 +70,16 @@
               "function": "Holding",
               "pollingTime": 1000,
               "map": {
-                "0": 0,
-                "1": 1,
-                "2": 2,
-                "3": 3,
-                "-2": 4,
-                "-1": 5
+                "OFF": 0,
+                "HEAT": 1,
+                "COOL": 2,
+                "AUTO": 3,
+                "DRY": 4,
+                "FAN_ONLY": 5
               }
             }
           ],
-          "validValues": "0,1,2,3,-1,-2"
+          "validValues": "OFF,HEAT,COOL,AUTO,DRY,FAN_ONLY"
         },
         {
           "type": "C_FanSpeed",
@@ -90,15 +90,16 @@
               "function": "Holding",
               "pollingTime": 1000,
               "map": {
-                "0": 0,
-                "1": 1,
-                "2": 2,
-                "3": 4,
-                "4": 6
+                "AUTO": 0,
+                "QUIET": 1,
+                "LOW": 2,
+                "MEDIUM": 4,
+                "HIGH": 6,
+                "TURBO": 7
               }
             }
           ],
-          "validValues": "0,1,2,3,4"
+          "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH,TURBO"
         },
         {
           "type": "SwingMode",
@@ -108,23 +109,23 @@
               "function": "Holding",
               "pollingTime": 1000,
               "map": {
-                "0": 0,
-                "1": 1,
-                "-2": 2,
-                "-1": 3
+                "SWING_DISABLED": 0,
+                "SWING_ENABLED": 1,
+                "SWING_VERTICAL": 2,
+                "SWING_HORIZONTAL": 3
               }
             }
           ],
-          "validValues": "0,1,-2,-1"
+          "validValues": "SWING_DISABLED,SWING_ENABLED,SWING_HORIZONTAL,SWING_VERTICAL"
         }
       ]
     },
     {
       "name": "Вертикальные жалюзи",
-      "type": "Switch",
+      "type": "Fan",
       "characteristics": [
         {
-          "type": "On",
+          "type": "RotationSpeed",
           "link": [
             {
               "address": 10,
@@ -133,16 +134,16 @@
             }
           ],
           "minValue": 0,
-          "maxValue": 1
+          "maxValue": 4
         }
       ]
     },
     {
       "name": "Горизонтальные жалюзи",
-      "type": "Switch",
+      "type": "Fan",
       "characteristics": [
         {
-          "type": "On",
+          "type": "RotationSpeed",
           "link": [
             {
               "address": 9,
@@ -151,7 +152,7 @@
             }
           ],
           "minValue": 0,
-          "maxValue": 1
+          "maxValue": 7
         }
       ]
     },
@@ -244,6 +245,22 @@
       ]
     },
     {
+      "name": "Режим турбо",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 7,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Режим Эко",
       "type": "Switch",
       "characteristics": [
@@ -288,6 +305,64 @@
               "pollingTime": 1000
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Умный глаз",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "name": "Умный глаз",
+          "type": "RotationSpeed",
+          "description": "0\tОтключен\n1\tПоток на человека\n2\tПоток от человека\n",
+          "link": [
+            {
+              "type": "Integer",
+              "address": 12,
+              "function": "Holding",
+              "map": {
+                "0": 0,
+                "1": 1,
+                "2": 2
+              },
+              "minValue": 0,
+              "maxValue": 2
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 2,
+          "minStep": 1
+        }
+      ]
+    },
+    {
+      "name": "Умный сон",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "name": "Умный сон",
+          "type": "RotationSpeed",
+          "description": "0\tОтключен\n1\tОбычный\n2\tДля пожилых\n3\tДля молодых\n4\tДля детей\n",
+          "link": [
+            {
+              "type": "Integer",
+              "address": 13,
+              "function": "Holding",
+              "map": {
+                "0": 0,
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "4": 4
+              },
+              "minValue": 0,
+              "maxValue": 4
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 4,
+          "minStep": 1
         }
       ]
     },

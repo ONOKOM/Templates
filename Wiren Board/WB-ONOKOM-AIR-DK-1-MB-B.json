@@ -554,6 +554,24 @@
         "group": "additional"
       },
       {
+        "name": "Ionization",
+        "enabled": false,
+        "reg_type": "coil",
+        "address": 9,
+        "type": "switch",
+        "sporadic": true,
+        "group": "additional"
+      },
+      {
+        "name": "Outdoor quiet mode",
+        "enabled": false,
+        "reg_type": "coil",
+        "address": 16,
+        "type": "switch",
+        "sporadic": true,
+        "group": "additional"
+      },
+      {
         "name": "Screen light",
         "reg_type": "coil",
         "address": 2,
@@ -752,6 +770,8 @@
         "Quiet mode": "Режим тихий",
         "Eco mode": "Режим эко",
         "Turbo mode": "Режим турбо",
+        "Ionization": "Ионизация",
+        "Outdoor quiet mode": "Тихий режим наружного блока",
         "Indication": "Индикация",
         "Screen light": "Подсветка экрана",
         "Screen low bright": "Ослабить яркость экрана",

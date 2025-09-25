@@ -1,0 +1,423 @@
+{
+  "name": "Кондиционер",
+  "manufacturer": "ONOKOM",
+  "model": "GR-5-MB-B",
+  "modelId": "GR5MBB",
+  "catalogId": 0,
+  "init": [
+    {
+      "modelId": {
+        "type": "String",
+        "address": 200,
+        "function": "Holding",
+        "length": 20
+      }
+    },
+    {
+      "modelId": {
+        "type": "String",
+        "address": 250,
+        "function": "Holding",
+        "length": 16
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "Кондиционер",
+      "type": "Thermostat",
+      "characteristics": [
+        {
+          "name": "Температура воздуха в помещении",
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "address": 3,
+              "function": "Holding",
+              "scale": 0.01,
+              "pollingTime": 1000
+            }
+          ]
+        },
+        {
+          "name": "Состояние термостата",
+          "type": "CurrentHeatingCoolingState",
+          "link": [
+            {
+              "address": 6,
+              "function": "Holding",
+              "pollingTime": 1000
+            }
+          ],
+          "validValues": "0,1,2"
+        },
+        {
+          "name": "Целевая температура",
+          "type": "TargetTemperature",
+          "link": [
+            {
+              "address": 5,
+              "function": "Holding",
+              "scale": 0.01,
+              "minStep": 1,
+              "pollingTime": 1000
+            }
+          ],
+          "minValue": 16,
+          "maxValue": 30,
+          "minStep": 1
+        },
+        {
+          "name": "Состояние и режим",
+          "type": "TargetHeatingCoolingState",
+          "link": [
+            {
+              "address": 2,
+              "function": "Holding",
+              "pollingTime": 1000,
+              "map": {
+                "OFF": 0,
+                "HEAT": 1,
+                "COOL": 2,
+                "AUTO": 3,
+                "DRY": 4,
+                "FAN_ONLY": 5
+              }
+            }
+          ],
+          "validValues": "OFF,HEAT,COOL,AUTO,DRY,FAN_ONLY"
+        },
+        {
+          "name": "Скорость вентилятора расширенная",
+          "type": "C_FanSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "address": 8,
+              "function": "Holding",
+              "pollingTime": 1000,
+              "map": {
+                "AUTO": 0,
+                "QUIET": 1,
+                "LOW": 2,
+                "MEDIUM": 4,
+                "HIGH": 6,
+                "TURBO": 7
+              }
+            }
+          ],
+          "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH,TURBO"
+        },
+        {
+          "name": "Качание жалюзи",
+          "type": "SwingMode",
+          "link": [
+            {
+              "address": 11,
+              "function": "Holding",
+              "pollingTime": 1000,
+              "map": {
+                "SWING_DISABLED": 0,
+                "SWING_VERTICAL": 2
+              }
+            }
+          ],
+          "validValues": "SWING_DISABLED,SWING_VERTICAL"
+        }
+      ]
+    },
+    {
+      "name": "Температура воздуха на улице",
+      "visible": true,
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "address": 4,
+              "function": "Holding",
+              "scale": 0.01,
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Скорость вентилятора",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "address": 7,
+              "function": "Holding",
+              "pollingTime": 1000,
+              "minValue": 0,
+              "maxValue": 5,
+              "minStep": 1
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 100,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "name": "Горизонтальные жалюзи",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "address": 9,
+              "function": "Holding",
+              "pollingTime": 1000
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 6
+        }
+      ]
+    },
+    {
+      "name": "Режим тихий",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 4,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим эко",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 6,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим турбо",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 7,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим сна",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 8,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ионизация",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 9,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Подсветка экрана",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 2,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "name": "Modbus-адрес устройства",
+      "type": "Integer",
+      "value": 1,
+      "minValue": 1,
+      "maxValue": 252,
+      "link": [
+        {
+          "type": "Integer",
+          "address": 128,
+          "function": "Holding"
+        }
+      ]
+    },
+    {
+      "name": "Скорость порта ModBus",
+      "type": "Integer",
+      "value": 9600,
+      "link": [
+        {
+          "type": "Integer",
+          "address": 110,
+          "function": "Holding"
+        }
+      ],
+      "values": [
+        {
+          "value": 96,
+          "name": "9600"
+        },
+        {
+          "value": 192,
+          "name": "19200"
+        },
+        {
+          "value": 384,
+          "name": "38400"
+        },
+        {
+          "value": 576,
+          "name": "576000"
+        },
+        {
+          "value": 1152,
+          "name": "115200"
+        }
+      ]
+    },
+    {
+      "name": "Версия устройства",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String",
+      "link": [
+        {
+          "type": "String",
+          "address": 200,
+          "function": "Holding",
+          "length": 20
+        }
+      ]
+    },
+    {
+      "name": "Версия прошивки",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String",
+      "link": [
+        {
+          "type": "String",
+          "address": 250,
+          "function": "Holding",
+          "length": 16
+        }
+      ]
+    },
+    {
+      "name": "Кондиционер подключен",
+      "type": "Boolean",
+      "write": false,
+      "init": true,
+      "link": [
+        {
+          "type": "Integer",
+          "address": 20,
+          "function": "Coil",
+          "pollingTime": 1000
+        }
+      ]
+    },
+    {
+      "name": "Индикатор состояния",
+      "type": "Integer",
+      "write": true,
+      "value": 0,
+      "link": [
+        {
+          "address": 450,
+          "function": "Holding",
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "8": 8,
+            "9": 9
+          },
+          "pollingTime": 1000
+        }
+      ],
+      "values": [
+        {
+          "name": "Обычный режим",
+          "value": 0
+        },
+        {
+          "name": "Отключен если нет ошибок",
+          "value": 1
+        },
+        {
+          "name": "Отключен до перезагрузки",
+          "value": 2
+        },
+        {
+          "name": "Всегда отключен",
+          "value": 3
+        },
+        {
+          "name": "Зеленый до перезагрузки",
+          "value": 8
+        },
+        {
+          "name": "Красный до перезагрузки",
+          "value": 9
+        }
+      ]
+    }
+  ]
+}

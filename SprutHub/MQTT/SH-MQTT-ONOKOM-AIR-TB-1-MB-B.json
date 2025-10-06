@@ -1,0 +1,291 @@
+{
+  "name": "Кондиционер",
+  "manufacturer": "ONOKOM",
+  "model": "AIR-TB-1-MB-B",
+  "modelIds": [
+    "/devices/(ONOKOM-AIR-TB-1-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type"
+  ],
+  "catalogId": 0,
+  "services": [
+    {
+      "name": "Кондиционер",
+      "type": "Thermostat",
+      "characteristics": [
+        {
+          "name": "Состояние термостата",
+          "type": "CurrentHeatingCoolingState",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Thermostat state"
+            }
+          ],
+          "validValues": "0,1,2"
+        },
+        {
+          "name": "Целевая температура",
+          "type": "TargetTemperature",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Target temperature",
+              "topicSet": "/devices/(1)/controls/Target temperature/on"
+            }
+          ],
+          "minValue": 17,
+          "maxValue": 30,
+          "minStep": 1
+        },
+        {
+          "name": "Состояние и режим",
+          "type": "TargetHeatingCoolingState",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Active mode",
+              "topicSet": "/devices/(1)/controls/Active mode/on",
+              "map": {
+                "OFF": 0,
+                "HEAT": 1,
+                "COOL": 2,
+                "AUTO": 3,
+                "DRY": 4,
+                "FAN_ONLY": 5
+              }
+            }
+          ],
+          "validValues": "OFF,HEAT,COOL,AUTO,DRY,FAN_ONLY"
+        },
+        {
+          "name": "Скорость вентилятора расширенная",
+          "type": "C_FanSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Smart fan speed",
+              "topicSet": "/devices/(1)/controls/Smart fan speed/on",
+              "map": {
+                "AUTO": 0,
+                "QUIET": 1,
+                "LOW": 2,
+                "MEDIUM": 5,
+                "HIGH": 8
+              }
+            }
+          ],
+          "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH"
+        },
+        {
+          "name": "Качание жалюзи",
+          "type": "SwingMode",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Vanes swing",
+              "topicSet": "/devices/(1)/controls/Vanes swing/on",
+              "map": {
+                "SWING_DISABLED": 0,
+                "SWING_ENABLED": 1,
+                "SWING_VERTICAL": 2,
+                "SWING_HORIZONTAL": 3
+              }
+            }
+          ],
+          "validValues": "SWING_DISABLED,SWING_ENABLED,SWING_HORIZONTAL,SWING_VERTICAL"
+        }
+      ]
+    },
+    {
+      "name": "Температура воздуха на улице",
+      "visible": false,
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "type": "Double",
+              "topicGet": "/devices/(1)/controls/Outdoor air temperature"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Скорость вентилятора",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Fan speed",
+              "topicSet": "/devices/(1)/controls/Fan speed/on"
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 6,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "name": "Горизонтальные жалюзи",
+      "type": "FanBasic",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Horizontal vanes",
+              "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 1
+        }
+      ]
+    },
+    {
+      "name": "Вертикальные жалюзи",
+      "type": "FanBasic",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Vertical vanes",
+              "topicSet": "/devices/(1)/controls/Vertical vanes/on"
+            }
+          ],
+          "minValue": 0,
+          "maxValue": 1
+        }
+      ]
+    },
+    {
+      "name": "Режим тихий",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Quiet mode",
+              "topicSet": "/devices/(1)/controls/Quiet mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим эко",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Eco mode",
+              "topicSet": "/devices/(1)/controls/Eco mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим сна",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Sleep mode",
+              "topicSet": "/devices/(1)/controls/Sleep mode/on"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "name": "Версия прошивки",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String",
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "/devices/(1)/controls/FW Version"
+        }
+      ]
+    },
+    {
+      "name": "Кондиционер подключен",
+      "type": "Boolean",
+      "write": false,
+      "init": true,
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/AC connected"
+        }
+      ]
+    },
+    {
+      "name": "Индикатор состояния",
+      "type": "Integer",
+      "write": true,
+      "value": 0,
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/Status LED",
+          "topicSet": "/devices/(1)/controls/Status LED/on",
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "8": 8,
+            "9": 9
+          }
+        }
+      ],
+      "values": [
+        {
+          "name": "Обычный режим",
+          "value": 0
+        },
+        {
+          "name": "Отключен если нет ошибок",
+          "value": 1
+        },
+        {
+          "name": "Отключен до перезагрузки",
+          "value": 2
+        },
+        {
+          "name": "Всегда отключен",
+          "value": 3
+        },
+        {
+          "name": "Зеленый до перезагрузки",
+          "value": 8
+        },
+        {
+          "name": "Красный до перезагрузки",
+          "value": 9
+        }
+      ]
+    }
+  ]
+}

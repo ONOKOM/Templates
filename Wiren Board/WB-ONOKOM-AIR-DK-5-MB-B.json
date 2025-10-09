@@ -37,11 +37,6 @@
         "order": 7
       },
       {
-        "title": "Errors",
-        "id": "errors",
-        "order": 8
-      },
-      {
         "title": "Debug",
         "id": "debug",
         "order": 9
@@ -486,9 +481,9 @@
         ],
         "enum_titles": [
           "Stop",
-          "Horizontal and vertical swing",
-          "Swinging horizontal blinds",
-          "Swinging vertical blinds"
+          "Horizontal and vertical vanes swing",
+          "Horizontal vanes swing",
+          "Vertical vanes swing"
         ],
         "condition": "Show_vanes_as_range!=1"
       },
@@ -636,14 +631,6 @@
           "EMULATE_M_WRC",
           "EMULATE_S_WRC"
         ]
-      },
-      {
-        "name": "Error code",
-        "reg_type": "input",
-        "address": 1,
-        "type": "value",
-        "group": "errors",
-        "readonly": true
       }
     ],
     "translations": {
@@ -686,9 +673,9 @@
         "Highest": "Самое высокое",
         "Vanes swing": "Качание жалюзи",
         "Stop": "Остановлены",
-        "Horizontal and vertical swing": "Качание горизонтальное и вертикальное",
-        "Swinging horizontal blinds": "Качание горизонтальных жалюзи",
-        "Swinging vertical blinds": "Качание вертикальных жалюзи",
+        "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
+        "Horizontal vanes swing": "Качание горизонтальных жалюзи",
+        "Vertical vanes swing": "Качание вертикальных жалюзи",
         "Show fan as range": "Отображать вентилятор как ползунок",
         "1 Speed": "1 Скорость",
         "2 Speed": "2 Скорость",
@@ -717,9 +704,7 @@
         "Indoor unit model": "Внутренний блок",
         "Debug": "Диагностика",
         "Temeperature correction": "Коррекция температуры",
-        "AC connected": "Кондиционер подключен",
-        "Errors": "Ошибки",
-        "Error code": "Код ошибки"
+        "AC connected": "Кондиционер подключен"
       }
     }
   }

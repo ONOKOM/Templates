@@ -1,11 +1,27 @@
 {
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
-  "model": "AIR-TB-1-MB-B",
-  "modelIds": [
-    "/devices/(ONOKOM-AIR-TB-1-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type"
-  ],
+  "model": "TB-1-MB-B",
+  "modelId": "TB1MBB",
   "catalogId": 0,
+  "init": [
+    {
+      "modelId": {
+        "type": "String",
+        "address": 200,
+        "function": "Holding",
+        "length": 20
+      }
+    },
+    {
+      "modelId": {
+        "type": "String",
+        "address": 250,
+        "function": "Holding",
+        "length": 16
+      }
+    }
+  ],
   "services": [
     {
       "name": "Кондиционер",
@@ -16,8 +32,10 @@
           "type": "CurrentTemperature",
           "link": [
             {
-              "type": "Double",
-              "topicGet": "/devices/(1)/controls/Indoor air temperature"
+              "address": 3,
+              "function": "Holding",
+              "scale": 0.01,
+              "pollingTime": 1000
             }
           ]
         },
@@ -26,8 +44,9 @@
           "type": "CurrentHeatingCoolingState",
           "link": [
             {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Thermostat state"
+              "address": 6,
+              "function": "Holding",
+              "pollingTime": 1000
             }
           ],
           "validValues": "0,1,2"
@@ -37,9 +56,11 @@
           "type": "TargetTemperature",
           "link": [
             {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Target temperature",
-              "topicSet": "/devices/(1)/controls/Target temperature/on"
+              "address": 5,
+              "function": "Holding",
+              "scale": 0.01,
+              "minStep": 1,
+              "pollingTime": 1000
             }
           ],
           "minValue": 17,
@@ -51,9 +72,9 @@
           "type": "TargetHeatingCoolingState",
           "link": [
             {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Active mode",
-              "topicSet": "/devices/(1)/controls/Active mode/on",
+              "address": 2,
+              "function": "Holding",
+              "pollingTime": 1000,
               "map": {
                 "OFF": 0,
                 "HEAT": 1,
@@ -72,8 +93,9 @@
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Smart fan speed",
-              "topicSet": "/devices/(1)/controls/Smart fan speed/on",
+              "address": 8,
+              "function": "Holding",
+              "pollingTime": 1000,
               "map": {
                 "AUTO": 0,
                 "QUIET": 1,
@@ -89,15 +111,17 @@
     },
     {
       "name": "Температура воздуха на улице",
-      "visible": false,
+      "visible": true,
       "type": "TemperatureSensor",
       "characteristics": [
         {
           "type": "CurrentTemperature",
           "link": [
             {
-              "type": "Double",
-              "topicGet": "/devices/(1)/controls/Outdoor air temperature"
+              "address": 4,
+              "function": "Holding",
+              "scale": 0.01,
+              "pollingTime": 1000
             }
           ]
         }
@@ -111,13 +135,16 @@
           "type": "RotationSpeed",
           "link": [
             {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Fan speed",
-              "topicSet": "/devices/(1)/controls/Fan speed/on"
+              "address": 7,
+              "function": "Holding",
+              "pollingTime": 1000,
+              "minValue": 0,
+              "maxValue": 6,
+              "minStep": 1
             }
           ],
           "minValue": 0,
-          "maxValue": 6,
+          "maxValue": 100,
           "unit": ""
         }
       ]
@@ -130,9 +157,9 @@
           "type": "On",
           "link": [
             {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Horizontal vanes",
-              "topicSet": "/devices/(1)/controls/Horizontal vanes/on"
+              "address": 9,
+              "function": "Holding",
+              "pollingTime": 1000
             }
           ],
           "minValue": 0,
@@ -148,9 +175,9 @@
           "type": "On",
           "link": [
             {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Quiet mode",
-              "topicSet": "/devices/(1)/controls/Quiet mode/on"
+              "address": 4,
+              "function": "Coil",
+              "pollingTime": 1000
             }
           ]
         }
@@ -164,9 +191,9 @@
           "type": "On",
           "link": [
             {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Eco mode",
-              "topicSet": "/devices/(1)/controls/Eco mode/on"
+              "address": 6,
+              "function": "Coil",
+              "pollingTime": 1000
             }
           ]
         }
@@ -175,6 +202,68 @@
   ],
   "options": [
     {
+      "name": "Modbus-адрес устройства",
+      "type": "Integer",
+      "value": 1,
+      "minValue": 1,
+      "maxValue": 252,
+      "link": [
+        {
+          "type": "Integer",
+          "address": 128,
+          "function": "Holding"
+        }
+      ]
+    },
+    {
+      "name": "Скорость порта ModBus",
+      "type": "Integer",
+      "value": 9600,
+      "link": [
+        {
+          "type": "Integer",
+          "address": 110,
+          "function": "Holding"
+        }
+      ],
+      "values": [
+        {
+          "value": 96,
+          "name": "9600"
+        },
+        {
+          "value": 192,
+          "name": "19200"
+        },
+        {
+          "value": 384,
+          "name": "38400"
+        },
+        {
+          "value": 576,
+          "name": "576000"
+        },
+        {
+          "value": 1152,
+          "name": "115200"
+        }
+      ]
+    },
+    {
+      "name": "Версия устройства",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String",
+      "link": [
+        {
+          "type": "String",
+          "address": 200,
+          "function": "Holding",
+          "length": 20
+        }
+      ]
+    },
+    {
       "name": "Версия прошивки",
       "inputType": "STATUS",
       "write": false,
@@ -182,7 +271,9 @@
       "link": [
         {
           "type": "String",
-          "topicGet": "/devices/(1)/controls/FW Version"
+          "address": 250,
+          "function": "Holding",
+          "length": 16
         }
       ]
     },
@@ -194,7 +285,9 @@
       "link": [
         {
           "type": "Integer",
-          "topicGet": "/devices/(1)/controls/AC connected"
+          "address": 20,
+          "function": "Coil",
+          "pollingTime": 1000
         }
       ]
     }

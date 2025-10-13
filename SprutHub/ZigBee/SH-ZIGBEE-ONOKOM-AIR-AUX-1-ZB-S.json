@@ -449,6 +449,7 @@
       "type": "Thermostat",
       "characteristics": [
         {
+          "name": "Температура воздуха в помещении",
           "type": "CurrentTemperature",
           "link": [
             {
@@ -459,6 +460,7 @@
           ]
         },
         {
+          "name": "Целевая температура",
           "type": "TargetTemperature",
           "link": [
             {
@@ -482,6 +484,7 @@
           ]
         },
         {
+          "name": "Состояние и режим",
           "type": "TargetHeatingCoolingState",
           "link": [
             {
@@ -493,6 +496,7 @@
           "validValues": "DRY,FAN_ONLY,HEAT,COOL,AUTO,OFF"
         },
         {
+          "name": "Качание жалюзи",
           "type": "SwingMode",
           "link": [
             {
@@ -511,6 +515,7 @@
           "validValues": "SWING_DISABLED,SWING_ENABLED,SWING_HORIZONTAL,SWING_VERTICAL"
         },
         {
+          "name": "Скорость вентилятора расширенная",
           "type": "C_FanSpeed",
           "link": [
             {

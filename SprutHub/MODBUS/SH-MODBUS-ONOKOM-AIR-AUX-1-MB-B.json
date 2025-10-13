@@ -3,7 +3,7 @@
   "manufacturer": "ONOKOM",
   "model": "AUX-1-MB-B",
   "modelId": "AUX1MBB",
-  "catalogId": 0,
+  "catalogId": 4900,
   "init": [
     {
       "modelId": {
@@ -11,8 +11,10 @@
         "address": 200,
         "function": "Holding",
         "length": 20
-      },
-      "firmware": {
+      }
+    },
+    {
+      "modelId": {
         "type": "String",
         "address": 250,
         "function": "Holding",
@@ -26,6 +28,7 @@
       "type": "Thermostat",
       "characteristics": [
         {
+          "name": "Температура воздуха в помещении",
           "type": "CurrentTemperature",
           "link": [
             {
@@ -37,6 +40,7 @@
           ]
         },
         {
+          "name": "Состояние термостата",
           "type": "CurrentHeatingCoolingState",
           "link": [
             {
@@ -48,6 +52,7 @@
           "validValues": "0,1,2"
         },
         {
+          "name": "Целевая температура",
           "type": "TargetTemperature",
           "link": [
             {
@@ -63,6 +68,7 @@
           "minStep": 0.5
         },
         {
+          "name": "Состояние и режим",
           "type": "TargetHeatingCoolingState",
           "link": [
             {
@@ -82,6 +88,7 @@
           "validValues": "OFF,HEAT,COOL,AUTO,DRY,FAN_ONLY"
         },
         {
+          "name": "Скорость вентилятора расширенная",
           "type": "C_FanSpeed",
           "link": [
             {
@@ -102,6 +109,7 @@
           "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH,TURBO"
         },
         {
+          "name": "Качание жалюзи",
           "type": "SwingMode",
           "link": [
             {
@@ -121,20 +129,42 @@
       ]
     },
     {
-      "name": "Вертикальные жалюзи",
-      "type": "FanBasic",
+      "name": "Температура воздуха на улице",
+      "visible": true,
+      "type": "TemperatureSensor",
       "characteristics": [
         {
-          "type": "On",
+          "type": "CurrentTemperature",
           "link": [
             {
-              "address": 10,
+              "address": 4,
               "function": "Holding",
+              "scale": 0.01,
               "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Скорость вентилятора",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "address": 7,
+              "function": "Holding",
+              "pollingTime": 1000,
+              "minValue": 0,
+              "maxValue": 3,
+              "minStep": 1
             }
           ],
           "minValue": 0,
-          "maxValue": 1
+          "maxValue": 100,
+          "unit": ""
         }
       ]
     },
@@ -157,63 +187,25 @@
       ]
     },
     {
-      "name": "Температура с внешнего датчика",
-      "visible": true,
-      "type": "TemperatureSensor",
+      "name": "Вертикальные жалюзи",
+      "type": "FanBasic",
       "characteristics": [
         {
-          "type": "CurrentTemperature",
+          "type": "On",
           "link": [
             {
-              "address": 4,
+              "address": 10,
               "function": "Holding",
-              "scale": 0.01,
               "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Вентилятор",
-      "type": "Fan",
-      "characteristics": [
-        {
-          "type": "RotationSpeed",
-          "link": [
-            {
-              "address": 7,
-              "function": "Holding",
-              "pollingTime": 1000,
-              "minValue": 0,
-              "maxValue": 3,
-              "minStep": 1
             }
           ],
           "minValue": 0,
-          "maxValue": 100,
-          "unit": ""
+          "maxValue": 1
         }
       ]
     },
     {
-      "name": "Подсветка экрана",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 2,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Тихий",
+      "name": "Режим тихий",
       "type": "Switch",
       "characteristics": [
         {
@@ -221,22 +213,6 @@
           "link": [
             {
               "address": 4,
-              "function": "Coil",
-              "pollingTime": 1000
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Сон",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "address": 8,
               "function": "Coil",
               "pollingTime": 1000
             }
@@ -261,7 +237,23 @@
       ]
     },
     {
-      "name": "Функция Ионизации",
+      "name": "Режим сна",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "address": 8,
+              "function": "Coil",
+              "pollingTime": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ионизация",
       "type": "Switch",
       "characteristics": [
         {
@@ -277,7 +269,7 @@
       ]
     },
     {
-      "name": "Функция самоочистки",
+      "name": "Самоочистка",
       "type": "Switch",
       "characteristics": [
         {
@@ -293,7 +285,7 @@
       ]
     },
     {
-      "name": "Функция антиплесени",
+      "name": "Защита от плесени",
       "type": "Switch",
       "characteristics": [
         {
@@ -309,14 +301,14 @@
       ]
     },
     {
-      "name": "Температура внутреннего теплообменника",
-      "type": "TemperatureSensor",
+      "name": "Подсветка экрана",
+      "type": "Switch",
       "characteristics": [
         {
-          "type": "CurrentTemperature",
+          "type": "On",
           "link": [
             {
-              "address": 23,
+              "address": 2,
               "function": "Coil",
               "pollingTime": 1000
             }
@@ -327,20 +319,23 @@
   ],
   "options": [
     {
+      "name": "Modbus-адрес устройства",
+      "type": "Integer",
+      "value": 1,
+      "minValue": 1,
+      "maxValue": 252,
       "link": [
         {
           "type": "Integer",
           "address": 128,
           "function": "Holding"
         }
-      ],
-      "name": "Modbus-адрес устройства",
-      "type": "Integer",
-      "value": 1,
-      "minValue": 1,
-      "maxValue": 252
+      ]
     },
     {
+      "name": "Скорость порта ModBus",
+      "type": "Integer",
+      "value": 9600,
       "link": [
         {
           "type": "Integer",
@@ -348,9 +343,6 @@
           "function": "Holding"
         }
       ],
-      "name": "Скорость порта ModBus",
-      "type": "Integer",
-      "value": 9600,
       "values": [
         {
           "value": 96,
@@ -375,6 +367,67 @@
       ]
     },
     {
+      "name": "Температура внутреннего теплообменника",
+      "type": "Integer",
+      "unit": " °C",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "address": 23,
+          "function": "Holding",
+          "pollingTime": 1000,
+          "scale": 0.01
+        }
+      ]
+    },
+    {
+      "name": "Ограничение мощности компрессора",
+      "type": "Integer",
+      "unit": " kW",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "address": 19,
+          "function": "Holding",
+          "pollingTime": 1000
+        }
+      ]
+    },
+    {
+      "name": "Текущая мощность компрессора",
+      "type": "Integer",
+      "unit": " kW",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "address": 21,
+          "function": "Holding",
+          "pollingTime": 1000
+        }
+      ]
+    },
+    {
+      "name": "Текущая скорость вентилятора",
+      "type": "Integer",
+      "unit": "RPM",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "address": 32,
+          "function": "Holding",
+          "pollingTime": 1000
+        }
+      ]
+    },
+    {
+      "name": "Версия устройства",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String",
       "link": [
         {
           "type": "String",
@@ -382,13 +435,13 @@
           "function": "Holding",
           "length": 20
         }
-      ],
-      "name": "Название устройства",
-      "inputType": "STATUS",
-      "write": false,
-      "type": "String"
+      ]
     },
     {
+      "name": "Версия прошивки",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String",
       "link": [
         {
           "type": "String",
@@ -396,13 +449,13 @@
           "function": "Holding",
           "length": 16
         }
-      ],
-      "name": "Версия прошивки",
-      "inputType": "STATUS",
-      "write": false,
-      "type": "String"
+      ]
     },
     {
+      "name": "Кондиционер подключен",
+      "type": "Boolean",
+      "write": false,
+      "init": true,
       "link": [
         {
           "type": "Integer",
@@ -410,11 +463,54 @@
           "function": "Coil",
           "pollingTime": 1000
         }
+      ]
+    },
+    {
+      "name": "Индикатор состояния",
+      "type": "Integer",
+      "write": true,
+      "value": 0,
+      "link": [
+        {
+          "address": 450,
+          "function": "Holding",
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "8": 8,
+            "9": 9
+          },
+          "pollingTime": 1000
+        }
       ],
-      "name": "Кондиционер подключен",
-      "type": "Boolean",
-      "write": false,
-      "init": true
+      "values": [
+        {
+          "name": "Обычный режим",
+          "value": 0
+        },
+        {
+          "name": "Отключен если нет ошибок",
+          "value": 1
+        },
+        {
+          "name": "Отключен до перезагрузки",
+          "value": 2
+        },
+        {
+          "name": "Всегда отключен",
+          "value": 3
+        },
+        {
+          "name": "Зеленый до перезагрузки",
+          "value": 8
+        },
+        {
+          "name": "Красный до перезагрузки",
+          "value": 9
+        }
+      ]
     }
   ]
 }

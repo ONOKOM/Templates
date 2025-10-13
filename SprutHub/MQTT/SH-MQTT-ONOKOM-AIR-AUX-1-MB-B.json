@@ -2,7 +2,9 @@
   "name": "Кондиционер",
   "manufacturer": "ONOKOM",
   "model": "AIR-AUX-1-MB-B",
-  "modelId": "/devices/(ONOKOM-AIR-AUX-1-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type",
+  "modelIds": [
+    "/devices/(ONOKOM-AIR-AUX-1-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type"
+  ],
   "catalogId": 4900,
   "services": [
     {
@@ -10,6 +12,7 @@
       "type": "Thermostat",
       "characteristics": [
         {
+          "name": "Температура воздуха в помещении",
           "type": "CurrentTemperature",
           "link": [
             {
@@ -19,6 +22,7 @@
           ]
         },
         {
+          "name": "Состояние термостата",
           "type": "CurrentHeatingCoolingState",
           "link": [
             {
@@ -29,6 +33,7 @@
           "validValues": "0,1,2"
         },
         {
+          "name": "Целевая температура",
           "type": "TargetTemperature",
           "link": [
             {
@@ -42,6 +47,7 @@
           "minStep": 0.5
         },
         {
+          "name": "Состояние и режим",
           "type": "TargetHeatingCoolingState",
           "link": [
             {
@@ -61,6 +67,7 @@
           "validValues": "OFF,HEAT,COOL,AUTO,DRY,FAN_ONLY"
         },
         {
+          "name": "Скорость вентилятора расширенная",
           "type": "C_FanSpeed",
           "link": [
             {
@@ -80,6 +87,7 @@
           "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH,TURBO"
         },
         {
+          "name": "Качание жалюзи",
           "type": "SwingMode",
           "link": [
             {
@@ -99,7 +107,7 @@
       ]
     },
     {
-      "name": "Температура с внешнего датчика",
+      "name": "Температура воздуха на улице",
       "visible": false,
       "type": "TemperatureSensor",
       "characteristics": [
@@ -108,15 +116,14 @@
           "link": [
             {
               "type": "Double",
-              "topicGet": "/devices/(1)/controls/Indoor air temperature",
-              "topicSet": "/devices/(1)/controls/Indoor air temperature/on"
+              "topicGet": "/devices/(1)/controls/Outdoor air temperature"
             }
           ]
         }
       ]
     },
     {
-      "name": "Вентилятор",
+      "name": "Скорость вентилятора",
       "type": "Fan",
       "characteristics": [
         {
@@ -131,24 +138,6 @@
           "minValue": 0,
           "maxValue": 3,
           "unit": ""
-        }
-      ]
-    },
-    {
-      "name": "Вертикальные жалюзи",
-      "type": "FanBasic",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Vertical vanes",
-              "topicSet": "/devices/(1)/controls/Vertical vanes/on"
-            }
-          ],
-          "minValue": 0,
-          "maxValue": 1
         }
       ]
     },
@@ -171,23 +160,25 @@
       ]
     },
     {
-      "name": "Подсветка экрана",
-      "type": "Switch",
+      "name": "Вертикальные жалюзи",
+      "type": "FanBasic",
       "characteristics": [
         {
           "type": "On",
           "link": [
             {
               "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Screen light",
-              "topicSet": "/devices/(1)/controls/Screen light/on"
+              "topicGet": "/devices/(1)/controls/Vertical vanes",
+              "topicSet": "/devices/(1)/controls/Vertical vanes/on"
             }
-          ]
+          ],
+          "minValue": 0,
+          "maxValue": 1
         }
       ]
     },
     {
-      "name": "Режим Тихий",
+      "name": "Режим тихий",
       "type": "Switch",
       "characteristics": [
         {
@@ -197,22 +188,6 @@
               "type": "Integer",
               "topicGet": "/devices/(1)/controls/Quiet mode",
               "topicSet": "/devices/(1)/controls/Quiet mode/on"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Режим Сон",
-      "type": "Switch",
-      "characteristics": [
-        {
-          "type": "On",
-          "link": [
-            {
-              "type": "Integer",
-              "topicGet": "/devices/(1)/controls/Sleep mode",
-              "topicSet": "/devices/(1)/controls/Sleep mode/on"
             }
           ]
         }
@@ -235,7 +210,23 @@
       ]
     },
     {
-      "name": "Функция Ионизации",
+      "name": "Режим сна",
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Sleep mode",
+              "topicSet": "/devices/(1)/controls/Sleep mode/on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ионизация",
       "type": "Switch",
       "characteristics": [
         {
@@ -251,7 +242,7 @@
       ]
     },
     {
-      "name": "Функция самоочистки",
+      "name": "Самоочистка",
       "type": "Switch",
       "characteristics": [
         {
@@ -267,7 +258,7 @@
       ]
     },
     {
-      "name": "Функция антиплесени",
+      "name": "Защита от плесени",
       "type": "Switch",
       "characteristics": [
         {
@@ -283,15 +274,16 @@
       ]
     },
     {
-      "name": "Температура внутреннего теплообменника",
-      "type": "TemperatureSensor",
+      "name": "Подсветка экрана",
+      "type": "Switch",
       "characteristics": [
         {
-          "type": "CurrentTemperature",
+          "type": "On",
           "link": [
             {
-              "type": "Double",
-              "topicGet": "/devices/(1)/controls/Indoor heat exchanger temperature"
+              "type": "Integer",
+              "topicGet": "/devices/(1)/controls/Screen light",
+              "topicSet": "/devices/(1)/controls/Screen light/on"
             }
           ]
         }
@@ -300,28 +292,127 @@
   ],
   "options": [
     {
+      "name": "Температура внутреннего теплообменника",
+      "type": "Integer",
+      "unit": " °C",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/Indoor heat exchanger temperature"
+        }
+      ]
+    },
+    {
+      "name": "Ограничение мощности компрессора",
+      "type": "Integer",
+      "unit": " kW",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/Compressor power limit"
+        }
+      ]
+    },
+    {
+      "name": "Текущая мощность компрессора",
+      "type": "Integer",
+      "unit": " kW",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/Current compressor power"
+        }
+      ]
+    },
+    {
+      "name": "Текущая скорость вентилятора",
+      "type": "Integer",
+      "unit": " RPM",
+      "write": false,
+      "value": 0,
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/Current fan speed"
+        }
+      ]
+    },
+    {
+      "name": "Версия прошивки",
+      "inputType": "STATUS",
+      "write": false,
+      "type": "String",
       "link": [
         {
           "type": "String",
           "topicGet": "/devices/(1)/controls/FW Version"
         }
-      ],
-      "name": "Версия прошивки",
-      "inputType": "STATUS",
-      "write": false,
-      "type": "String"
+      ]
     },
     {
+      "name": "Кондиционер подключен",
+      "type": "Boolean",
+      "write": false,
+      "init": true,
       "link": [
         {
           "type": "Integer",
           "topicGet": "/devices/(1)/controls/AC connected"
         }
+      ]
+    },
+    {
+      "name": "Индикатор состояния",
+      "type": "Integer",
+      "write": true,
+      "value": 0,
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "/devices/(1)/controls/Status LED",
+          "topicSet": "/devices/(1)/controls/Status LED/on",
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "8": 8,
+            "9": 9
+          }
+        }
       ],
-      "name": "Кондиционер подключен",
-      "type": "Boolean",
-      "write": false,
-      "init": true
+      "values": [
+        {
+          "name": "Обычный режим",
+          "value": 0
+        },
+        {
+          "name": "Отключен если нет ошибок",
+          "value": 1
+        },
+        {
+          "name": "Отключен до перезагрузки",
+          "value": 2
+        },
+        {
+          "name": "Всегда отключен",
+          "value": 3
+        },
+        {
+          "name": "Зеленый до перезагрузки",
+          "value": 8
+        },
+        {
+          "name": "Красный до перезагрузки",
+          "value": 9
+        }
+      ]
     }
   ]
 }

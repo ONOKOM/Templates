@@ -1,0 +1,1487 @@
+/*
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<langs>
+		<tplvar name="DESC_TITLE_STR1"          en="Gateway ONOKOM AC via Modbus"											ru="Шлюз ONOKOM для кондиционеров через модуль Modbus"/>
+		<tplvar name="DESC_TITLE_STR2"          en="Modbus"                                        							ru="модуль Modbus"/>
+		<tplvar name="VERSION_SCRIPT"           en="Version: 2.00"                                                      	ru="Версия 2.00" />
+		<tplvar name="DESC_SPEC_STR1"           en="ONOKOM air conditioner monitoring and"  								ru="Контроль и управление кондиционерами через"/>
+		<tplvar name="DESC_SPEC_STR2"           en="control via Modbus protocol"  											ru="шлюз ONOKOM по протоколу Modbus."/>
+
+		<tplvar name="ITEM_AC_ADDRESS"          en="ONOKOM gateway on rs485 bus"                                            ru="шлюз ONOKOM на шине RS485"/>
+		<tplvar name="ITEM_RS485_SETUP"         en="Configuring the ONOKOM gateway connection"                              ru="Настройка соединения"/>
+		<tplvar name="ITEM_RS485"               en="RS-485 bus to which ONOKOM gateways are connected"  	                ru="Шина RS-485, на которую подключены шлюзы ONOKOM"/>
+		<tplvar name="ITEM_COUNT_USE_DEVICE"    en="Number of ONOKOM used"       											ru="Количество используемых шлюзов ONOKOM"/>
+		<tplvar name="ITEM_OLD"    				en="Current Modbus address for changing"									ru="Текущий адрес Modbus"/>
+		<tplvar name="ITEM_NEW"    				en="New Modbus address for changing"										ru="Новый адрес Modbus"/>
+		<tplvar name="ITEM_INSTRUCTIONS"        en="Instructions for using the script"    									ru="Инструкция использования скрипта"/>
+		<tplvar name="ITEM_INSTRUCTIONS_STR_1"  en="1.Settigs RS-485: 9600/8N2(address 1 default)" 							ru="Настройки RS-485: 9600/8N2(адрес 1 по умолчанию)"/>
+		<tplvar name="ITEM_INSTRUCTIONS_STR_2"  en="2.To set the address, use the Setup mode, for work - Work"  			ru="2.Для задания адреса используйте режим Настройка Modbus адреса, для работы - Рабочий режим"/>
+		<tplvar name="ITEM_INSTRUCTIONS_STR_3"  en="3.When changing the address, enter the current and desired address, if you do not know the current one, put 0 and press 'Сменить адрес'"
+		                                        ru="3.При смене адреса впишите текущий и желаемый адрес, если не знаете текущий - ставьте 0 и нажмите кнопку 'Сменить адрес'"/>
+		<tplvar name="ITEM_SEND_PUSH"			en="Send push messages to the app when changing th Modbus address"          ru="Получать push-уведомления в приложении при изменении адреса"/>
+		<tplvar name="EXT_TEMP_SENSOR"			en="Use external temperature sensor"                  						ru="Использовать внешний датчик температуры"/>
+		<tplvar name="CHOOSE_TEMP_SENSOR"		en="Choose external temperature sensor"                  					ru="Выберите внешний датчик температуры"/>
+		<tplvar name="ITEM2" ru="Название кондиционера" en="AC name" />
+		<tplvar name="BASE_SETTINGS" ru="Базовая настройка" en="Базовая настройка" />
+		<tplvar name="MODBUSSETTINGS" ru="Настройка Modbus адреса на шлюзах ONOKOM" en="Настройка Modbus адреса на шлюзах ONOKOM" />
+		<tplvar name="DELIMITER" ru="-------------------------------------------------------------------------" en="-------------------------------------------------------------------------" />
+	</langs>
+	
+	<description>
+		<b>##DESC_TITLE_STR1##</b>
+		##VERSION_SCRIPT##
+
+		##DELIMITER##
+
+		<span>Шаблон позволяет добавлять системы кондиционирования производства GREE (включая OEM - бренды), с разъемом Wi-Fi или CN3 по ModBus RTU протоколу в умный дом Larnitech, с помощью шлюза ONOKOM GR-3-MB-B</span>
+
+		Шаблон разработан техническим отделом ООО 
+		"ОНОКОМ"
+
+		<b>Телефон:</b> +7 (812) 955-59-05
+		<b>Адрес:</b> СПб, Московское шоссе д.25 корп.1	
+
+		<b>Новости:</b> t.me/ONOKOM_NEWS
+		<b>Бот:</b> t.me/ONOKOM_bot
+		<b>Сайт:</b> onokom.ru
+
+		<img src="https://onokom.ru/img/index/logo-ONOKOM.svg" width="132" height="132" alt="Logo" />
+		
+	</description>
+	
+	<tag value="import-script"/>
+	<selectArea value="1"/>
+	<target value="ONOKOM"/>
+
+	<item type="div"/>
+    <item type="comment" name="commentInstructions" 	  comment="" value="%%color:#0458be;%%##ITEM_INSTRUCTIONS##"/>
+    <item type="comment" name="commentInstructions_str_1" comment="" value="##ITEM_INSTRUCTIONS_STR_1##"/>
+	<item type="comment" name="commentInstructions_str_2" comment="" value="1. Выберите 'Рабочий режим', для управления кондиционером через шлюз или режим 'Сменить Modbus адрес' для настройки."/>
+	<item type="comment" name="commentInstructions_str_3" comment="" value="2. Выберите COM-порт шины к которой подключен(ы) шлюз(ы) ONOKOM."/>
+	<item type="comment" name="commentInstructions_str_4" comment="" value="3. Укажите количество опрашиваемых шлюзов ONOKOM на шине. Это необходимо так как шаблон рассчитан для использования до 10 шлюзов одновременно."/>
+	<item type="comment" name="commentInstructions_str_4" comment="" value="4. В разделе 'Настройка соединения' укажите адреса используемых шлюзов."/>
+																			 
+    <item type="comment" name="commentInstructions" comment="" value="%%color:#0458be;%%Базовая настройка"/>
+	
+	<line>
+		<item type="list" name="MODE_SCRIPT" required="1" comment="Режим работы скрипта для шлюзов ONOKOM" weight="4">
+			<option key="IDLE"       	value="Рабочий режим"/>
+			<option key="SET_NEW_ID"    value="Установка Modbus адреса"/>
+    	</item>
+
+		<item type="devices-list" name="RS485" filter="com-port" required="1" comment="##ITEM_RS485##" weight="4"/> 
+		
+		<item type="number" name="COUNT_USE_AC" value="1" required="1" min="1" max="10" comment="##ITEM_COUNT_USE_DEVICE##" weight="4"/> 
+	</line>
+
+	
+	<item type="div"/>
+	<item type="comment" name="commentInstructions" comment="%%color:#0458be;%%Инструкция по смене Modbus адреса" value=""/>
+	<item type="comment" name="commentInstructions" comment="" value="1. Выберите режим работы скрипта 'Установка Modbus адреса'."/>
+	<item type="comment" name="commentInstructions" comment="" value="2. Впишите текущий адрес и новый в соответствующие поля (если не знаете текущий, используйте 0, но на шине должно быть только ОДНО устройство)."/>
+	<item type="comment" name="commentInstructions" comment="" value="3. Сохраните скрипт и откройте мобильное приложение."/>
+	<item type="comment" name="commentInstructions" comment="" value="4. В разделе 'Свет' найдите устройство 'Изменить адрес' и переведите его в состояние 'Включить'."/>
+	<item type="comment" name="commentInstructions" comment="" value="Для понимания применился новый адрес или нет, можно включить уведомления."/>
+	
+	<item type="comment" name="commentInstructions" comment="" value="%%color:#0458be;%%##MODBUSSETTINGS##"/>
+	<line>
+		<item type="number" name="OLDADDRESS" value="1" min="0" max="247" comment="##ITEM_OLD##" weight="4"/>
+		
+		<item type="number" name="NEWADDRESS" value="1" min="0" max="247" comment="##ITEM_NEW##" weight="4"/>
+
+		<item type="checkbox" name="SEND_PUSH" comment="##ITEM_SEND_PUSH##" weight="4"/>	
+	</line>
+	
+	
+	<item type="div"/>
+	<item type="comment" name="commentRS485" comment="" value="%%color:#0458be;%%##ITEM_RS485_SETUP##"/>
+
+	<line>
+		<item type="number" name="AC1_ADDR" value="1" required="1" min="1" max="247" comment="1 ##ITEM_AC_ADDRESS## " weight="4"/>
+		<item type="string" name="NAME1" min="3" max="40" required="1" comment="##ITEM2##" value="AC 1"/>
+	</line>
+	<line>
+		<item type="number" name="AC2_ADDR" value="2" min="1" max="247" comment="2 ##ITEM_AC_ADDRESS##" weight="4"/>
+		<item type="string" name="NAME2" min="3" max="40" required="1" comment="##ITEM2##" value="AC 2"/>
+	</line>
+	<line>
+		<item type="number" name="AC3_ADDR" value="3" min="1" max="247" comment="3 ##ITEM_AC_ADDRESS##" weight="4"/>
+		<item type="string" name="NAME3" min="3" max="40" required="1" comment="##ITEM2##" value="AC 3"/>
+	</line>
+	<line>
+		<item type="number" name="AC4_ADDR" value="4" min="1" max="247" comment="4 ##ITEM_AC_ADDRESS##" weight="4"/> 
+		<item type="string" name="NAME4" min="3" max="40" required="1" comment="##ITEM2##" value="AC 4"/>
+	</line>
+	<line>
+		<item type="number" name="AC5_ADDR" value="5" min="1" max="247" comment="5 ##ITEM_AC_ADDRESS##" weight="4"/>
+		<item type="string" name="NAME5" min="3" max="40" required="1" comment="##ITEM2##" value="AC 5"/>
+	</line>
+	<line>
+		<item type="number" name="AC6_ADDR" value="6" min="1" max="247" comment="6 ##ITEM_AC_ADDRESS##" weight="4"/>
+		<item type="string" name="NAME6" min="3" max="40" required="1" comment="##ITEM2##" value="AC 6"/>
+	</line>
+	<line>
+		<item type="number" name="AC7_ADDR" value="7" min="1" max="247" comment="7 ##ITEM_AC_ADDRESS##" weight="4"/>  
+		<item type="string" name="NAME7" min="3" max="40" required="1" comment="##ITEM2##" value="AC 7"/>
+	</line>
+	<line>	
+		 <item type="number" name="AC8_ADDR" value="8" min="1" max="247" comment="8 ##ITEM_AC_ADDRESS##" weight="4"/>
+		 <item type="string" name="NAME8" min="3" max="40" required="1" comment="##ITEM2##" value="AC 8"/>
+	</line>
+	<line>
+		<item type="number" name="AC9_ADDR" value="9" min="1" max="247" comment="9 ##ITEM_AC_ADDRESS##" weight="4"/>
+		<item type="string" name="NAME9" min="3" max="40" required="1" comment="##ITEM2##" value="AC 9"/>	
+	</line>
+	<line>
+		<item type="number" name="AC10_ADDR" value="10" min="1" max="247" comment="10 ##ITEM_AC_ADDRESS## " weight="4"/> 
+		<item type="string" name="NAME10" min="3" max="40" required="1" comment="##ITEM2##" value="AC 10"/>
+	</line>
+    
+	<!-- ========================= AC1 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID01%"/>
+			
+	</additems>
+	<item type="hidden" name="AC1_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_ION" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID01%" name="AC1Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_INDTEMP" value="%TARGET%:%SUBID01%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC1_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC2 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID02%"/>
+			
+	</additems>
+	<item type="hidden" name="AC2_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_ION" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID02%" name="AC2Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_INDTEMP" value="%TARGET%:%SUBID02%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC2_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC3 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID03%"/>
+			
+	</additems>
+	<item type="hidden" name="AC3_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID03%" name="AC3Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_INDTEMP" value="%TARGET%:%SUBID03%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC3_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC4 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID04%"/>
+			
+	</additems>
+	<item type="hidden" name="AC4_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID04%" name="AC4Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_INDTEMP" value="%TARGET%:%SUBID04%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC4_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC5 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID05%"/>
+			
+	</additems>
+	<item type="hidden" name="AC5_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID05%" name="AC5Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_INDTEMP" value="%TARGET%:%SUBID05%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC5_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC6 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID06%"/>
+			
+	</additems>
+	<item type="hidden" name="AC6_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID06%" name="AC6Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_INDTEMP" value="%TARGET%:%SUBID06%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC6_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC7 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID07%"/>
+			
+	</additems>
+	<item type="hidden" name="AC7_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID07%" name="AC7Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_INDTEMP" value="%TARGET%:%SUBID07%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC7_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC8 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID08%"/>
+			
+	</additems>
+	<item type="hidden" name="AC8_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID08%" name="AC8Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_INDTEMP" value="%TARGET%:%SUBID08%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+		<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC8_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC9 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID09%"/>
+			
+	</additems>
+	<item type="hidden" name="AC9_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID09%" name="AC9Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_INDTEMP" value="%TARGET%:%SUBID09%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+		<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC9_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- ========================= AC10 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x3f"
+			vane-hor="0x7F" vane-ver="0x7F"
+			temperature-sensors="%TARGET%:%SUBID10%"/>
+			
+	</additems>
+	<item type="hidden" name="AC10_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Тихий" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_SILENT" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Эко" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_ECO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Турбо" type="lamp" image="air-fan" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_TURBO" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Сон" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_SLEEP" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Ионизация" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_ION" value="%TARGET%:%SUBID%"/>
+	
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Самоочистка" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_CLEAN" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Вер.жалюзи" type="lamp" sub-type="air-fan" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_VERVANES" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID10%" name="AC10Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_INDTEMP" value="%TARGET%:%SUBID10%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_OUTTEMP" value="%TARGET%:%SUBID%"/>
+		
+	<!-- Ошибки -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Ошибка" type="door-sensor" sub-type="alarm" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_ERROR" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Код ош." type="virtual" sub-type="text" length="0"/></additems>
+	<item type="hidden" name="AC10_ERRORCODE" value="%TARGET%:%SUBID%"/> 
+
+	<!-- Глобальное действие: смена Modbus-адреса -->
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="Сменить адрес" type="lamp" image="script" virtual="yes"/>
+	</additems>
+	<item type="hidden" name="CHANGEADDRESS" value="%TARGET%:%SUBID%"/>
+
+</xml>
+*/
+
+#define MAX_QNTY    10
+
+u16 useExtMask = 0;
+
+u8 Read_Coils_Command = 0x01;
+u8 Write_Coils_Command = 0x05;
+u8 Read_Holding_Command = 0x03;
+u8 Write_Holding_Command = 0x06;
+
+u8 Read_Discrete_Command = 0x02;
+u8 Read_Input_Command = 0x04;
+
+u8 regCounter = 0;
+u8 ACcounter = 0;
+u8 flag = 0;
+
+u8 ACWidgetData[9];
+
+u8 commandsArray[]	= { Read_Coils_Command, Read_Holding_Command, Read_Coils_Command,  Read_Discrete_Command, Read_Input_Command};
+u8 addrArray[] 		= { 1, 					1,					  100,				   1,					  1					};
+u8 qntyArray[]		= {	15, 				32,					  1,				   24,					  3					};
+
+u8  lastCmd = 0;
+u16 lastAddr = 0;
+u8  lastQnty = 0;
+u8  lastDev  = 0;
+
+u16 MBaddr_Address = 128;
+
+u16 MBaddr_mode = 1;
+u16 MBaddr_T = 5;
+u16 MBaddr_fan = 8;
+u16 MBaddr_VanesH = 9;
+u16 MBaddr_VanesV = 10;
+
+u8 ac_fan;
+u8 ac_mode;
+u8 ac_vane;
+u16 ac_T;
+u8 acNum;
+
+const u16 widgetAC_ID  = ADDR2ID(AC1_WIDGET);
+
+const u8 widgetAC_arrSubID[] = { 
+    ADDR2SID(AC1_WIDGET), 
+	ADDR2SID(AC2_WIDGET),
+	ADDR2SID(AC3_WIDGET),
+	ADDR2SID(AC4_WIDGET),
+	ADDR2SID(AC5_WIDGET),
+	ADDR2SID(AC6_WIDGET),
+	ADDR2SID(AC7_WIDGET),
+	ADDR2SID(AC8_WIDGET),
+	ADDR2SID(AC9_WIDGET),
+	ADDR2SID(AC10_WIDGET)
+};
+
+u8 widgetSilent_arrSubID[] = { 
+    ADDR2SID(AC1_SILENT),
+	ADDR2SID(AC2_SILENT),
+	ADDR2SID(AC3_SILENT),
+	ADDR2SID(AC4_SILENT),
+	ADDR2SID(AC5_SILENT),
+	ADDR2SID(AC6_SILENT),
+	ADDR2SID(AC7_SILENT),
+	ADDR2SID(AC8_SILENT),
+	ADDR2SID(AC9_SILENT),
+	ADDR2SID(AC10_SILENT)
+};
+
+u8 widgetEco_arrSubID[] = { 
+    ADDR2SID(AC1_ECO),
+	ADDR2SID(AC2_ECO),
+	ADDR2SID(AC3_ECO),
+	ADDR2SID(AC4_ECO),
+	ADDR2SID(AC5_ECO),
+	ADDR2SID(AC6_ECO),
+	ADDR2SID(AC7_ECO),
+	ADDR2SID(AC8_ECO),
+	ADDR2SID(AC9_ECO),
+	ADDR2SID(AC10_ECO)
+};
+
+u8 widgetTurbo_arrSubID[] = { 
+    ADDR2SID(AC1_TURBO),
+	ADDR2SID(AC2_TURBO),
+	ADDR2SID(AC3_TURBO),
+	ADDR2SID(AC4_TURBO),
+	ADDR2SID(AC5_TURBO),
+	ADDR2SID(AC6_TURBO),
+	ADDR2SID(AC7_TURBO),
+	ADDR2SID(AC8_TURBO),
+	ADDR2SID(AC9_TURBO),
+	ADDR2SID(AC10_TURBO)
+};
+
+u8 widgetSleep_arrSubID[] = { 
+    ADDR2SID(AC1_SLEEP),
+	ADDR2SID(AC2_SLEEP),
+	ADDR2SID(AC3_SLEEP),
+	ADDR2SID(AC4_SLEEP),
+	ADDR2SID(AC5_SLEEP),
+	ADDR2SID(AC6_SLEEP),
+	ADDR2SID(AC7_SLEEP),
+	ADDR2SID(AC8_SLEEP),
+	ADDR2SID(AC9_SLEEP),
+	ADDR2SID(AC10_SLEEP)
+};
+
+u8 widgetIon_arrSubID[] = { 
+    ADDR2SID(AC1_ION),
+	ADDR2SID(AC2_ION),
+	ADDR2SID(AC3_ION),
+	ADDR2SID(AC4_ION),
+	ADDR2SID(AC5_ION),
+	ADDR2SID(AC6_ION),
+	ADDR2SID(AC7_ION),
+	ADDR2SID(AC8_ION),
+	ADDR2SID(AC9_ION),
+	ADDR2SID(AC10_ION)
+};
+
+u8 widgetClean_arrSubID[] = { 
+    ADDR2SID(AC1_CLEAN),
+	ADDR2SID(AC2_CLEAN),
+	ADDR2SID(AC3_CLEAN),
+	ADDR2SID(AC4_CLEAN),
+	ADDR2SID(AC5_CLEAN),
+	ADDR2SID(AC6_CLEAN),
+	ADDR2SID(AC7_CLEAN),
+	ADDR2SID(AC8_CLEAN),
+	ADDR2SID(AC9_CLEAN),
+	ADDR2SID(AC10_CLEAN)
+};
+
+u8 widgetVerVanes_arrSubID[] = {
+    ADDR2SID(AC1_VERVANES),
+	ADDR2SID(AC2_VERVANES),
+	ADDR2SID(AC3_VERVANES),
+	ADDR2SID(AC4_VERVANES),
+	ADDR2SID(AC5_VERVANES),
+	ADDR2SID(AC6_VERVANES),
+	ADDR2SID(AC7_VERVANES),
+	ADDR2SID(AC8_VERVANES),
+	ADDR2SID(AC9_VERVANES),
+	ADDR2SID(AC10_VERVANES)
+};
+
+u8 widgetACconnected_arrSubID[] = { 
+    ADDR2SID(AC1_ACCONNECTED),
+	ADDR2SID(AC2_ACCONNECTED),
+	ADDR2SID(AC3_ACCONNECTED),
+	ADDR2SID(AC4_ACCONNECTED),
+	ADDR2SID(AC5_ACCONNECTED),
+	ADDR2SID(AC6_ACCONNECTED),
+	ADDR2SID(AC7_ACCONNECTED),
+	ADDR2SID(AC8_ACCONNECTED),
+	ADDR2SID(AC9_ACCONNECTED),
+	ADDR2SID(AC10_ACCONNECTED)
+};
+
+u8 widgetRoomTemp_arrSubID[] = { 
+    ADDR2SID(AC1_INDTEMP),
+	ADDR2SID(AC2_INDTEMP),
+	ADDR2SID(AC3_INDTEMP),
+	ADDR2SID(AC4_INDTEMP),
+	ADDR2SID(AC5_INDTEMP),
+	ADDR2SID(AC6_INDTEMP),
+	ADDR2SID(AC7_INDTEMP),
+	ADDR2SID(AC8_INDTEMP),
+	ADDR2SID(AC9_INDTEMP),
+	ADDR2SID(AC10_INDTEMP)
+};
+
+u8 widgetOutdoorTemp_arrSubID[] = { 
+    ADDR2SID(AC1_OUTTEMP),
+	ADDR2SID(AC2_OUTTEMP),
+	ADDR2SID(AC3_OUTTEMP),
+	ADDR2SID(AC4_OUTTEMP),
+	ADDR2SID(AC5_OUTTEMP),
+	ADDR2SID(AC6_OUTTEMP),
+	ADDR2SID(AC7_OUTTEMP),
+	ADDR2SID(AC8_OUTTEMP),
+	ADDR2SID(AC9_OUTTEMP),
+	ADDR2SID(AC10_OUTTEMP)
+};
+
+u8 widgetError_arrSubID[] = {
+  	ADDR2SID(AC1_ERROR),
+	ADDR2SID(AC2_ERROR),
+	ADDR2SID(AC3_ERROR),
+	ADDR2SID(AC4_ERROR),
+	ADDR2SID(AC5_ERROR),
+	ADDR2SID(AC6_ERROR),
+	ADDR2SID(AC7_ERROR),
+	ADDR2SID(AC8_ERROR),
+	ADDR2SID(AC9_ERROR),
+	ADDR2SID(AC10_ERROR)
+};
+
+u8 widgetErrorCode_arrSubID[] = {
+	ADDR2SID(AC1_ERRORCODE),
+	ADDR2SID(AC2_ERRORCODE),
+	ADDR2SID(AC3_ERRORCODE),
+	ADDR2SID(AC4_ERRORCODE),
+	ADDR2SID(AC5_ERRORCODE),
+	ADDR2SID(AC6_ERRORCODE),
+	ADDR2SID(AC7_ERRORCODE),
+	ADDR2SID(AC8_ERRORCODE),
+	ADDR2SID(AC9_ERRORCODE),
+	ADDR2SID(AC10_ERRORCODE)
+};
+
+const u8 deviceAC_arrID[] = { 
+	AC1_ADDR, 
+	AC2_ADDR,
+	AC3_ADDR,
+	AC4_ADDR,
+	AC5_ADDR,
+	AC6_ADDR,
+	AC7_ADDR,
+	AC8_ADDR,
+	AC9_ADDR,
+	AC10_ADDR
+};
+
+// ------------------------------------------
+
+#if SEND_PUSH == true
+    #define FLAG_SEND_PUSH      1
+#endif
+
+#if MODE_SCRIPT == SET_NEW_ID
+
+u16 APP_IDThatPress = 2047; 
+u8 Idle_Addr = 1;
+
+u8 setup_found_on_1  = 0;
+u8 setup_wait_verify = 0;
+
+#define PUSH_TEXT_LEN   64      
+#define PUSH_PACKET_LEN 66      // 1-st byte like (1) + 64 text + '\0'
+
+u8 pushText[64];
+u8 pushPacket[66];
+
+// ---- ПРОБНЫЙ ОПРОС АДРЕСА 1 ----
+void setupTimeout() {
+    if (!setup_found_on_1) {
+		#ifdef FLAG_SEND_PUSH
+			setStatus(@APP_IDThatPress:32, {4, "Устройство на адресе 1 не найдено"});
+		#endif
+    }
+}
+
+void checkSetup() {
+    // Read 1 coil for check for "alive"
+    setStatus(RS485, {Idle_Addr, Read_Coils_Command, 0, 1, 0, 1, 0xcc16});
+    // If no ack after 1 sec -> "dead"
+    delayedCallMs(setupTimeout, 1000);
+}
+
+// ----- VERIFY NEW MODBUS ADDRESS -----
+void verify_timeout() {
+    if (setup_wait_verify) {
+        setup_wait_verify = 0;
+
+		#ifdef FLAG_SEND_PUSH
+			setStatus(@APP_IDThatPress:32, {4, "Не удалось подтвердить новый адрес, попробуйте ещё раз"});
+		#endif
+    }
+}
+
+void verify_new_addr() {
+    setup_wait_verify = 1;
+    // Read 1 coil from new address
+    setStatus(RS485, {NEWADDRESS, Read_Coils_Command, 0, 1, 0, 1, 0xcc16});
+    // If no ack after 2 sec -> unlucky
+    delayedCallMs(verify_timeout, 2000);
+}
+
+void onInit() {
+	setup_found_on_1 = 0;
+	cancelDelayedCall(setupTimeout);
+	checkSetup();
+}
+
+// Function for forming string for push
+void sendPushAddressChanged(u8 oldAddr, u8 newAddr)
+{
+    // Packing as {1, "str", 0}
+	/*
+		1 - message priority, str - message string, 0 - idk what is it
+	*/
+	sprintf(pushText, "Адрес Modbus изменен: %d -> %d", oldAddr, newAddr);
+    pushPacket[0] = 1;
+
+    u8 j = 0;
+    for (; j < (64 - 1); ++j) {
+        u8 c = pushText[j];
+        pushPacket[1 + j] = c;
+        if (c == 0) break;
+    }
+    if (j == (64 - 1)) {
+        pushPacket[1 + j] = 0;
+    }
+
+	#ifdef FLAG_SEND_PUSH
+		setStatus(@APP_IDThatPress:32, pushPacket);
+	#endif  
+}
+
+V-ID/RS485
+{
+	// srvMessage("Data from AC 0 = %d, 1 = %d, 2 = %d, 3 = %d, 4 = %d, 5 = %d, 6 = %d", opt(0), opt(1), opt(2), opt(3), opt(4), opt(5), opt(6));
+	// srvMessage("Data from AC 7 = %d, 8 = %d, 9 = %d, 10 = %d, 11 = %d, 12 = %d", opt(7), opt(8), opt(9), opt(10), opt(11), opt(12));
+	// srvMessage("Data from AC 13 = %d, 14 = %d, 15 = %d, 16 = %d, 17 = %d, 18 = %d", opt(13), opt(14), opt(15), opt(16), opt(17), opt(18));
+	// srvMessage("Data from AC 19 = %d, 20 = %d, 21 = %d, 22 = %d, 23 = %d, 24 = %d", opt(19), opt(20), opt(21), opt(22), opt(23), opt(24));
+
+    if (opt(0) == Idle_Addr && opt(1) == Read_Coils_Command) {
+        if (!setup_found_on_1) {
+            setup_found_on_1 = 1;
+            cancelDelayedCall(setupTimeout);
+
+			#ifdef FLAG_SEND_PUSH
+            	setStatus(@APP_IDThatPress:32, {1, "Найдено устройство на адресе 1"});
+			#endif
+        }
+    }
+
+    // Wait ack from new addr
+    if (setup_wait_verify && opt(0) == NEWADDRESS && opt(1) == Read_Coils_Command) {
+        setup_wait_verify = 0;
+        cancelDelayedCall(verify_timeout);
+
+		#ifdef FLAG_SEND_PUSH
+			sendPushAddressChanged(OLDADDRESS, NEWADDRESS);
+		#endif
+        
+		srvMessage("Modbus address correctly changed from %d to %d", OLDADDRESS, NEWADDRESS);
+    }
+}
+
+V-ID/CHANGEADDRESS
+{
+	if (opt(0) & 0x01)
+	{
+		u16 eid = exciterId();
+        if (eid) APP_IDThatPress = eid;
+
+		srvMessage("Try to change Modbus address from %d to %d", OLDADDRESS, NEWADDRESS);
+		setStatus(RS485, {OLDADDRESS, Write_Holding_Command, 0, 128, 0, NEWADDRESS, 0xcc16});
+
+		delayedCallMs(verify_new_addr, 600);
+	}
+}
+
+#endif
+
+
+#if MODE_SCRIPT == IDLE
+
+void clearFlag()
+{
+	flag = 0;
+}
+
+void setdata()
+{
+	flag = 1;
+	cancelDelayedCall(clearFlag);
+	delayedCallMs(clearFlag, 2000);
+}
+
+void setFan()
+{
+    setdata();
+    setStatus(RS485, {deviceAC_arrID[acNum], Write_Holding_Command, 0, MBaddr_fan & 0xFF, 0, ac_fan & 0xFF, 0xcc16});
+}
+
+void setT()
+{
+    setdata();
+    setStatus(RS485, {deviceAC_arrID[acNum], Write_Holding_Command, 0, MBaddr_T & 0xFF, ac_T >> 8, ac_T & 0xFF, 0xcc16});
+}
+
+void setMode()
+{
+    setdata();
+    setStatus(RS485, {deviceAC_arrID[acNum], Write_Holding_Command, 0, MBaddr_mode & 0xFF, 0, ac_mode & 0xFF, 0xcc16});
+}
+
+void setVaneV()
+{
+    setdata();
+    setStatus(RS485, {deviceAC_arrID[acNum], Write_Holding_Command, 0, MBaddr_VanesH & 0xFF, 0, ac_vane & 0x0F, 0xcc16});
+}
+
+void setVaneH()
+{
+    setdata();
+    setStatus(RS485, {deviceAC_arrID[acNum], Write_Holding_Command, 0, MBaddr_VanesV & 0xFF, 0, (ac_vane >> 4) & 0x0F, 0xcc16});
+}
+
+void setData_f88 (u16 ID, u8 SID, u16 data)
+{
+    i8 tempInt;
+    u8 tempFrac;
+    
+    tempInt = data / 10;
+    tempFrac = ((data - tempInt * 10) * 256) / 10;
+    
+    setStatus(@ID:@SID, { tempFrac,  tempInt });
+}
+
+void onInit()
+{
+    srvMessage("AC total count -> %d", COUNT_USE_AC);
+}
+
+u8 findWidgetBySubID (u8 subid)
+{
+	for (u8 i = 0; i < COUNT_USE_AC; ++i)
+	{
+	    if (subid == widgetAC_arrSubID[i]) return i;
+	}
+	return 0xFF;
+}
+
+u8 findACbyAddress (u8 mbAddress)
+{
+	for (u8 i = 0; i < COUNT_USE_AC; ++i)
+	{
+	    if (mbAddress == deviceAC_arrID[i]) return i;
+	}
+	return 0xFF;
+}
+
+u8 getWidgetModeFromGateway (u8 gatewayMode)
+{
+    u8 widgetMode = 0;
+	
+    if (gatewayMode == 1) widgetMode = 3;
+    else if (gatewayMode == 2) widgetMode = 1;
+    else if (gatewayMode == 3) widgetMode = 4;
+    else if (gatewayMode == 4) widgetMode = 2;
+	else if (gatewayMode == 5) widgetMode = 0;
+    
+    return widgetMode;
+}
+
+u8 getGatewayModeFromWidget (u8 widgetMode)
+{
+    u8 gatewayMode = widgetMode;
+    
+    if (widgetMode == 0) gatewayMode = 5;
+    else if (widgetMode == 1) gatewayMode = 2;
+    else if (widgetMode == 2) gatewayMode = 4;
+    else if (widgetMode == 3) gatewayMode = 1;
+    else if (widgetMode == 4) gatewayMode = 3;
+    
+    return gatewayMode;
+}
+
+u8 getFanForWidgetFromGateway (u8 fanGateway)
+{
+    u8 widgetFan = fanGateway;
+	
+    if (fanGateway == 1) widgetFan = 6;
+    else if (fanGateway == 2) widgetFan = 1;
+    else if (fanGateway == 3) widgetFan = 2;
+    else if (fanGateway == 4) widgetFan = 3;
+	else if (fanGateway == 5) widgetFan = 4;
+	
+    return widgetFan;
+}
+
+u8 getFanForGatewayFromWidget (u8 fanWidget)
+{
+    u8 fanGateway = fanWidget;
+    
+    if (fanWidget == 1) fanGateway = 2;
+    else if (fanWidget == 2) fanGateway = 3;
+    else if (fanWidget == 3) fanGateway = 4;
+    else if (fanWidget == 4) fanGateway = 5;
+	else if (fanWidget == 6) fanGateway = 1;
+    
+    return fanGateway;
+}
+
+u8 getVanesForWidgetFromGateway (u8 vaneGateway)
+{
+    u8 widgetVaneH = 0; 
+	u8 widgetVaneV = 0;
+	u8 vaneGatewayH = vaneGateway & 0x0F;
+	u8 vaneGatewayV = (vaneGateway >> 4) & 0x0F;
+	
+	if (vaneGatewayH == 0) widgetVaneH = 0;
+    else if (vaneGatewayH == 1) widgetVaneH = 6;
+	else widgetVaneH = 7 - vaneGatewayH;
+	
+	if (vaneGatewayV == 0) widgetVaneV = 5;
+    else if (vaneGatewayV == 1) widgetVaneV = 6;
+	else widgetVaneV = vaneGatewayV-2;
+    
+    return ((widgetVaneH << 4) | widgetVaneV);
+}
+
+u8 getVanesForGatewayFromWidget (u8 vaneWidget)
+{
+    u8 gatewayVaneH = 0; 
+	u8 gatewayVaneV = 0;
+	u8 vaneWidgetV = vaneWidget & 0x0F;
+	u8 vaneWidgetH = (vaneWidget >> 4) & 0x0F;
+	
+	if (vaneWidgetH == 0) gatewayVaneH = 0;
+	else if (vaneWidgetH == 6) gatewayVaneH = 1;
+	else gatewayVaneH = 7 - vaneWidgetH;
+	
+	if (vaneWidgetV == 5) gatewayVaneV = 0;
+    else if (vaneWidgetV == 6) gatewayVaneV = 1;
+	else gatewayVaneV = vaneWidgetV + 2;
+    
+    return ((gatewayVaneV << 4) | gatewayVaneH);
+}
+
+V-ID/AC1_WIDGET#ifdef AC2_ADDR,AC2_WIDGET#endif#ifdef AC3_ADDR,AC3_WIDGET#endif#ifdef AC4_ADDR,AC4_WIDGET#endif#ifdef AC5_ADDR,AC5_WIDGET#endif#ifdef AC6_ADDR,AC6_WIDGET#endif#ifdef AC7_ADDR,AC7_WIDGET#endif#ifdef AC8_ADDR,AC8_WIDGET#endif#ifdef AC9_ADDR,AC9_WIDGET#endif#ifdef AC10_ADDR,AC10_WIDGET#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        acNum = findWidgetBySubID(senderSubId());
+		srvMessage("Vane total %d, hor - %d, ver - %d", opt(3), opt(3)&0x0f, (opt(3)>>4)&0x0f);
+	
+		if (acNum != 0xFF)
+		{
+			srvMessage("Set WIDGET AC %d(%d) onoff to -> %d", acNum, deviceAC_arrID[acNum], (opt(0) & 0x01) * 0xFF);
+			
+			ac_T = opt(2) * 100;
+			ac_mode = getGatewayModeFromWidget((opt(0) >> 4) & 0x0F);
+			ac_fan = getFanForGatewayFromWidget(opt(4));
+			ac_vane = getVanesForGatewayFromWidget(opt(3));
+			
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[acNum], Write_Coils_Command, 0, 1, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+			cancelDelayedCall(setFan); delayedCallMs(setFan, 250);
+			cancelDelayedCall(setT); delayedCallMs(setT, 500);
+			cancelDelayedCall(setMode); delayedCallMs(setMode, 750);
+			cancelDelayedCall(setVaneH); delayedCallMs(setVaneH, 1000);
+			cancelDelayedCall(setVaneV); delayedCallMs(setVaneV, 1250);
+		}
+    }
+}
+
+V-ID/AC1_SILENT#ifdef AC2_ADDR,AC2_SILENT#endif#ifdef AC3_ADDR,AC3_SILENT#endif#ifdef AC4_ADDR,AC4_SILENT#endif#ifdef AC5_ADDR,AC5_SILENT#endif#ifdef AC6_ADDR,AC6_SILENT#endif#ifdef AC7_ADDR,AC7_SILENT#endif#ifdef AC8_ADDR,AC8_SILENT#endif#ifdef AC9_ADDR,AC9_SILENT#endif#ifdef AC10_ADDR,AC10_SILENT#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_USE_AC; ++i)
+		{
+			if (senderSubId() == widgetSilent_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			srvMessage("Set Silent AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 4, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+V-ID/AC1_ECO#ifdef AC2_ADDR,AC2_ECO#endif#ifdef AC3_ADDR,AC3_ECO#endif#ifdef AC4_ADDR,AC4_ECO#endif#ifdef AC5_ADDR,AC5_ECO#endif#ifdef AC6_ADDR,AC6_ECO#endif#ifdef AC7_ADDR,AC7_ECO#endif#ifdef AC8_ADDR,AC8_ECO#endif#ifdef AC9_ADDR,AC9_ECO#endif#ifdef AC10_ADDR,AC10_ECO#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_USE_AC; ++i)
+		{
+			if (senderSubId() == widgetEco_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			srvMessage("Set ECO AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 6, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+V-ID/AC1_TURBO#ifdef AC2_ADDR,AC2_TURBO#endif#ifdef AC3_ADDR,AC3_TURBO#endif#ifdef AC4_ADDR,AC4_TURBO#endif#ifdef AC5_ADDR,AC5_TURBO#endif#ifdef AC6_ADDR,AC6_TURBO#endif#ifdef AC7_ADDR,AC7_TURBO#endif#ifdef AC8_ADDR,AC8_TURBO#endif#ifdef AC9_ADDR,AC9_TURBO#endif#ifdef AC10_ADDR,AC10_TURBO#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_USE_AC; ++i)
+		{
+			if (senderSubId() == widgetTurbo_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			srvMessage("Set Turbo AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 7, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+V-ID/AC1_SLEEP#ifdef AC2_ADDR,AC2_SLEEP#endif#ifdef AC3_ADDR,AC3_SLEEP#endif#ifdef AC4_ADDR,AC4_SLEEP#endif#ifdef AC5_ADDR,AC5_SLEEP#endif#ifdef AC6_ADDR,AC6_SLEEP#endif#ifdef AC7_ADDR,AC7_SLEEP#endif#ifdef AC8_ADDR,AC8_SLEEP#endif#ifdef AC9_ADDR,AC9_SLEEP#endif#ifdef AC10_ADDR,AC10_SLEEP#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_USE_AC; ++i)
+		{
+			if (senderSubId() == widgetSleep_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			srvMessage("Set SLEEP AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 8, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+V-ID/AC1_ION#ifdef AC2_ADDR,AC2_ION#endif#ifdef AC3_ADDR,AC3_ION#endif#ifdef AC4_ADDR,AC4_ION#endif#ifdef AC5_ADDR,AC5_ION#endif#ifdef AC6_ADDR,AC6_ION#endif#ifdef AC7_ADDR,AC7_ION#endif#ifdef AC8_ADDR,AC8_ION#endif#ifdef AC9_ADDR,AC9_ION#endif#ifdef AC10_ADDR,AC10_ION#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_USE_AC; ++i)
+		{
+			if (senderSubId() == widgetIon_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			srvMessage("Set ION AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 9, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+V-ID/AC1_CLEAN#ifdef AC2_ADDR,AC2_CLEAN#endif#ifdef AC3_ADDR,AC3_CLEAN#endif#ifdef AC4_ADDR,AC4_CLEAN#endif#ifdef AC5_ADDR,AC5_CLEAN#endif#ifdef AC6_ADDR,AC6_CLEAN#endif#ifdef AC7_ADDR,AC7_CLEAN#endif#ifdef AC8_ADDR,AC8_CLEAN#endif#ifdef AC9_ADDR,AC9_CLEAN#endif#ifdef AC10_ADDR,AC10_CLEAN#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_USE_AC; ++i)
+		{
+			if (senderSubId() == widgetClean_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			srvMessage("Set CLEAN AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 10, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+V-ID/AC1_VERVANES#ifdef AC2_ADDR,AC2_VERVANES#endif#ifdef AC3_ADDR,AC3_VERVANES#endif#ifdef AC4_ADDR,AC4_VERVANES#endif#ifdef AC5_ADDR,AC5_VERVANES#endif#ifdef AC6_ADDR,AC6_VERVANES#endif#ifdef AC7_ADDR,AC7_VERVANES#endif#ifdef AC8_ADDR,AC8_VERVANES#endif#ifdef AC9_ADDR,AC9_VERVANES#endif#ifdef AC10_ADDR,AC10_VERVANES#endif
+{
+    if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+        for (u8 i = 0; i < COUNT_USE_AC; ++i)
+            if (senderSubId() == widgetVerVanes_arrSubID[i]) { widgetNum = i; break; }
+
+        if (widgetNum != 0xFF)
+        {
+            u8 val = (opt(0) & 0x01) ? 1 : 0; // 1 = swing, 0 = stay
+            srvMessage("Set H-swing AC %d(%d) -> %s", widgetNum, deviceAC_arrID[widgetNum], (opt(0)&0x01) ? "ON(1)" : "OFF(0)");
+            setdata();
+            setStatus(RS485, { deviceAC_arrID[widgetNum], Write_Holding_Command, 0, MBaddr_VanesH & 0xFF, 0, val, 0xcc16 });
+        }
+    }
+}
+
+
+V-ID/AC1_ACCONNECTED#ifdef AC2_ADDR,AC2_ACCONNECTED#endif#ifdef AC3_ADDR,AC3_ACCONNECTED#endif#ifdef AC4_ADDR,AC4_ACCONNECTED#endif#ifdef AC5_ADDR,AC5_ACCONNECTED#endif#ifdef AC6_ADDR,AC6_ACCONNECTED#endif#ifdef AC7_ADDR,AC7_ACCONNECTED#endif#ifdef AC8_ADDR,AC8_ACCONNECTED#endif#ifdef AC9_ADDR,AC9_ACCONNECTED#endif#ifdef AC10_ADDR,AC10_ACCONNECTED#endif
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_USE_AC; ++i)
+		{
+			if (senderSubId() == widgetACconnected_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			srvMessage("Set ACconnected AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 20, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+V-ID/s:1
+{
+    if (!flag)
+    {
+        if (++regCounter == sizeof(commandsArray))
+    	{
+    		regCounter = 0;
+    		if (++ACcounter == COUNT_USE_AC) ACcounter = 0;
+    	}
+		lastCmd  = commandsArray[regCounter];
+		lastAddr = addrArray[regCounter];
+		lastQnty = qntyArray[regCounter];
+		lastDev  = deviceAC_arrID[ACcounter];
+
+        setStatus(RS485, {deviceAC_arrID[ACcounter], commandsArray[regCounter], (addrArray[regCounter] >> 8) & 0xFF, addrArray[regCounter] & 0xFF, 0, qntyArray[regCounter], 0xcc16});
+        //srvMessage("Request to AC id%d, com %d, addr %d, qnty %d", deviceAC_arrID[ACcounter], commandsArray[regCounter], addrArray[regCounter], qntyArray[regCounter]);
+    }
+}
+
+u8 errorMSG[50];
+
+V-ID/RS485
+{
+    u8 ACnumInArray = findACbyAddress(opt(0));
+	if (ACnumInArray == 0xFF) return;
+	getStatus(@widgetAC_ID:@widgetAC_arrSubID[ACnumInArray], &ACWidgetData);
+	
+	//srvMessage("Data from AC %d(%d), %d, %d", opt(0), ACnumInArray, widgetAC_ID, widgetAC_arrSubID[ACnumInArray]);
+	
+	// === COILS (0x01): addr 0, count 15 OR addr 100, count 1 ===
+	if ( (opt(1) == Read_Coils_Command) && !flag )
+	{
+		// Read all modes and funcs
+		if(lastAddr == 1) {
+			srvMessage("Addr 1");
+
+			setStatus(@widgetAC_ID:@widgetAC_arrSubID[ACnumInArray], { (ACWidgetData[0] & 0x0E) | (opt(3) & 0x01) } );
+			setStatus(@widgetAC_ID:@widgetSilent_arrSubID[ACnumInArray], 		(opt(3) >> 3) & 0x01); //
+			setStatus(@widgetAC_ID:@widgetEco_arrSubID[ACnumInArray], 			(opt(3) >> 5) & 0x01);
+			setStatus(@widgetAC_ID:@widgetTurbo_arrSubID[ACnumInArray], 		(opt(3) >> 6) & 0x01); //
+			setStatus(@widgetAC_ID:@widgetSleep_arrSubID[ACnumInArray], 		(opt(3) >> 7) & 0x01);
+			setStatus(@widgetAC_ID:@widgetIon_arrSubID[ACnumInArray], 			(opt(4) >> 0) & 0x01);
+			setStatus(@widgetAC_ID:@widgetClean_arrSubID[ACnumInArray], 		(opt(4) >> 1) & 0x01);
+			setStatus(@widgetAC_ID:@widgetACconnected_arrSubID[ACnumInArray], 	(opt(5) >> 3) & 0x01); //
+		} else if(lastAddr == 100) {
+			//read coil 100 "use external temp sensor"
+			if (opt(3) & 0x01)    useExtMask |=  (1 << ACnumInArray);
+			else                  useExtMask &= ~(1 << ACnumInArray);
+		}
+		
+	} 
+
+	// === DISCRETE (0x02): addr 0, count 24 ===
+	else if ((opt(1) == Read_Discrete_Command) && !flag) {
+		// srvMessage("It is read disc com");
+		//srvMessage("Data from AC 0 = %d, 1 = %d, 2 = %d, 3 = %d, 4 = %d, 5 = %d, 6 = %d", opt(0), opt(1), opt(2), opt(3), opt(4), opt(5), opt(6));
+
+		u8 k;
+        u8 b;
+        u8 bit;
+        u8 found = 0;
+        u8 firstIdx = 0xFF;
+
+        // looking for the 1st "true"
+        for (k = 0; k < 25; ++k) {
+            b   = opt(3 + (k >> 3));        // byte 
+            bit = (b >> (k & 7)) & 0x01;    // bit
+            if (bit) { found = 1; firstIdx = k; break; }
+        }
+
+		if (found) {
+			u16 errNum = (u16)(firstIdx + 1);
+			sprintf(errorMSG, "Error %u", errNum);
+			setStatus(@widgetAC_ID:@widgetErrorCode_arrSubID[ACnumInArray], &errorMSG);
+			setStatus(@widgetAC_ID:@widgetError_arrSubID[ACnumInArray], 1);
+		} else {
+			sprintf(errorMSG, "No error");
+			setStatus(@widgetAC_ID:@widgetErrorCode_arrSubID[ACnumInArray], &errorMSG);
+			setStatus(@widgetAC_ID:@widgetError_arrSubID[ACnumInArray], 0);
+		}
+	}
+
+	// === HOLDING (0x03): addr 1, count 32 ===
+	else if ( (opt(1) == Read_Holding_Command) && (opt(2) == (qntyArray[1] * 2)) && !flag )
+	{
+		if(lastAddr == 1) {
+			//srvMessage("Data from AC 0 = %d, 1 = %d, 2 = %d, 3 = %d, 4 = %d, 5 = %d, 6 = %d", opt(0), opt(1), opt(2), opt(3), opt(4), opt(5), opt(6));
+
+			setStatus(@widgetAC_ID:@widgetAC_arrSubID[ACnumInArray], 
+						{(ACWidgetData[0] & 0x0F) | (getWidgetModeFromGateway(opt(4)) << 4), 
+						0,
+						((opt(11) << 8) | opt(12)) / 100, 
+						getVanesForWidgetFromGateway((opt(22) << 4) | (opt(20) & 0x0F)), 
+						getFanForWidgetFromGateway(opt(18))});
+			// Update "hor.swing" button state
+			u8 verVaneGateway = (opt(20) & 0x0F);
+			u8 isSwing		  = (verVaneGateway == 1);	// "1" is swing
+			setStatus(@widgetAC_ID:@widgetVerVanes_arrSubID[ACnumInArray], isSwing);
+
+			u16 roomRaw    = ((opt(7)  << 8) | opt(8));
+			u16 extRaw     = ((opt(51) << 8) | opt(52));
+			u16 displayRaw = (useExtMask & (1 << ACnumInArray)) ? extRaw : roomRaw;
+
+			setData_f88(widgetAC_ID, widgetRoomTemp_arrSubID[ACnumInArray], displayRaw / 10);
+			setData_f88(widgetAC_ID, widgetRoomTemp_arrSubID[ACnumInArray], 	((opt(7)  << 8) | opt(8))  / 10);
+			setData_f88(widgetAC_ID, widgetOutdoorTemp_arrSubID[ACnumInArray], 	((opt(9)  << 8) | opt(10)) / 10);
+		}	
+	}
+}
+#endif

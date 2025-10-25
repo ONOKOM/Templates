@@ -9,7 +9,7 @@
 [Шаблоны для Loxone](https://github.com/ONOKOM/Templates/tree/main/Loxone) </br>
 
 
-Шаблоны для Larnitech </br>
+[Шаблоны для Larnitech](https://github.com/ONOKOM/Templates/tree/main/Larnitech) </br>
 
 </br></br></br>
 

@@ -329,3 +329,10 @@ mqtt:
             Ошибка {{ code }}
         {% endif %}
       icon: "mdi:alert-circle"
+  - sensor:
+      unique_id: "hvac_current_fan_speed_<впишите modbus-адрес устройства сюда>"
+      name: "Текущая скорость вентилятора"
+      state_topic: "/devices/ONOKOM-AIR-AUX-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/Current fan speed"
+      unit_of_measurement: "RPM"
+      state_class: "measurement"
+      value_template: "{{ value | int }}"

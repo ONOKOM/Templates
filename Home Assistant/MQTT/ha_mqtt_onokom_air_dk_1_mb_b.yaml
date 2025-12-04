@@ -295,3 +295,17 @@ mqtt:
       device_class: "temperature"
       state_class: "measurement"
       value_template: "{{ value | float }}"
+  - sensor:
+      unique_id: "hvac_target_fan_speed_<впишите modbus-адрес устройства сюда>"
+      name: "Целевая скорость вентилятора"
+      state_topic: "/devices/ONOKOM-AIR-DK-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/Target fan speed"
+      unit_of_measurement: "RPM"
+      state_class: "measurement"
+      value_template: "{{ value | int }}"
+  - sensor:
+      unique_id: "hvac_current_fan_speed_<впишите modbus-адрес устройства сюда>"
+      name: "Текущая скорость вентилятора"
+      state_topic: "/devices/ONOKOM-AIR-DK-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/Current fan speed"
+      unit_of_measurement: "RPM"
+      state_class: "measurement"
+      value_template: "{{ value | int }}"

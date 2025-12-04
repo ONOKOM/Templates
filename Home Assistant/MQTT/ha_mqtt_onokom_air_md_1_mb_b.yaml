@@ -247,3 +247,10 @@ mqtt:
       name: "Кондиционер подключен"
       state_topic: "/devices/ONOKOM-AIR-MD-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/AC connected"
       value_template: "{{ value | int == 1 and 'Подключен' or 'Не подключен' }}"
+  - sensor:
+      unique_id: "hvac_target_fan_speed_<впишите modbus-адрес устройства сюда>"
+      name: "Целевая скорость вентилятора"
+      state_topic: "/devices/ONOKOM-AIR-MD-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/Target fan speed"
+      unit_of_measurement: "RPM"
+      state_class: "measurement"
+      value_template: "{{ value | int }}"

@@ -32,6 +32,7 @@ mqtt:
       min_temp: 16
       max_temp: 31
       precision: 1
+      temp_step: 1
       current_temperature_topic: "/devices/ONOKOM-AIR-TCL-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/Indoor air temperature"
       fan_modes:
         - "Авто"
@@ -380,6 +381,12 @@ mqtt:
       state_on: "1"
       state_off: "0"
       icon: "mdi:volume-high"
+  - number:
+      unique_id: "hvac_compressor_power_limit_<впишите modbus-адрес устройства сюда>"
+      name: "Ограничение мощности компрессора"
+      state_topic: "/devices/ONOKOM-AIR-TCL-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/Compressor power limit"
+      command_topic: "/devices/ONOKOM-AIR-TCL-1-MB-B_<впишите modbus-адрес устройства сюда>/controls/Compressor power limit/on"
+      unit_of_measurement: "%"
   - sensor:
       unique_id: "hvac_ac_connected_<впишите modbus-адрес устройства сюда>"
       name: "Кондиционер подключен"

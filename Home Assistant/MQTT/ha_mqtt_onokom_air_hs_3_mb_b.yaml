@@ -32,6 +32,7 @@ mqtt:
       min_temp: 16
       max_temp: 32
       precision: 1
+      temp_step: 1
       current_temperature_topic: "/devices/ONOKOM-AIR-HS-3-MB-B_<впишите modbus-адрес устройства сюда>/controls/Indoor air temperature"
       fan_modes:
         - "Авто"
@@ -426,3 +427,11 @@ mqtt:
             Ошибка {{ code+1 }}
         {% endif %}
       icon: "mdi:alert-circle"
+  - sensor:
+      unique_id: "hvac_current_compressor_power_<впишите modbus-адрес устройства сюда>"
+      name: "Текущая мощность компрессора"
+      state_topic: "/devices/ONOKOM-AIR-HS-3-MB-B_<впишите modbus-адрес устройства сюда>/controls/Current compressor power"
+  - sensor:
+      unique_id: "hvac_target_compressor_power_<впишите modbus-адрес устройства сюда>"
+      name: "Целевая мощность компрессора"
+      state_topic: "/devices/ONOKOM-AIR-HS-3-MB-B_<впишите modbus-адрес устройства сюда>/controls/Target compressor power"

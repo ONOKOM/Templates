@@ -1,0 +1,148 @@
+mqtt:
+  - climate:
+      unique_id: hvac_onokom-air-ht-1-zb-szigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      name: onokom-air-ht-1-zb-s
+      mode_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      mode_state_template: >-
+        {% if value_json.state in ['OFF','off',0,false] %} off
+        {% else %} {{ value_json.system_mode }}
+        {% endif %}
+      mode_command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
+      mode_command_template: >-
+        {% if value == 'off' %} {"state":"OFF"}
+        {% else %}
+        {"state":"ON","system_mode":"{{ value }}"}
+        {% endif %}
+      current_temperature_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      current_temperature_template: "{{ value_json.current_temperature }}"
+      temperature_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      temperature_command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
+      temperature_state_template: "{{ value_json.target_temperature }}"
+      temperature_command_template: '{"target_temperature": {{ value }} }'
+      min_temp: 16
+      max_temp: 32
+      precision: 1
+      temp_step: 1
+      fan_modes:
+        - Авто
+        - 1 Скорость
+        - 2 Скорость
+        - 3 Скорость
+      fan_mode_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      fan_mode_state_template: >-
+        {% set raw = value_json.fan_speed | int(0) %}
+        {% if raw == 0 %}Авто
+        {% elif raw == 1 %}1 Скорость
+        {% elif raw == 2 %}2 Скорость
+        {% elif raw == 3 %}3 Скорость
+        {% else %}Авто
+        {% endif %}
+      fan_mode_command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
+      fan_mode_command_template: >-
+        {% set options_map = {
+          "Авто": 0,
+          "1 Скорость": 1,
+          "2 Скорость": 2,
+          "3 Скорость": 3
+        } %}
+        {"fan_speed": {{ options_map[value] }} }
+  - select:
+      unique_id: select_fan_speed_<впишите Zigbee-номер устройства сюда>
+      name: Скорость вентилятора
+      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      value_template: >-
+        {% set raw = value_json.fan_speed | int(0) %}
+        {% if raw == 0 %}Авто
+        {% elif raw == 1 %}1 Скорость
+        {% elif raw == 2 %}2 Скорость
+        {% elif raw == 3 %}3 Скорость
+        {% else %}Авто
+        {% endif %}
+      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
+      command_template: >-
+        {% set options_map = {
+          "Авто": 0,
+          "1 Скорость": 1,
+          "2 Скорость": 2,
+          "3 Скорость": 3
+        } %}
+        {"fan_speed": {{ options_map[value] }} }
+      options:
+        - Авто
+        - 1 Скорость
+        - 2 Скорость
+        - 3 Скорость
+  - select:
+      unique_id: select_smart_fan_speed_<впишите Zigbee-номер устройства сюда>
+      name: Скорость вентилятора расширенная
+      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      value_template: >-
+        {% set raw = value_json.smart_fan_speed | int(0) %}
+        {% if raw == 0 %}Авто
+        {% elif raw == 2 %}1 Скорость
+        {% elif raw == 3 %}2 Скорость
+        {% elif raw == 4 %}3 Скорость
+        {% else %}Авто
+        {% endif %}
+      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
+      command_template: >-
+        {% set options_map = {
+          "Авто": 0,
+          "1 Скорость": 2,
+          "2 Скорость": 3,
+          "3 Скорость": 4
+        } %}
+        {"smart_fan_speed": {{ options_map[value] }} }
+      options:
+        - Авто
+        - 1 Скорость
+        - 2 Скорость
+        - 3 Скорость
+  - select:
+      unique_id: select_status_led_<впишите Zigbee-номер устройства сюда>
+      name: Индикатор состояния
+      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      value_template: >-
+        {% set raw = value_json.status_led %}
+        {% if raw == "normal_mode" %}Обычный режим
+        {% elif raw == "disabled_if_no_errors" %}Отключен если нет ошибок
+        {% elif raw == "disabled_untill_reboot" %}Отключен до перезагрузки
+        {% elif raw == "always_disabled" %}Всегда отключен
+        {% elif raw == "green_untill_reboot" %}Зеленый до перезагрузки
+        {% elif raw == "red_untill_reboot" %}Красный до перезагрузки
+        {% else %}Обычный режим
+        {% endif %}
+      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
+      command_template: >-
+        {% set options_map = {
+          "Обычный режим": "normal_mode",
+          "Отключен если нет ошибок": "disabled_if_no_errors",
+          "Отключен до перезагрузки": "disabled_untill_reboot",
+          "Всегда отключен": "always_disabled",
+          "Зеленый до перезагрузки": "green_untill_reboot",
+          "Красный до перезагрузки": "red_untill_reboot"
+        } %}
+        {"status_led": "{{ options_map[value] }}" }
+      options:
+        - Обычный режим
+        - Отключен если нет ошибок
+        - Отключен до перезагрузки
+        - Всегда отключен
+        - Зеленый до перезагрузки
+        - Красный до перезагрузки
+  - sensor:
+      unique_id: sensor_ac_connected_<впишите Zigbee-номер устройства сюда>
+      name: Кондиционер подключен
+      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      unit_of_measurement: ""
+      value_template: >-
+        {% set value = value_json.ac_connected %}
+        {% if value == "connected" %}Подключен
+        {% else %}Не подключен
+        {% endif %}
+  - sensor:
+      unique_id: switch_lqi_<впишите Zigbee-номер устройства сюда>
+      name: "Связь Zigbee (LQI)"
+      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      unit_of_measurement: ""
+      value_template: "{{ value_json.linkquality }}"

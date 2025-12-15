@@ -1,7 +1,7 @@
 mqtt:
   - climate:
       unique_id: hvac_onokom-air-md-1-zb-szigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      name: onokom-air-md-1-zb-s
+      name: ONOKOM-AIR-MD-1-ZB-S
       mode_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       mode_state_template: >-
         {% if value_json.state in ['OFF','off',0,false] %} off

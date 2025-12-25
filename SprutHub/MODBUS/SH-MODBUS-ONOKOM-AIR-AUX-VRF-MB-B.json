@@ -181,20 +181,6 @@
       ]
     },
     {
-      "name": "Текущая скорость вентилятора",
-      "type": "Integer",
-      "unit": "RPM",
-      "write": false,
-      "value": 0,
-      "link": [
-        {
-          "address": 32,
-          "function": "Holding",
-          "pollingTime": 1000
-        }
-      ]
-    },
-    {
       "name": "Версия устройства",
       "inputType": "STATUS",
       "write": false,

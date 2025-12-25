@@ -108,19 +108,6 @@
   ],
   "options": [
     {
-      "name": "Текущая скорость вентилятора",
-      "type": "Integer",
-      "unit": " RPM",
-      "write": false,
-      "value": 0,
-      "link": [
-        {
-          "type": "Integer",
-          "topicGet": "/devices/(1)/controls/(2) - Current fan speed"
-        }
-      ]
-    },
-    {
       "name": "Версия прошивки",
       "inputType": "STATUS",
       "write": false,

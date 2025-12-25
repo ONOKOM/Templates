@@ -22,6 +22,11 @@
         "order": 2
       },
       {
+        "title": "Vanes",
+        "id": "vanes",
+        "order": 3
+      },
+      {
         "title": "HW Info",
         "id": "hw_info",
         "order": 6
@@ -30,6 +35,11 @@
         "title": "Setup",
         "id": "setup",
         "order": 7
+      },
+      {
+        "title": "Errors",
+        "id": "errors",
+        "order": 8
       },
       {
         "title": "Debug",
@@ -95,6 +105,22 @@
         "order": 1
       },
       {
+        "id": "Show_vanes_as_range",
+        "title": "Show vanes as range",
+        "address": 94,
+        "reg_type": "coil",
+        "enum": [
+          0,
+          1
+        ],
+        "enum_titles": [
+          "No",
+          "Yes"
+        ],
+        "group": "vanes",
+        "order": 1
+      },
+      {
         "id": "Show_thermostat_state_as_range",
         "title": "Show thermostat state as range",
         "address": 94,
@@ -108,6 +134,23 @@
           "Yes"
         ],
         "group": "temperatureControl",
+        "order": 1
+      },
+      {
+        "title": "Show error switches",
+        "id": "Show_error_switches",
+        "address": 100,
+        "reg_type": "coil",
+        "default": 1,
+        "enum": [
+          0,
+          1
+        ],
+        "enum_titles": [
+          "No",
+          "Yes"
+        ],
+        "group": "errors",
         "order": 1
       },
       {
@@ -413,21 +456,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "0 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10032,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=1"
-      },
-      {
         "name": "1 - AC connected",
         "reg_type": "coil",
         "address": 10120,
@@ -682,21 +710,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=2",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "1 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10132,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=2"
       },
       {
         "name": "2 - AC connected",
@@ -955,21 +968,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "2 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10232,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=3"
-      },
-      {
         "name": "3 - AC connected",
         "reg_type": "coil",
         "address": 10320,
@@ -1224,21 +1222,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=4",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "3 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10332,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=4"
       },
       {
         "name": "4 - AC connected",
@@ -1497,21 +1480,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "4 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10432,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=5"
-      },
-      {
         "name": "5 - AC connected",
         "reg_type": "coil",
         "address": 10520,
@@ -1766,21 +1734,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=6",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "5 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10532,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=6"
       },
       {
         "name": "6 - AC connected",
@@ -2039,21 +1992,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "6 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10632,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=7"
-      },
-      {
         "name": "7 - AC connected",
         "reg_type": "coil",
         "address": 10720,
@@ -2308,21 +2246,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=8",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "7 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10732,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=8"
       },
       {
         "name": "8 - AC connected",
@@ -2581,21 +2504,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "8 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10832,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=9"
-      },
-      {
         "name": "9 - AC connected",
         "reg_type": "coil",
         "address": 10920,
@@ -2850,21 +2758,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=10",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "9 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 10932,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=10"
       },
       {
         "name": "10 - AC connected",
@@ -3123,21 +3016,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "10 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11032,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=11"
-      },
-      {
         "name": "11 - AC connected",
         "reg_type": "coil",
         "address": 11120,
@@ -3392,21 +3270,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=12",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "11 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11132,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=12"
       },
       {
         "name": "12 - AC connected",
@@ -3665,21 +3528,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "12 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11232,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=13"
-      },
-      {
         "name": "13 - AC connected",
         "reg_type": "coil",
         "address": 11320,
@@ -3934,21 +3782,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=14",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "13 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11332,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=14"
       },
       {
         "name": "14 - AC connected",
@@ -4207,21 +4040,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "14 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11432,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=15"
-      },
-      {
         "name": "15 - AC connected",
         "reg_type": "coil",
         "address": 11520,
@@ -4476,21 +4294,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=16",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "15 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11532,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=16"
       },
       {
         "name": "16 - AC connected",
@@ -4749,21 +4552,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "16 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11632,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=17"
-      },
-      {
         "name": "17 - AC connected",
         "reg_type": "coil",
         "address": 11720,
@@ -5018,21 +4806,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=18",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "17 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11732,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=18"
       },
       {
         "name": "18 - AC connected",
@@ -5291,21 +5064,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "18 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11832,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=19"
-      },
-      {
         "name": "19 - AC connected",
         "reg_type": "coil",
         "address": 11920,
@@ -5560,21 +5318,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=20",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "19 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 11932,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=20"
       },
       {
         "name": "20 - AC connected",
@@ -5833,21 +5576,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "20 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12032,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=21"
-      },
-      {
         "name": "21 - AC connected",
         "reg_type": "coil",
         "address": 12120,
@@ -6102,21 +5830,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=22",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "21 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12132,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=22"
       },
       {
         "name": "22 - AC connected",
@@ -6375,21 +6088,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "22 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12232,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=23"
-      },
-      {
         "name": "23 - AC connected",
         "reg_type": "coil",
         "address": 12320,
@@ -6644,21 +6342,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=24",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "23 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12332,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=24"
       },
       {
         "name": "24 - AC connected",
@@ -6917,21 +6600,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "24 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12432,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=25"
-      },
-      {
         "name": "25 - AC connected",
         "reg_type": "coil",
         "address": 12520,
@@ -7186,21 +6854,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=26",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "25 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12532,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=26"
       },
       {
         "name": "26 - AC connected",
@@ -7459,21 +7112,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "26 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12632,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=27"
-      },
-      {
         "name": "27 - AC connected",
         "reg_type": "coil",
         "address": 12720,
@@ -7728,21 +7366,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=28",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "27 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12732,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=28"
       },
       {
         "name": "28 - AC connected",
@@ -8001,21 +7624,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "28 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12832,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=29"
-      },
-      {
         "name": "29 - AC connected",
         "reg_type": "coil",
         "address": 12920,
@@ -8270,21 +7878,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=30",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "29 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 12932,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=30"
       },
       {
         "name": "30 - AC connected",
@@ -8543,21 +8136,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "30 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13032,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=31"
-      },
-      {
         "name": "31 - AC connected",
         "reg_type": "coil",
         "address": 13120,
@@ -8812,21 +8390,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=32",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "31 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13132,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=32"
       },
       {
         "name": "32 - AC connected",
@@ -9085,21 +8648,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "32 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13232,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=33"
-      },
-      {
         "name": "33 - AC connected",
         "reg_type": "coil",
         "address": 13320,
@@ -9354,21 +8902,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=34",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "33 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13332,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=34"
       },
       {
         "name": "34 - AC connected",
@@ -9627,21 +9160,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "34 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13432,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=35"
-      },
-      {
         "name": "35 - AC connected",
         "reg_type": "coil",
         "address": 13520,
@@ -9896,21 +9414,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=36",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "35 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13532,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=36"
       },
       {
         "name": "36 - AC connected",
@@ -10169,21 +9672,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "36 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13632,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=37"
-      },
-      {
         "name": "37 - AC connected",
         "reg_type": "coil",
         "address": 13720,
@@ -10438,21 +9926,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=38",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "37 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13732,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=38"
       },
       {
         "name": "38 - AC connected",
@@ -10711,21 +10184,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "38 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13832,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=39"
-      },
-      {
         "name": "39 - AC connected",
         "reg_type": "coil",
         "address": 13920,
@@ -10980,21 +10438,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=40",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "39 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 13932,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=40"
       },
       {
         "name": "40 - AC connected",
@@ -11253,21 +10696,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "40 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14032,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=41"
-      },
-      {
         "name": "41 - AC connected",
         "reg_type": "coil",
         "address": 14120,
@@ -11522,21 +10950,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=42",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "41 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14132,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=42"
       },
       {
         "name": "42 - AC connected",
@@ -11795,21 +11208,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "42 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14232,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=43"
-      },
-      {
         "name": "43 - AC connected",
         "reg_type": "coil",
         "address": 14320,
@@ -12064,21 +11462,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=44",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "43 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14332,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=44"
       },
       {
         "name": "44 - AC connected",
@@ -12337,21 +11720,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "44 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14432,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=45"
-      },
-      {
         "name": "45 - AC connected",
         "reg_type": "coil",
         "address": 14520,
@@ -12606,21 +11974,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=46",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "45 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14532,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=46"
       },
       {
         "name": "46 - AC connected",
@@ -12879,21 +12232,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "46 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14632,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=47"
-      },
-      {
         "name": "47 - AC connected",
         "reg_type": "coil",
         "address": 14720,
@@ -13148,21 +12486,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=48",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "47 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14732,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=48"
       },
       {
         "name": "48 - AC connected",
@@ -13421,21 +12744,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "48 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14832,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=49"
-      },
-      {
         "name": "49 - AC connected",
         "reg_type": "coil",
         "address": 14920,
@@ -13690,21 +12998,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=50",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "49 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 14932,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=50"
       },
       {
         "name": "50 - AC connected",
@@ -13963,21 +13256,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "50 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15032,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=51"
-      },
-      {
         "name": "51 - AC connected",
         "reg_type": "coil",
         "address": 15120,
@@ -14232,21 +13510,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=52",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "51 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15132,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=52"
       },
       {
         "name": "52 - AC connected",
@@ -14505,21 +13768,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "52 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15232,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=53"
-      },
-      {
         "name": "53 - AC connected",
         "reg_type": "coil",
         "address": 15320,
@@ -14774,21 +14022,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=54",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "53 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15332,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=54"
       },
       {
         "name": "54 - AC connected",
@@ -15047,21 +14280,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "54 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15432,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=55"
-      },
-      {
         "name": "55 - AC connected",
         "reg_type": "coil",
         "address": 15520,
@@ -15316,21 +14534,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=56",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "55 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15532,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=56"
       },
       {
         "name": "56 - AC connected",
@@ -15589,21 +14792,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "56 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15632,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=57"
-      },
-      {
         "name": "57 - AC connected",
         "reg_type": "coil",
         "address": 15720,
@@ -15858,21 +15046,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=58",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "57 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15732,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=58"
       },
       {
         "name": "58 - AC connected",
@@ -16131,21 +15304,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "58 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15832,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=59"
-      },
-      {
         "name": "59 - AC connected",
         "reg_type": "coil",
         "address": 15920,
@@ -16400,21 +15558,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=60",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "59 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 15932,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=60"
       },
       {
         "name": "60 - AC connected",
@@ -16673,21 +15816,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "60 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 16032,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=61"
-      },
-      {
         "name": "61 - AC connected",
         "reg_type": "coil",
         "address": 16120,
@@ -16942,21 +16070,6 @@
         ],
         "condition": "Show_fan_as_range!=1&&IDU_count>=62",
         "original_name": "Smart fan speed"
-      },
-      {
-        "name": "61 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 16132,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=62"
       },
       {
         "name": "62 - AC connected",
@@ -17215,21 +16328,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "62 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 16232,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=63"
-      },
-      {
         "name": "63 - AC connected",
         "reg_type": "coil",
         "address": 16320,
@@ -17486,21 +16584,6 @@
         "original_name": "Smart fan speed"
       },
       {
-        "name": "63 - Current fan speed",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 16332,
-        "type": "range",
-        "min": 0,
-        "max": 200,
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true,
-        "units": "rpm",
-        "original_name": "Current fan speed",
-        "condition": "IDU_count>=64"
-      },
-      {
         "name": "HW Version",
         "enabled": false,
         "reg_type": "holding",
@@ -17660,7 +16743,6 @@
         "EMULATE_M_WRC": "Главный",
         "EMULATE_S_WRC": "Ведомый",
         "Debug": "Диагностика",
-        "Current fan speed": "Текущая скорость вентилятора",
         "AC connected": "Кондиционер подключен",
         "Show error switches": "Показать переключатели ошибок",
         "Errors": "Ошибки",
@@ -17672,7 +16754,6 @@
         "0 - Indoor air temperature": "0 - Температура воздуха в помещении",
         "0 - Target temperature": "0 - Целевая температура",
         "0 - Thermostat state": "0 - Состояние термостата",
-        "0 - Current fan speed": "0 - Текущая скорость вентилятора",
         "0 - AC connected": "0 - Кондиционер подключен",
         "1 - Active": "1 - Состояние",
         "1 - Mode": "1 - Режим",
@@ -17682,7 +16763,6 @@
         "1 - Indoor air temperature": "1 - Температура воздуха в помещении",
         "1 - Target temperature": "1 - Целевая температура",
         "1 - Thermostat state": "1 - Состояние термостата",
-        "1 - Current fan speed": "1 - Текущая скорость вентилятора",
         "1 - AC connected": "1 - Кондиционер подключен",
         "2 - Active": "2 - Состояние",
         "2 - Mode": "2 - Режим",
@@ -17692,7 +16772,6 @@
         "2 - Indoor air temperature": "2 - Температура воздуха в помещении",
         "2 - Target temperature": "2 - Целевая температура",
         "2 - Thermostat state": "2 - Состояние термостата",
-        "2 - Current fan speed": "2 - Текущая скорость вентилятора",
         "2 - AC connected": "2 - Кондиционер подключен",
         "3 - Active": "3 - Состояние",
         "3 - Mode": "3 - Режим",
@@ -17702,7 +16781,6 @@
         "3 - Indoor air temperature": "3 - Температура воздуха в помещении",
         "3 - Target temperature": "3 - Целевая температура",
         "3 - Thermostat state": "3 - Состояние термостата",
-        "3 - Current fan speed": "3 - Текущая скорость вентилятора",
         "3 - AC connected": "3 - Кондиционер подключен",
         "4 - Active": "4 - Состояние",
         "4 - Mode": "4 - Режим",
@@ -17712,7 +16790,6 @@
         "4 - Indoor air temperature": "4 - Температура воздуха в помещении",
         "4 - Target temperature": "4 - Целевая температура",
         "4 - Thermostat state": "4 - Состояние термостата",
-        "4 - Current fan speed": "4 - Текущая скорость вентилятора",
         "4 - AC connected": "4 - Кондиционер подключен",
         "5 - Active": "5 - Состояние",
         "5 - Mode": "5 - Режим",
@@ -17722,7 +16799,6 @@
         "5 - Indoor air temperature": "5 - Температура воздуха в помещении",
         "5 - Target temperature": "5 - Целевая температура",
         "5 - Thermostat state": "5 - Состояние термостата",
-        "5 - Current fan speed": "5 - Текущая скорость вентилятора",
         "5 - AC connected": "5 - Кондиционер подключен",
         "6 - Active": "6 - Состояние",
         "6 - Mode": "6 - Режим",
@@ -17732,7 +16808,6 @@
         "6 - Indoor air temperature": "6 - Температура воздуха в помещении",
         "6 - Target temperature": "6 - Целевая температура",
         "6 - Thermostat state": "6 - Состояние термостата",
-        "6 - Current fan speed": "6 - Текущая скорость вентилятора",
         "6 - AC connected": "6 - Кондиционер подключен",
         "7 - Active": "7 - Состояние",
         "7 - Mode": "7 - Режим",
@@ -17742,7 +16817,6 @@
         "7 - Indoor air temperature": "7 - Температура воздуха в помещении",
         "7 - Target temperature": "7 - Целевая температура",
         "7 - Thermostat state": "7 - Состояние термостата",
-        "7 - Current fan speed": "7 - Текущая скорость вентилятора",
         "7 - AC connected": "7 - Кондиционер подключен",
         "8 - Active": "8 - Состояние",
         "8 - Mode": "8 - Режим",
@@ -17752,7 +16826,6 @@
         "8 - Indoor air temperature": "8 - Температура воздуха в помещении",
         "8 - Target temperature": "8 - Целевая температура",
         "8 - Thermostat state": "8 - Состояние термостата",
-        "8 - Current fan speed": "8 - Текущая скорость вентилятора",
         "8 - AC connected": "8 - Кондиционер подключен",
         "9 - Active": "9 - Состояние",
         "9 - Mode": "9 - Режим",
@@ -17762,7 +16835,6 @@
         "9 - Indoor air temperature": "9 - Температура воздуха в помещении",
         "9 - Target temperature": "9 - Целевая температура",
         "9 - Thermostat state": "9 - Состояние термостата",
-        "9 - Current fan speed": "9 - Текущая скорость вентилятора",
         "9 - AC connected": "9 - Кондиционер подключен",
         "10 - Active": "10 - Состояние",
         "10 - Mode": "10 - Режим",
@@ -17772,7 +16844,6 @@
         "10 - Indoor air temperature": "10 - Температура воздуха в помещении",
         "10 - Target temperature": "10 - Целевая температура",
         "10 - Thermostat state": "10 - Состояние термостата",
-        "10 - Current fan speed": "10 - Текущая скорость вентилятора",
         "10 - AC connected": "10 - Кондиционер подключен",
         "11 - Active": "11 - Состояние",
         "11 - Mode": "11 - Режим",
@@ -17782,7 +16853,6 @@
         "11 - Indoor air temperature": "11 - Температура воздуха в помещении",
         "11 - Target temperature": "11 - Целевая температура",
         "11 - Thermostat state": "11 - Состояние термостата",
-        "11 - Current fan speed": "11 - Текущая скорость вентилятора",
         "11 - AC connected": "11 - Кондиционер подключен",
         "12 - Active": "12 - Состояние",
         "12 - Mode": "12 - Режим",
@@ -17792,7 +16862,6 @@
         "12 - Indoor air temperature": "12 - Температура воздуха в помещении",
         "12 - Target temperature": "12 - Целевая температура",
         "12 - Thermostat state": "12 - Состояние термостата",
-        "12 - Current fan speed": "12 - Текущая скорость вентилятора",
         "12 - AC connected": "12 - Кондиционер подключен",
         "13 - Active": "13 - Состояние",
         "13 - Mode": "13 - Режим",
@@ -17802,7 +16871,6 @@
         "13 - Indoor air temperature": "13 - Температура воздуха в помещении",
         "13 - Target temperature": "13 - Целевая температура",
         "13 - Thermostat state": "13 - Состояние термостата",
-        "13 - Current fan speed": "13 - Текущая скорость вентилятора",
         "13 - AC connected": "13 - Кондиционер подключен",
         "14 - Active": "14 - Состояние",
         "14 - Mode": "14 - Режим",
@@ -17812,7 +16880,6 @@
         "14 - Indoor air temperature": "14 - Температура воздуха в помещении",
         "14 - Target temperature": "14 - Целевая температура",
         "14 - Thermostat state": "14 - Состояние термостата",
-        "14 - Current fan speed": "14 - Текущая скорость вентилятора",
         "14 - AC connected": "14 - Кондиционер подключен",
         "15 - Active": "15 - Состояние",
         "15 - Mode": "15 - Режим",
@@ -17822,7 +16889,6 @@
         "15 - Indoor air temperature": "15 - Температура воздуха в помещении",
         "15 - Target temperature": "15 - Целевая температура",
         "15 - Thermostat state": "15 - Состояние термостата",
-        "15 - Current fan speed": "15 - Текущая скорость вентилятора",
         "15 - AC connected": "15 - Кондиционер подключен",
         "16 - Active": "16 - Состояние",
         "16 - Mode": "16 - Режим",
@@ -17832,7 +16898,6 @@
         "16 - Indoor air temperature": "16 - Температура воздуха в помещении",
         "16 - Target temperature": "16 - Целевая температура",
         "16 - Thermostat state": "16 - Состояние термостата",
-        "16 - Current fan speed": "16 - Текущая скорость вентилятора",
         "16 - AC connected": "16 - Кондиционер подключен",
         "17 - Active": "17 - Состояние",
         "17 - Mode": "17 - Режим",
@@ -17842,7 +16907,6 @@
         "17 - Indoor air temperature": "17 - Температура воздуха в помещении",
         "17 - Target temperature": "17 - Целевая температура",
         "17 - Thermostat state": "17 - Состояние термостата",
-        "17 - Current fan speed": "17 - Текущая скорость вентилятора",
         "17 - AC connected": "17 - Кондиционер подключен",
         "18 - Active": "18 - Состояние",
         "18 - Mode": "18 - Режим",
@@ -17852,7 +16916,6 @@
         "18 - Indoor air temperature": "18 - Температура воздуха в помещении",
         "18 - Target temperature": "18 - Целевая температура",
         "18 - Thermostat state": "18 - Состояние термостата",
-        "18 - Current fan speed": "18 - Текущая скорость вентилятора",
         "18 - AC connected": "18 - Кондиционер подключен",
         "19 - Active": "19 - Состояние",
         "19 - Mode": "19 - Режим",
@@ -17862,7 +16925,6 @@
         "19 - Indoor air temperature": "19 - Температура воздуха в помещении",
         "19 - Target temperature": "19 - Целевая температура",
         "19 - Thermostat state": "19 - Состояние термостата",
-        "19 - Current fan speed": "19 - Текущая скорость вентилятора",
         "19 - AC connected": "19 - Кондиционер подключен",
         "20 - Active": "20 - Состояние",
         "20 - Mode": "20 - Режим",
@@ -17872,7 +16934,6 @@
         "20 - Indoor air temperature": "20 - Температура воздуха в помещении",
         "20 - Target temperature": "20 - Целевая температура",
         "20 - Thermostat state": "20 - Состояние термостата",
-        "20 - Current fan speed": "20 - Текущая скорость вентилятора",
         "20 - AC connected": "20 - Кондиционер подключен",
         "21 - Active": "21 - Состояние",
         "21 - Mode": "21 - Режим",
@@ -17882,7 +16943,6 @@
         "21 - Indoor air temperature": "21 - Температура воздуха в помещении",
         "21 - Target temperature": "21 - Целевая температура",
         "21 - Thermostat state": "21 - Состояние термостата",
-        "21 - Current fan speed": "21 - Текущая скорость вентилятора",
         "21 - AC connected": "21 - Кондиционер подключен",
         "22 - Active": "22 - Состояние",
         "22 - Mode": "22 - Режим",
@@ -17892,7 +16952,6 @@
         "22 - Indoor air temperature": "22 - Температура воздуха в помещении",
         "22 - Target temperature": "22 - Целевая температура",
         "22 - Thermostat state": "22 - Состояние термостата",
-        "22 - Current fan speed": "22 - Текущая скорость вентилятора",
         "22 - AC connected": "22 - Кондиционер подключен",
         "23 - Active": "23 - Состояние",
         "23 - Mode": "23 - Режим",
@@ -17902,7 +16961,6 @@
         "23 - Indoor air temperature": "23 - Температура воздуха в помещении",
         "23 - Target temperature": "23 - Целевая температура",
         "23 - Thermostat state": "23 - Состояние термостата",
-        "23 - Current fan speed": "23 - Текущая скорость вентилятора",
         "23 - AC connected": "23 - Кондиционер подключен",
         "24 - Active": "24 - Состояние",
         "24 - Mode": "24 - Режим",
@@ -17912,7 +16970,6 @@
         "24 - Indoor air temperature": "24 - Температура воздуха в помещении",
         "24 - Target temperature": "24 - Целевая температура",
         "24 - Thermostat state": "24 - Состояние термостата",
-        "24 - Current fan speed": "24 - Текущая скорость вентилятора",
         "24 - AC connected": "24 - Кондиционер подключен",
         "25 - Active": "25 - Состояние",
         "25 - Mode": "25 - Режим",
@@ -17922,7 +16979,6 @@
         "25 - Indoor air temperature": "25 - Температура воздуха в помещении",
         "25 - Target temperature": "25 - Целевая температура",
         "25 - Thermostat state": "25 - Состояние термостата",
-        "25 - Current fan speed": "25 - Текущая скорость вентилятора",
         "25 - AC connected": "25 - Кондиционер подключен",
         "26 - Active": "26 - Состояние",
         "26 - Mode": "26 - Режим",
@@ -17932,7 +16988,6 @@
         "26 - Indoor air temperature": "26 - Температура воздуха в помещении",
         "26 - Target temperature": "26 - Целевая температура",
         "26 - Thermostat state": "26 - Состояние термостата",
-        "26 - Current fan speed": "26 - Текущая скорость вентилятора",
         "26 - AC connected": "26 - Кондиционер подключен",
         "27 - Active": "27 - Состояние",
         "27 - Mode": "27 - Режим",
@@ -17942,7 +16997,6 @@
         "27 - Indoor air temperature": "27 - Температура воздуха в помещении",
         "27 - Target temperature": "27 - Целевая температура",
         "27 - Thermostat state": "27 - Состояние термостата",
-        "27 - Current fan speed": "27 - Текущая скорость вентилятора",
         "27 - AC connected": "27 - Кондиционер подключен",
         "28 - Active": "28 - Состояние",
         "28 - Mode": "28 - Режим",
@@ -17952,7 +17006,6 @@
         "28 - Indoor air temperature": "28 - Температура воздуха в помещении",
         "28 - Target temperature": "28 - Целевая температура",
         "28 - Thermostat state": "28 - Состояние термостата",
-        "28 - Current fan speed": "28 - Текущая скорость вентилятора",
         "28 - AC connected": "28 - Кондиционер подключен",
         "29 - Active": "29 - Состояние",
         "29 - Mode": "29 - Режим",
@@ -17962,7 +17015,6 @@
         "29 - Indoor air temperature": "29 - Температура воздуха в помещении",
         "29 - Target temperature": "29 - Целевая температура",
         "29 - Thermostat state": "29 - Состояние термостата",
-        "29 - Current fan speed": "29 - Текущая скорость вентилятора",
         "29 - AC connected": "29 - Кондиционер подключен",
         "30 - Active": "30 - Состояние",
         "30 - Mode": "30 - Режим",
@@ -17972,7 +17024,6 @@
         "30 - Indoor air temperature": "30 - Температура воздуха в помещении",
         "30 - Target temperature": "30 - Целевая температура",
         "30 - Thermostat state": "30 - Состояние термостата",
-        "30 - Current fan speed": "30 - Текущая скорость вентилятора",
         "30 - AC connected": "30 - Кондиционер подключен",
         "31 - Active": "31 - Состояние",
         "31 - Mode": "31 - Режим",
@@ -17982,7 +17033,6 @@
         "31 - Indoor air temperature": "31 - Температура воздуха в помещении",
         "31 - Target temperature": "31 - Целевая температура",
         "31 - Thermostat state": "31 - Состояние термостата",
-        "31 - Current fan speed": "31 - Текущая скорость вентилятора",
         "31 - AC connected": "31 - Кондиционер подключен",
         "32 - Active": "32 - Состояние",
         "32 - Mode": "32 - Режим",
@@ -17992,7 +17042,6 @@
         "32 - Indoor air temperature": "32 - Температура воздуха в помещении",
         "32 - Target temperature": "32 - Целевая температура",
         "32 - Thermostat state": "32 - Состояние термостата",
-        "32 - Current fan speed": "32 - Текущая скорость вентилятора",
         "32 - AC connected": "32 - Кондиционер подключен",
         "33 - Active": "33 - Состояние",
         "33 - Mode": "33 - Режим",
@@ -18002,7 +17051,6 @@
         "33 - Indoor air temperature": "33 - Температура воздуха в помещении",
         "33 - Target temperature": "33 - Целевая температура",
         "33 - Thermostat state": "33 - Состояние термостата",
-        "33 - Current fan speed": "33 - Текущая скорость вентилятора",
         "33 - AC connected": "33 - Кондиционер подключен",
         "34 - Active": "34 - Состояние",
         "34 - Mode": "34 - Режим",
@@ -18012,7 +17060,6 @@
         "34 - Indoor air temperature": "34 - Температура воздуха в помещении",
         "34 - Target temperature": "34 - Целевая температура",
         "34 - Thermostat state": "34 - Состояние термостата",
-        "34 - Current fan speed": "34 - Текущая скорость вентилятора",
         "34 - AC connected": "34 - Кондиционер подключен",
         "35 - Active": "35 - Состояние",
         "35 - Mode": "35 - Режим",
@@ -18022,7 +17069,6 @@
         "35 - Indoor air temperature": "35 - Температура воздуха в помещении",
         "35 - Target temperature": "35 - Целевая температура",
         "35 - Thermostat state": "35 - Состояние термостата",
-        "35 - Current fan speed": "35 - Текущая скорость вентилятора",
         "35 - AC connected": "35 - Кондиционер подключен",
         "36 - Active": "36 - Состояние",
         "36 - Mode": "36 - Режим",
@@ -18032,7 +17078,6 @@
         "36 - Indoor air temperature": "36 - Температура воздуха в помещении",
         "36 - Target temperature": "36 - Целевая температура",
         "36 - Thermostat state": "36 - Состояние термостата",
-        "36 - Current fan speed": "36 - Текущая скорость вентилятора",
         "36 - AC connected": "36 - Кондиционер подключен",
         "37 - Active": "37 - Состояние",
         "37 - Mode": "37 - Режим",
@@ -18042,7 +17087,6 @@
         "37 - Indoor air temperature": "37 - Температура воздуха в помещении",
         "37 - Target temperature": "37 - Целевая температура",
         "37 - Thermostat state": "37 - Состояние термостата",
-        "37 - Current fan speed": "37 - Текущая скорость вентилятора",
         "37 - AC connected": "37 - Кондиционер подключен",
         "38 - Active": "38 - Состояние",
         "38 - Mode": "38 - Режим",
@@ -18052,7 +17096,6 @@
         "38 - Indoor air temperature": "38 - Температура воздуха в помещении",
         "38 - Target temperature": "38 - Целевая температура",
         "38 - Thermostat state": "38 - Состояние термостата",
-        "38 - Current fan speed": "38 - Текущая скорость вентилятора",
         "38 - AC connected": "38 - Кондиционер подключен",
         "39 - Active": "39 - Состояние",
         "39 - Mode": "39 - Режим",
@@ -18062,7 +17105,6 @@
         "39 - Indoor air temperature": "39 - Температура воздуха в помещении",
         "39 - Target temperature": "39 - Целевая температура",
         "39 - Thermostat state": "39 - Состояние термостата",
-        "39 - Current fan speed": "39 - Текущая скорость вентилятора",
         "39 - AC connected": "39 - Кондиционер подключен",
         "40 - Active": "40 - Состояние",
         "40 - Mode": "40 - Режим",
@@ -18072,7 +17114,6 @@
         "40 - Indoor air temperature": "40 - Температура воздуха в помещении",
         "40 - Target temperature": "40 - Целевая температура",
         "40 - Thermostat state": "40 - Состояние термостата",
-        "40 - Current fan speed": "40 - Текущая скорость вентилятора",
         "40 - AC connected": "40 - Кондиционер подключен",
         "41 - Active": "41 - Состояние",
         "41 - Mode": "41 - Режим",
@@ -18082,7 +17123,6 @@
         "41 - Indoor air temperature": "41 - Температура воздуха в помещении",
         "41 - Target temperature": "41 - Целевая температура",
         "41 - Thermostat state": "41 - Состояние термостата",
-        "41 - Current fan speed": "41 - Текущая скорость вентилятора",
         "41 - AC connected": "41 - Кондиционер подключен",
         "42 - Active": "42 - Состояние",
         "42 - Mode": "42 - Режим",
@@ -18092,7 +17132,6 @@
         "42 - Indoor air temperature": "42 - Температура воздуха в помещении",
         "42 - Target temperature": "42 - Целевая температура",
         "42 - Thermostat state": "42 - Состояние термостата",
-        "42 - Current fan speed": "42 - Текущая скорость вентилятора",
         "42 - AC connected": "42 - Кондиционер подключен",
         "43 - Active": "43 - Состояние",
         "43 - Mode": "43 - Режим",
@@ -18102,7 +17141,6 @@
         "43 - Indoor air temperature": "43 - Температура воздуха в помещении",
         "43 - Target temperature": "43 - Целевая температура",
         "43 - Thermostat state": "43 - Состояние термостата",
-        "43 - Current fan speed": "43 - Текущая скорость вентилятора",
         "43 - AC connected": "43 - Кондиционер подключен",
         "44 - Active": "44 - Состояние",
         "44 - Mode": "44 - Режим",
@@ -18112,7 +17150,6 @@
         "44 - Indoor air temperature": "44 - Температура воздуха в помещении",
         "44 - Target temperature": "44 - Целевая температура",
         "44 - Thermostat state": "44 - Состояние термостата",
-        "44 - Current fan speed": "44 - Текущая скорость вентилятора",
         "44 - AC connected": "44 - Кондиционер подключен",
         "45 - Active": "45 - Состояние",
         "45 - Mode": "45 - Режим",
@@ -18122,7 +17159,6 @@
         "45 - Indoor air temperature": "45 - Температура воздуха в помещении",
         "45 - Target temperature": "45 - Целевая температура",
         "45 - Thermostat state": "45 - Состояние термостата",
-        "45 - Current fan speed": "45 - Текущая скорость вентилятора",
         "45 - AC connected": "45 - Кондиционер подключен",
         "46 - Active": "46 - Состояние",
         "46 - Mode": "46 - Режим",
@@ -18132,7 +17168,6 @@
         "46 - Indoor air temperature": "46 - Температура воздуха в помещении",
         "46 - Target temperature": "46 - Целевая температура",
         "46 - Thermostat state": "46 - Состояние термостата",
-        "46 - Current fan speed": "46 - Текущая скорость вентилятора",
         "46 - AC connected": "46 - Кондиционер подключен",
         "47 - Active": "47 - Состояние",
         "47 - Mode": "47 - Режим",
@@ -18142,7 +17177,6 @@
         "47 - Indoor air temperature": "47 - Температура воздуха в помещении",
         "47 - Target temperature": "47 - Целевая температура",
         "47 - Thermostat state": "47 - Состояние термостата",
-        "47 - Current fan speed": "47 - Текущая скорость вентилятора",
         "47 - AC connected": "47 - Кондиционер подключен",
         "48 - Active": "48 - Состояние",
         "48 - Mode": "48 - Режим",
@@ -18152,7 +17186,6 @@
         "48 - Indoor air temperature": "48 - Температура воздуха в помещении",
         "48 - Target temperature": "48 - Целевая температура",
         "48 - Thermostat state": "48 - Состояние термостата",
-        "48 - Current fan speed": "48 - Текущая скорость вентилятора",
         "48 - AC connected": "48 - Кондиционер подключен",
         "49 - Active": "49 - Состояние",
         "49 - Mode": "49 - Режим",
@@ -18162,7 +17195,6 @@
         "49 - Indoor air temperature": "49 - Температура воздуха в помещении",
         "49 - Target temperature": "49 - Целевая температура",
         "49 - Thermostat state": "49 - Состояние термостата",
-        "49 - Current fan speed": "49 - Текущая скорость вентилятора",
         "49 - AC connected": "49 - Кондиционер подключен",
         "50 - Active": "50 - Состояние",
         "50 - Mode": "50 - Режим",
@@ -18172,7 +17204,6 @@
         "50 - Indoor air temperature": "50 - Температура воздуха в помещении",
         "50 - Target temperature": "50 - Целевая температура",
         "50 - Thermostat state": "50 - Состояние термостата",
-        "50 - Current fan speed": "50 - Текущая скорость вентилятора",
         "50 - AC connected": "50 - Кондиционер подключен",
         "51 - Active": "51 - Состояние",
         "51 - Mode": "51 - Режим",
@@ -18182,7 +17213,6 @@
         "51 - Indoor air temperature": "51 - Температура воздуха в помещении",
         "51 - Target temperature": "51 - Целевая температура",
         "51 - Thermostat state": "51 - Состояние термостата",
-        "51 - Current fan speed": "51 - Текущая скорость вентилятора",
         "51 - AC connected": "51 - Кондиционер подключен",
         "52 - Active": "52 - Состояние",
         "52 - Mode": "52 - Режим",
@@ -18192,7 +17222,6 @@
         "52 - Indoor air temperature": "52 - Температура воздуха в помещении",
         "52 - Target temperature": "52 - Целевая температура",
         "52 - Thermostat state": "52 - Состояние термостата",
-        "52 - Current fan speed": "52 - Текущая скорость вентилятора",
         "52 - AC connected": "52 - Кондиционер подключен",
         "53 - Active": "53 - Состояние",
         "53 - Mode": "53 - Режим",
@@ -18202,7 +17231,6 @@
         "53 - Indoor air temperature": "53 - Температура воздуха в помещении",
         "53 - Target temperature": "53 - Целевая температура",
         "53 - Thermostat state": "53 - Состояние термостата",
-        "53 - Current fan speed": "53 - Текущая скорость вентилятора",
         "53 - AC connected": "53 - Кондиционер подключен",
         "54 - Active": "54 - Состояние",
         "54 - Mode": "54 - Режим",
@@ -18212,7 +17240,6 @@
         "54 - Indoor air temperature": "54 - Температура воздуха в помещении",
         "54 - Target temperature": "54 - Целевая температура",
         "54 - Thermostat state": "54 - Состояние термостата",
-        "54 - Current fan speed": "54 - Текущая скорость вентилятора",
         "54 - AC connected": "54 - Кондиционер подключен",
         "55 - Active": "55 - Состояние",
         "55 - Mode": "55 - Режим",
@@ -18222,7 +17249,6 @@
         "55 - Indoor air temperature": "55 - Температура воздуха в помещении",
         "55 - Target temperature": "55 - Целевая температура",
         "55 - Thermostat state": "55 - Состояние термостата",
-        "55 - Current fan speed": "55 - Текущая скорость вентилятора",
         "55 - AC connected": "55 - Кондиционер подключен",
         "56 - Active": "56 - Состояние",
         "56 - Mode": "56 - Режим",
@@ -18232,7 +17258,6 @@
         "56 - Indoor air temperature": "56 - Температура воздуха в помещении",
         "56 - Target temperature": "56 - Целевая температура",
         "56 - Thermostat state": "56 - Состояние термостата",
-        "56 - Current fan speed": "56 - Текущая скорость вентилятора",
         "56 - AC connected": "56 - Кондиционер подключен",
         "57 - Active": "57 - Состояние",
         "57 - Mode": "57 - Режим",
@@ -18242,7 +17267,6 @@
         "57 - Indoor air temperature": "57 - Температура воздуха в помещении",
         "57 - Target temperature": "57 - Целевая температура",
         "57 - Thermostat state": "57 - Состояние термостата",
-        "57 - Current fan speed": "57 - Текущая скорость вентилятора",
         "57 - AC connected": "57 - Кондиционер подключен",
         "58 - Active": "58 - Состояние",
         "58 - Mode": "58 - Режим",
@@ -18252,7 +17276,6 @@
         "58 - Indoor air temperature": "58 - Температура воздуха в помещении",
         "58 - Target temperature": "58 - Целевая температура",
         "58 - Thermostat state": "58 - Состояние термостата",
-        "58 - Current fan speed": "58 - Текущая скорость вентилятора",
         "58 - AC connected": "58 - Кондиционер подключен",
         "59 - Active": "59 - Состояние",
         "59 - Mode": "59 - Режим",
@@ -18262,7 +17285,6 @@
         "59 - Indoor air temperature": "59 - Температура воздуха в помещении",
         "59 - Target temperature": "59 - Целевая температура",
         "59 - Thermostat state": "59 - Состояние термостата",
-        "59 - Current fan speed": "59 - Текущая скорость вентилятора",
         "59 - AC connected": "59 - Кондиционер подключен",
         "60 - Active": "60 - Состояние",
         "60 - Mode": "60 - Режим",
@@ -18272,7 +17294,6 @@
         "60 - Indoor air temperature": "60 - Температура воздуха в помещении",
         "60 - Target temperature": "60 - Целевая температура",
         "60 - Thermostat state": "60 - Состояние термостата",
-        "60 - Current fan speed": "60 - Текущая скорость вентилятора",
         "60 - AC connected": "60 - Кондиционер подключен",
         "61 - Active": "61 - Состояние",
         "61 - Mode": "61 - Режим",
@@ -18282,7 +17303,6 @@
         "61 - Indoor air temperature": "61 - Температура воздуха в помещении",
         "61 - Target temperature": "61 - Целевая температура",
         "61 - Thermostat state": "61 - Состояние термостата",
-        "61 - Current fan speed": "61 - Текущая скорость вентилятора",
         "61 - AC connected": "61 - Кондиционер подключен",
         "62 - Active": "62 - Состояние",
         "62 - Mode": "62 - Режим",
@@ -18292,7 +17312,6 @@
         "62 - Indoor air temperature": "62 - Температура воздуха в помещении",
         "62 - Target temperature": "62 - Целевая температура",
         "62 - Thermostat state": "62 - Состояние термостата",
-        "62 - Current fan speed": "62 - Текущая скорость вентилятора",
         "62 - AC connected": "62 - Кондиционер подключен",
         "63 - Active": "63 - Состояние",
         "63 - Mode": "63 - Режим",
@@ -18302,7 +17321,6 @@
         "63 - Indoor air temperature": "63 - Температура воздуха в помещении",
         "63 - Target temperature": "63 - Целевая температура",
         "63 - Thermostat state": "63 - Состояние термостата",
-        "63 - Current fan speed": "63 - Текущая скорость вентилятора",
         "63 - AC connected": "63 - Кондиционер подключен"
       }
     }

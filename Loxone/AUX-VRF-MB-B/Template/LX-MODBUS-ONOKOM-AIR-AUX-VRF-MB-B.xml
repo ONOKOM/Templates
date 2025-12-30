@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Modbus Title="CG-VRF-MB-B" Comment="" HintText="" Baudrate="9600" Stopbits="1" Channel="1">
+	<Info templateType="7" minVersion="16000610"/>
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10003" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10004" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10020" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10009" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10001" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10015" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10008" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10005" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10011" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Modbus адрес устройства (Сервисный)" Comment="" HintText="" ModbusAddress="128" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10009" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 1 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10103" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10104" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10120" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10109" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10101" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10115" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10108" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10105" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10111" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10109" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 2 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10203" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10204" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10220" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10209" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10201" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10215" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10208" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10205" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10211" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10209" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 3 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10303" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10304" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10320" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10309" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10301" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10315" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10308" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10305" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10311" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10309" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 4 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10403" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10404" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10420" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10409" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10401" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10415" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10408" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10405" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10411" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10409" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 5 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10503" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10504" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10520" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10509" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10501" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10515" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10508" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10505" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10511" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10509" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 6 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10603" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10604" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10620" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10609" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10601" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10615" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10608" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10605" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10611" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10609" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 7 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10703" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10704" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10720" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10709" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10701" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10715" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10708" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10705" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10711" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10709" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 8 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10803" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10804" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10820" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10809" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10801" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10815" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10808" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10805" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10811" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10809" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 9 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="10903" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="10904" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="10920" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="10909" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="10901" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="10915" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="10908" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="10905" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="10911" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="10909" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 10 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11003" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11004" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11020" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11009" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11001" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11015" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11008" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11005" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11011" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11009" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 11 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11103" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11104" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11120" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11109" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11101" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11115" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11108" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11105" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11111" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11109" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 12 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11203" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11204" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11220" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11209" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11201" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11215" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11208" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11205" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11211" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11209" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 13 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11303" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11304" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11320" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11309" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11301" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11315" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11308" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11305" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11311" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11309" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 14 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11403" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11404" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11420" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11409" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11401" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11415" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11408" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11405" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11411" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11409" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 15 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11503" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11504" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11520" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11509" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11501" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11515" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11508" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11505" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11511" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11509" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 16 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11603" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11604" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11620" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11609" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11601" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11615" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11608" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11605" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11611" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11609" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 17 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11703" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11704" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11720" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11709" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11701" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11715" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11708" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11705" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11711" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11709" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 18 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11803" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11804" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11820" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11809" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11801" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11815" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11808" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11805" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11811" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11809" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 19 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="11903" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="11904" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="11920" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="11909" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="11901" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="11915" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="11908" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="11905" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="11911" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="11909" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 20 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12003" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12004" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12020" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12009" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12001" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12015" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12008" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12005" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12011" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12009" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 21 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12103" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12104" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12120" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12109" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12101" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12115" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12108" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12105" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12111" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12109" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 22 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12203" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12204" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12220" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12209" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12201" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12215" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12208" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12205" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12211" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12209" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 23 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12303" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12304" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12320" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12309" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12301" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12315" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12308" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12305" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12311" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12309" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 24 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12403" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12404" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12420" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12409" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12401" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12415" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12408" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12405" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12411" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12409" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 25 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12503" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12504" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12520" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12509" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12501" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12515" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12508" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12505" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12511" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12509" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 26 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12603" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12604" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12620" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12609" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12601" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12615" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12608" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12605" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12611" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12609" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 27 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12703" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12704" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12720" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12709" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12701" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12715" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12708" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12705" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12711" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12709" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 28 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12803" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12804" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12820" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12809" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12801" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12815" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12808" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12805" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12811" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12809" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 29 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="12903" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="12904" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="12920" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="12909" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="12901" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="12915" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="12908" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="12905" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="12911" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="12909" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 30 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13003" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13004" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13020" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13009" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13001" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13015" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13008" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13005" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13011" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13009" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 31 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13103" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13104" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13120" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13109" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13101" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13115" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13108" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13105" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13111" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13109" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 32 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13203" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13204" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13220" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13209" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13201" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13215" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13208" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13205" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13211" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13209" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 33 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13303" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13304" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13320" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13309" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13301" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13315" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13308" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13305" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13311" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13309" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 34 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13403" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13404" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13420" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13409" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13401" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13415" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13408" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13405" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13411" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13409" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 35 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13503" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13504" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13520" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13509" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13501" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13515" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13508" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13505" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13511" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13509" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 36 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13603" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13604" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13620" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13609" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13601" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13615" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13608" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13605" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13611" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13609" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 37 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13703" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13704" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13720" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13709" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13701" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13715" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13708" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13705" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13711" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13709" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 38 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13803" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13804" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13820" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13809" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13801" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13815" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13808" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13805" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13811" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13809" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 39 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="13903" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="13904" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="13920" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="13909" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="13901" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="13915" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="13908" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="13905" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="13911" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="13909" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 40 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14003" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14004" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14020" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14009" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14001" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14015" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14008" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14005" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14011" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14009" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 41 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14103" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14104" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14120" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14109" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14101" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14115" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14108" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14105" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14111" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14109" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 42 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14203" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14204" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14220" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14209" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14201" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14215" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14208" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14205" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14211" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14209" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 43 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14303" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14304" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14320" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14309" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14301" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14315" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14308" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14305" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14311" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14309" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 44 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14403" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14404" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14420" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14409" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14401" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14415" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14408" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14405" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14411" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14409" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 45 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14503" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14504" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14520" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14509" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14501" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14515" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14508" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14505" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14511" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14509" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 46 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14603" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14604" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14620" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14609" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14601" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14615" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14608" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14605" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14611" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14609" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 47 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14703" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14704" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14720" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14709" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14701" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14715" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14708" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14705" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14711" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14709" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 48 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14803" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14804" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14820" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14809" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14801" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14815" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14808" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14805" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14811" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14809" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 49 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="14903" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="14904" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="14920" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="14909" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="14901" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="14915" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="14908" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="14905" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="14911" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="14909" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 50 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15003" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15004" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15020" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15009" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15001" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15015" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15008" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15005" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15011" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15009" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 51 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15103" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15104" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15120" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15109" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15101" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15115" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15108" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15105" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15111" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15109" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 52 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15203" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15204" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15220" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15209" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15201" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15215" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15208" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15205" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15211" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15209" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 53 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15303" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15304" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15320" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15309" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15301" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15315" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15308" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15305" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15311" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15309" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 54 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15403" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15404" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15420" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15409" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15401" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15415" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15408" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15405" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15411" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15409" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 55 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15503" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15504" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15520" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15509" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15501" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15515" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15508" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15505" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15511" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15509" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 56 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15603" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15604" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15620" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15609" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15601" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15615" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15608" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15605" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15611" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15609" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 57 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15703" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15704" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15720" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15709" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15701" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15715" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15708" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15705" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15711" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15709" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 58 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15803" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15804" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15820" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15809" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15801" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15815" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15808" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15805" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15811" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15809" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 59 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="15903" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="15904" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="15920" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="15909" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="15901" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="15915" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="15908" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="15905" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="15911" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="15909" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 60 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="16003" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="16004" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="16020" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="16009" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="16001" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="16015" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="16008" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="16005" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="16011" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="16009" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 61 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="16103" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="16104" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="16120" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="16109" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="16101" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="16115" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="16108" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="16105" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="16111" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="16109" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 62 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="16203" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="16204" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="16220" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="16209" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="16201" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="16215" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="16208" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="16205" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="16211" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="16209" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<!-- ===== Block 63 start ===== -->
+	<ModbusCmd Title="Температура воздуха в помещении" Comment="" HintText=""     ModbusAddress="16303" ModbusCmd="3" ModbusPollingCycle="5" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Температура воздуха на улице" Comment="" HintText=""        ModbusAddress="16304" ModbusCmd="3" ModbusDataType="1" ModbusPollingCycle="5" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="100" DestValHigh="1"/>
+	<ModbusCmd Title="Внутренний блок на связи" Comment="" HintText=""            ModbusAddress="16320" ModbusCmd="1" ModbusPollingCycle="5" Unit="" Analog="false" Sensor="true"/>
+	<ModbusCmd Title="Горизонтальные ламели (Статус)" Comment="" HintText=""      ModbusAddress="16309" ModbusCmd="3" ModbusPollingCycle="30" Unit="&lt;v.1&gt;" Analog="true" Sensor="true" SourceValHigh="10" DestValHigh="10"/>
+	<ModbusCmd Title="Состояние кондиционера (Управление)" Comment="" HintText="" ModbusAddress="16301" ModbusCmd="5" Unit="" Analog="false" Sensor="false" RepeatRate="3600"/>
+	<ModbusCmd Title="Режимы_Loxone (Управление)" Comment="" HintText=""          ModbusAddress="16315" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="100" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Расширенная скорость вентилятора" Comment="" HintText=""    ModbusAddress="16308" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Установка температуры" Comment="" HintText=""               ModbusAddress="16305" ModbusCmd="6" ModbusDataType="1" Unit="&lt;v.1&gt;°C" Analog="true" Sensor="false" SourceValHigh="1" DestValHigh="100" RepeatRate="3600"/>
+	<ModbusCmd Title="Направление воздушного потока" Comment="" HintText=""       ModbusAddress="16311" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+	<ModbusCmd Title="Горизонтальные ламели (Управление)" Comment="" HintText=""  ModbusAddress="16309" ModbusCmd="6" Unit="&lt;v.1&gt;" Analog="true" Sensor="false" SourceValHigh="10" DestValHigh="10" RepeatRate="3600"/>
+</Modbus>

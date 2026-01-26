@@ -1,584 +1,755 @@
 {
-  "title": "template_title",
-  "device_type": "ONOKOM-AIR-TB-1-MB-B",
-  "group": "g-air-conditioning",
-  "hw": [
-    {
-      "signature": "TB-1-MB-B"
+    "title": "template_title",
+    "device_type": "ONOKOM-AIR-TB-1-MB-B",
+    "group": "g-air-conditioning",
+    "hw": [
+        {
+            "signature": "TB-1-MB-B"
+        }
+    ],
+    "device": {
+        "name": "ONOKOM-AIR-TB-1-MB-B",
+        "id": "ONOKOM-AIR-TB-1-MB-B",
+        "groups": [
+            {
+                "title": "General",
+                "id": "general",
+                "order": 1
+            },
+            {
+                "title": "Temperature control",
+                "id": "temperatureControl",
+                "order": 2
+            },
+            {
+                "title": "Vanes",
+                "id": "vanes",
+                "order": 3
+            },
+            {
+                "title": "Additional",
+                "id": "additional",
+                "order": 4
+            },
+            {
+                "title": "HW Info",
+                "id": "hw_info",
+                "order": 6
+            },
+            {
+                "title": "Errors",
+                "id": "errors",
+                "order": 8
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 9
+            }
+        ],
+        "parameters": [
+            {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "temperatureControl",
+                "order": 1
+            },
+            {
+                "id": "Show_modes_as_range",
+                "title": "Show modes as range",
+                "address": 95,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_fan_as_range",
+                "title": "Show fan as range",
+                "address": 92,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_vanes_as_range",
+                "title": "Show vanes as range",
+                "address": 94,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "vanes",
+                "order": 1
+            },
+            {
+                "id": "Show_thermostat_state_as_range",
+                "title": "Show thermostat state as range",
+                "address": 94,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "temperatureControl",
+                "order": 1
+            }
+        ],
+        "channels": [
+            {
+                "name": "Active",
+                "reg_type": "coil",
+                "address": 1,
+                "type": "switch",
+                "format": "u16",
+                "sporadic": true,
+                "group": "general"
+            },
+            {
+                "name": "Mode",
+                "reg_type": "holding",
+                "address": 1,
+                "type": "range",
+                "format": "u16",
+                "min": 1,
+                "max": 5,
+                "sporadic": true,
+                "group": "general",
+                "condition": "Show_modes_as_range==1"
+            },
+            {
+                "name": "Mode",
+                "reg_type": "holding",
+                "address": 1,
+                "type": "value",
+                "format": "u16",
+                "sporadic": true,
+                "group": "general",
+                "enum": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Auto",
+                    "Dry",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1"
+            },
+            {
+                "name": "Active mode",
+                "reg_type": "holding",
+                "address": 2,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 5,
+                "sporadic": true,
+                "group": "general",
+                "condition": "Show_modes_as_range==1"
+            },
+            {
+                "name": "Active mode",
+                "reg_type": "holding",
+                "address": 2,
+                "type": "value",
+                "format": "u16",
+                "sporadic": true,
+                "group": "general",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "enum_titles": [
+                    "Off",
+                    "Heat",
+                    "Cool",
+                    "Auto",
+                    "Dry",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1"
+            },
+            {
+                "name": "Fan speed",
+                "reg_type": "holding",
+                "address": 7,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 5,
+                "sporadic": true,
+                "group": "general",
+                "condition": "Show_fan_as_range==1"
+            },
+            {
+                "name": "Fan speed",
+                "reg_type": "holding",
+                "address": 7,
+                "type": "value",
+                "format": "u16",
+                "sporadic": true,
+                "group": "general",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed",
+                    "4 Speed",
+                    "5 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1"
+            },
+            {
+                "name": "Smart fan speed",
+                "reg_type": "holding",
+                "address": 8,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 6,
+                "sporadic": true,
+                "group": "general",
+                "condition": "Show_fan_as_range==1"
+            },
+            {
+                "name": "Smart fan speed",
+                "reg_type": "holding",
+                "address": 8,
+                "type": "value",
+                "format": "u16",
+                "min": 0,
+                "max": 6,
+                "sporadic": true,
+                "group": "general",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "Quiet mode",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed",
+                    "4 Speed",
+                    "5 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1"
+            },
+            {
+                "name": "Thermostat state",
+                "reg_type": "holding",
+                "address": 6,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 2,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range==1"
+            },
+            {
+                "name": "Thermostat state",
+                "reg_type": "holding",
+                "address": 6,
+                "type": "value",
+                "format": "u16",
+                "sporadic": true,
+                "group": "temperatureControl",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heating",
+                    "Cooling"
+                ],
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range!=1"
+            },
+            {
+                "name": "Indoor air temperature",
+                "reg_type": "holding",
+                "address": 3,
+                "type": "value",
+                "format": "s16",
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1"
+            },
+            {
+                "name": "Indoor air temperature",
+                "reg_type": "holding",
+                "address": 3,
+                "type": "value",
+                "format": "s16",
+                "min": -50,
+                "max": 50,
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "Outdoor air temperature",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 4,
+                "type": "value",
+                "format": "s16",
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "units": "deg C"
+            },
+            {
+                "name": "MCU Temperature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "group": "hw_info"
+            },
+            {
+                "name": "Target temperature",
+                "reg_type": "holding",
+                "address": 5,
+                "type": "range",
+                "format": "s16",
+                "min": 17,
+                "max": 30,
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "units": "deg C"
+            },
+            {
+                "name": "Horizontal vanes",
+                "reg_type": "holding",
+                "address": 9,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 1,
+                "sporadic": true,
+                "group": "vanes",
+                "condition": "Show_vanes_as_range==1"
+            },
+            {
+                "name": "Horizontal vanes",
+                "reg_type": "holding",
+                "address": 9,
+                "type": "value",
+                "format": "u16",
+                "sporadic": true,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Swing"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Eco mode",
+                "enabled": false,
+                "reg_type": "coil",
+                "address": 6,
+                "type": "switch",
+                "sporadic": true,
+                "group": "additional"
+            },
+            {
+                "name": "Quiet mode",
+                "enabled": false,
+                "reg_type": "coil",
+                "address": 4,
+                "type": "switch",
+                "sporadic": true,
+                "group": "additional"
+            },
+            {
+                "name": "FW Version",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 250,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 16
+            },
+            {
+                "name": "HW Version",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 200,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 20
+            },
+            {
+                "name": "PROTO Version",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 400,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 16
+            },
+            {
+                "name": "Reboot Device",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 120,
+                "type": "pushbutton",
+                "group": "hw_info"
+            },
+            {
+                "name": "Serial",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 270,
+                "type": "text",
+                "format": "u32",
+                "group": "hw_info",
+                "readonly": true
+            },
+            {
+                "name": "Signature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 290,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 12
+            },
+            {
+                "name": "Uptime",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 104,
+                "type": "text",
+                "format": "u32",
+                "group": "hw_info"
+            },
+            {
+                "name": "Error code",
+                "reg_type": "input",
+                "address": 1,
+                "type": "value",
+                "group": "errors",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38
+                ],
+                "enum_titles": [
+                    "Error 0",
+                    "Error 1",
+                    "Error 2",
+                    "Error 3",
+                    "Error 4",
+                    "Error 5",
+                    "Error 6",
+                    "Error 7",
+                    "Error 8",
+                    "Error 9",
+                    "Error 10",
+                    "Error 11",
+                    "Error 12",
+                    "Error 13",
+                    "Error 14",
+                    "Error 15",
+                    "Error 16",
+                    "Error 17",
+                    "Error 18",
+                    "Error 19",
+                    "Error 20",
+                    "Error 21",
+                    "Error 22",
+                    "Error 23",
+                    "Error 24",
+                    "Error 25",
+                    "Error 26",
+                    "Error 27",
+                    "Error 28",
+                    "Error 29",
+                    "Error 30",
+                    "Error 31",
+                    "Error 32",
+                    "Error 33",
+                    "Error 34",
+                    "Error 35",
+                    "Error 36",
+                    "Error 37",
+                    "Error 38"
+                ],
+                "readonly": true
+            },
+            {
+                "name": "AC connected",
+                "reg_type": "coil",
+                "address": 20,
+                "type": "switch",
+                "sporadic": true,
+                "group": "debug",
+                "readonly": true
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "ONOKOM AIR TB-1-MB-B (Adapter for Toshiba systems)",
+                "Error 0": "00-0C - Ta sensor ; the room temperature sensor is short-circuit or disconnection.",
+                "Error 1": "00-0D - Tc sensor ; the heat exchanger temperature sensor of the indoor unit is out of place, disconnection, short-circuit or migration.",
+                "Error 2": "00-11 - Fan motor of the indoor unit is failure, lock-rotor, short- circuit, disconnection, etc. or its circuit on p.c. board has problem.",
+                "Error 3": "00-0F",
+                "Error 4": "00-12 - Other trouble on the indoor p.c. board.",
+                "Error 5": "45748 - 1) defective wiring of the connecting cable or miss-wiring. 2) operation signal has not send from the indoor unit when operation start. 3) outdoor unit has not send return signal to the indoor unit when operation started. 4) return signal from the outdoor unit is stop during operation. some protector (hardware, if exist) of the outdoor unit open circuit of signal. signal circuit of indoor p.c. board or outdoor p.c. board is failure in some period.",
+                "Error 6": "01-05",
+                "Error 7": "02-14 - Current on inverter circuit is over limit in short time. inverter p.c. board is failure, igbt shortage, etc. compressor current is higher than limitation, lock rotor, etc.",
+                "Error 8": "02-16 - Compressor position-detect circuit error or short-circuit between winding of compressor.",
+                "Error 9": "02-17 - Current-detect circuit of inverter p.c. board error.",
+                "Error 10": "02-18 - Te or ts sensor; abnormal. out of place, disconnection, shortage, or misconnection (te sensor is connected to ts connector, ts sensor is connected to te sensor connector) te sensor; outdoor heat exchanger temperature sensor ts sensor; suction pipe temperature sensor",
+                "Error 11": "02-19 - Td sensor ; discharge pipe temperature sensor is disconnection or shortage.",
+                "Error 12": "02-1A - Outdoor fan failure or its drive-circuit on the inverter p.c. board failure.",
+                "Error 13": "02-1b - To sensor ; the outdoor temperature sensor is disconnection or shortage.",
+                "Error 14": "02-1C - Compressor drive output error. (relation of voltage, current and frequency is abnormal) overloading operation of compressor caused by over-charge refrigerant, p.m.v. failure, etc. compressor failure (high current).",
+                "Error 15": "45841 - Return signal of the outdoor unit has been sent when operation start. but after that, signal is stop some time. instantaneous power failure. some protector (hardware) of the outdoor unit open circuit of signal. signal circuit of indoor p.c. board or outdoor p.c. board is failure in some period.",
+                "Error 16": "03-1d - Compressor does not rotate. because of missed wiring, missed phase or shortage.",
+                "Error 17": "03-1E - Discharge temperature exceeded 117°c.",
+                "Error 18": "03-1F - Compressor is high current though operation hz is decreased to minimum limit. installation problem. instantaneous power failure. refrigeration cycle problem. compressor break down. compressor failure (high current).operation, etc.)",
+                "Error 19": "03-08 - Return signal of the outdoor unit has been sent when operation start. but after that, signal is stop some time. instantaneous power failure. some protector (hardware) of the outdoor unit open circuit of signal. signal circuit of indoor p.c. board or outdoor p.c. board is failure in some period. te, tc high tmperature te for cooling operation tc for heating operation.",
+                "Error 20": "E03",
+                "Error 21": "E04",
+                "Error 22": "E08",
+                "Error 23": "L03",
+                "Error 24": "L07",
+                "Error 25": "L08",
+                "Error 26": "L09",
+                "Error 27": "L30",
+                "Error 28": "Р10",
+                "Error 29": "P12",
+                "Error 30": "Р19",
+                "Error 31": "Р31",
+                "Error 32": "F01",
+                "Error 33": "F02",
+                "Error 34": "F10",
+                "Error 35": "F29",
+                "Error 36": "Е10",
+                "Error 37": "Е11",
+                "Error 38": "Е18"
+            },
+            "ru": {
+                "General": "Основные режимы и функции",
+                "Temperature control": "Контроль температуры",
+                "Vanes": "Жалюзи",
+                "Additional": "Дополнительные режимы и функции",
+                "HW Info": "Данные модуля",
+                "Errors": "Ошибки",
+                "Debug": "Диагностика",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
+                "No": "Нет",
+                "Yes": "Да",
+                "Show modes as range": "Отображать режимы как ползунок",
+                "Show fan as range": "Отображать вентилятор как ползунок",
+                "Show vanes as range": "Отображать жалюзи как ползунок",
+                "Show thermostat state as range": "Отображать состояние термостата как ползунок",
+                "Active": "Состояние",
+                "Mode": "Режим",
+                "Heat": "Нагрев",
+                "Cool": "Охлаждение",
+                "Auto": "Авто",
+                "Dry": "Осушение",
+                "Fan": "Вентиляция",
+                "Active mode": "Состояние и режим",
+                "Off": "Выключен",
+                "Fan speed": "Скорость вентилятора",
+                "1 Speed": "1 Скорость",
+                "2 Speed": "2 Скорость",
+                "3 Speed": "3 Скорость",
+                "4 Speed": "4 Скорость",
+                "5 Speed": "5 Скорость",
+                "Smart fan speed": "Скорость вентилятора расширенная",
+                "Quiet mode": "Режим тихий",
+                "Thermostat state": "Состояние термостата",
+                "Idle": "Простаивает",
+                "Heating": "Нагрев",
+                "Cooling": "Охлаждение",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Outdoor air temperature": "Температура воздуха на улице",
+                "MCU Temperature": "Температура МК",
+                "Target temperature": "Целевая температура",
+                "Horizontal vanes": "Горизонтальные жалюзи",
+                "Stop": "Остановлены",
+                "Swing": "Качание",
+                "Eco mode": "Режим эко",
+                "FW Version": "Версия прошивки",
+                "HW Version": "Версия устройства",
+                "PROTO Version": "Версия протокола",
+                "Reboot Device": "Перезагрузить устройство",
+                "Serial": "Серийный номер",
+                "Signature": "Сигнатура устройства",
+                "Uptime": "Время работы с момента включения (с)",
+                "Error code": "Код ошибки",
+                "Error 0": "00-0C - Ошибка датчика температуры внутреннего воздуха или плату внутреннего блока",
+                "Error 1": "00-0D - Ошибка датчика температуры теплообменника tc или платы управления",
+                "Error 2": "00-11 - Неисправна плата или двигатель вентилятора",
+                "Error 3": "00-0F - Неисправен датчик теvпературы tcj или плата управления.",
+                "Error 4": "00-12 - Необходима замена платы управления",
+                "Error 5": "45748 - Нет связи с внешним блоком: сгорели предохранители на плате, неправильное межблочное соединение, неисправна плата внешнего или внутреннего блока",
+                "Error 6": "45778 - Ошибка инверторной платы",
+                "Error 7": "02-14 - Перегрузка по току инвертера",
+                "Error 8": "02-16 - Замыкание между обмотками компрессора",
+                "Error 9": "02-17 - Ошибка датчика тока",
+                "Error 10": "02-18 - Ошибка датчиков температуры, платы p.c.",
+                "Error 11": "02-19 - Ошибка температурного датчика td, платы p.c.",
+                "Error 12": "02-1A - Ошибка вентилятора внешнего блока-перегрузка по току, заблокирован, сгорел двигатель или плата.",
+                "Error 13": "02-1b - Датчик температуры конденсатора неисправен или плата",
+                "Error 14": "02-1C - Компрессор не запустился в течение 20 секунд",
+                "Error 15": "45841 - Недостаток хладагента, ошибка инверторной платы",
+                "Error 16": "03-1d - Неисправен компрессор",
+                "Error 17": "03-1E - Ошибка датчика всасывающей трубки td, недостаточно хладагента",
+                "Error 18": "03-1F - Не работает компрессор-из-за напряжения питания, перегрузки холодильного контура",
+                "Error 19": "03-08 - Неисправность четырёхходового клапана",
+                "Error 20": "E03 - Нет связи с удаленным контроллером (включая беспроводной) и адаптером связи",
+                "Error 21": "E04 - Последовательный сигнал не выводится с наружного блока на внутренний. осечка межблочного провода. неисправная последовательная схема передачи на наружной плате p. c. неисправная последовательная приемная цепь на внутренней плате",
+                "Error 22": "E08 - Дублированный адрес внутреннего блока",
+                "Error 23": "L03 - Дублированный внутренний мастер-блок",
+                "Error 24": "L07 - Есть групповой провод в отдельном помещении",
+                "Error 25": "L08 - Unset indoor group address",
+                "Error 26": "L09 - Неустановленная емкость в помещении",
+                "Error 27": "L30 - Ненормальный вход внешней блокировки",
+                "Error 28": "Р10 - Работа поплавкового выключателя. поплавковая цепь, разъединение, отрыв, ошибка контакта поплавкового выключателя",
+                "Error 29": "P12 - Внутренняя ошибка вентилятора постоянного тока",
+                "Error 30": "Р19 - Ошибка системы 4-ходового клапана",
+                "Error 31": "Р31 - Собственный блок останавливается, пока предупреждение выводится на другие внутренние блоки",
+                "Error 32": "F01 - Отрыв, отсоединение или короткое замыкание температуры внутреннего теплообменника. датчик (tcj)",
+                "Error 33": "F02 - Отрыв, отсоединение или короткое замыкание температуры внутреннего теплообменника. датчик (tc)",
+                "Error 34": "F10 - Отрыв, отсоединение или короткое замыкание температуры внутреннего теплообменника. датчик (ta)",
+                "Error 35": "F29 - Внутренняя ошибка eeprom. проверьте внутреннюю доску пульта дистанционного управления",
+                "Error 36": "Е10 - Ошибка связи между внутренними микроконтроллерами",
+                "Error 37": "Е11 - Ошибка связи между приложением и внутренним блоком",
+                "Error 38": "Е18 - Регулярная ошибка связи между внутренним ведущим и ведомым блоками, а также между основными и вспомогательными блоками",
+                "AC connected": "Кондиционер подключен",
+                "template_title": "ONOKOM AIR TB-1-MB-B (Адаптер для систем Toshiba)"
+            }
+        }
     }
-  ],
-  "device": {
-    "name": "ONOKOM-AIR-TB-1-MB-B",
-    "id": "ONOKOM-AIR-TB-1-MB-B",
-    "groups": [
-      {
-        "title": "General",
-        "id": "general",
-        "order": 1
-      },
-      {
-        "title": "Temperature control",
-        "id": "temperatureControl",
-        "order": 2
-      },
-      {
-        "title": "Vanes",
-        "id": "vanes",
-        "order": 3
-      },
-      {
-        "title": "Additional",
-        "id": "additional",
-        "order": 4
-      },
-      {
-        "title": "HW Info",
-        "id": "hw_info",
-        "order": 6
-      },
-      {
-        "title": "Debug",
-        "id": "debug",
-        "order": 9
-      }
-    ],
-    "parameters": [
-      {
-        "id": "Allow_the_use_of_an_external_temperature_sensor",
-        "title": "Allow the use of an external temperature sensor",
-        "address": 100,
-        "reg_type": "coil",
-        "enum": [
-          0,
-          1
-        ],
-        "enum_titles": [
-          "No",
-          "Yes"
-        ],
-        "group": "temperatureControl",
-        "order": 1
-      },
-      {
-        "id": "Show_modes_as_range",
-        "title": "Show modes as range",
-        "address": 95,
-        "reg_type": "coil",
-        "enum": [
-          0,
-          1
-        ],
-        "enum_titles": [
-          "No",
-          "Yes"
-        ],
-        "group": "general",
-        "order": 1
-      },
-      {
-        "id": "Show_fan_as_range",
-        "title": "Show fan as range",
-        "address": 92,
-        "reg_type": "coil",
-        "enum": [
-          0,
-          1
-        ],
-        "enum_titles": [
-          "No",
-          "Yes"
-        ],
-        "group": "general",
-        "order": 1
-      },
-      {
-        "id": "Show_vanes_as_range",
-        "title": "Show vanes as range",
-        "address": 94,
-        "reg_type": "coil",
-        "enum": [
-          0,
-          1
-        ],
-        "enum_titles": [
-          "No",
-          "Yes"
-        ],
-        "group": "vanes",
-        "order": 1
-      },
-      {
-        "id": "Show_thermostat_state_as_range",
-        "title": "Show thermostat state as range",
-        "address": 94,
-        "reg_type": "coil",
-        "enum": [
-          0,
-          1
-        ],
-        "enum_titles": [
-          "No",
-          "Yes"
-        ],
-        "group": "temperatureControl",
-        "order": 1
-      }
-    ],
-    "channels": [
-      {
-        "name": "Active",
-        "reg_type": "coil",
-        "address": 1,
-        "type": "switch",
-        "format": "u16",
-        "sporadic": true,
-        "group": "general"
-      },
-      {
-        "name": "Mode",
-        "reg_type": "holding",
-        "address": 1,
-        "type": "range",
-        "format": "u16",
-        "min": 1,
-        "max": 5,
-        "sporadic": true,
-        "group": "general",
-        "condition": "Show_modes_as_range==1"
-      },
-      {
-        "name": "Mode",
-        "reg_type": "holding",
-        "address": 1,
-        "type": "value",
-        "format": "u16",
-        "sporadic": true,
-        "group": "general",
-        "enum": [
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        "enum_titles": [
-          "Heat",
-          "Cool",
-          "Auto",
-          "Dry",
-          "Fan"
-        ],
-        "condition": "Show_modes_as_range!=1"
-      },
-      {
-        "name": "Active mode",
-        "reg_type": "holding",
-        "address": 2,
-        "type": "range",
-        "format": "u16",
-        "min": 0,
-        "max": 5,
-        "sporadic": true,
-        "group": "general",
-        "condition": "Show_modes_as_range==1"
-      },
-      {
-        "name": "Active mode",
-        "reg_type": "holding",
-        "address": 2,
-        "type": "value",
-        "format": "u16",
-        "sporadic": true,
-        "group": "general",
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        "enum_titles": [
-          "Off",
-          "Heat",
-          "Cool",
-          "Auto",
-          "Dry",
-          "Fan"
-        ],
-        "condition": "Show_modes_as_range!=1"
-      },
-      {
-        "name": "Fan speed",
-        "reg_type": "holding",
-        "address": 7,
-        "type": "range",
-        "format": "u16",
-        "min": 0,
-        "max": 6,
-        "sporadic": true,
-        "group": "general",
-        "condition": "Show_fan_as_range==1"
-      },
-      {
-        "name": "Fan speed",
-        "reg_type": "holding",
-        "address": 7,
-        "type": "value",
-        "format": "u16",
-        "min": 0,
-        "max": 5,
-        "sporadic": true,
-        "group": "general",
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        "enum_titles": [
-          "Auto",
-          "1 Speed",
-          "2 Speed",
-          "3 Speed",
-          "4 Speed",
-          "5 Speed"
-        ],
-        "condition": "Show_fan_as_range!=1"
-      },
-      {
-        "name": "Smart fan speed",
-        "reg_type": "holding",
-        "address": 8,
-        "type": "range",
-        "format": "u16",
-        "min": 0,
-        "max": 8,
-        "sporadic": true,
-        "group": "general",
-        "condition": "Show_fan_as_range==1"
-      },
-      {
-        "name": "Smart fan speed",
-        "reg_type": "holding",
-        "address": 8,
-        "type": "value",
-        "format": "u16",
-        "min": 0,
-        "max": 6,
-        "sporadic": true,
-        "group": "general",
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ],
-        "enum_titles": [
-          "Auto",
-          "Quiet mode",
-          "1 Speed",
-          "2 Speed",
-          "3 Speed",
-          "4 Speed",
-          "5 Speed"
-        ],
-        "condition": "Show_fan_as_range!=1"
-      },
-      {
-        "name": "Indoor air temperature",
-        "reg_type": "holding",
-        "address": 3,
-        "type": "value",
-        "format": "s16",
-        "scale": 0.01,
-        "sporadic": true,
-        "group": "temperatureControl",
-        "readonly": true,
-        "units": "deg C",
-        "condition": "Allow_the_use_of_an_external_temperature_sensor!=1"
-      },
-      {
-        "name": "Indoor air temperature",
-        "reg_type": "holding",
-        "address": 3,
-        "type": "value",
-        "format": "s16",
-        "min": -50,
-        "max": 50,
-        "scale": 0.01,
-        "sporadic": true,
-        "group": "temperatureControl",
-        "units": "deg C",
-        "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
-      },
-      {
-        "name": "Outdoor air temperature",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 4,
-        "type": "value",
-        "format": "s16",
-        "scale": 0.01,
-        "sporadic": true,
-        "group": "temperatureControl",
-        "readonly": true,
-        "units": "deg C"
-      },
-      {
-        "name": "Target temperature",
-        "reg_type": "holding",
-        "address": 5,
-        "type": "range",
-        "format": "s16",
-        "min": 17,
-        "max": 30,
-        "scale": 0.01,
-        "sporadic": true,
-        "group": "temperatureControl",
-        "units": "deg C"
-      },
-      {
-        "name": "Thermostat state",
-        "reg_type": "holding",
-        "address": 6,
-        "type": "range",
-        "format": "u16",
-        "min": 0,
-        "max": 2,
-        "sporadic": true,
-        "group": "temperatureControl",
-        "readonly": true,
-        "condition": "Show_thermostat_state_as_range==1"
-      },
-      {
-        "name": "Thermostat state",
-        "reg_type": "holding",
-        "address": 6,
-        "type": "value",
-        "format": "u16",
-        "sporadic": true,
-        "group": "temperatureControl",
-        "enum": [
-          0,
-          1,
-          2
-        ],
-        "enum_titles": [
-          "Idle",
-          "Heating",
-          "Cooling"
-        ],
-        "readonly": true,
-        "condition": "Show_thermostat_state_as_range!=1"
-      },
-      {
-        "name": "Horizontal vanes",
-        "reg_type": "holding",
-        "address": 9,
-        "type": "range",
-        "format": "u16",
-        "min": 0,
-        "max": 1,
-        "sporadic": true,
-        "group": "vanes",
-        "condition": "Show_vanes_as_range==1"
-      },
-      {
-        "name": "Horizontal vanes",
-        "reg_type": "holding",
-        "address": 9,
-        "type": "value",
-        "format": "u16",
-        "min": 0,
-        "max": 1,
-        "sporadic": true,
-        "group": "vanes",
-        "enum": [
-          0,
-          1
-        ],
-        "enum_titles": [
-          "Stop",
-          "Swing"
-        ],
-        "condition": "Show_vanes_as_range!=1"
-      },
-      {
-        "name": "Quiet mode",
-        "enabled": false,
-        "reg_type": "coil",
-        "address": 4,
-        "type": "switch",
-        "sporadic": true,
-        "group": "additional"
-      },
-      {
-        "name": "Eco mode",
-        "enabled": false,
-        "reg_type": "coil",
-        "address": 6,
-        "type": "switch",
-        "sporadic": true,
-        "group": "additional"
-      },
-      {
-        "name": "AC connected",
-        "reg_type": "coil",
-        "address": 20,
-        "type": "switch",
-        "sporadic": true,
-        "group": "debug",
-        "readonly": true
-      },
-      {
-        "name": "HW Version",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 200,
-        "type": "text",
-        "format": "string",
-        "sporadic": true,
-        "group": "hw_info",
-        "readonly": true,
-        "string_data_size": 20
-      },
-      {
-        "name": "FW Version",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 250,
-        "type": "text",
-        "format": "string",
-        "sporadic": true,
-        "group": "hw_info",
-        "readonly": true,
-        "string_data_size": 16
-      },
-      {
-        "name": "PROTO Version",
-        "enabled": false,
-        "reg_type": "input",
-        "address": 400,
-        "type": "text",
-        "format": "string",
-        "sporadic": true,
-        "group": "hw_info",
-        "readonly": true,
-        "string_data_size": 16
-      },
-      {
-        "name": "Signature",
-        "enabled": false,
-        "reg_type": "input",
-        "address": 290,
-        "type": "text",
-        "format": "string",
-        "sporadic": true,
-        "group": "hw_info",
-        "readonly": true,
-        "string_data_size": 12
-      },
-      {
-        "name": "Serial",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 270,
-        "type": "text",
-        "format": "u32",
-        "group": "hw_info",
-        "readonly": true
-      },
-      {
-        "name": "Uptime",
-        "enabled": false,
-        "reg_type": "input",
-        "address": 104,
-        "type": "text",
-        "format": "u32",
-        "group": "hw_info"
-      },
-      {
-        "name": "MCU Temperature",
-        "enabled": false,
-        "reg_type": "input",
-        "address": 124,
-        "type": "temperature",
-        "format": "s16",
-        "scale": 0.1,
-        "group": "hw_info"
-      },
-      {
-        "name": "Reboot Device",
-        "enabled": false,
-        "reg_type": "holding",
-        "address": 120,
-        "type": "pushbutton",
-        "group": "hw_info"
-      }
-    ],
-    "translations": {
-      "en": {
-        "template_title": "ONOKOM AIR TB-1-MB-B (Adapter for Toshiba systems)"
-      },
-      "ru": {
-        "template_title": "ONOKOM AIR TB-1-MB-B (Адаптер для систем Toshiba)",
-        "General": "Основные режимы и функции",
-        "Active": "Состояние",
-        "Mode": "Режим",
-        "Active mode": "Состояние и режим",
-        "Fan speed": "Скорость вентилятора",
-        "Smart fan speed": "Скорость вентилятора расширенная",
-        "Show modes as range": "Отображать режимы как ползунок",
-        "Off": "Выключен",
-        "Heat": "Нагрев",
-        "Cool": "Охлаждение",
-        "Auto": "Авто",
-        "Dry": "Осушение",
-        "Fan": "Вентиляция",
-        "Idle": "Простаивает",
-        "Heating": "Нагрев",
-        "Cooling": "Охлаждение",
-        "Temperature control": "Контроль температуры",
-        "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
-        "Indoor air temperature": "Температура воздуха в помещении",
-        "Outdoor air temperature": "Температура воздуха на улице",
-        "Target temperature": "Целевая температура",
-        "Show thermostat state as range": "Отображать состояние термостата как ползунок",
-        "Thermostat state": "Состояние термостата",
-        "Vanes": "Жалюзи",
-        "Show vanes as range": "Отображать жалюзи как ползунок",
-        "Horizontal vanes": "Горизонтальные жалюзи",
-        "Swing": "Качание",
-        "Stop": "Остановлены",
-        "Show fan as range": "Отображать вентилятор как ползунок",
-        "Additional": "Дополнительные режимы и функции",
-        "1 Speed": "1 Скорость",
-        "2 Speed": "2 Скорость",
-        "3 Speed": "3 Скорость",
-        "4 Speed": "4 Скорость",
-        "5 Speed": "5 Скорость",
-        "Quiet mode": "Режим тихий",
-        "Eco mode": "Режим эко",
-        "No": "Нет",
-        "Yes": "Да",
-        "HW Info": "Данные модуля",
-        "HW Version": "Версия устройства",
-        "FW Version": "Версия прошивки",
-        "PROTO Version": "Версия протокола",
-        "Signature": "Сигнатура устройства",
-        "Uptime": "Время работы с момента включения (с)",
-        "MCU Temperature": "Температура МК",
-        "Serial": "Серийный номер",
-        "Reboot Device": "Перезагрузить устройство",
-        "Debug": "Диагностика",
-        "AC connected": "Кондиционер подключен"
-      }
-    }
-  }
 }

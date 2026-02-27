@@ -42,11 +42,6 @@
                 "order": 6
             },
             {
-                "title": "Errors",
-                "id": "errors",
-                "order": 8
-            },
-            {
                 "title": "Debug",
                 "id": "debug",
                 "order": 9
@@ -337,40 +332,6 @@
                 "condition": "Show_fan_as_range!=1"
             },
             {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "range",
-                "format": "u16",
-                "min": 0,
-                "max": 2,
-                "sporadic": true,
-                "group": "temperatureControl",
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range==1"
-            },
-            {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "value",
-                "format": "u16",
-                "sporadic": true,
-                "group": "temperatureControl",
-                "enum": [
-                    0,
-                    1,
-                    2
-                ],
-                "enum_titles": [
-                    "Idle",
-                    "Heating",
-                    "Cooling"
-                ],
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range!=1"
-            },
-            {
                 "name": "Indoor air temperature",
                 "reg_type": "holding",
                 "address": 3,
@@ -411,16 +372,6 @@
                 "units": "deg C"
             },
             {
-                "name": "MCU Temperature",
-                "enabled": false,
-                "reg_type": "input",
-                "address": 124,
-                "type": "temperature",
-                "format": "s16",
-                "scale": 0.1,
-                "group": "hw_info"
-            },
-            {
                 "name": "Target temperature",
                 "reg_type": "holding",
                 "address": 5,
@@ -434,38 +385,50 @@
                 "units": "deg C"
             },
             {
-                "name": "Vanes swing",
+                "name": "Temperature correction",
                 "reg_type": "holding",
-                "address": 11,
+                "address": 20,
+                "type": "value",
+                "format": "s16",
+                "min": -30,
+                "max": 30,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "Thermostat state",
+                "reg_type": "holding",
+                "address": 6,
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 3,
-                "sporadic": false,
-                "group": "vanes",
-                "condition": "Show_vanes_as_range==1"
+                "max": 2,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range==1"
             },
             {
-                "name": "Vanes swing",
+                "name": "Thermostat state",
                 "reg_type": "holding",
-                "address": 11,
+                "address": 6,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
-                "group": "vanes",
+                "sporadic": true,
+                "group": "temperatureControl",
                 "enum": [
                     0,
                     1,
-                    2,
-                    3
+                    2
                 ],
                 "enum_titles": [
-                    "Stop",
-                    "Horizontal and vertical vanes swing",
-                    "Horizontal vanes swing",
-                    "Vertical vanes swing"
+                    "Idle",
+                    "Heating",
+                    "Cooling"
                 ],
-                "condition": "Show_vanes_as_range!=1"
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range!=1"
             },
             {
                 "name": "Horizontal vanes",
@@ -512,6 +475,40 @@
                 "condition": "Show_vanes_as_range!=1"
             },
             {
+                "name": "Vanes swing",
+                "reg_type": "holding",
+                "address": 11,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 3,
+                "sporadic": false,
+                "group": "vanes",
+                "condition": "Show_vanes_as_range==1"
+            },
+            {
+                "name": "Vanes swing",
+                "reg_type": "holding",
+                "address": 11,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Horizontal and vertical vanes swing",
+                    "Horizontal vanes swing",
+                    "Vertical vanes swing"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
                 "name": "Vertical vanes",
                 "reg_type": "holding",
                 "address": 10,
@@ -550,18 +547,6 @@
                     "Far Right"
                 ],
                 "condition": "Show_vanes_as_range!=1"
-            },
-            {
-                "name": "Temperature correction",
-                "reg_type": "holding",
-                "address": 20,
-                "type": "value",
-                "format": "s16",
-                "min": -30,
-                "max": 30,
-                "sporadic": true,
-                "group": "temperatureControl",
-                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
             },
             {
                 "name": "Ionization",
@@ -649,6 +634,16 @@
                 "string_data_size": 20
             },
             {
+                "name": "MCU Temperature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "group": "hw_info"
+            },
+            {
                 "name": "PROTO Version",
                 "enabled": false,
                 "reg_type": "input",
@@ -700,48 +695,6 @@
                 "group": "hw_info"
             },
             {
-                "name": "Error code",
-                "reg_type": "input",
-                "address": 1,
-                "type": "value",
-                "group": "errors",
-                "enum": [
-                    0,
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11,
-                    12,
-                    13,
-                    14
-                ],
-                "enum_titles": [
-                    "Error 0",
-                    "Error 1",
-                    "Error 2",
-                    "Error 3",
-                    "Error 4",
-                    "Error 5",
-                    "Error 6",
-                    "Error 7",
-                    "Error 8",
-                    "Error 9",
-                    "Error 10",
-                    "Error 11",
-                    "Error 12",
-                    "Error 13",
-                    "Error 14"
-                ],
-                "readonly": true
-            },
-            {
                 "name": "AC connected",
                 "reg_type": "coil",
                 "address": 20,
@@ -754,22 +707,22 @@
         "translations": {
             "en": {
                 "template_title": "ONOKOM AIR HR-1-MB-B (Adapter for household and semi-industrial Haier systems)",
-                "No error": "No error",
-                "Error 0": "E0 - Violation of the condensate drainage function",
-                "Error 1": "E1 - The pressure in the compressor is increased",
-                "Error 2": "E2 - The heat exchanger of the internal module is covered with ice",
-                "Error 3": "E3 - Insufficient pressure in the compressor",
-                "Error 4": "E4 - Overheating of the compressor",
-                "Error 5": "E5 - The compressor is switched off due to increased load",
-                "Error 6": "E6 - There is no connection between the blocks",
-                "Error 7": "E7 - The internal module does not respond to commands from the remote control",
-                "Error 8": "E8 - Overload of the internal module's electric motor",
-                "Error 9": "F0 - The temperature sensor in the room has been turned off",
-                "Error 10": "F1 - The thermal sensor of the heat exchanger of the internal module has been switched off",
-                "Error 11": "F2 - The thermal sensor of the heat exchanger of the external module has been switched off",
-                "Error 12": "F3 - The outdoor temperature sensor went off",
-                "Error 13": "F4 - The temperature sensor on the air supply has been switched off",
-                "Error 14": "FF - The power supply is disrupte"
+                "Error 0": "No error",
+                "Error 1": "E0 - Violation of the condensate drainage function",
+                "Error 2": "E1 - The pressure in the compressor is higher than normal",
+                "Error 3": "E2 - The heat exchanger of the internal module is covered with ice",
+                "Error 4": "E3 - Insufficient pressure in the compressor",
+                "Error 5": "E4 - Compressor overheat",
+                "Error 6": "E5 - The compressor is switched off due to increased load",
+                "Error 7": "E6 - There is no connection between the blocks",
+                "Error 8": "E7 - The internal module does not respond to commands from the remote control",
+                "Error 9": "E8 - Overload of the internal module's electric motor",
+                "Error 10": "F0 - The temperature sensor in the room has been turned off",
+                "Error 11": "F1 - The thermal sensor of the heat exchanger of the internal module has been switched off",
+                "Error 12": "F2 - The thermal sensor of the heat exchanger of the external module has been switched off",
+                "Error 13": "F3 - The outdoor temperature sensor went off",
+                "Error 14": "F4 - The temperature sensor on the air supply has been switched off",
+                "Error 15": "FF - The power supply is disrupted"
             },
             "ru": {
                 "General": "Основные режимы и функции",
@@ -778,7 +731,6 @@
                 "Additional": "Дополнительные режимы и функции",
                 "Indication": "Индикация",
                 "HW Info": "Данные модуля",
-                "Errors": "Ошибки",
                 "Debug": "Диагностика",
                 "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
                 "No": "Нет",
@@ -807,20 +759,16 @@
                 "Smart fan speed": "Скорость вентилятора расширенная",
                 "Quiet mode": "Режим тихий",
                 "Turbo mode": "Режим турбо",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Outdoor air temperature": "Температура воздуха на улице",
+                "Target temperature": "Целевая температура",
+                "Temperature correction": "Коррекция температуры",
                 "Thermostat state": "Состояние термостата",
                 "Idle": "Простаивает",
                 "Heating": "Нагрев",
                 "Cooling": "Охлаждение",
-                "Indoor air temperature": "Температура воздуха в помещении",
-                "Outdoor air temperature": "Температура воздуха на улице",
-                "MCU Temperature": "Температура МК",
-                "Target temperature": "Целевая температура",
-                "Vanes swing": "Качание жалюзи",
-                "Stop": "Остановлены",
-                "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
-                "Horizontal vanes swing": "Качание горизонтальных жалюзи",
-                "Vertical vanes swing": "Качание вертикальных жалюзи",
                 "Horizontal vanes": "Горизонтальные жалюзи",
+                "Stop": "Остановлены",
                 "Swing": "Качание",
                 "Lowest": "Самое низкое",
                 "Low": "Низкое",
@@ -829,12 +777,15 @@
                 "Middle High": "Среднее высокое",
                 "High": "Высокое",
                 "Highest": "Самое высокое",
+                "Vanes swing": "Качание жалюзи",
+                "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
+                "Horizontal vanes swing": "Качание горизонтальных жалюзи",
+                "Vertical vanes swing": "Качание вертикальных жалюзи",
                 "Vertical vanes": "Вертикальные жалюзи",
                 "Far Left": "Самое левое",
                 "Left": "Левое",
                 "Right": "Правое",
                 "Far Right": "Самое правое",
-                "Temperature correction": "Коррекция температуры",
                 "Ionization": "Ионизация",
                 "Self cleaning": "Самоочистка",
                 "Sleep mode": "Режим сна",
@@ -842,27 +793,12 @@
                 "Screen light": "Подсветка экрана",
                 "FW Version": "Версия прошивки",
                 "HW Version": "Версия устройства",
+                "MCU Temperature": "Температура МК",
                 "PROTO Version": "Версия протокола",
                 "Reboot Device": "Перезагрузить устройство",
                 "Serial": "Серийный номер",
                 "Signature": "Сигнатура устройства",
                 "Uptime": "Время работы с момента включения (с)",
-                "Error code": "Код ошибки",
-                "Error 0": "E0 - Нарушение функции отвода конденсата",
-                "Error 1": "E1 - В компрессоре повышено давление",
-                "Error 2": "E2 - Теплообменник внутреннего модуля покрылся льдом",
-                "Error 3": "E3 - Недостаточное давление в компрессоре",
-                "Error 4": "E4 - Перегрев компрессора",
-                "Error 5": "E5 - Компрессор отключен в связи с повышенной нагрузкой",
-                "Error 6": "E6 - Нет связи между блоками",
-                "Error 7": "E7 - Не отвечает внутренний модуль на команды с пульта",
-                "Error 8": "E8 - Перегрузка электромотора внутреннего модуля",
-                "Error 9": "F0 - Отключился термодатчик температуры в комнате",
-                "Error 10": "F1 - Отключился термодатчик теплообменника внутреннего модуля",
-                "Error 11": "F2 - Отключился термодатчик теплообменника внешнего модуля",
-                "Error 12": "F3 - Отключился уличный термодатчик",
-                "Error 13": "F4 - Отключился термодатчик на подаче воздуха",
-                "Error 14": "FF - Нарушена подача электричеств",
                 "AC connected": "Кондиционер подключен",
                 "Normal mode": "Обычный режим",
                 "Disabled if no errors": "Отключен если нет ошибок",
@@ -871,7 +807,22 @@
                 "Green untill reboot": "Зеленый до перезагрузки",
                 "Red untill reboot": "Красный до перезагрузки",
                 "template_title": "ONOKOM AIR HR-1-MB-B (Адаптер для бытовых и полупромышленных систем Haier)",
-                "No error": "Нет ошибки"
+                "Error 0": "Нет ошибки",
+                "Error 1": "E0 - Нарушение функции отвода конденсата",
+                "Error 2": "E1 - В компрессоре повышено давление",
+                "Error 3": "E2 - Теплообменник внутреннего модуля покрылся льдом",
+                "Error 4": "E3 - Недостаточное давление в компрессоре",
+                "Error 5": "E4 - Перегрев компрессора",
+                "Error 6": "E5 - Компрессор отключен в связи с повышенной нагрузкой",
+                "Error 7": "E6 - Нет связи между блоками",
+                "Error 8": "E7 - Не отвечает внутренний модуль на команды с пульта",
+                "Error 9": "E8 - Перегрузка электромотора внутреннего модуля",
+                "Error 10": "F0 - Отключился термодатчик температуры в комнате",
+                "Error 11": "F1 - Отключился термодатчик теплообменника внутреннего модуля",
+                "Error 12": "F2 - Отключился термодатчик теплообменника внешнего модуля",
+                "Error 13": "F3 - Отключился уличный термодатчик",
+                "Error 14": "F4 - Отключился термодатчик на подаче воздуха",
+                "Error 15": "FF - Нарушена подача электричеств"
             }
         }
     }

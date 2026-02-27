@@ -22,11 +22,6 @@
                 "order": 2
             },
             {
-                "title": "Vanes",
-                "id": "vanes",
-                "order": 3
-            },
-            {
                 "title": "Additional",
                 "id": "additional",
                 "order": 4
@@ -89,22 +84,6 @@
                     "Yes"
                 ],
                 "group": "general",
-                "order": 1
-            },
-            {
-                "id": "Show_vanes_as_range",
-                "title": "Show vanes as range",
-                "address": 94,
-                "reg_type": "coil",
-                "enum": [
-                    0,
-                    1
-                ],
-                "enum_titles": [
-                    "No",
-                    "Yes"
-                ],
-                "group": "vanes",
                 "order": 1
             },
             {
@@ -323,40 +302,6 @@
                 "condition": "Show_fan_as_range!=1"
             },
             {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "range",
-                "format": "u16",
-                "min": 0,
-                "max": 2,
-                "sporadic": true,
-                "group": "temperatureControl",
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range==1"
-            },
-            {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "value",
-                "format": "u16",
-                "sporadic": true,
-                "group": "temperatureControl",
-                "enum": [
-                    0,
-                    1,
-                    2
-                ],
-                "enum_titles": [
-                    "Idle",
-                    "Heating",
-                    "Cooling"
-                ],
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range!=1"
-            },
-            {
                 "name": "Indoor air temperature",
                 "reg_type": "holding",
                 "address": 3,
@@ -397,16 +342,6 @@
                 "units": "deg C"
             },
             {
-                "name": "MCU Temperature",
-                "enabled": false,
-                "reg_type": "input",
-                "address": 124,
-                "type": "temperature",
-                "format": "s16",
-                "scale": 0.1,
-                "group": "hw_info"
-            },
-            {
                 "name": "Target temperature",
                 "reg_type": "holding",
                 "address": 5,
@@ -420,30 +355,38 @@
                 "units": "deg C"
             },
             {
-                "name": "Current compressor power",
-                "enabled": false,
+                "name": "Thermostat state",
                 "reg_type": "holding",
-                "address": 21,
+                "address": 6,
                 "type": "range",
+                "format": "u16",
                 "min": 0,
-                "max": 100,
+                "max": 2,
                 "sporadic": true,
-                "group": "debug",
+                "group": "temperatureControl",
                 "readonly": true,
-                "units": "%"
+                "condition": "Show_thermostat_state_as_range==1"
             },
             {
-                "name": "Current fan speed",
-                "enabled": false,
+                "name": "Thermostat state",
                 "reg_type": "holding",
-                "address": 32,
-                "type": "range",
-                "min": 1,
-                "max": 3,
+                "address": 6,
+                "type": "value",
+                "format": "u16",
                 "sporadic": true,
-                "group": "debug",
+                "group": "temperatureControl",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heating",
+                    "Cooling"
+                ],
                 "readonly": true,
-                "units": "rpm"
+                "condition": "Show_thermostat_state_as_range!=1"
             },
             {
                 "name": "Sleep mode",
@@ -477,6 +420,16 @@
                 "group": "hw_info",
                 "readonly": true,
                 "string_data_size": 20
+            },
+            {
+                "name": "MCU Temperature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "group": "hw_info"
             },
             {
                 "name": "PROTO Version",
@@ -537,6 +490,32 @@
                 "sporadic": true,
                 "group": "debug",
                 "readonly": true
+            },
+            {
+                "name": "Current compressor power",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 21,
+                "type": "range",
+                "min": 0,
+                "max": 100,
+                "sporadic": true,
+                "group": "debug",
+                "readonly": true,
+                "units": "%"
+            },
+            {
+                "name": "Current fan speed",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 32,
+                "type": "range",
+                "min": 1,
+                "max": 3,
+                "sporadic": true,
+                "group": "debug",
+                "readonly": true,
+                "units": "rpm"
             }
         ],
         "translations": {
@@ -546,7 +525,6 @@
             "ru": {
                 "General": "Основные режимы и функции",
                 "Temperature control": "Контроль температуры",
-                "Vanes": "Жалюзи",
                 "Additional": "Дополнительные режимы и функции",
                 "HW Info": "Данные модуля",
                 "Debug": "Диагностика",
@@ -555,7 +533,6 @@
                 "Yes": "Да",
                 "Show modes as range": "Отображать режимы как ползунок",
                 "Show fan as range": "Отображать вентилятор как ползунок",
-                "Show vanes as range": "Отображать жалюзи как ползунок",
                 "Show thermostat state as range": "Отображать состояние термостата как ползунок",
                 "Baud rate": "Скорость обмена",
                 "baud_rate_description": "Перед изменением параметра убедитесь, что связь с устройством установлена. Выберите нужную скорость обмена, сохраните конфигурацию, а затем укажите в настройках порта эту же скорость.",
@@ -575,25 +552,25 @@
                 "2 Speed": "2 Скорость",
                 "3 Speed": "3 Скорость",
                 "Smart fan speed": "Скорость вентилятора расширенная",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Indoor heat exchanger temperature": "Температура внутреннего теплообменника",
+                "Target temperature": "Целевая температура",
                 "Thermostat state": "Состояние термостата",
                 "Idle": "Простаивает",
                 "Heating": "Нагрев",
                 "Cooling": "Охлаждение",
-                "Indoor air temperature": "Температура воздуха в помещении",
-                "Indoor heat exchanger temperature": "Температура внутреннего теплообменника",
-                "MCU Temperature": "Температура МК",
-                "Target temperature": "Целевая температура",
-                "Current compressor power": "Текущая мощность компрессора",
-                "Current fan speed": "Текущая скорость вентилятора",
                 "Sleep mode": "Режим сна",
                 "FW Version": "Версия прошивки",
                 "HW Version": "Версия устройства",
+                "MCU Temperature": "Температура МК",
                 "PROTO Version": "Версия протокола",
                 "Reboot Device": "Перезагрузить устройство",
                 "Serial": "Серийный номер",
                 "Signature": "Сигнатура устройства",
                 "Uptime": "Время работы с момента включения (с)",
                 "AC connected": "Кондиционер подключен",
+                "Current compressor power": "Текущая мощность компрессора",
+                "Current fan speed": "Текущая скорость вентилятора",
                 "Normal mode": "Обычный режим",
                 "Disabled if no errors": "Отключен если нет ошибок",
                 "Disabled untill reboot": "Отключен до перезагрузки",

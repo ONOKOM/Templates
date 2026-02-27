@@ -328,40 +328,6 @@
                 "condition": "Show_fan_as_range!=1"
             },
             {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "range",
-                "format": "u16",
-                "min": 0,
-                "max": 2,
-                "sporadic": true,
-                "group": "temperatureControl",
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range==1"
-            },
-            {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "value",
-                "format": "u16",
-                "sporadic": true,
-                "group": "temperatureControl",
-                "enum": [
-                    0,
-                    1,
-                    2
-                ],
-                "enum_titles": [
-                    "Idle",
-                    "Heating",
-                    "Cooling"
-                ],
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range!=1"
-            },
-            {
                 "name": "Indoor air temperature",
                 "reg_type": "holding",
                 "address": 3,
@@ -398,18 +364,8 @@
                 "scale": 0.01,
                 "sporadic": true,
                 "group": "temperatureControl",
-                "readonly": false,
+                "readonly": true,
                 "units": "deg C"
-            },
-            {
-                "name": "MCU Temperature",
-                "enabled": false,
-                "reg_type": "input",
-                "address": 124,
-                "type": "temperature",
-                "format": "s16",
-                "scale": 0.1,
-                "group": "hw_info"
             },
             {
                 "name": "Target temperature",
@@ -425,34 +381,50 @@
                 "units": "deg C"
             },
             {
-                "name": "Vanes swing",
+                "name": "Temperature correction",
                 "reg_type": "holding",
-                "address": 11,
+                "address": 20,
+                "type": "value",
+                "format": "s16",
+                "min": -30,
+                "max": 30,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "Thermostat state",
+                "reg_type": "holding",
+                "address": 6,
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 3,
-                "sporadic": false,
-                "group": "vanes",
-                "condition": "Show_vanes_as_range==1"
+                "max": 2,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range==1"
             },
             {
-                "name": "Vanes swing",
+                "name": "Thermostat state",
                 "reg_type": "holding",
-                "address": 11,
+                "address": 6,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
-                "group": "vanes",
+                "sporadic": true,
+                "group": "temperatureControl",
                 "enum": [
                     0,
+                    1,
                     2
                 ],
                 "enum_titles": [
-                    "Stop",
-                    "Horizontal vanes swing"
+                    "Idle",
+                    "Heating",
+                    "Cooling"
                 ],
-                "condition": "Show_vanes_as_range!=1"
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range!=1"
             },
             {
                 "name": "Horizontal vanes",
@@ -495,16 +467,34 @@
                 "condition": "Show_vanes_as_range!=1"
             },
             {
-                "name": "Temperature correction",
+                "name": "Vanes swing",
                 "reg_type": "holding",
-                "address": 20,
+                "address": 11,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 3,
+                "sporadic": false,
+                "group": "vanes",
+                "condition": "Show_vanes_as_range==1"
+            },
+            {
+                "name": "Vanes swing",
+                "reg_type": "holding",
+                "address": 11,
                 "type": "value",
-                "format": "s16",
-                "min": -30,
-                "max": 30,
-                "sporadic": true,
-                "group": "temperatureControl",
-                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    2
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Horizontal vanes swing"
+                ],
+                "condition": "Show_vanes_as_range!=1"
             },
             {
                 "name": "FW Version",
@@ -529,6 +519,16 @@
                 "group": "hw_info",
                 "readonly": true,
                 "string_data_size": 20
+            },
+            {
+                "name": "MCU Temperature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "group": "hw_info"
             },
             {
                 "name": "PROTO Version",
@@ -599,27 +599,8 @@
                 ]
             },
             {
-                "name": "Indoor unit model",
-                "reg_type": "holding",
-                "address": 500,
-                "type": "text",
-                "format": "string",
-                "group": "setup",
-                "readonly": true,
-                "string_data_size": 15
-            },
-            {
-                "name": "Outdoor unit model",
-                "reg_type": "holding",
-                "address": 520,
-                "type": "text",
-                "format": "string",
-                "group": "setup",
-                "readonly": true,
-                "string_data_size": 15
-            },
-            {
                 "name": "Error code",
+                "enabled": false,
                 "reg_type": "input",
                 "address": 1,
                 "type": "value",
@@ -1140,7 +1121,8 @@
                     "Error 254",
                     "Error 255"
                 ],
-                "readonly": true
+                "readonly": true,
+                "order": 0
             },
             {
                 "name": "Errors",
@@ -1163,8 +1145,7 @@
         "translations": {
             "en": {
                 "template_title": "ONOKOM AIR DK-5-MB-B (Adapter for VRF DAIKIN systems)",
-                "No error": "No error",
-                "Error 0": "0",
+                "Error 0": "No error",
                 "Error 1": "1",
                 "Error 2": "2",
                 "Error 3": "3",
@@ -1454,27 +1435,27 @@
                 "2 Speed": "2 Скорость",
                 "3 Speed": "3 Скорость",
                 "Smart fan speed": "Скорость вентилятора расширенная",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Remote controller temperature": "Температура главного пульта",
+                "Target temperature": "Целевая температура",
+                "Temperature correction": "Коррекция температуры",
                 "Thermostat state": "Состояние термостата",
                 "Idle": "Простаивает",
                 "Heating": "Нагрев",
                 "Cooling": "Охлаждение",
-                "Indoor air temperature": "Температура воздуха в помещении",
-                "Remote controller temperature": "Температура главного пульта",
-                "MCU Temperature": "Температура МК",
-                "Target temperature": "Целевая температура",
-                "Vanes swing": "Качание жалюзи",
-                "Stop": "Остановлены",
-                "Horizontal vanes swing": "Качание горизонтальных жалюзи",
                 "Horizontal vanes": "Горизонтальные жалюзи",
+                "Stop": "Остановлены",
                 "Swing": "Качание",
                 "Lowest": "Самое низкое",
                 "Low": "Низкое",
                 "Middle": "Среднее",
                 "High": "Высокое",
                 "Highest": "Самое высокое",
-                "Temperature correction": "Коррекция температуры",
+                "Vanes swing": "Качание жалюзи",
+                "Horizontal vanes swing": "Качание горизонтальных жалюзи",
                 "FW Version": "Версия прошивки",
                 "HW Version": "Версия устройства",
+                "MCU Temperature": "Температура МК",
                 "PROTO Version": "Версия протокола",
                 "Reboot Device": "Перезагрузить устройство",
                 "Serial": "Серийный номер",
@@ -1484,10 +1465,8 @@
                 "LISTEN_ONLY": "Слушатель",
                 "EMULATE_M_WRC": "Главный",
                 "EMULATE_S_WRC": "Ведомый",
-                "Indoor unit model": "Внутренний блок",
-                "Outdoor unit model": "Наружный блок",
                 "Error code": "Код ошибки",
-                "Error 0": "0",
+                "Error 0": "Нет ошибки",
                 "Error 1": "1",
                 "Error 2": "2",
                 "Error 3": "3",
@@ -1750,8 +1729,7 @@
                 "Always disabled": "Всегда отключен",
                 "Green untill reboot": "Зеленый до перезагрузки",
                 "Red untill reboot": "Красный до перезагрузки",
-                "template_title": "ONOKOM AIR DK-5-MB-B (Адаптер для мультизональных систем DAIKIN)",
-                "No error": "Нет ошибки"
+                "template_title": "ONOKOM AIR DK-5-MB-B (Адаптер для мультизональных систем DAIKIN)"
             }
         }
     }

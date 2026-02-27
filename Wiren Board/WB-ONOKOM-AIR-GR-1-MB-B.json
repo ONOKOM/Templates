@@ -49,22 +49,6 @@
         ],
         "parameters": [
             {
-                "id": "Disable_screen_when_power_off",
-                "title": "Disable screen when power off",
-                "address": 41,
-                "reg_type": "coil",
-                "enum": [
-                    0,
-                    1
-                ],
-                "enum_titles": [
-                    "No",
-                    "Yes"
-                ],
-                "group": "indication",
-                "order": 1
-            },
-            {
                 "id": "Allow_the_use_of_an_external_temperature_sensor",
                 "title": "Allow the use of an external temperature sensor",
                 "address": 100,
@@ -356,40 +340,6 @@
                 "condition": "Show_fan_as_range!=1"
             },
             {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "range",
-                "format": "u16",
-                "min": 0,
-                "max": 2,
-                "sporadic": true,
-                "group": "temperatureControl",
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range==1"
-            },
-            {
-                "name": "Thermostat state",
-                "reg_type": "holding",
-                "address": 6,
-                "type": "value",
-                "format": "u16",
-                "sporadic": true,
-                "group": "temperatureControl",
-                "enum": [
-                    0,
-                    1,
-                    2
-                ],
-                "enum_titles": [
-                    "Idle",
-                    "Heating",
-                    "Cooling"
-                ],
-                "readonly": true,
-                "condition": "Show_thermostat_state_as_range!=1"
-            },
-            {
                 "name": "Indoor air temperature",
                 "reg_type": "holding",
                 "address": 3,
@@ -430,16 +380,6 @@
                 "units": "deg C"
             },
             {
-                "name": "MCU Temperature",
-                "enabled": false,
-                "reg_type": "input",
-                "address": 124,
-                "type": "temperature",
-                "format": "s16",
-                "scale": 0.1,
-                "group": "hw_info"
-            },
-            {
                 "name": "Target temperature",
                 "reg_type": "holding",
                 "address": 5,
@@ -453,38 +393,50 @@
                 "units": "deg C"
             },
             {
-                "name": "Vanes swing",
+                "name": "Temperature correction",
                 "reg_type": "holding",
-                "address": 11,
+                "address": 20,
+                "type": "value",
+                "format": "s16",
+                "min": -30,
+                "max": 30,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "Thermostat state",
+                "reg_type": "holding",
+                "address": 6,
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 3,
-                "sporadic": false,
-                "group": "vanes",
-                "condition": "Show_vanes_as_range==1"
+                "max": 2,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range==1"
             },
             {
-                "name": "Vanes swing",
+                "name": "Thermostat state",
                 "reg_type": "holding",
-                "address": 11,
+                "address": 6,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
-                "group": "vanes",
+                "sporadic": true,
+                "group": "temperatureControl",
                 "enum": [
                     0,
                     1,
-                    2,
-                    3
+                    2
                 ],
                 "enum_titles": [
-                    "Stop",
-                    "Horizontal and vertical vanes swing",
-                    "Horizontal vanes swing",
-                    "Vertical vanes swing"
+                    "Idle",
+                    "Heating",
+                    "Cooling"
                 ],
-                "condition": "Show_vanes_as_range!=1"
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range!=1"
             },
             {
                 "name": "Horizontal vanes",
@@ -527,6 +479,40 @@
                 "condition": "Show_vanes_as_range!=1"
             },
             {
+                "name": "Vanes swing",
+                "reg_type": "holding",
+                "address": 11,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 3,
+                "sporadic": false,
+                "group": "vanes",
+                "condition": "Show_vanes_as_range==1"
+            },
+            {
+                "name": "Vanes swing",
+                "reg_type": "holding",
+                "address": 11,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Horizontal and vertical vanes swing",
+                    "Horizontal vanes swing",
+                    "Vertical vanes swing"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
                 "name": "Vertical vanes",
                 "reg_type": "holding",
                 "address": 10,
@@ -565,18 +551,6 @@
                     "Far Right"
                 ],
                 "condition": "Show_vanes_as_range!=1"
-            },
-            {
-                "name": "Temperature correction",
-                "reg_type": "holding",
-                "address": 20,
-                "type": "value",
-                "format": "s16",
-                "min": -30,
-                "max": 30,
-                "sporadic": true,
-                "group": "temperatureControl",
-                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
             },
             {
                 "name": "Eco mode",
@@ -665,6 +639,16 @@
                 "string_data_size": 20
             },
             {
+                "name": "MCU Temperature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "group": "hw_info"
+            },
+            {
                 "name": "PROTO Version",
                 "enabled": false,
                 "reg_type": "input",
@@ -737,10 +721,9 @@
                 "Indication": "Индикация",
                 "HW Info": "Данные модуля",
                 "Debug": "Диагностика",
-                "Disable screen when power off": "Отключать экран при отключении питания",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
                 "No": "Нет",
                 "Yes": "Да",
-                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
                 "Show modes as range": "Отображать режимы как ползунок",
                 "Show fan as range": "Отображать вентилятор как ползунок",
                 "Show vanes as range": "Отображать жалюзи как ползунок",
@@ -767,38 +750,39 @@
                 "Smart fan speed": "Скорость вентилятора расширенная",
                 "Quiet mode": "Режим тихий",
                 "Turbo mode": "Режим турбо",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Outdoor air temperature": "Температура воздуха на улице",
+                "Target temperature": "Целевая температура",
+                "Temperature correction": "Коррекция температуры",
                 "Thermostat state": "Состояние термостата",
                 "Idle": "Простаивает",
                 "Heating": "Нагрев",
                 "Cooling": "Охлаждение",
-                "Indoor air temperature": "Температура воздуха в помещении",
-                "Outdoor air temperature": "Температура воздуха на улице",
-                "MCU Temperature": "Температура МК",
-                "Target temperature": "Целевая температура",
-                "Vanes swing": "Качание жалюзи",
-                "Stop": "Остановлены",
-                "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
-                "Horizontal vanes swing": "Качание горизонтальных жалюзи",
-                "Vertical vanes swing": "Качание вертикальных жалюзи",
                 "Horizontal vanes": "Горизонтальные жалюзи",
+                "Stop": "Остановлены",
                 "Swing": "Качание",
                 "Lowest": "Самое низкое",
                 "Low": "Низкое",
                 "Middle": "Среднее",
                 "High": "Высокое",
                 "Highest": "Самое высокое",
+                "Vanes swing": "Качание жалюзи",
+                "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
+                "Horizontal vanes swing": "Качание горизонтальных жалюзи",
+                "Vertical vanes swing": "Качание вертикальных жалюзи",
                 "Vertical vanes": "Вертикальные жалюзи",
                 "Far Left": "Самое левое",
                 "Left": "Левое",
                 "Right": "Правое",
                 "Far Right": "Самое правое",
-                "Temperature correction": "Коррекция температуры",
                 "Eco mode": "Режим эко",
                 "Ionization": "Ионизация",
                 "Sleep mode": "Режим сна",
+                "Disable screen when power off": "Отключать экран при отключении питания",
                 "Screen light": "Подсветка экрана",
                 "FW Version": "Версия прошивки",
                 "HW Version": "Версия устройства",
+                "MCU Temperature": "Температура МК",
                 "PROTO Version": "Версия протокола",
                 "Reboot Device": "Перезагрузить устройство",
                 "Serial": "Серийный номер",

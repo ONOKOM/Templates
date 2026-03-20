@@ -1,0 +1,1676 @@
+/*
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<langs>
+		<tplvar name="DESC_TITLE_STR1"          en="Gateway ONOKOM AC via Modbus"											ru="Шлюз ONOKOM для кондиционеров через модуль Modbus"/>
+		<tplvar name="DESC_TITLE_STR2"          en="Modbus"                                        							ru="модуль Modbus"/>
+		<tplvar name="VERSION_SCRIPT"           en="Version: 2.00"                                                      	ru="Версия 2.00" />
+		<tplvar name="DESC_SPEC_STR1"           en="ONOKOM air conditioner monitoring and"  								ru="Контроль и управление кондиционерами через"/>
+		<tplvar name="DESC_SPEC_STR2"           en="control via Modbus protocol"  											ru="шлюз ONOKOM по протоколу Modbus."/>
+
+		<tplvar name="ITEM_AC_ADDRESS"          en="indoor unit"                                            				ru="внутренний блок"/>
+		<tplvar name="ITEM_RS485_SETUP"         en="Configuring the ONOKOM gateway connection"                              ru="Настройка соединения"/>
+		<tplvar name="ITEM_RS485"               en="RS-485 bus to which ONOKOM gateways are connected"  	                ru="Шина RS-485, на которую подключен шлюз ONOKOM"/>
+		<tplvar name="ITEM_COUNT_USE_DEVICE"    en="Number of ONOKOM used"       											ru="Количество используемых шлюзов ONOKOM"/>
+		<tplvar name="ITEM_OLD"    				en="Current Modbus address for changing"									ru="Текущий адрес Modbus"/>
+		<tplvar name="ITEM_NEW"    				en="New Modbus address for changing"										ru="Новый адрес Modbus"/>
+		<tplvar name="ITEM_INSTRUCTIONS"        en="Instructions for using the script"    									ru="Инструкция использования скрипта"/>
+		<tplvar name="ITEM_INSTRUCTIONS_STR_1"  en="1.Settigs RS-485: 9600/8N2(address 1 default)" 							ru="Настройки RS-485: 9600/8N2(адрес 1 по умолчанию)"/>
+		<tplvar name="ITEM_INSTRUCTIONS_STR_2"  en="2.To set the address, use the Setup mode, for work - Work"  			ru="2.Для задания адреса используйте режим Настройка Modbus адреса, для работы - Рабочий режим"/>
+		<tplvar name="ITEM_INSTRUCTIONS_STR_3"  en="3.When changing the address, enter the current and desired address, if you do not know the current one, put 0 and press 'Сменить адрес'"
+		                                        ru="3.При смене адреса впишите текущий и желаемый адрес, если не знаете текущий - ставьте 0 и нажмите кнопку 'Сменить адрес'"/>
+		<tplvar name="ITEM_SEND_PUSH"			en="Send push messages to the app when changing th Modbus address"          ru="Получать push-уведомления в приложении при изменении адреса"/>
+		<tplvar name="EXT_TEMP_SENSOR"			en="Use external temperature sensor"                  						ru="Использовать внешний датчик температуры"/>
+		<tplvar name="CHOOSE_TEMP_SENSOR"		en="Choose external temperature sensor"                  					ru="Выберите внешний датчик температуры"/>
+		<tplvar name="ITEM2" ru="Название кондиционера" en="AC name" />
+		<tplvar name="BASE_SETTINGS" ru="Базовая настройка" en="Базовая настройка" />
+		<tplvar name="MODBUSSETTINGS" ru="Настройка Modbus адреса на шлюзах ONOKOM" en="Настройка Modbus адреса на шлюзах ONOKOM" />
+		<tplvar name="DELIMITER" ru="-------------------------------------------------------------------------" en="-------------------------------------------------------------------------" />
+	</langs>
+	
+	<description>
+		<b>##DESC_TITLE_STR1##</b>
+		##VERSION_SCRIPT##
+
+		##DELIMITER##
+
+		<span>Шаблон позволяет добавлять системы кондиционирования производства Chigo (включая OEM - бренды), с разъемом XYE по ModBus RTU протоколу в умный дом Larnitech, с помощью шлюза ONOKOM CG-VRF-MB-B-*</span>
+
+		Шаблон разработан техническим отделом ООО 
+		"ОНОКОМ"
+
+		<b>Телефон:</b> +7 (812) 955-59-05
+		<b>Адрес:</b> СПб, Московское шоссе д.25 корп.1	
+
+		<b>Новости:</b> t.me/ONOKOM_NEWS
+		<b>Бот:</b> t.me/ONOKOM_bot
+		<b>Сайт:</b> onokom.ru
+
+		<img src="https://onokom.ru/img/index/logo-ONOKOM.svg" width="132" height="132" alt="Logo" />
+		
+	</description>
+	
+	<tag value="import-script"/>
+	<selectArea value="1"/>
+	<target value="ONOKOM"/>
+
+	<!-- ========================= Main settings ========================= -->
+	<item type="div"/>
+    <item type="comment" name="commentInstructions" comment="%%color:#0458be;%%Инструкция по использованию скрипта" value=""/>
+    <item type="comment" name="commentInstructions" comment="" value="##ITEM_INSTRUCTIONS_STR_1##"/>
+	<item type="comment" name="commentInstructions" comment="" value="1. Выберите 'Рабочий режим', для управления кондиционером через шлюз или режим 'Сменить Modbus адрес' для настройки."/>
+	<item type="comment" name="commentInstructions" comment="" value="2. Выберите COM-порт шины к которой подключен шлюз ONOKOM."/>
+																			 
+    <item type="comment" name="commentInstructions" comment="%%color:#0458be;%%Базовая настройка" value=""/>
+	<line>
+		<item type="list" name="MODE_SCRIPT" required="1" comment="Режим работы скрипта для шлюза ONOKOM" weight="4">
+			<option key="IDLE"       	value="Рабочий режим"/>
+			<option key="SET_NEW_ID"    value="Установка Modbus адреса"/>
+    	</item>
+
+		<item type="devices-list" name="RS485" filter="com-port" required="1" comment="##ITEM_RS485##" weight="4"/> 
+		
+	</line>
+	<line>
+		<item type="number" name="COUNT_IDU" value="1" required="1" min="1" max="32" comment="Кол-во внутренних блоков" weight="4"/> 
+		<item type="list" name="GW_MODE" required="1" comment="Режим работы шлюза" weight="4">
+			<option key="IDLE"       	value="Слушатель"/>
+			<option key="EMULATE_M_WRC" value="Главный"/>
+			<option key="EMULATE_S_WRC" value="Ведомый"/>
+    	</item>
+
+		<item type="number" name="AC1_ADDR" value="1" required="1" min="1" max="247" comment="Modbus адрес шлюза" weight="4"/>
+
+	</line>
+	
+
+	<!-- ========================= Modbus address settings ========================= -->
+	<item type="div"/>
+	<item type="comment" name="commentInstructions" comment="%%color:#0458be;%%Инструкция по смене Modbus адреса" value=""/>
+	<item type="comment" name="commentInstructions" comment="" value="1. Выберите режим работы скрипта 'Установка Modbus адреса'."/>
+	<item type="comment" name="commentInstructions" comment="" value="2. Впишите текущий адрес и новый в соответствующие поля (если не знаете текущий, используйте 0, но на шине должно быть только ОДНО устройство)."/>
+	<item type="comment" name="commentInstructions" comment="" value="3. Сохраните скрипт и откройте мобильное приложение."/>
+	<item type="comment" name="commentInstructions" comment="" value="4. В разделе 'Свет' найдите устройство 'Изменить адрес' и переведите его в состояние 'Включить'."/>
+	<item type="comment" name="commentInstructions" comment="" value="Для понимания применился новый адрес или нет, можно включить уведомления."/>
+	
+	<item type="comment" name="commentInstructions" comment="%%color:#0458be;%%##MODBUSSETTINGS##" value=""/>
+	<line>
+		<item type="number" name="OLDADDRESS" value="1" min="0" max="247" comment="##ITEM_OLD##" weight="4"/>
+		
+		<item type="number" name="NEWADDRESS" value="1" min="0" max="247" comment="##ITEM_NEW##" weight="4"/>
+
+		<item type="checkbox" name="SEND_PUSH" comment="##ITEM_SEND_PUSH##" weight="4"/>	
+	</line>
+	
+	<!-- ========================= Address - Name pairs ========================= -->
+	<item type="div"/>
+	<item type="comment" name="commentRS485" comment="%%color:#0458be;%%Наименование внутренних блоков" value=""/>
+	<line>
+		<item type="string" name="NAME1" min="3" max="40" required="1" comment="##ITEM2## 1" value="AC 1"/>
+	</line>
+	<line>
+		<item type="string" name="NAME2" min="3" max="40" required="1" comment="##ITEM2## 2" value="AC 2"/>
+	</line>
+	<line>
+		<item type="string" name="NAME3" min="3" max="40" required="1" comment="##ITEM2## 3" value="AC 3"/>
+	</line>
+	<line>
+		<item type="string" name="NAME4" min="3" max="40" required="1" comment="##ITEM2## 4" value="AC 4"/>
+	</line>
+	<line>
+		<item type="string" name="NAME5" min="3" max="40" required="1" comment="##ITEM2## 5" value="AC 5"/>
+	</line>
+	<line>
+		<item type="string" name="NAME6" min="3" max="40" required="1" comment="##ITEM2## 6" value="AC 6"/>
+	</line>
+	<line>
+		<item type="string" name="NAME7" min="3" max="40" required="1" comment="##ITEM2## 7" value="AC 7"/>
+	</line>
+	<line>
+		<item type="string" name="NAME8" min="3" max="40" required="1" comment="##ITEM2## 8" value="AC 8"/>
+	</line>
+	<line>
+		<item type="string" name="NAME9" min="3" max="40" required="1" comment="##ITEM2## 9" value="AC 9"/>	
+	</line>
+	<line>
+		<item type="string" name="NAME10" min="3" max="40" required="1" comment="##ITEM2## 10" value="AC 10"/>
+	</line>
+	<line>
+		<item type="string" name="NAME11" min="3" max="40" required="1" comment="##ITEM2## 11" value="AC 11"/>
+	</line>
+	<line>
+		<item type="string" name="NAME12" min="3" max="40" required="1" comment="##ITEM2## 12" value="AC 12"/>
+	</line>
+	<line>
+		<item type="string" name="NAME13" min="3" max="40" required="1" comment="##ITEM2## 13" value="AC 13"/>
+	</line>
+	<line>
+		<item type="string" name="NAME14" min="3" max="40" required="1" comment="##ITEM2## 14" value="AC 14"/>
+	</line>
+	<line>
+		<item type="string" name="NAME15" min="3" max="40" required="1" comment="##ITEM2## 15" value="AC 15"/>
+	</line>
+	<line>
+		<item type="string" name="NAME16" min="3" max="40" required="1" comment="##ITEM2## 16" value="AC 16"/>
+	</line>
+	<line>
+		<item type="string" name="NAME17" min="3" max="40" required="1" comment="##ITEM2## 17" value="AC 17"/>
+	</line>
+	<line>
+		<item type="string" name="NAME18" min="3" max="40" required="1" comment="##ITEM2## 18" value="AC 18"/>
+	</line>
+	<line>
+		<item type="string" name="NAME19" min="3" max="40" required="1" comment="##ITEM2## 19" value="AC 19"/>
+	</line>
+	<line>
+		<item type="string" name="NAME20" min="3" max="40" required="1" comment="##ITEM2## 20" value="AC 20"/>
+	</line>
+	<line>
+		<item type="string" name="NAME21" min="3" max="40" required="1" comment="##ITEM2## 21" value="AC 21"/>
+	</line>
+	<line>
+		<item type="string" name="NAME22" min="3" max="40" required="1" comment="##ITEM2## 22" value="AC 22"/>
+	</line>
+	<line>
+		<item type="string" name="NAME23" min="3" max="40" required="1" comment="##ITEM2## 23" value="AC 23"/>
+	</line>
+	<line>
+		<item type="string" name="NAME24" min="3" max="40" required="1" comment="##ITEM2## 24" value="AC 24"/>
+	</line>
+	<line>
+		<item type="string" name="NAME25" min="3" max="40" required="1" comment="##ITEM2## 25" value="AC 25"/>
+	</line>
+	<line>
+		<item type="string" name="NAME26" min="3" max="40" required="1" comment="##ITEM2## 26" value="AC 26"/>
+	</line>
+	<line>
+		<item type="string" name="NAME27" min="3" max="40" required="1" comment="##ITEM2## 27" value="AC 27"/>
+	</line>
+	<line>
+		<item type="string" name="NAME28" min="3" max="40" required="1" comment="##ITEM2## 28" value="AC 28"/>
+	</line>
+	<line>
+		<item type="string" name="NAME29" min="3" max="40" required="1" comment="##ITEM2## 29" value="AC 29"/>
+	</line>
+	<line>
+		<item type="string" name="NAME30" min="3" max="40" required="1" comment="##ITEM2## 30" value="AC 30"/>
+	</line>
+	<line>
+		<item type="string" name="NAME31" min="3" max="40" required="1" comment="##ITEM2## 31" value="AC 31"/>
+	</line>
+	<line>
+		<item type="string" name="NAME32" min="3" max="40" required="1" comment="##ITEM2## 32" value="AC 32"/>
+	</line> 
+
+		<!-- ========================= AC1 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID01%"/>
+			
+	</additems>
+	<item type="hidden" name="AC1_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID01%" name="AC1Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_INDTEMP" value="%TARGET%:%SUBID01%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC1Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC1_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC2 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME2"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID02%"/>
+			
+	</additems>
+	<item type="hidden" name="AC2_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID02%" name="AC2Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_INDTEMP" value="%TARGET%:%SUBID02%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC2Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC2_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC3 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME3"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID03%"/>
+			
+	</additems>
+	<item type="hidden" name="AC3_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID03%" name="AC3Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_INDTEMP" value="%TARGET%:%SUBID03%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC3Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC3_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC4 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME4"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID04%"/>
+			
+	</additems>
+	<item type="hidden" name="AC4_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID04%" name="AC4Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_INDTEMP" value="%TARGET%:%SUBID04%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC4Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC4_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC5 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME5"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID05%"/>
+			
+	</additems>
+	<item type="hidden" name="AC5_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID05%" name="AC5Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_INDTEMP" value="%TARGET%:%SUBID05%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC5Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC5_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC6 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME6"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID06%"/>
+			
+	</additems>
+	<item type="hidden" name="AC6_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID06%" name="AC6Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_INDTEMP" value="%TARGET%:%SUBID06%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC6Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC6_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC7 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME7"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID07%"/>
+			
+	</additems>
+	<item type="hidden" name="AC7_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID07%" name="AC7Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_INDTEMP" value="%TARGET%:%SUBID07%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC7Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC7_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC8 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME8"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID08%"/>
+			
+	</additems>
+	<item type="hidden" name="AC8_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID08%" name="AC8Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_INDTEMP" value="%TARGET%:%SUBID08%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC8Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC8_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC9 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME9"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID09%"/>
+			
+	</additems>
+	<item type="hidden" name="AC9_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID09%" name="AC9Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_INDTEMP" value="%TARGET%:%SUBID09%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC9Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC9_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC10 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME10"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID10%"/>
+			
+	</additems>
+	<item type="hidden" name="AC10_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID10%" name="AC10Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_INDTEMP" value="%TARGET%:%SUBID10%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC10Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC10_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- ========================= AC11 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID11%"/>
+			
+	</additems>
+	<item type="hidden" name="AC11_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC11Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC11_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID11%" name="AC11Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC11_INDTEMP" value="%TARGET%:%SUBID11%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC11Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC11_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC12 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID12%"/>
+			
+	</additems>
+	<item type="hidden" name="AC12_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC12Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC12_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID12%" name="AC12Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC12_INDTEMP" value="%TARGET%:%SUBID12%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC12Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC12_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC13 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID13%"/>
+			
+	</additems>
+	<item type="hidden" name="AC13_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC13Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC13_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID13%" name="AC13Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC13_INDTEMP" value="%TARGET%:%SUBID13%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC13Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC13_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC14 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID14%"/>
+			
+	</additems>
+	<item type="hidden" name="AC14_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC14Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC14_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID14%" name="AC14Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC14_INDTEMP" value="%TARGET%:%SUBID14%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC14Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC14_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC15 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID15%"/>
+			
+	</additems>
+	<item type="hidden" name="AC15_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC15Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC15_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID15%" name="AC15Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC15_INDTEMP" value="%TARGET%:%SUBID15%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC15Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC15_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC16 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID16%"/>
+			
+	</additems>
+	<item type="hidden" name="AC16_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC16Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC16_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID16%" name="AC16Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC16_INDTEMP" value="%TARGET%:%SUBID16%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC16Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC16_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC17 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID17%"/>
+			
+	</additems>
+	<item type="hidden" name="AC17_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC17Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC17_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID17%" name="AC17Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC17_INDTEMP" value="%TARGET%:%SUBID17%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC17Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC17_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC18 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID18%"/>
+			
+	</additems>
+	<item type="hidden" name="AC18_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC18Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC18_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID18%" name="AC18Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC18_INDTEMP" value="%TARGET%:%SUBID18%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC18Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC18_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC19 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID19%"/>
+			
+	</additems>
+	<item type="hidden" name="AC19_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC19Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC19_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID19%" name="AC19Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC19_INDTEMP" value="%TARGET%:%SUBID19%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC19Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC19_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC20 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID20%"/>
+			
+	</additems>
+	<item type="hidden" name="AC20_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC20Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC20_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID20%" name="AC20Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC20_INDTEMP" value="%TARGET%:%SUBID20%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC20Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC20_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC21 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID21%"/>
+			
+	</additems>
+	<item type="hidden" name="AC21_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC21Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC21_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID21%" name="AC21Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC21_INDTEMP" value="%TARGET%:%SUBID21%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC21Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC21_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC22 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID22%"/>
+			
+	</additems>
+	<item type="hidden" name="AC22_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC22Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC22_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID22%" name="AC22Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC22_INDTEMP" value="%TARGET%:%SUBID22%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC22Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC22_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC23 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID23%"/>
+			
+	</additems>
+	<item type="hidden" name="AC23_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC23Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC23_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID23%" name="AC23Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC23_INDTEMP" value="%TARGET%:%SUBID23%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC23Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC23_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC24 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID24%"/>
+			
+	</additems>
+	<item type="hidden" name="AC24_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC24Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC24_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID24%" name="AC24Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC24_INDTEMP" value="%TARGET%:%SUBID24%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC24Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC24_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC25 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID25%"/>
+			
+	</additems>
+	<item type="hidden" name="AC25_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC25Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC25_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID25%" name="AC25Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC25_INDTEMP" value="%TARGET%:%SUBID25%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC25Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC25_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC26 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID26%"/>
+			
+	</additems>
+	<item type="hidden" name="AC26_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC26Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC26_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID26%" name="AC26Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC26_INDTEMP" value="%TARGET%:%SUBID26%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC26Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC26_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC27 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID27%"/>
+			
+	</additems>
+	<item type="hidden" name="AC27_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC27Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC27_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID27%" name="AC27Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC27_INDTEMP" value="%TARGET%:%SUBID27%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC27Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC27_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC28 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID28%"/>
+			
+	</additems>
+	<item type="hidden" name="AC28_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC28Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC28_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID28%" name="AC28Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC28_INDTEMP" value="%TARGET%:%SUBID28%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC28Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC28_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC29 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID29%"/>
+			
+	</additems>
+	<item type="hidden" name="AC29_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC29Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC29_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID29%" name="AC29Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC29_INDTEMP" value="%TARGET%:%SUBID29%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC29Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC29_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC30 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID30%"/>
+			
+	</additems>
+	<item type="hidden" name="AC30_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC30Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC30_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID30%" name="AC30Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC30_INDTEMP" value="%TARGET%:%SUBID30%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC30Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC30_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC31 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID31%"/>
+			
+	</additems>
+	<item type="hidden" name="AC31_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC31Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC31_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID31%" name="AC31Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC31_INDTEMP" value="%TARGET%:%SUBID31%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC31Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC31_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+<!-- ========================= AC32 ========================= -->
+
+	<additems>
+	<additem tag="item" id="%TARGET%" sub-id="%SUBID%"
+			name="NAME1"
+			type="AC"
+			t-min="16" t-delta="16"
+			modes="0x1f" fans="0x0F"
+			vane-hor="0x00" vane-ver="0x41"
+			temperature-sensors="%TARGET%:%SUBID32%"/>
+			
+	</additems>
+	<item type="hidden" name="AC32_WIDGET" value="%TARGET%:%SUBID%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC32Подкл." type="door-sensor" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="AC32_ACCONNECTED" value="%TARGET%:%SUBID%"/>
+
+	<!-- Температуры -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID32%" name="AC32Т.возд.вн." type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC32_INDTEMP" value="%TARGET%:%SUBID32%"/>
+
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="AC32Т.возд.ул" type="temperature-sensor" virtual="yes"/></additems>
+	<item type="hidden" name="AC32_OUTTEMP" value="%TARGET%:%SUBID%"/>
+
+	<!-- Глобальные действия -->
+	<!-- Смена Modbus адреса -->
+	<additems><additem tag="item" id="%TARGET%" sub-id="%SUBID%" name="Сменить адрес" type="lamp" image="script" virtual="yes"/></additems>
+	<item type="hidden" name="CHANGEADDRESS" value="%TARGET%:%SUBID%"/>
+</xml>
+*/
+
+#define MAX_QNTY    10
+
+u16 useExtMask = 0;
+
+u8 Read_Coils_Command = 0x01;
+u8 Write_Coils_Command = 0x05;
+u8 Read_Holding_Command = 0x03;
+u8 Write_Holding_Command = 0x06;
+
+u8 Read_Discrete_Command = 0x02;
+u8 Read_Input_Command = 0x04;
+
+u8 regCounter = 0;
+u8 ACcounter = 0;
+u8 flag = 0;
+
+u8 ACWidgetData[9];
+
+u8 commandsArray[]	= { Read_Coils_Command, Read_Holding_Command };
+u16 addrArray[] 	= { 1, 					1,					 };
+u8 qntyArray[]		= {	20, 				32,					 };
+
+u8  lastCmd = 0;
+u16 lastAddr = 0;
+u8  lastQnty = 0;
+u8  lastDev  = 0;
+
+u16 MBaddr_Address = 128;
+
+u16 MBaddr_mode = 1;
+u16 MBaddr_T = 5;
+u16 MBaddr_fan = 8;
+u16 MBaddr_VanesH = 9;
+u16 MBaddr_VanesV = 10;
+
+u8 ac_fan;
+u8 ac_mode;
+u8 ac_vane;
+u16 ac_T;
+u8 acNum;
+
+//vrf
+
+const u16 widgetAC_ID  = ADDR2ID(AC1_WIDGET);
+
+const u8 widgetAC_arrSubID[] = { 
+    ADDR2SID(AC1_WIDGET),
+	ADDR2SID(AC2_WIDGET),
+	ADDR2SID(AC3_WIDGET),
+	ADDR2SID(AC4_WIDGET),
+	ADDR2SID(AC5_WIDGET),
+	ADDR2SID(AC6_WIDGET),
+	ADDR2SID(AC7_WIDGET),
+	ADDR2SID(AC8_WIDGET),
+	ADDR2SID(AC9_WIDGET),
+	ADDR2SID(AC10_WIDGET),
+	ADDR2SID(AC11_WIDGET),
+	ADDR2SID(AC12_WIDGET),
+	ADDR2SID(AC13_WIDGET),
+	ADDR2SID(AC14_WIDGET),
+	ADDR2SID(AC15_WIDGET),
+	ADDR2SID(AC16_WIDGET),
+	ADDR2SID(AC17_WIDGET),
+	ADDR2SID(AC18_WIDGET),
+	ADDR2SID(AC19_WIDGET),
+	ADDR2SID(AC20_WIDGET),
+	ADDR2SID(AC21_WIDGET),
+	ADDR2SID(AC22_WIDGET),
+	ADDR2SID(AC23_WIDGET),
+	ADDR2SID(AC24_WIDGET),
+	ADDR2SID(AC25_WIDGET),
+	ADDR2SID(AC26_WIDGET),
+	ADDR2SID(AC27_WIDGET),
+	ADDR2SID(AC28_WIDGET),
+	ADDR2SID(AC29_WIDGET),
+	ADDR2SID(AC30_WIDGET),
+	ADDR2SID(AC31_WIDGET),
+	ADDR2SID(AC32_WIDGET)
+};
+
+u8 widgetACconnected_arrSubID[] = { 
+    ADDR2SID(AC1_ACCONNECTED),
+	ADDR2SID(AC2_ACCONNECTED),
+	ADDR2SID(AC3_ACCONNECTED),
+	ADDR2SID(AC4_ACCONNECTED),
+	ADDR2SID(AC5_ACCONNECTED),
+	ADDR2SID(AC6_ACCONNECTED),
+	ADDR2SID(AC7_ACCONNECTED),
+	ADDR2SID(AC8_ACCONNECTED),
+	ADDR2SID(AC9_ACCONNECTED),
+	ADDR2SID(AC10_ACCONNECTED),
+	ADDR2SID(AC11_ACCONNECTED),
+	ADDR2SID(AC12_ACCONNECTED),
+	ADDR2SID(AC13_ACCONNECTED),
+	ADDR2SID(AC14_ACCONNECTED),
+	ADDR2SID(AC15_ACCONNECTED),
+	ADDR2SID(AC16_ACCONNECTED),
+	ADDR2SID(AC17_ACCONNECTED),
+	ADDR2SID(AC18_ACCONNECTED),
+	ADDR2SID(AC19_ACCONNECTED),
+	ADDR2SID(AC20_ACCONNECTED),
+	ADDR2SID(AC21_ACCONNECTED),
+	ADDR2SID(AC22_ACCONNECTED),
+	ADDR2SID(AC23_ACCONNECTED),
+	ADDR2SID(AC24_ACCONNECTED),
+	ADDR2SID(AC25_ACCONNECTED),
+	ADDR2SID(AC26_ACCONNECTED),
+	ADDR2SID(AC27_ACCONNECTED),
+	ADDR2SID(AC28_ACCONNECTED),
+	ADDR2SID(AC29_ACCONNECTED),
+	ADDR2SID(AC30_ACCONNECTED),
+	ADDR2SID(AC31_ACCONNECTED),
+	ADDR2SID(AC32_ACCONNECTED)
+};
+
+u8 widgetRoomTemp_arrSubID[] = { 
+	ADDR2SID(AC1_INDTEMP),
+	ADDR2SID(AC2_INDTEMP),
+	ADDR2SID(AC3_INDTEMP),
+	ADDR2SID(AC4_INDTEMP),
+	ADDR2SID(AC5_INDTEMP),
+	ADDR2SID(AC6_INDTEMP),
+	ADDR2SID(AC7_INDTEMP),
+	ADDR2SID(AC8_INDTEMP),
+	ADDR2SID(AC9_INDTEMP),
+	ADDR2SID(AC10_INDTEMP),
+	ADDR2SID(AC11_INDTEMP),
+	ADDR2SID(AC12_INDTEMP),
+	ADDR2SID(AC13_INDTEMP),
+	ADDR2SID(AC14_INDTEMP),
+	ADDR2SID(AC15_INDTEMP),
+	ADDR2SID(AC16_INDTEMP),
+	ADDR2SID(AC17_INDTEMP),
+	ADDR2SID(AC18_INDTEMP),
+	ADDR2SID(AC19_INDTEMP),
+	ADDR2SID(AC20_INDTEMP),
+	ADDR2SID(AC21_INDTEMP),
+	ADDR2SID(AC22_INDTEMP),
+	ADDR2SID(AC23_INDTEMP),
+	ADDR2SID(AC24_INDTEMP),
+	ADDR2SID(AC25_INDTEMP),
+	ADDR2SID(AC26_INDTEMP),
+	ADDR2SID(AC27_INDTEMP),
+	ADDR2SID(AC28_INDTEMP),
+	ADDR2SID(AC29_INDTEMP),
+	ADDR2SID(AC30_INDTEMP),
+	ADDR2SID(AC31_INDTEMP),
+	ADDR2SID(AC32_INDTEMP)
+};
+
+u8 widgetOutdoorTemp_arrSubID[] = { 
+	ADDR2SID(AC1_OUTTEMP),
+	ADDR2SID(AC2_OUTTEMP),
+	ADDR2SID(AC3_OUTTEMP),
+	ADDR2SID(AC4_OUTTEMP),
+	ADDR2SID(AC5_OUTTEMP),
+	ADDR2SID(AC6_OUTTEMP),
+	ADDR2SID(AC7_OUTTEMP),
+	ADDR2SID(AC8_OUTTEMP),
+	ADDR2SID(AC9_OUTTEMP),
+	ADDR2SID(AC10_OUTTEMP),
+	ADDR2SID(AC11_OUTTEMP),
+	ADDR2SID(AC12_OUTTEMP),
+	ADDR2SID(AC13_OUTTEMP),
+	ADDR2SID(AC14_OUTTEMP),
+	ADDR2SID(AC15_OUTTEMP),
+	ADDR2SID(AC16_OUTTEMP),
+	ADDR2SID(AC17_OUTTEMP),
+	ADDR2SID(AC18_OUTTEMP),
+	ADDR2SID(AC19_OUTTEMP),
+	ADDR2SID(AC20_OUTTEMP),
+	ADDR2SID(AC21_OUTTEMP),
+	ADDR2SID(AC22_OUTTEMP),
+	ADDR2SID(AC23_OUTTEMP),
+	ADDR2SID(AC24_OUTTEMP),
+	ADDR2SID(AC25_OUTTEMP),
+	ADDR2SID(AC26_OUTTEMP),
+	ADDR2SID(AC27_OUTTEMP),
+	ADDR2SID(AC28_OUTTEMP),
+	ADDR2SID(AC29_OUTTEMP),
+	ADDR2SID(AC30_OUTTEMP),
+	ADDR2SID(AC31_OUTTEMP),
+	ADDR2SID(AC32_OUTTEMP)
+};
+
+const u8 deviceAC_arrID[] = { 
+	AC1_ADDR
+};
+
+// ------------------------------------------
+
+#if SEND_PUSH == true
+    #define FLAG_SEND_PUSH      1
+#endif
+
+#if MODE_SCRIPT == SET_NEW_ID
+
+u16 APP_IDThatPress = 2047; 
+u8 Idle_Addr = 1;
+
+u8 setup_found_on_1  = 0;
+u8 setup_wait_verify = 0;
+
+#define PUSH_TEXT_LEN   64      
+#define PUSH_PACKET_LEN 66      // 1-st byte like (1) + 64 text + '\0'
+
+u8 pushText[64];
+u8 pushPacket[66];
+
+#define COUNT_USE_AC 1
+
+// ---- TRY TO FIND ON ADDR 1 ----
+void setupTimeout() {
+    if (!setup_found_on_1) {
+		#ifdef FLAG_SEND_PUSH
+			setStatus(@APP_IDThatPress:32, {4, "Устройство на адресе 1 не найдено"});
+		#endif
+    }
+}
+
+void checkSetup() {
+    // Read 1 coil for check for "alive"
+    setStatus(RS485, {Idle_Addr, Read_Coils_Command, 0, 1, 0, 1, 0xcc16});
+    // If no ack after 1 sec -> "dead"
+    delayedCallMs(setupTimeout, 1000);
+}
+
+// ----- VERIFY NEW MODBUS ADDRESS -----
+void verify_timeout() {
+    if (setup_wait_verify) {
+        setup_wait_verify = 0;
+
+		#ifdef FLAG_SEND_PUSH
+			setStatus(@APP_IDThatPress:32, {4, "Не удалось подтвердить новый адрес, попробуйте ещё раз"});
+		#endif
+    }
+}
+
+void verify_new_addr() {
+    setup_wait_verify = 1;
+    // Read 1 coil from new address
+    setStatus(RS485, {NEWADDRESS, Read_Coils_Command, 0, 1, 0, 1, 0xcc16});
+    // If no ack after 2 sec -> unlucky
+    delayedCallMs(verify_timeout, 2000);
+}
+
+void onInit() {
+	setup_found_on_1 = 0;
+	cancelDelayedCall(setupTimeout);
+	checkSetup();
+}
+
+// Function for forming string for push
+void sendPushAddressChanged(u8 oldAddr, u8 newAddr)
+{
+    // Packing as {1, "str", 0}
+	sprintf(pushText, "Адрес Modbus изменен: %d -> %d", oldAddr, newAddr);
+    pushPacket[0] = 1;
+
+    u8 j = 0;
+    for (; j < (64 - 1); ++j) {
+        u8 c = pushText[j];
+        pushPacket[1 + j] = c;
+        if (c == 0) break;
+    }
+    if (j == (64 - 1)) {
+        pushPacket[1 + j] = 0;
+    }
+
+	#ifdef FLAG_SEND_PUSH
+		setStatus(@APP_IDThatPress:32, pushPacket);
+	#endif  
+}
+
+V-ID/RS485
+{
+	// srvMessage("Data from AC 0 = %d, 1 = %d, 2 = %d, 3 = %d, 4 = %d, 5 = %d, 6 = %d", opt(0), opt(1), opt(2), opt(3), opt(4), opt(5), opt(6));
+	// srvMessage("Data from AC 7 = %d, 8 = %d, 9 = %d, 10 = %d, 11 = %d, 12 = %d", opt(7), opt(8), opt(9), opt(10), opt(11), opt(12));
+
+    if (opt(0) == Idle_Addr && opt(1) == Read_Coils_Command) {
+        if (!setup_found_on_1) {
+            setup_found_on_1 = 1;
+            cancelDelayedCall(setupTimeout);
+
+			#ifdef FLAG_SEND_PUSH
+            	setStatus(@APP_IDThatPress:32, {1, "Найдено устройство на адресе 1"});
+			#endif
+        }
+    }
+
+    // Wait ack from new addr
+    if (setup_wait_verify && opt(0) == NEWADDRESS && opt(1) == Read_Coils_Command) {
+        setup_wait_verify = 0;
+        cancelDelayedCall(verify_timeout);
+
+		#ifdef FLAG_SEND_PUSH
+			sendPushAddressChanged(OLDADDRESS, NEWADDRESS);
+		#endif
+        
+		srvMessage("Modbus address correctly changed from %d to %d", OLDADDRESS, NEWADDRESS);
+    }
+}
+
+V-ID/CHANGEADDRESS
+{
+	if (opt(0) & 0x01)
+	{
+		u16 eid = exciterId();
+        if (eid) APP_IDThatPress = eid;
+
+		srvMessage("Try to change Modbus address from %d to %d", OLDADDRESS, NEWADDRESS);
+		setStatus(RS485, {OLDADDRESS, Write_Holding_Command, 0, 128, 0, NEWADDRESS, 0xcc16});
+
+		delayedCallMs(verify_new_addr, 600);
+	}
+}
+
+#endif
+
+
+#if MODE_SCRIPT == IDLE
+
+void clearFlag()
+{
+	flag = 0;
+}
+
+void setdata()
+{
+	flag = 1;
+	cancelDelayedCall(clearFlag);
+	delayedCallMs(clearFlag, 2000);
+}
+
+void setFan()
+{
+    setdata();
+    // u8 iduNumber = idu_addr[acNum];
+	u8 iduNumber = acNum + 1;
+    u16 baseAddr = 10000 + (iduNumber * 100);
+    u16 fanAddr = baseAddr + 8;  // Адрес регистра вентилятора
+    
+    srvMessage("setFan: IDU %d, addr=%d (0x%04X), value=%d", iduNumber, fanAddr, fanAddr, ac_fan & 0xFF);
+    
+    setStatus(RS485, {deviceAC_arrID[0], Write_Holding_Command, (fanAddr >> 8) & 0xFF, fanAddr & 0xFF, 0, ac_fan & 0xFF, 0xcc16});
+}
+
+void setT()
+{
+    setdata();
+    // u8 iduNumber = idu_addr[acNum];
+	u8 iduNumber = acNum + 1;
+    u16 baseAddr = 10000 + (iduNumber * 100);
+    u16 tempAddr = baseAddr + 5;  // Адрес регистра температуры
+    
+    srvMessage("setT: IDU %d, addr=%d (0x%04X), value=%d", iduNumber, tempAddr, tempAddr, ac_T);
+    
+    setStatus(RS485, {deviceAC_arrID[0], Write_Holding_Command, (tempAddr >> 8) & 0xFF, tempAddr & 0xFF, ac_T >> 8, ac_T & 0xFF,0xcc16});
+}
+
+void setMode()
+{
+    setdata();
+    // u8 iduNumber = idu_addr[acNum];
+	u8 iduNumber = acNum + 1;
+    u16 baseAddr = 10000 + (iduNumber * 100);
+    u16 modeAddr = baseAddr + 1;  // Адрес регистра режима
+    
+    srvMessage("setMode: IDU %d, addr=%d (0x%04X), value=%d", iduNumber, modeAddr, modeAddr, ac_mode & 0xFF);
+    
+    setStatus(RS485, { deviceAC_arrID[0], Write_Holding_Command, (modeAddr >> 8) & 0xFF, modeAddr & 0xFF, 0, ac_mode & 0xFF, 0xcc16});
+}
+
+void setVaneH()
+{
+    setdata();
+    // u8 iduNumber = idu_addr[acNum];
+	u8 iduNumber = acNum + 1;
+    u16 baseAddr = 10000 + (iduNumber * 100);
+    u16 vaneHAddr = baseAddr + 9;  // Адрес горизонтальных жалюзи
+    
+    srvMessage("setVaneH: IDU %d, addr=%d (0x%04X), value=%d", iduNumber, vaneHAddr, vaneHAddr, ac_vane & 0x0F);
+    
+    setStatus(RS485, {deviceAC_arrID[0], Write_Holding_Command, (vaneHAddr >> 8) & 0xFF, vaneHAddr & 0xFF, 0, ac_vane & 0x0F, 0xcc16});
+}
+
+void setVaneV()
+{
+    setdata();
+    // u8 iduNumber = idu_addr[acNum];
+	u8 iduNumber = acNum + 1;
+    u16 baseAddr = 10000 + (iduNumber * 100);
+    u16 vaneVAddr = baseAddr + 10;  // Адрес вертикальных жалюзи
+    
+    srvMessage("setVaneV: IDU %d, addr=%d (0x%04X), value=%d", iduNumber, vaneVAddr, vaneVAddr, (ac_vane >> 4) & 0x0F);
+    
+    setStatus(RS485, {deviceAC_arrID[0], Write_Holding_Command, (vaneVAddr >> 8) & 0xFF, vaneVAddr & 0xFF, 0, (ac_vane >> 4) & 0x0F, 0xcc16 });
+}
+
+void setData_f88 (u16 ID, u8 SID, u16 data)
+{
+    i8 tempInt;
+    u8 tempFrac;
+    
+    tempInt = data / 10;
+    tempFrac = ((data - tempInt * 10) * 256) / 10;
+    
+    setStatus(@ID:@SID, { tempFrac,  tempInt });
+}
+
+u16 GW_MODE_REG_ADDR = 656;
+
+void setupGatewayMode()
+{
+	u8 modeValue = 0;
+
+    #if GW_MODE == IDLE
+        modeValue = 0;
+    #endif
+    #if GW_MODE == EMULATE_M_WRC
+        modeValue = 1;
+    #endif
+    #if GW_MODE == EMULATE_S_WRC
+        modeValue = 2;
+    #endif
+
+	srvMessage("GW mode -> %d", modeValue);
+	setStatus(RS485, {deviceAC_arrID[0], Write_Holding_Command, (GW_MODE_REG_ADDR >> 8) & 0xFF, GW_MODE_REG_ADDR & 0xFF, 0, modeValue, 0xcc16});
+}
+
+void onInit()
+{
+	srvMessage("IDU total count -> %d", COUNT_IDU);
+	setupGatewayMode();
+}
+
+u8 findWidgetBySubID (u8 subid)
+{
+	for (u8 i = 0; i < COUNT_IDU; ++i)
+	{
+	    if (subid == widgetAC_arrSubID[i]) return i;
+	}
+	return 0xFF;
+}
+
+u8 findACbyAddress (u8 mbAddress)
+{
+	for (u8 i = 0; i < COUNT_IDU; ++i)
+	{
+	    if (mbAddress == deviceAC_arrID[i]) return i;
+	}
+	return 0xFF;
+}
+u8 getWidgetModeFromGateway (u8 gatewayMode)
+{
+    u8 widgetMode = 0;
+	
+    if (gatewayMode == 1) widgetMode = 3;
+    else if (gatewayMode == 2) widgetMode = 1;
+    else if (gatewayMode == 3) widgetMode = 4;
+    else if (gatewayMode == 4) widgetMode = 2;
+	else if (gatewayMode == 5) widgetMode = 0;
+    
+    return widgetMode;
+}
+
+u8 getGatewayModeFromWidget (u8 widgetMode)
+{
+    u8 gatewayMode = widgetMode;
+    
+    if (widgetMode == 0) gatewayMode = 5;
+    else if (widgetMode == 1) gatewayMode = 2;
+    else if (widgetMode == 2) gatewayMode = 4;
+    else if (widgetMode == 3) gatewayMode = 1;
+    else if (widgetMode == 4) gatewayMode = 3;
+    
+    return gatewayMode;
+}
+
+u8 getFanForWidgetFromGateway (u8 fanGateway)
+{
+    u8 widgetFan = fanGateway;
+	
+    if (fanGateway == 1) widgetFan = 6;
+    else if (fanGateway == 2) widgetFan = 1;
+    else if (fanGateway == 3) widgetFan = 2;
+    else if (fanGateway == 4) widgetFan = 3;
+	else if (fanGateway == 5) widgetFan = 4;
+	else if (fanGateway == 6) widgetFan = 5;
+	
+    return widgetFan;
+}
+
+u8 getFanForGatewayFromWidget (u8 fanWidget)
+{
+    u8 fanGateway = fanWidget;
+    
+    if (fanWidget == 1) fanGateway = 2;
+    else if (fanWidget == 2) fanGateway = 3;
+    else if (fanWidget == 3) fanGateway = 4;
+    else if (fanWidget == 4) fanGateway = 5;
+	else if (fanWidget == 5) fanGateway = 6;
+	else if (fanWidget == 6) fanGateway = 1;
+    
+    return fanGateway;
+}
+
+u8 getVanesForWidgetFromGateway (u8 vaneGateway)
+{
+    u8 widgetVaneH = 0; 
+	u8 widgetVaneV = 0;
+	u8 vaneGatewayH = vaneGateway & 0x0F;
+	u8 vaneGatewayV = (vaneGateway >> 4) & 0x0F;
+	
+	if (vaneGatewayH == 0) widgetVaneH = 0;
+    else if (vaneGatewayH == 1) widgetVaneH = 6;
+	else widgetVaneH = 7 - vaneGatewayH;
+	
+	if (vaneGatewayV == 0) widgetVaneV = 5;
+    else if (vaneGatewayV == 1) widgetVaneV = 6;
+	else widgetVaneV = vaneGatewayV-2;
+    
+    return ((widgetVaneH << 4) | widgetVaneV);
+}
+
+u8 getVanesForGatewayFromWidget (u8 vaneWidget)
+{
+    u8 gatewayVaneH = 0; 
+	u8 gatewayVaneV = 0;
+	u8 vaneWidgetV = vaneWidget & 0x0F;
+	u8 vaneWidgetH = (vaneWidget >> 4) & 0x0F;
+	
+	if (vaneWidgetH == 0) gatewayVaneH = 0;
+	else if (vaneWidgetH == 6) gatewayVaneH = 1;
+	else gatewayVaneH = 7 - vaneWidgetH;
+	
+	if (vaneWidgetV == 5) gatewayVaneV = 0;
+    else if (vaneWidgetV == 6) gatewayVaneV = 1;
+	else gatewayVaneV = vaneWidgetV + 2;
+    
+    return ((gatewayVaneV << 4) | gatewayVaneH);
+}
+
+V-ID/AC1_WIDGET,AC2_WIDGET,AC3_WIDGET,AC4_WIDGET,AC5_WIDGET,AC6_WIDGET,AC7_WIDGET,AC8_WIDGET,AC9_WIDGET,AC10_WIDGET,AC11_WIDGET,AC12_WIDGET,AC13_WIDGET,AC14_WIDGET,AC15_WIDGET,AC16_WIDGET,AC17_WIDGET,AC18_WIDGET,AC19_WIDGET,AC20_WIDGET,AC21_WIDGET,AC22_WIDGET,AC23_WIDGET,AC24_WIDGET,AC25_WIDGET,AC26_WIDGET,AC27_WIDGET,AC28_WIDGET,AC29_WIDGET,AC30_WIDGET,AC31_WIDGET,AC32_WIDGET
+{
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 iduIndex = findWidgetBySubID(senderSubId());
+        
+        if (iduIndex != 0xFF && iduIndex < COUNT_IDU)
+        {
+            // u8 iduNumber = idu_addr[iduIndex];
+			u8 iduNumber = iduIndex + 1;
+            // srvMessage("Control IDU index=%d, number=%d", iduIndex, iduNumber);
+            // srvMessage("Vane total %d, hor - %d, ver - %d", opt(3), opt(3)&0x0f, (opt(3)>>4)&0x0f);
+            
+            ac_T = opt(2) * 100;
+            ac_mode = getGatewayModeFromWidget((opt(0) >> 4) & 0x0F);
+            ac_fan = getFanForGatewayFromWidget(opt(4));
+            ac_vane = getVanesForGatewayFromWidget(opt(3));
+            
+            acNum = iduIndex;
+            
+            setdata();
+            
+            u16 baseAddr = 10000 + (iduNumber * 100);
+			u16 regAddr = baseAddr + 1; 
+            setStatus(RS485, {deviceAC_arrID[0], Write_Coils_Command, (regAddr >> 8) & 0xFF, regAddr & 0xFF, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+            
+            cancelDelayedCall(setFan); 
+            delayedCallMs(setFan, 250);
+            
+            cancelDelayedCall(setT); 
+            delayedCallMs(setT, 500);
+            
+            cancelDelayedCall(setMode); 
+            delayedCallMs(setMode, 750);
+            
+            cancelDelayedCall(setVaneH); 
+            delayedCallMs(setVaneH, 1000);
+            
+            cancelDelayedCall(setVaneV); 
+            delayedCallMs(setVaneV, 1250);
+        }
+    }
+}
+
+V-ID/AC1_ACCONNECTED {
+	if (exciterId() != widgetAC_ID)
+    {
+        u8 widgetNum = 0xFF;
+		for (u8 i = 0; i < COUNT_IDU; ++i)
+		{
+			if (senderSubId() == widgetACconnected_arrSubID[i]) widgetNum = i;
+		}
+	
+		if (widgetNum != 0xFF)
+		{
+			// srvMessage("Set ACconnected AC %d(%d) to -> %d", widgetNum, deviceAC_arrID[widgetNum], (opt(0) & 0x01) * 0xFF);
+			setdata();
+			setStatus(RS485, {deviceAC_arrID[widgetNum], Write_Coils_Command, 0, 20, (opt(0) & 0x01) * 0xFF, 0, 0xcc16});
+		}
+    }
+}
+
+
+// Переменные для опроса
+u8 current_idu_index = 0;
+u8 current_cmd_index = 0;
+u8 expected_idu_index = 0;
+u8 expected_cmd = 0;
+
+V-ID/s:1
+{
+    if (!flag)
+    {
+        //u8 iduNumber = idu_addr[current_idu_index];
+		u8 iduNumber = current_idu_index + 1;
+        
+        u16 baseAddr = 10000 + (iduNumber * 100);
+        u16 fullAddr = baseAddr + addrArray[current_cmd_index];
+        
+        expected_idu_index = current_idu_index;
+        expected_cmd = commandsArray[current_cmd_index];
+        
+        setStatus(RS485, {deviceAC_arrID[0], commandsArray[current_cmd_index], (fullAddr >> 8) & 0xFF, fullAddr & 0xFF, 0, qntyArray[current_cmd_index], 0xcc16});
+        
+        // srvMessage("VRF Poll: IDU index=%d, number=%d, Addr %d, Cmd %d", current_idu_index, iduNumber, fullAddr, commandsArray[current_cmd_index]);
+        
+        if (++current_cmd_index == sizeof(commandsArray))
+        {
+            current_cmd_index = 0;
+            if (++current_idu_index >= COUNT_IDU)
+            {
+                current_idu_index = 0;
+            }
+        }
+    }
+}
+
+u8 errorMSG[50];
+
+V-ID/RS485
+{
+    if (opt(0) != deviceAC_arrID[0]) return;
+    
+    u8 targetIDUIndex = expected_idu_index;
+    u8 cmd = opt(1);
+    
+    if (cmd != expected_cmd) {
+        // srvMessage("Unexpected command: expected %d, got %d", expected_cmd, cmd);
+        return;
+    }
+    
+    if (targetIDUIndex >= COUNT_IDU) {
+        // srvMessage("Invalid IDU index: %d", targetIDUIndex);
+        return;
+    }
+    // u8 iduNumber = idu_addr[targetIDUIndex];
+	u8 iduNumber = targetIDUIndex + 1;
+    
+    getStatus(@widgetAC_ID:@widgetAC_arrSubID[targetIDUIndex], &ACWidgetData);
+    
+    // srvMessage("Data from IDU index=%d, number=%d, cmd=%d", targetIDUIndex, iduNumber, cmd);
+    // srvMessage("Data: 0=%d, 1=%d, 2=%d, 3=%d, 4=%d, 5=%d, 6=%d", opt(0), opt(1), opt(2), opt(3), opt(4), opt(5), opt(6));
+	
+	// === COILS (0x01): addr 0, count 15 OR addr 100, count 1 ===
+	if ((cmd == Read_Coils_Command) && !flag) {
+		setStatus(@widgetAC_ID:@widgetAC_arrSubID[targetIDUIndex], { (ACWidgetData[0] & 0x0E) | (opt(3) & 0x01) } );
+		setStatus(@widgetAC_ID:@widgetACconnected_arrSubID[targetIDUIndex], 	(opt(5) >> 3) & 0x01); 
+	} 
+
+	// === DISCRETE (0x02): addr 0, count 24 ===
+	else if ((cmd == Read_Discrete_Command) && !flag) {
+		//srvMessage("Data from AC 0 = %d, 1 = %d, 2 = %d, 3 = %d, 4 = %d, 5 = %d, 6 = %d", opt(0), opt(1), opt(2), opt(3), opt(4), opt(5), opt(6));
+	}
+
+	// === HOLDING (0x03): addr 1, count 32 ===
+	else if ((cmd == Read_Holding_Command) && (opt(2) == (qntyArray[1] * 2)) && !flag) {
+		// srvMessage("Holding half-regs 0 = %d, 1 = %d, 2 = %d, 3 = %d, 4 = %d, 5 = %d, 6 = %d", opt(0), opt(1), opt(2), opt(3), opt(4), opt(5), opt(6));
+
+		setStatus(@widgetAC_ID:@widgetAC_arrSubID[targetIDUIndex], 
+					{(ACWidgetData[0] & 0x0F) | (getWidgetModeFromGateway(opt(4)) << 4), 
+					0,
+					((opt(11) << 8) | opt(12)) / 100, 
+					getVanesForWidgetFromGateway((opt(22) << 4) | (opt(20) & 0x0F)), 
+					getFanForWidgetFromGateway(opt(18))});
+
+		setData_f88(widgetAC_ID, widgetRoomTemp_arrSubID[targetIDUIndex], 	((opt(7)  << 8) | opt(8))  / 10);
+		setData_f88(widgetAC_ID, widgetOutdoorTemp_arrSubID[targetIDUIndex], 	((opt(9)  << 8) | opt(10)) / 10);
+	}
+
+	// === INPUT REGISTERS (0x04): addr 1, count 1 ===
+	else if ((opt(1) == Read_Input_Command) && opt(2) == (qntyArray[4] * 2) && !flag) {
+		// Can be used when errors are displayed in input 1-2 regs
+	}
+}
+#endif

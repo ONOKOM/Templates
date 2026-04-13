@@ -5,10 +5,10 @@ import * as reporting from 'zigbee-herdsman-converters/lib/reporting';
 
 const manufacturerCode = 0x4703;
  export default {
-        zigbeeModel: ["HT-1-ZB-S"],
-        model: "HT-1-ZB-S",
+        zigbeeModel: ["OK-AC-H-HT-1-ZB-S-A"],
+        model: "OK-AC-H-HT-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR HT-1-ZB-S (Адаптер для бытовых систем Hitachi)",
+        description: "AIR OK-AC-H-HT-1-ZB-S-A (Adapter for household Hitachi systems)",
         ota: true,
         extend: [
             m.enumLookup({
@@ -21,12 +21,12 @@ const manufacturerCode = 0x4703;
                     connected_with_issues: 2,
                     connected: 3
                 },
-                description: "Кондиционер подключен",
+                description: "AC connected",
                 access: "STATE",
             }),
             m.onOff({
                 powerOnBehavior: false,
-                description: "Включение/выключение устройства",
+                description: "On/off state",
             }),
             m.numeric({
                 name: "current_temperature",
@@ -34,7 +34,7 @@ const manufacturerCode = 0x4703;
                 attribute: "localTemp",
                 scale: 100,
                 unit: "°C",
-                description: "Температура воздуха в помещении",
+                description: "Indoor air temperature",
                 access: "STATE",
             }),
             m.numeric({
@@ -46,7 +46,7 @@ const manufacturerCode = 0x4703;
                 valueStep: 1,
                 scale: 100,
                 unit: "°C",
-                description: "Целевая температура",
+                description: "Target temperature",
             }),
             m.enumLookup({
                 name: "system_mode",
@@ -60,7 +60,7 @@ const manufacturerCode = 0x4703;
                     fan_only: 7,
                     dry: 8
                 },
-                description: "Состояние и режим",
+                description: "Active mode",
             }),
             m.enumLookup({
                 name: "mode",
@@ -73,7 +73,7 @@ const manufacturerCode = 0x4703;
                     dry: 4,
                     fan_only: 5
                 },
-                description: "Режим",
+                description: "Mode",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             
@@ -84,7 +84,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 1,
                 valueMax: 5,
                 valueStep: 1,
-                description: "Стандартная скорость вентилятора: Авто(5), Минимальная(1), Средняя(2), Максимальная(3)",
+                description: "Fan speed modes: Auto(5), Low(1), Medium(2), Maximum(3)",
             }),
             m.numeric({
                 name: "fan_speed",
@@ -93,7 +93,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 3,
                 valueStep: 1,
-                description: "Скорость вентилятора: Авто(0), Первая(1) - Максимальная(3)",
+                description: "Fan speed: Auto(0), First(1) - Maximum(3)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -103,7 +103,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 4,
                 valueStep: 1,
-                description: "Расширенная скорость вентилятора: Авто (0), Первая (1) ... Максимальная (3)",
+                description: "Smart fan speed: Auto (0), Low (1) ... Maximum (3)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.enumLookup({
@@ -118,7 +118,7 @@ const manufacturerCode = 0x4703;
                     green_untill_reboot: 8,
                     red_untill_reboot: 9
                 },
-                description: "Индикатор состояния",
+                description: "Status LED",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
         ],

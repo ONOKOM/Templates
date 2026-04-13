@@ -5,10 +5,10 @@ import * as reporting from 'zigbee-herdsman-converters/lib/reporting';
 
 const manufacturerCode = 0x4703;
  export default {
-        zigbeeModel: ["TCL-3-ZB-S"],
-        model: "TCL-3-ZB-S",
+        zigbeeModel: ["OK-AC-H-DK-1-ZB-S-A"],
+        model: "OK-AC-H-DK-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR TCL-3-ZB-S (Адаптер для полупромышленных систем TCL)",
+        description: "AIR OK-AC-H-DK-1-ZB-S-A (Адаптер для бытовых систем Daikin)",
         ota: true,
         extend: [
             m.enumLookup({
@@ -42,7 +42,7 @@ const manufacturerCode = 0x4703;
                 cluster: "hvacThermostat",
                 attribute: "occupiedCoolingSetpoint",
                 valueMin: 16,
-                valueMax: 31,
+                valueMax: 32,
                 valueStep: 0.5,
                 scale: 100,
                 unit: "°C",
@@ -76,7 +76,15 @@ const manufacturerCode = 0x4703;
                 description: "Режим",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
-            
+            m.numeric({
+                name: "outdoor_air_temperature",
+                cluster: "hvacThermostat",
+                attribute: "outdoorTemp",
+                scale: 100,
+                unit: "°C",
+                description: "Температура воздуха на улице",
+                access: "STATE",
+            }),
             m.numeric({
                 name: "zb_fan_speed",
                 cluster: "hvacFanCtrl",
@@ -179,12 +187,12 @@ const manufacturerCode = 0x4703;
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
-                name: "sleep_mode",
+                name: "ionization",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4728, type: Zcl.DataType.BOOLEAN},
+                attribute: {ID: 0x4720, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Режим сна",
+                description: "Ионизация",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -196,16 +204,34 @@ const manufacturerCode = 0x4703;
                 description: "Подсветка экрана",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
-            m.numeric({
-                name: "indoor_heat_exchanger_temperature",
+            m.binary({
+                name: "screen_low_bright",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4740, type: Zcl.DataType.UINT16},                
-                access: "STATE",                
+                attribute: {ID: 0x4733, type: Zcl.DataType.BOOLEAN},
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Ослабить яркость экрана",
+                zigbeeCommandOptions: {manufacturerCode},
+            }),
+            m.numeric({
+                name: "target_fan_rpm",
+                cluster: "hvacFanCtrl",
+                attribute: {ID: 0x4723, type: Zcl.DataType.ENUM8},
                 valueMin: 0,
-                valueMax: 100,
+                valueMax: 200,
                 valueStep: 1,
-                unit: "°C",
-                description: "Температура внутреннего теплообменника",
+                description: "Целевая скорость вентилятора",
+                zigbeeCommandOptions: {manufacturerCode},
+            }),
+            m.numeric({
+                name: "current_fan_rpm",
+                cluster: "hvacFanCtrl",
+                attribute: {ID: 0x4724, type: Zcl.DataType.ENUM8},
+                access: "STATE",
+                valueMin: 0,
+                valueMax: 200,
+                valueStep: 1,
+                description: "Текущая скорость вентилятора",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
         ],

@@ -5,10 +5,10 @@ import * as reporting from 'zigbee-herdsman-converters/lib/reporting';
 
 const manufacturerCode = 0x4703;
  export default {
-        zigbeeModel: ["TCL-3-ZB-S"],
-        model: "TCL-3-ZB-S",
+        zigbeeModel: ["OK-AC-H-GR-1-ZB-S-A"],
+        model: "OK-AC-H-GR-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR TCL-3-ZB-S (Адаптер для полупромышленных систем TCL)",
+        description: "AIR OK-AC-H-GR-1-ZB-S-A (Адаптер для бытовых систем GREE)",
         ota: true,
         extend: [
             m.enumLookup({
@@ -42,8 +42,8 @@ const manufacturerCode = 0x4703;
                 cluster: "hvacThermostat",
                 attribute: "occupiedCoolingSetpoint",
                 valueMin: 16,
-                valueMax: 31,
-                valueStep: 0.5,
+                valueMax: 30,
+                valueStep: 1,
                 scale: 100,
                 unit: "°C",
                 description: "Целевая температура",
@@ -76,7 +76,15 @@ const manufacturerCode = 0x4703;
                 description: "Режим",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
-            
+            m.numeric({
+                name: "outdoor_air_temperature",
+                cluster: "hvacThermostat",
+                attribute: "outdoorTemp",
+                scale: 100,
+                unit: "°C",
+                description: "Температура воздуха на улице",
+                access: "STATE",
+            }),
             m.numeric({
                 name: "zb_fan_speed",
                 cluster: "hvacFanCtrl",
@@ -91,9 +99,9 @@ const manufacturerCode = 0x4703;
                 cluster: "hvacThermostat",
                 attribute: {ID: 0x4701, type: Zcl.DataType.ENUM8},
                 valueMin: 0,
-                valueMax: 1,
+                valueMax: 6,
                 valueStep: 1,
-                description: "Положение вертикальных шторок: Остановлены(0), Качание(1)",
+                description: "Положение вертикальных шторок: Остановлены(0), Качание(1), Максимально влево(2), Максимально вправо(6)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -101,9 +109,9 @@ const manufacturerCode = 0x4703;
                 cluster: "hvacThermostat",
                 attribute: {ID: 0x4700, type: Zcl.DataType.ENUM8},
                 valueMin: 0,
-                valueMax: 1,
+                valueMax: 6,
                 valueStep: 1,
-                description: "Положение горизонтальных шторок: Остановлены(0), Качание(1)",
+                description: "Положение горизонтальных шторок: Остановлены(0), Качание(1), Самый низ(2), Самый верх(6)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -188,6 +196,15 @@ const manufacturerCode = 0x4703;
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
+                name: "ionization",
+                cluster: "hvacThermostat",
+                attribute: {ID: 0x4720, type: Zcl.DataType.BOOLEAN},
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Ионизация",
+                zigbeeCommandOptions: {manufacturerCode},
+            }),
+            m.binary({
                 name: "screen_light",
                 cluster: "hvacThermostat",
                 attribute: {ID: 0x4731, type: Zcl.DataType.BOOLEAN},
@@ -196,16 +213,13 @@ const manufacturerCode = 0x4703;
                 description: "Подсветка экрана",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
-            m.numeric({
-                name: "indoor_heat_exchanger_temperature",
+            m.binary({
+                name: "disable_screen_when_power_off",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4740, type: Zcl.DataType.UINT16},                
-                access: "STATE",                
-                valueMin: 0,
-                valueMax: 100,
-                valueStep: 1,
-                unit: "°C",
-                description: "Температура внутреннего теплообменника",
+                attribute: {ID: 0x4732, type: Zcl.DataType.BOOLEAN},
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Отключать экран при отключении питания",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
         ],

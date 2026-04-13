@@ -5,10 +5,10 @@ import * as reporting from 'zigbee-herdsman-converters/lib/reporting';
 
 const manufacturerCode = 0x4703;
  export default {
-        zigbeeModel: ["TCL-3-ZB-S"],
-        model: "TCL-3-ZB-S",
+        zigbeeModel: ["OK-AC-H-TCL-3-ZB-S-A"],
+        model: "OK-AC-H-TCL-3-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR TCL-3-ZB-S (Адаптер для полупромышленных систем TCL)",
+        description: "AIR OK-AC-H-TCL-3-ZB-S-A (Адаптер для полупромышленных систем TCL)",
         ota: true,
         extend: [
             m.enumLookup({

@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["TCL-1-ZB-S"],
         model: "TCL-1-ZB-S",
         vendor: "ONOKOM",
-        description: "ONOKOM-AIR-TCL-1-ZB-S (Adapter for household TCL systems )",
+        description: "ONOKOM-AIR-TCL-1-ZB-S (Адаптер для бытовых систем TCL)",
         ota: true,
         extend: [
             m.enumLookup({
@@ -21,12 +21,12 @@ const manufacturerCode = 0x4703;
                     connected_with_issues: 2,
                     connected: 3
                 },
-                description: "AC connected",
+                description: "Кондиционер подключен",
                 access: "STATE",
             }),
             m.onOff({
                 powerOnBehavior: false,
-                description: "On/off state",
+                description: "Включение/выключение устройства",
             }),
             m.numeric({
                 name: "current_temperature",
@@ -34,7 +34,7 @@ const manufacturerCode = 0x4703;
                 attribute: "localTemp",
                 scale: 100,
                 unit: "°C",
-                description: "Indoor air temperature",
+                description: "Температура воздуха в помещении",
                 access: "STATE",
             }),
             m.numeric({
@@ -46,7 +46,7 @@ const manufacturerCode = 0x4703;
                 valueStep: 1,
                 scale: 100,
                 unit: "°C",
-                description: "Target temperature",
+                description: "Целевая температура",
             }),
             m.enumLookup({
                 name: "system_mode",
@@ -60,7 +60,7 @@ const manufacturerCode = 0x4703;
                     fan_only: 7,
                     dry: 8
                 },
-                description: "Active mode",
+                description: "Состояние и режим",
             }),
             m.enumLookup({
                 name: "mode",
@@ -73,7 +73,7 @@ const manufacturerCode = 0x4703;
                     dry: 4,
                     fan_only: 5
                 },
-                description: "Mode",
+                description: "Режим",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -82,7 +82,7 @@ const manufacturerCode = 0x4703;
                 attribute: "outdoorTemp",
                 scale: 100,
                 unit: "°C",
-                description: "Outdoor air temperature",
+                description: "Температура воздуха на улице",
                 access: "STATE",
             }),
             m.numeric({
@@ -92,7 +92,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 1,
                 valueMax: 5,
                 valueStep: 1,
-                description: "Fan speed modes: Auto(5), Low(1), Medium(2), Maximum(3)",
+                description: "Стандартная скорость вентилятора: Авто(5), Минимальная(1), Средняя(2), Максимальная(3)",
             }),
             m.numeric({
                 name: "vertical_vanes",
@@ -101,7 +101,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 7,
                 valueStep: 1,
-                description: "Vertical vanes: Stopped(0), Swing(1), Leftmost position(2), Rightmost position(6)",
+                description: "Положение вертикальных шторок: Остановлены(0), Качание(1), Максимально влево(2), Максимально вправо(6)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -111,7 +111,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 6,
                 valueStep: 1,
-                description: "Horizontal vanes: Stopped(0), Swing(1), Lowest postion(2), Highest position(6)",
+                description: "Положение горизонтальных шторок: Остановлены(0), Качание(1), Самый низ(2), Самый верх(6)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -121,7 +121,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 5,
                 valueStep: 1,
-                description: "Fan speed: Auto(0), First(1) - Maximum(5)",
+                description: "Скорость вентилятора: Авто(0), Первая(1) - Максимальная(5)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -131,7 +131,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 7,
                 valueStep: 1,
-                description: "Smart fan speed: Auto (0), Quiet mode (1), First (2) ... Maximum (6), Turbo(7)",
+                description: "Расширенная скорость вентилятора: Авто (0), Тихий (1), Первая (2) ... Максимальная (6), Турбо(7)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -141,7 +141,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 3,
                 valueStep: 1,
-                description: "Vanes swing: Stopped(0), Horizontal and vertical swing(1), Horizontal swing(2), Vertical swing(3)",
+                description: "Качание шторок: Остановлены все(0), Качание всех(1), Качание горизонтальных(2), Качание вертикальных(3)",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.enumLookup({
@@ -156,7 +156,7 @@ const manufacturerCode = 0x4703;
                     green_untill_reboot: 8,
                     red_untill_reboot: 9
                 },
-                description: "Status LED",
+                description: "Индикатор состояния",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -165,7 +165,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4710, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Quiet mode",
+                description: "Режим тихий",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -174,7 +174,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4727, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Eco mode",
+                description: "Режим эко",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -183,7 +183,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4711, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Turbo mode",
+                description: "Режим турбо",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -192,7 +192,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4728, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Sleep mode",
+                description: "Режим сна",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -201,7 +201,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4720, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Ionization",
+                description: "Ионизация",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -210,7 +210,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4721, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Self cleaning",
+                description: "Самоочистка",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -219,7 +219,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4722, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Mold protection",
+                description: "Защита от плесени",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -228,7 +228,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4724, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Heating 8 deg",
+                description: "Дежурный обогрев",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -237,7 +237,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4725, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Gentle wind",
+                description: "Мягкий поток",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -246,7 +246,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4731, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Screen light",
+                description: "Подсветка экрана",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.binary({
@@ -255,7 +255,7 @@ const manufacturerCode = 0x4703;
                 attribute: {ID: 0x4730, type: Zcl.DataType.BOOLEAN},
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
-                description: "Beeper",
+                description: "Звуковая индикация",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -266,7 +266,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 200,
                 valueStep: 1,
-                description: "Current fan speed",
+                description: "Текущая скорость вентилятора",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
             m.numeric({
@@ -276,7 +276,7 @@ const manufacturerCode = 0x4703;
                 valueMin: 0,
                 valueMax: 100,
                 valueStep: 1,
-                description: "Compressor power limit",
+                description: "Ограничение мощности компрессора",
                 zigbeeCommandOptions: {manufacturerCode},
             }),
         ],

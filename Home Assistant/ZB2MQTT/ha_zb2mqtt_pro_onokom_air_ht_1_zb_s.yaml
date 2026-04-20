@@ -1,6 +1,6 @@
 mqtt:
   - climate:
-      unique_id: hvac_onokom-air-ht-1-zb-szigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      unique_id: hvac_pro_onokom-air-ht-1-zb-s-zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       name: ONOKOM-AIR-HT-1-ZB-S
       mode_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       mode_state_template: >-
@@ -142,7 +142,7 @@ mqtt:
         {% endif %}
   - sensor:
       unique_id: switch_lqi_<впишите Zigbee-номер устройства сюда>
-      name: "Связь Zigbee (LQI)"
+      name: Связь Zigbee (LQI)
       state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       unit_of_measurement: ""
       value_template: "{{ value_json.linkquality }}"

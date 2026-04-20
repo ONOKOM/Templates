@@ -1,6 +1,6 @@
 mqtt:
   - climate:
-      unique_id: hvac_onokom-air-tcl-3-zb-szigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      unique_id: hvac_pro_onokom-air-tcl-3-zb-s-zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       name: ONOKOM-AIR-TCL-3-ZB-S
       mode_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       mode_state_template: >-
@@ -332,11 +332,11 @@ mqtt:
       unique_id: sensor_indoor_heat_exchanger_temperature_<впишите Zigbee-номер устройства сюда>
       name: Температура внутреннего теплообменника
       state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      unit_of_measurement: "°C"
+      unit_of_measurement: °C
       value_template: "{{ value_json.indoor_heat_exchanger_temperature }}"
   - sensor:
       unique_id: switch_lqi_<впишите Zigbee-номер устройства сюда>
-      name: "Связь Zigbee (LQI)"
+      name: Связь Zigbee (LQI)
       state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       unit_of_measurement: ""
       value_template: "{{ value_json.linkquality }}"

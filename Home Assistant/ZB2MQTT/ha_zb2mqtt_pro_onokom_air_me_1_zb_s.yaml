@@ -1,7 +1,7 @@
 mqtt:
   - climate:
-      unique_id: hvac_onokom-air-aux-1-zb-szigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      name: ONOKOM-AIR-AUX-1-ZB-S
+      unique_id: hvac_pro_onokom-air-me-1-zb-s-zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
+      name: ONOKOM-AIR-ME-1-ZB-S
       mode_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       mode_state_template: >-
         {% if value_json.state in ['OFF','off',0,false] %} off
@@ -20,7 +20,7 @@ mqtt:
       temperature_state_template: "{{ value_json.target_temperature }}"
       temperature_command_template: '{"target_temperature": {{ value }} }'
       min_temp: 16
-      max_temp: 32
+      max_temp: 31
       precision: 0.5
       temp_step: 0.5
       fan_modes:
@@ -28,6 +28,7 @@ mqtt:
         - 1 Скорость
         - 2 Скорость
         - 3 Скорость
+        - 4 Скорость
       fan_mode_state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       fan_mode_state_template: >-
         {% set raw = value_json.fan_speed | int(0) %}
@@ -35,6 +36,7 @@ mqtt:
         {% elif raw == 1 %}1 Скорость
         {% elif raw == 2 %}2 Скорость
         {% elif raw == 3 %}3 Скорость
+        {% elif raw == 4 %}4 Скорость
         {% else %}Авто
         {% endif %}
       fan_mode_command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
@@ -43,7 +45,8 @@ mqtt:
           "Авто": 0,
           "1 Скорость": 1,
           "2 Скорость": 2,
-          "3 Скорость": 3
+          "3 Скорость": 3,
+          "4 Скорость": 4
         } %}
         {"fan_speed": {{ options_map[value] }} }
       swing_modes:
@@ -79,6 +82,7 @@ mqtt:
         {% elif raw == 1 %}1 Скорость
         {% elif raw == 2 %}2 Скорость
         {% elif raw == 3 %}3 Скорость
+        {% elif raw == 4 %}4 Скорость
         {% else %}Авто
         {% endif %}
       command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
@@ -87,7 +91,8 @@ mqtt:
           "Авто": 0,
           "1 Скорость": 1,
           "2 Скорость": 2,
-          "3 Скорость": 3
+          "3 Скорость": 3,
+          "4 Скорость": 4
         } %}
         {"fan_speed": {{ options_map[value] }} }
       options:
@@ -95,6 +100,7 @@ mqtt:
         - 1 Скорость
         - 2 Скорость
         - 3 Скорость
+        - 4 Скорость
   - select:
       unique_id: select_smart_fan_speed_<впишите Zigbee-номер устройства сюда>
       name: Скорость вентилятора расширенная
@@ -106,7 +112,7 @@ mqtt:
         {% elif raw == 2 %}1 Скорость
         {% elif raw == 3 %}2 Скорость
         {% elif raw == 4 %}3 Скорость
-        {% elif raw == 5 %}Режим турбо
+        {% elif raw == 5 %}4 Скорость
         {% else %}Авто
         {% endif %}
       command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
@@ -117,7 +123,7 @@ mqtt:
           "1 Скорость": 2,
           "2 Скорость": 3,
           "3 Скорость": 4,
-          "Режим турбо": 5
+          "4 Скорость": 5
         } %}
         {"smart_fan_speed": {{ options_map[value] }} }
       options:
@@ -126,7 +132,7 @@ mqtt:
         - 1 Скорость
         - 2 Скорость
         - 3 Скорость
-        - Режим турбо
+        - 4 Скорость
   - select:
       unique_id: select_vertical_vanes_<впишите Zigbee-номер устройства сюда>
       name: Вертикальные жалюзи
@@ -135,18 +141,33 @@ mqtt:
         {% set raw = value_json.vertical_vanes | int(0) %}
         {% if raw == 0 %}Остановлены
         {% elif raw == 1 %}Качание
+        {% elif raw == 2 %}Самое левое
+        {% elif raw == 3 %}Левое
+        {% elif raw == 4 %}Среднее
+        {% elif raw == 5 %}Правое
+        {% elif raw == 6 %}Самое правое
         {% else %}Остановлены
         {% endif %}
       command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
       command_template: >-
         {% set options_map = {
           "Остановлены": 0,
-          "Качание": 1
+          "Качание": 1,
+          "Самое левое": 2,
+          "Левое": 3,
+          "Среднее": 4,
+          "Правое": 5,
+          "Самое правое": 6
         } %}
         {"vertical_vanes": {{ options_map[value] }} }
       options:
         - Остановлены
         - Качание
+        - Самое левое
+        - Левое
+        - Среднее
+        - Правое
+        - Самое правое
   - select:
       unique_id: select_horizontal_vanes_<впишите Zigbee-номер устройства сюда>
       name: Горизонтальные жалюзи
@@ -255,107 +276,6 @@ mqtt:
       payload_on: '{"quiet_mode": "ON"}'
       payload_off: '{"quiet_mode": "OFF"}'
       icon: mdi:volume-off
-  - switch:
-      unique_id: switch_turbo_mode<впишите Zigbee-номер устройства сюда>
-      name: Режим турбо
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      value_template: >-
-        {% set value = value_json.turbo_mode %}
-        {% if value == "ON" %}ON
-        {% else %}OFF
-        {% endif %}
-      state_on: "ON"
-      state_off: "OFF"
-      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
-      payload_on: '{"turbo_mode": "ON"}'
-      payload_off: '{"turbo_mode": "OFF"}'
-      icon: mdi:wind-turbine
-  - switch:
-      unique_id: switch_sleep_mode<впишите Zigbee-номер устройства сюда>
-      name: Режим сна
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      value_template: >-
-        {% set value = value_json.sleep_mode %}
-        {% if value == "ON" %}ON
-        {% else %}OFF
-        {% endif %}
-      state_on: "ON"
-      state_off: "OFF"
-      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
-      payload_on: '{"sleep_mode": "ON"}'
-      payload_off: '{"sleep_mode": "OFF"}'
-      icon: mdi:power-sleep
-  - switch:
-      unique_id: switch_ionization<впишите Zigbee-номер устройства сюда>
-      name: Ионизация
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      value_template: >-
-        {% set value = value_json.ionization %}
-        {% if value == "ON" %}ON
-        {% else %}OFF
-        {% endif %}
-      state_on: "ON"
-      state_off: "OFF"
-      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
-      payload_on: '{"ionization": "ON"}'
-      payload_off: '{"ionization": "OFF"}'
-      icon: mdi:weather-hazy
-  - switch:
-      unique_id: switch_self_cleaning<впишите Zigbee-номер устройства сюда>
-      name: Самоочистка
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      value_template: >-
-        {% set value = value_json.self_cleaning %}
-        {% if value == "ON" %}ON
-        {% else %}OFF
-        {% endif %}
-      state_on: "ON"
-      state_off: "OFF"
-      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
-      payload_on: '{"self_cleaning": "ON"}'
-      payload_off: '{"self_cleaning": "OFF"}'
-      icon: mdi:shimmer
-  - switch:
-      unique_id: switch_screen_light<впишите Zigbee-номер устройства сюда>
-      name: Подсветка экрана
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      value_template: >-
-        {% set value = value_json.screen_light %}
-        {% if value == "ON" %}ON
-        {% else %}OFF
-        {% endif %}
-      state_on: "ON"
-      state_off: "OFF"
-      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
-      payload_on: '{"screen_light": "ON"}'
-      payload_off: '{"screen_light": "OFF"}'
-      icon: mdi:monitor
-  - switch:
-      unique_id: switch_mold_protection<впишите Zigbee-номер устройства сюда>
-      name: Защита от плесени
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      value_template: >-
-        {% set value = value_json.mold_protection %}
-        {% if value == "ON" %}ON
-        {% else %}OFF
-        {% endif %}
-      state_on: "ON"
-      state_off: "OFF"
-      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
-      payload_on: '{"mold_protection": "ON"}'
-      payload_off: '{"mold_protection": "OFF"}'
-      icon: mdi:mushroom-off
-  - number:
-      unique_id: switch_compressor_power_limit<впишите Zigbee-номер устройства сюда>
-      name: Ограничение мощности компрессора
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      value_template: "{{ value_json.compressor_power_limit | int(0) }}"
-      command_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>/set
-      command_template: '{"compressor_power_limit": {{ value }} }'
-      min: 0
-      max: 100
-      step: 1
-      unit_of_measurement: "%"
   - sensor:
       unique_id: sensor_ac_connected_<впишите Zigbee-номер устройства сюда>
       name: Кондиционер подключен
@@ -367,26 +287,8 @@ mqtt:
         {% else %}Не подключен
         {% endif %}
   - sensor:
-      unique_id: sensor_outdoor_air_temperature_<впишите Zigbee-номер устройства сюда>
-      name: Температура воздуха на улице
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      unit_of_measurement: "°C"
-      value_template: "{{ value_json.outdoor_air_temperature }}"
-  - sensor:
-      unique_id: sensor_current_fan_speed_<впишите Zigbee-номер устройства сюда>
-      name: Текущая скорость вентилятора
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      unit_of_measurement: "RPM"
-      value_template: "{{ value_json.current_fan_rpm }}"
-  - sensor:
-      unique_id: sensor_current_compressor_power_<впишите Zigbee-номер устройства сюда>
-      name: Текущая мощность компрессора
-      state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
-      unit_of_measurement: ""
-      value_template: "{{ value_json.current_compressor_power }}"
-  - sensor:
       unique_id: switch_lqi_<впишите Zigbee-номер устройства сюда>
-      name: "Связь Zigbee (LQI)"
+      name: Связь Zigbee (LQI)
       state_topic: zigbee2mqtt/<впишите Zigbee-номер устройства сюда>
       unit_of_measurement: ""
       value_template: "{{ value_json.linkquality }}"

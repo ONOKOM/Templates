@@ -1,14 +1,14 @@
 {
     "name": "ONOKOM AIR",
     "manufacturer": "ONOKOM",
-    "model": "DK-1-ZB-S",
+    "model": "OK-AC-H-MD-1-ZB-S-A",
     "manufacturerIds": [
         "ONOKOM"
     ],
     "modelIds": [
-        "DK-1-ZB-S"
+        "OK-AC-H-MD-1-ZB-S-A"
     ],
-    "catalogId": 5655,
+    "catalogId": -1,
     "init": [
         {
             "zcl": [
@@ -70,13 +70,6 @@
                 },
                 {
                     "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4704_StatusLed",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "ENUMERATION_8_BIT"
-                },
-                {
-                    "endpoint": 1,
                     "cluster": "0202_FanControl",
                     "attribute": "4711_TurboMode",
                     "manufacturerCode": 18179,
@@ -85,21 +78,21 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4720_Ionization",
+                    "attribute": "4721_SelfCleaning",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
                 },
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4731_ScreenLight",
+                    "attribute": "4724_Heating8Deg",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
                 },
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
+                    "attribute": "4725_GentleWind",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
                 },
@@ -112,8 +105,8 @@
                 },
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4704_StatusLed",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
                 },
@@ -234,19 +227,6 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4704_StatusLed",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
                     "cluster": "0202_FanControl",
                     "attribute": "4711_TurboMode",
                     "manufacturerCode": 18179
@@ -261,7 +241,7 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4720_Ionization",
+                    "attribute": "4721_SelfCleaning",
                     "manufacturerCode": 18179
                 }
             ],
@@ -274,7 +254,7 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4731_ScreenLight",
+                    "attribute": "4724_Heating8Deg",
                     "manufacturerCode": 18179
                 }
             ],
@@ -287,7 +267,7 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
+                    "attribute": "4725_GentleWind",
                     "manufacturerCode": 18179
                 }
             ],
@@ -312,8 +292,8 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4704_StatusLed",
                     "manufacturerCode": 18179
                 }
             ],
@@ -410,7 +390,7 @@
                         }
                     ],
                     "minValue": 16,
-                    "maxValue": 32,
+                    "maxValue": 30,
                     "minStep": 0.5
                 },
                 {
@@ -479,10 +459,10 @@
         },
         {
             "name": "Вертикальные жалюзи",
-            "type": "FanBasic",
+            "type": "Fan",
             "characteristics": [
                 {
-                    "type": "On",
+                    "type": "RotationSpeed",
                     "link": [
                         {
                             "type": "Integer",
@@ -493,16 +473,16 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 1
+                    "maxValue": 7
                 }
             ]
         },
         {
             "name": "Горизонтальные жалюзи",
-            "type": "FanBasic",
+            "type": "Fan",
             "characteristics": [
                 {
-                    "type": "On",
+                    "type": "RotationSpeed",
                     "link": [
                         {
                             "type": "Integer",
@@ -513,7 +493,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 1
+                    "maxValue": 7
                 }
             ]
         },
@@ -589,7 +569,7 @@
             ]
         },
         {
-            "name": "Ионизация",
+            "name": "Самоочистка",
             "type": "Switch",
             "characteristics": [
                 {
@@ -598,7 +578,7 @@
                         {
                             "endpoint": 1,
                             "cluster": "0201_Thermostat",
-                            "attribute": "4720_Ionization",
+                            "attribute": "4721_SelfCleaning",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -606,7 +586,7 @@
             ]
         },
         {
-            "name": "Подсветка экрана",
+            "name": "Дежурный обогрев",
             "type": "Switch",
             "characteristics": [
                 {
@@ -615,7 +595,7 @@
                         {
                             "endpoint": 1,
                             "cluster": "0201_Thermostat",
-                            "attribute": "4731_ScreenLight",
+                            "attribute": "4724_Heating8Deg",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -623,7 +603,7 @@
             ]
         },
         {
-            "name": "Ослабить яркость экрана",
+            "name": "Мягкий поток",
             "type": "Switch",
             "characteristics": [
                 {
@@ -632,7 +612,7 @@
                         {
                             "endpoint": 1,
                             "cluster": "0201_Thermostat",
-                            "attribute": "4733_ScreenLowBright",
+                            "attribute": "4725_GentleWind",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -743,21 +723,6 @@
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
                     "attribute": "4723_TargetFanSpeed",
-                    "manufacturerCode": 18179
-                }
-            ]
-        },
-        {
-            "name": "Текущая скорость вентилятора",
-            "type": "Integer",
-            "unit": " RPM",
-            "write": false,
-            "value": 0,
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
                     "manufacturerCode": 18179
                 }
             ]

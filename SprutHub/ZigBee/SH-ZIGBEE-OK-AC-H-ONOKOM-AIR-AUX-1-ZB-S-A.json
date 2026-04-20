@@ -1,14 +1,14 @@
 {
     "name": "ONOKOM AIR",
     "manufacturer": "ONOKOM",
-    "model": "DK-1-ZB-S",
+    "model": "OK-AC-H-AUX-1-ZB-S-A",
     "manufacturerIds": [
         "ONOKOM"
     ],
     "modelIds": [
-        "DK-1-ZB-S"
+        "OK-AC-H-AUX-1-ZB-S-A"
     ],
-    "catalogId": 5655,
+    "catalogId": -1,
     "init": [
         {
             "zcl": [
@@ -56,20 +56,6 @@
                 },
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4710_QuietMode",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4727_EcoMode",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
                     "cluster": "0201_Thermostat",
                     "attribute": "4704_StatusLed",
                     "manufacturerCode": 18179,
@@ -78,7 +64,21 @@
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
+                    "attribute": "4710_QuietMode",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "BOOLEAN"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
                     "attribute": "4711_TurboMode",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "BOOLEAN"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4728_SleepMode",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
                 },
@@ -92,28 +92,42 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4731_ScreenLight",
+                    "attribute": "4721_SelfCleaning",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
                 },
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
+                    "attribute": "4722_MoldProtection",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "BOOLEAN"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4731_ScreenLight",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
                 },
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
+                    "attribute": "4724_CurrentFanSpeed",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
                 },
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "attribute": "4721_CurrentCompressorPower",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
+                    "attribute": "4720_CompressorPowerLimit",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
                 },
@@ -208,34 +222,21 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4710_QuietMode",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4727_EcoMode",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
                     "cluster": "0201_Thermostat",
                     "attribute": "4704_StatusLed",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
+                    "attribute": "4710_QuietMode",
                     "manufacturerCode": 18179
                 }
             ],
@@ -261,7 +262,46 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
+                    "attribute": "4728_SleepMode",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
                     "attribute": "4720_Ionization",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4721_SelfCleaning",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4722_MoldProtection",
                     "manufacturerCode": 18179
                 }
             ],
@@ -286,34 +326,34 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
                     "cluster": "0202_FanControl",
                     "attribute": "4724_CurrentFanSpeed",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
+                    "attribute": "4721_CurrentCompressorPower",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
+                    "attribute": "4720_CompressorPowerLimit",
                     "manufacturerCode": 18179
                 }
             ],
@@ -467,9 +507,9 @@
                                 "AUTO": 0,
                                 "QUIET": 1,
                                 "LOW": 2,
-                                "MEDIUM": 4,
-                                "HIGH": 6,
-                                "TURBO": 7
+                                "MEDIUM": 3,
+                                "HIGH": 4,
+                                "TURBO": 5
                             }
                         }
                     ],
@@ -499,10 +539,10 @@
         },
         {
             "name": "Горизонтальные жалюзи",
-            "type": "FanBasic",
+            "type": "Fan",
             "characteristics": [
                 {
-                    "type": "On",
+                    "type": "RotationSpeed",
                     "link": [
                         {
                             "type": "Integer",
@@ -513,7 +553,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 1
+                    "maxValue": 6
                 }
             ]
         },
@@ -532,7 +572,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 5,
+                    "maxValue": 3,
                     "unit": ""
                 }
             ]
@@ -548,23 +588,6 @@
                             "endpoint": 1,
                             "cluster": "0202_FanControl",
                             "attribute": "4710_QuietMode",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Режим эко",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4727_EcoMode",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -589,6 +612,23 @@
             ]
         },
         {
+            "name": "Режим сна",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4728_SleepMode",
+                            "manufacturerCode": 18179
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Ионизация",
             "type": "Switch",
             "characteristics": [
@@ -606,6 +646,40 @@
             ]
         },
         {
+            "name": "Самоочистка",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4721_SelfCleaning",
+                            "manufacturerCode": 18179
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Защита от плесени",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4722_MoldProtection",
+                            "manufacturerCode": 18179
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Подсветка экрана",
             "type": "Switch",
             "characteristics": [
@@ -616,23 +690,6 @@
                             "endpoint": 1,
                             "cluster": "0201_Thermostat",
                             "attribute": "4731_ScreenLight",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Ослабить яркость экрана",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4733_ScreenLowBright",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -733,21 +790,6 @@
             ]
         },
         {
-            "name": "Целевая скорость вентилятора",
-            "type": "Integer",
-            "unit": " RPM",
-            "write": false,
-            "value": 0,
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
-                    "manufacturerCode": 18179
-                }
-            ]
-        },
-        {
             "name": "Текущая скорость вентилятора",
             "type": "Integer",
             "unit": " RPM",
@@ -758,6 +800,36 @@
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
                     "attribute": "4724_CurrentFanSpeed",
+                    "manufacturerCode": 18179
+                }
+            ]
+        },
+        {
+            "name": "Текущая мощность компрессора",
+            "type": "Integer",
+            "unit": " kW",
+            "write": false,
+            "value": 0,
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
+                    "attribute": "4721_CurrentCompressorPower",
+                    "manufacturerCode": 18179
+                }
+            ]
+        },
+        {
+            "name": "Ограничение мощности компрессора",
+            "type": "Integer",
+            "unit": " kW",
+            "write": false,
+            "value": 0,
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
+                    "attribute": "4720_CompressorPowerLimit",
                     "manufacturerCode": 18179
                 }
             ]

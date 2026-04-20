@@ -1,14 +1,14 @@
 {
     "name": "ONOKOM AIR",
     "manufacturer": "ONOKOM",
-    "model": "DK-1-ZB-S",
+    "model": "OK-AC-H-HS-3-ZB-S-A",
     "manufacturerIds": [
         "ONOKOM"
     ],
     "modelIds": [
-        "DK-1-ZB-S"
+        "OK-AC-H-HS-3-ZB-S-A"
     ],
-    "catalogId": 5655,
+    "catalogId": -1,
     "init": [
         {
             "zcl": [
@@ -70,17 +70,24 @@
                 },
                 {
                     "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4704_StatusLed",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "ENUMERATION_8_BIT"
-                },
-                {
-                    "endpoint": 1,
                     "cluster": "0202_FanControl",
                     "attribute": "4711_TurboMode",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4728_SleepMode",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "BOOLEAN"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4736_SmartSleepMode",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "ENUMERATION_8_BIT"
                 },
                 {
                     "endpoint": 1,
@@ -92,6 +99,13 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
+                    "attribute": "4735_SmartEye",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
                     "attribute": "4731_ScreenLight",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
@@ -99,23 +113,44 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
+                    "attribute": "4730_Beeper",
                     "manufacturerCode": 18179,
                     "zclDataType": "BOOLEAN"
                 },
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4704_StatusLed",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
                 },
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "attribute": "4721_CurrentCompressorPower",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0202_FanControl",
+                    "attribute": "4722_TargetCompressorPower",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4740_IndoorHeatExchangerTemperature",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "SIGNED_8_BIT_INTEGER"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4741_OutdoorHeatExchangerTemperature",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "SIGNED_8_BIT_INTEGER"
                 },
                 {
                     "endpoint": 1,
@@ -234,8 +269,8 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4704_StatusLed",
+                    "cluster": "0202_FanControl",
+                    "attribute": "4711_TurboMode",
                     "manufacturerCode": 18179
                 }
             ],
@@ -247,8 +282,21 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4711_TurboMode",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4728_SleepMode",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4736_SmartSleepMode",
                     "manufacturerCode": 18179
                 }
             ],
@@ -274,6 +322,19 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
+                    "attribute": "4735_SmartEye",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
                     "attribute": "4731_ScreenLight",
                     "manufacturerCode": 18179
                 }
@@ -287,7 +348,20 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
+                    "attribute": "4730_Beeper",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4704_StatusLed",
                     "manufacturerCode": 18179
                 }
             ],
@@ -300,7 +374,7 @@
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
+                    "attribute": "4721_CurrentCompressorPower",
                     "manufacturerCode": 18179
                 }
             ],
@@ -313,7 +387,33 @@
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "attribute": "4722_TargetCompressorPower",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4740_IndoorHeatExchangerTemperature",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4741_OutdoorHeatExchangerTemperature",
                     "manufacturerCode": 18179
                 }
             ],
@@ -411,7 +511,7 @@
                     ],
                     "minValue": 16,
                     "maxValue": 32,
-                    "minStep": 0.5
+                    "minStep": 1
                 },
                 {
                     "type": "CurrentHeatingCoolingState",
@@ -479,10 +579,10 @@
         },
         {
             "name": "Вертикальные жалюзи",
-            "type": "FanBasic",
+            "type": "Fan",
             "characteristics": [
                 {
-                    "type": "On",
+                    "type": "RotationSpeed",
                     "link": [
                         {
                             "type": "Integer",
@@ -493,16 +593,16 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 1
+                    "maxValue": 4
                 }
             ]
         },
         {
             "name": "Горизонтальные жалюзи",
-            "type": "FanBasic",
+            "type": "Fan",
             "characteristics": [
                 {
-                    "type": "On",
+                    "type": "RotationSpeed",
                     "link": [
                         {
                             "type": "Integer",
@@ -513,7 +613,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 1
+                    "maxValue": 7
                 }
             ]
         },
@@ -534,6 +634,50 @@
                     "minValue": 0,
                     "maxValue": 5,
                     "unit": ""
+                }
+            ]
+        },
+        {
+            "name": "Умный режим сна",
+            "type": "Fan",
+            "characteristics": [
+                {
+                    "name": "Умный режим сна",
+                    "type": "RotationSpeed",
+                    "description": "0\tОтключен\n1\tОбычный\n2\tДля пожилых\n3\tДля молодых\n4\tДля детей\n",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4736_SmartSleepMode",
+                            "manufacturerCode": 18179
+                        }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 4,
+                    "minStep": 1
+                }
+            ]
+        },
+        {
+            "name": "Умный глаз",
+            "type": "Fan",
+            "characteristics": [
+                {
+                    "name": "Умный глаз",
+                    "type": "RotationSpeed",
+                    "description": "0\tОтключен\n1\tПоток на человека\n2\tПоток от человека\n",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4735_SmartEye",
+                            "manufacturerCode": 18179
+                        }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 2,
+                    "minStep": 1
                 }
             ]
         },
@@ -589,6 +733,23 @@
             ]
         },
         {
+            "name": "Режим сна",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4728_SleepMode",
+                            "manufacturerCode": 18179
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Ионизация",
             "type": "Switch",
             "characteristics": [
@@ -623,7 +784,7 @@
             ]
         },
         {
-            "name": "Ослабить яркость экрана",
+            "name": "Звуковая индикация",
             "type": "Switch",
             "characteristics": [
                 {
@@ -632,7 +793,7 @@
                         {
                             "endpoint": 1,
                             "cluster": "0201_Thermostat",
-                            "attribute": "4733_ScreenLowBright",
+                            "attribute": "4730_Beeper",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -733,31 +894,61 @@
             ]
         },
         {
-            "name": "Целевая скорость вентилятора",
+            "name": "Текущая мощность компрессора",
             "type": "Integer",
-            "unit": " RPM",
+            "unit": " kW",
             "write": false,
             "value": 0,
             "link": [
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
+                    "attribute": "4721_CurrentCompressorPower",
                     "manufacturerCode": 18179
                 }
             ]
         },
         {
-            "name": "Текущая скорость вентилятора",
+            "name": "Целевая мощность компрессора",
             "type": "Integer",
-            "unit": " RPM",
+            "unit": " kW",
             "write": false,
             "value": 0,
             "link": [
                 {
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "attribute": "4722_TargetCompressorPower",
+                    "manufacturerCode": 18179
+                }
+            ]
+        },
+        {
+            "name": "Температура внутреннего теплообменника",
+            "type": "Double",
+            "unit": " °C",
+            "write": false,
+            "value": 0,
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4740_IndoorHeatExchangerTemperature",
+                    "manufacturerCode": 18179
+                }
+            ]
+        },
+        {
+            "name": "Температура внешнего теплообменника",
+            "type": "Double",
+            "unit": " °C",
+            "write": false,
+            "value": 0,
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4741_OutdoorHeatExchangerTemperature",
                     "manufacturerCode": 18179
                 }
             ]

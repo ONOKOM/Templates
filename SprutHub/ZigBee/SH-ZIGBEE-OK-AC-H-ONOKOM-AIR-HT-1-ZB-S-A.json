@@ -1,12 +1,12 @@
 {
     "name": "ONOKOM AIR",
     "manufacturer": "ONOKOM",
-    "model": "HT-1-ZB-S",
+    "model": "OK-AC-H-HT-1-ZB-S-A",
     "manufacturerIds": [
         "ONOKOM"
     ],
     "modelIds": [
-        "HT-1-ZB-S"
+        "OK-AC-H-HT-1-ZB-S-A"
     ],
     "catalogId": -1,
     "init": [

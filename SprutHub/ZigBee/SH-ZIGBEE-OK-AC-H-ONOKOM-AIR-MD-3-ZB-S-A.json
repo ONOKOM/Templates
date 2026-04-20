@@ -1,14 +1,14 @@
 {
     "name": "ONOKOM AIR",
     "manufacturer": "ONOKOM",
-    "model": "DK-1-ZB-S",
+    "model": "OK-AC-H-MD-3-ZB-S-A",
     "manufacturerIds": [
         "ONOKOM"
     ],
     "modelIds": [
-        "DK-1-ZB-S"
+        "OK-AC-H-MD-3-ZB-S-A"
     ],
-    "catalogId": 5655,
+    "catalogId": -1,
     "init": [
         {
             "zcl": [
@@ -43,23 +43,9 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4701_VerticalVanes",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "ENUMERATION_8_BIT"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
                     "attribute": "4702_AirDirection",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4710_QuietMode",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
                 },
                 {
                     "endpoint": 1,
@@ -77,45 +63,17 @@
                 },
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4711_TurboMode",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4740_IndoorHeatExchangerTemperature",
                     "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
+                    "zclDataType": "SIGNED_8_BIT_INTEGER"
                 },
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4720_Ionization",
+                    "attribute": "4741_OutdoorHeatExchangerTemperature",
                     "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4731_ScreenLight",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "ENUMERATION_8_BIT"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "ENUMERATION_8_BIT"
+                    "zclDataType": "SIGNED_8_BIT_INTEGER"
                 },
                 {
                     "endpoint": 1,
@@ -183,33 +141,7 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4701_VerticalVanes",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
                     "attribute": "4702_AirDirection",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4710_QuietMode",
                     "manufacturerCode": 18179
                 }
             ],
@@ -247,8 +179,8 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4711_TurboMode",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4740_IndoorHeatExchangerTemperature",
                     "manufacturerCode": 18179
                 }
             ],
@@ -261,59 +193,7 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
-                    "attribute": "4720_Ionization",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4731_ScreenLight",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4733_ScreenLowBright",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "attribute": "4741_OutdoorHeatExchangerTemperature",
                     "manufacturerCode": 18179
                 }
             ],
@@ -410,8 +290,8 @@
                         }
                     ],
                     "minValue": 16,
-                    "maxValue": 32,
-                    "minStep": 0.5
+                    "maxValue": 30,
+                    "minStep": 1
                 },
                 {
                     "type": "CurrentHeatingCoolingState",
@@ -446,13 +326,11 @@
                             "manufacturerCode": 18179,
                             "map": {
                                 "SWING_DISABLED": 0,
-                                "SWING_ENABLED": 1,
-                                "SWING_VERTICAL": 2,
-                                "SWING_HORIZONTAL": 3
+                                "SWING_VERTICAL": 2
                             }
                         }
                     ],
-                    "validValues": "SWING_DISABLED,SWING_ENABLED,SWING_HORIZONTAL,SWING_VERTICAL"
+                    "validValues": "SWING_DISABLED,SWING_VERTICAL"
                 },
                 {
                     "name": "Скорость вентилятора расширенная",
@@ -465,35 +343,13 @@
                             "manufacturerCode": 18179,
                             "map": {
                                 "AUTO": 0,
-                                "QUIET": 1,
                                 "LOW": 2,
-                                "MEDIUM": 4,
-                                "HIGH": 6,
-                                "TURBO": 7
+                                "MEDIUM": 3,
+                                "HIGH": 4
                             }
                         }
                     ],
-                    "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH,TURBO"
-                }
-            ]
-        },
-        {
-            "name": "Вертикальные жалюзи",
-            "type": "FanBasic",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "type": "Integer",
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4701_VerticalVanes",
-                            "manufacturerCode": 18179
-                        }
-                    ],
-                    "minValue": 0,
-                    "maxValue": 1
+                    "validValues": "AUTO,LOW,MEDIUM,HIGH"
                 }
             ]
         },
@@ -532,25 +388,8 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 5,
+                    "maxValue": 3,
                     "unit": ""
-                }
-            ]
-        },
-        {
-            "name": "Режим тихий",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0202_FanControl",
-                            "attribute": "4710_QuietMode",
-                            "manufacturerCode": 18179
-                        }
-                    ]
                 }
             ]
         },
@@ -565,74 +404,6 @@
                             "endpoint": 1,
                             "cluster": "0201_Thermostat",
                             "attribute": "4727_EcoMode",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Режим турбо",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0202_FanControl",
-                            "attribute": "4711_TurboMode",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Ионизация",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4720_Ionization",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Подсветка экрана",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4731_ScreenLight",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Ослабить яркость экрана",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4733_ScreenLowBright",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -733,31 +504,31 @@
             ]
         },
         {
-            "name": "Целевая скорость вентилятора",
-            "type": "Integer",
-            "unit": " RPM",
+            "name": "Температура внутреннего теплообменника",
+            "type": "Double",
+            "unit": " °C",
             "write": false,
             "value": 0,
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4723_TargetFanSpeed",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4740_IndoorHeatExchangerTemperature",
                     "manufacturerCode": 18179
                 }
             ]
         },
         {
-            "name": "Текущая скорость вентилятора",
-            "type": "Integer",
-            "unit": " RPM",
+            "name": "Температура внешнего теплообменника",
+            "type": "Double",
+            "unit": " °C",
             "write": false,
             "value": 0,
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4724_CurrentFanSpeed",
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4741_OutdoorHeatExchangerTemperature",
                     "manufacturerCode": 18179
                 }
             ]

@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["DK-1-ZB-S"],
         model: "DK-1-ZB-S",
         vendor: "ONOKOM",
-        description: "AIR DK-1-ZB-S (Адаптер для бытовых систем Daikin)",
+        description: "Адаптер для бытовых систем Daikin",
         ota: true,
         extend: [
             m.enumLookup({

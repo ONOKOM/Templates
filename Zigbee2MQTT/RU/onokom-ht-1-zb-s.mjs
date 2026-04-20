@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["HT-1-ZB-S"],
         model: "HT-1-ZB-S",
         vendor: "ONOKOM",
-        description: "AIR HT-1-ZB-S (Адаптер для бытовых систем Hitachi)",
+        description: "Адаптер для бытовых систем Hitachi",
         ota: true,
         extend: [
             m.enumLookup({

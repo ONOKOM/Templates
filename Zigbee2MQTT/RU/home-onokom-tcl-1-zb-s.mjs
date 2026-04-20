@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["OK-AC-H-TCL-1-ZB-S-A"],
         model: "OK-AC-H-TCL-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR OK-AC-H-ONOKOM-AIR-TCL-1-ZB-S-A (Адаптер для бытовых систем TCL)",
+        description: "Адаптер для бытовых систем TCL",
         ota: true,
         extend: [
             m.enumLookup({

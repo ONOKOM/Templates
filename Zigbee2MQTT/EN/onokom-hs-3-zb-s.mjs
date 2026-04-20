@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["HS-3-ZB-S"],
         model: "HS-3-ZB-S",
         vendor: "ONOKOM",
-        description: "AIR HS-3-ZB-S (Adapter for household Hisesnse systems)",
+        description: "Adapter for household Hisesnse systems",
         ota: true,
         extend: [
             m.enumLookup({

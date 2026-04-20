@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["AUX-1-ZB-S"],
         model: "AUX-1-ZB-S",
         vendor: "ONOKOM",
-        description: "AIR AUX-1-ZB-S (Adapter for household and semi-industrial AUX systems)",
+        description: "Adapter for household and semi-industrial AUX systems",
         ota: true,
         extend: [
             m.enumLookup({

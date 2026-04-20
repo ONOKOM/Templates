@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["TCL-3-ZB-S"],
         model: "TCL-3-ZB-S",
         vendor: "ONOKOM",
-        description: "AIR TCL-3-ZB-S (Адаптер для полупромышленных систем TCL)",
+        description: "Адаптер для полупромышленных систем TCL",
         ota: true,
         extend: [
             m.enumLookup({

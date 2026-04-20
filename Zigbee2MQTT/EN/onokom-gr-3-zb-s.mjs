@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["GR-3-ZB-S"],
         model: "GR-3-ZB-S",
         vendor: "ONOKOM",
-        description: "AIR GR-3-ZB-S (Adapter for control of semi-industrial and multi-split systems GREE)",
+        description: "Adapter for control of semi-industrial and multi-split systems GREE",
         ota: true,
         extend: [
             m.enumLookup({

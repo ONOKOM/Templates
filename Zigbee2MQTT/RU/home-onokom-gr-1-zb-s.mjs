@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["OK-AC-H-GR-1-ZB-S-A"],
         model: "OK-AC-H-GR-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR OK-AC-H-GR-1-ZB-S-A (Адаптер для бытовых систем GREE)",
+        description: "Адаптер для бытовых систем GREE",
         ota: true,
         extend: [
             m.enumLookup({

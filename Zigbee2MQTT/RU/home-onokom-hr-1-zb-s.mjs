@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["OK-AC-H-HR-1-ZB-S-A"],
         model: "OK-AC-H-HR-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR OK-AC-H-HR-1-ZB-S-A (Адаптер для бытовых и полупромышленных систем Haier)",
+        description: "Адаптер для бытовых и полупромышленных систем Haier",
         ota: true,
         extend: [
             m.enumLookup({

@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["OK-AC-H-DK-1-ZB-S-A"],
         model: "OK-AC-H-DK-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR OK-AC-H-DK-1-ZB-S-A (Адаптер для бытовых систем Daikin)",
+        description: "Адаптер для бытовых систем Daikin",
         ota: true,
         extend: [
             m.enumLookup({

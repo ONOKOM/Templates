@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["OK-AC-H-MD-1-ZB-S-A"],
         model: "OK-AC-H-MD-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR OK-AC-H-MD-1-ZB-S-A (Адаптер для бытовых систем MDV)",
+        description: "Адаптер для бытовых систем MDV",
         ota: true,
         extend: [
             m.enumLookup({

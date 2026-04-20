@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["OK-AC-H-AUX-1-ZB-S-A"],
         model: "OK-AC-H-AUX-1-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR OK-AC-H-AUX-1-ZB-S-A (Адаптер для бытовых и полупромышленных систем AUX)",
+        description: "Адаптер для бытовых и полупромышленных систем AUX",
         ota: true,
         extend: [
             m.enumLookup({

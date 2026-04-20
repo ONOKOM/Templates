@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["ME-1-ZB-S"],
         model: "ME-1-ZB-S",
         vendor: "ONOKOM",
-        description: "ONOKOM-AIR-ME-1-ZB-S (Адаптер для бытовых и полупромышленных систем Mitsubishi Electric)",
+        description: "Адаптер для бытовых и полупромышленных систем Mitsubishi Electric",
         ota: true,
         extend: [
             m.enumLookup({

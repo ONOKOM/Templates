@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["MD-1-ZB-S"],
         model: "MD-1-ZB-S",
         vendor: "ONOKOM",
-        description: "AIR MD-1-ZB-S (Адаптер для бытовых систем MDV)",
+        description: "Адаптер для бытовых систем MDV",
         ota: true,
         extend: [
             m.enumLookup({

@@ -8,7 +8,7 @@ const manufacturerCode = 0x4703;
         zigbeeModel: ["OK-AC-H-MD-3-ZB-S-A"],
         model: "OK-AC-H-MD-3-ZB-S-A",
         vendor: "ONOKOM",
-        description: "AIR OK-AC-H-MD-3-ZB-S-A (Adapter for semi-industrial MDV systems)",
+        description: "Adapter for semi-industrial MDV systems",
         ota: true,
         extend: [
             m.enumLookup({

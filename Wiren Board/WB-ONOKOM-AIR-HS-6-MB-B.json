@@ -272,7 +272,7 @@
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 4,
+                "max": 5,
                 "sporadic": true,
                 "group": "general",
                 "condition": "Show_fan_as_range==1"
@@ -284,20 +284,24 @@
                 "type": "value",
                 "format": "u16",
                 "min": 0,
-                "max": 4,
+                "max": 5,
                 "sporadic": true,
                 "group": "general",
                 "enum": [
                     0,
+                    1,
                     2,
                     3,
-                    4
+                    4,
+                    5
                 ],
                 "enum_titles": [
                     "Auto",
+                    "Quiet mode",
                     "1 Speed",
                     "2 Speed",
-                    "3 Speed"
+                    "3 Speed",
+                    "Turbo mode"
                 ],
                 "condition": "Show_fan_as_range!=1"
             },
@@ -389,10 +393,28 @@
                 "condition": "Show_thermostat_state_as_range!=1"
             },
             {
+                "name": "Quiet mode",
+                "enabled": false,
+                "reg_type": "coil",
+                "address": 4,
+                "type": "switch",
+                "sporadic": true,
+                "group": "additional"
+            },
+            {
                 "name": "Sleep mode",
                 "enabled": false,
                 "reg_type": "coil",
                 "address": 8,
+                "type": "switch",
+                "sporadic": true,
+                "group": "additional"
+            },
+            {
+                "name": "Turbo mode",
+                "enabled": false,
+                "reg_type": "coil",
+                "address": 7,
                 "type": "switch",
                 "sporadic": true,
                 "group": "additional"
@@ -552,6 +574,8 @@
                 "2 Speed": "2 Скорость",
                 "3 Speed": "3 Скорость",
                 "Smart fan speed": "Скорость вентилятора расширенная",
+                "Quiet mode": "Режим тихий",
+                "Turbo mode": "Режим турбо",
                 "Indoor air temperature": "Температура воздуха в помещении",
                 "Indoor heat exchanger temperature": "Температура внутреннего теплообменника",
                 "Target temperature": "Целевая температура",

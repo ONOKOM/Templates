@@ -447,8 +447,8 @@
                             "map": {
                                 "SWING_DISABLED": 0,
                                 "SWING_ENABLED": 1,
-                                "SWING_VERTICAL": 2,
-                                "SWING_HORIZONTAL": 3
+                                "SWING_HORIZONTAL": 2,
+                                "SWING_VERTICAL": 3
                             }
                         }
                     ],

@@ -97,8 +97,8 @@
                             "map": {
                                 "SWING_DISABLED": 0,
                                 "SWING_ENABLED": 1,
-                                "SWING_HORIZONTAL": 2,
-                                "SWING_VERTICAL": 3
+                                "SWING_VERTICAL": 2,
+                                "SWING_HORIZONTAL": 3
                             }
                         }
                     ],
@@ -155,7 +155,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 6
+                    "maxValue": 11
                 }
             ]
         },
@@ -173,7 +173,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 6
+                    "maxValue": 11
                 }
             ]
         },

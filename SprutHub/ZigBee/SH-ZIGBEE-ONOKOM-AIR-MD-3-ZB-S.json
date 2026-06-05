@@ -326,11 +326,11 @@
                             "manufacturerCode": 18179,
                             "map": {
                                 "SWING_DISABLED": 0,
-                                "SWING_HORIZONTAL": 2
+                                "SWING_VERTICAL": 2
                             }
                         }
                     ],
-                    "validValues": "SWING_DISABLED,SWING_HORIZONTAL"
+                    "validValues": "SWING_DISABLED,SWING_VERTICAL"
                 },
                 {
                     "name": "Скорость вентилятора расширенная",

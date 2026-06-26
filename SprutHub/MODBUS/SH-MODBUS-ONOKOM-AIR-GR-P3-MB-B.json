@@ -2,8 +2,8 @@
     {
         "name": "Кондиционер",
         "manufacturer": "ONOKOM",
-        "model": "GR-5-MB-B",
-        "modelId": "GR5MBB",
+        "model": "GR-P3-MB-B",
+        "modelId": "GRP3MBB",
         "catalogId": -1,
         "init": [
             {
@@ -65,7 +65,7 @@
                             }
                         ],
                         "minValue": 16,
-                        "maxValue": 30,
+                        "maxValue": 32,
                         "minStep": 1
                     },
                     {
@@ -101,13 +101,12 @@
                                     "AUTO": 0,
                                     "QUIET": 1,
                                     "LOW": 2,
-                                    "MEDIUM": 4,
-                                    "HIGH": 6,
-                                    "TURBO": 7
+                                    "MEDIUM": 3,
+                                    "HIGH": 4
                                 }
                             }
                         ],
-                        "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH,TURBO"
+                        "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH"
                     },
                     {
                         "name": "Качание жалюзи",
@@ -159,7 +158,7 @@
                                 "function": "Holding",
                                 "pollingTime": 1000,
                                 "minValue": 0,
-                                "maxValue": 5,
+                                "maxValue": 3,
                                 "minStep": 1
                             }
                         ],
@@ -222,14 +221,14 @@
                 ]
             },
             {
-                "name": "Режим турбо",
+                "name": "Режим эко",
                 "type": "Switch",
                 "characteristics": [
                     {
                         "type": "On",
                         "link": [
                             {
-                                "address": 7,
+                                "address": 6,
                                 "function": "Coil",
                                 "pollingTime": 1000
                             }
@@ -270,14 +269,14 @@
                 ]
             },
             {
-                "name": "Подсветка экрана",
+                "name": "Самоочистка",
                 "type": "Switch",
                 "characteristics": [
                     {
                         "type": "On",
                         "link": [
                             {
-                                "address": 2,
+                                "address": 10,
                                 "function": "Coil",
                                 "pollingTime": 1000
                             }

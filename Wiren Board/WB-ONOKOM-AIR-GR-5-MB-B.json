@@ -474,7 +474,7 @@
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 11,
+                "max": 6,
                 "sporadic": true,
                 "group": "vanes",
                 "condition": "Show_vanes_as_range==1"
@@ -494,12 +494,7 @@
                     3,
                     4,
                     5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11
+                    6
                 ],
                 "enum_titles": [
                     "Stop",
@@ -508,12 +503,7 @@
                     "Low",
                     "Middle",
                     "High",
-                    "Highest",
-                    "Low Swing",
-                    "Mid-Low Swing",
-                    "Middle Swing",
-                    "Mid-High Swing",
-                    "High Swing"
+                    "Highest"
                 ],
                 "condition": "Show_vanes_as_range!=1"
             },
@@ -558,7 +548,7 @@
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 11,
+                "max": 6,
                 "sporadic": true,
                 "group": "vanes",
                 "condition": "Show_vanes_as_range==1"
@@ -578,12 +568,7 @@
                     3,
                     4,
                     5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11
+                    6
                 ],
                 "enum_titles": [
                     "Stop",
@@ -592,12 +577,7 @@
                     "Left",
                     "Middle",
                     "Right",
-                    "Far Right",
-                    "Left Swing",
-                    "Mid-Left Swing",
-                    "Middle Swing",
-                    "Mid-Right Swing",
-                    "Right Swing"
+                    "Far Right"
                 ],
                 "condition": "Show_vanes_as_range!=1"
             },
@@ -817,11 +797,6 @@
                 "Middle": "Среднее",
                 "High": "Высокое",
                 "Highest": "Самое высокое",
-                "Low Swing": "Низкое качание",
-                "Mid-Low Swing": "Среднее низкое качание",
-                "Middle Swing": "Среднее качание",
-                "Mid-High Swing": "Среднее высокое качание",
-                "High Swing": "Высокое качание",
                 "Vanes swing": "Качание жалюзи",
                 "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
                 "Horizontal vanes swing": "Качание горизонтальных жалюзи",
@@ -831,10 +806,6 @@
                 "Left": "Левое",
                 "Right": "Правое",
                 "Far Right": "Самое правое",
-                "Left Swing": "Левое качание",
-                "Mid-Left Swing": "Среднее левое качание",
-                "Mid-Right Swing": "Среднее правое качание",
-                "Right Swing": "Самое правое качание",
                 "Ionization": "Ионизация",
                 "Sleep mode": "Режим сна",
                 "Screen light": "Подсветка экрана",

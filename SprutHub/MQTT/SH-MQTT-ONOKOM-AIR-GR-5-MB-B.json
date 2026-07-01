@@ -155,7 +155,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 11
+                    "maxValue": 6
                 }
             ]
         },
@@ -173,7 +173,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 11
+                    "maxValue": 6
                 }
             ]
         },

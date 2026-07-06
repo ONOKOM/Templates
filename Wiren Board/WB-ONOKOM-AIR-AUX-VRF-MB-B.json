@@ -330,7 +330,7 @@
             {
                 "name": "0 - External air temperature",
                 "reg_type": "holding",
-                "address": 10026,
+                "address": 10030,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -614,7 +614,7 @@
             {
                 "name": "1 - External air temperature",
                 "reg_type": "holding",
-                "address": 10126,
+                "address": 10130,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -898,7 +898,7 @@
             {
                 "name": "2 - External air temperature",
                 "reg_type": "holding",
-                "address": 10226,
+                "address": 10230,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -1182,7 +1182,7 @@
             {
                 "name": "3 - External air temperature",
                 "reg_type": "holding",
-                "address": 10326,
+                "address": 10330,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -1466,7 +1466,7 @@
             {
                 "name": "4 - External air temperature",
                 "reg_type": "holding",
-                "address": 10426,
+                "address": 10430,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -1750,7 +1750,7 @@
             {
                 "name": "5 - External air temperature",
                 "reg_type": "holding",
-                "address": 10526,
+                "address": 10530,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -2034,7 +2034,7 @@
             {
                 "name": "6 - External air temperature",
                 "reg_type": "holding",
-                "address": 10626,
+                "address": 10630,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -2318,7 +2318,7 @@
             {
                 "name": "7 - External air temperature",
                 "reg_type": "holding",
-                "address": 10726,
+                "address": 10730,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -2602,7 +2602,7 @@
             {
                 "name": "8 - External air temperature",
                 "reg_type": "holding",
-                "address": 10826,
+                "address": 10830,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -2886,7 +2886,7 @@
             {
                 "name": "9 - External air temperature",
                 "reg_type": "holding",
-                "address": 10926,
+                "address": 10930,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -3170,7 +3170,7 @@
             {
                 "name": "10 - External air temperature",
                 "reg_type": "holding",
-                "address": 11026,
+                "address": 11030,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -3454,7 +3454,7 @@
             {
                 "name": "11 - External air temperature",
                 "reg_type": "holding",
-                "address": 11126,
+                "address": 11130,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -3738,7 +3738,7 @@
             {
                 "name": "12 - External air temperature",
                 "reg_type": "holding",
-                "address": 11226,
+                "address": 11230,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -4022,7 +4022,7 @@
             {
                 "name": "13 - External air temperature",
                 "reg_type": "holding",
-                "address": 11326,
+                "address": 11330,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -4306,7 +4306,7 @@
             {
                 "name": "14 - External air temperature",
                 "reg_type": "holding",
-                "address": 11426,
+                "address": 11430,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -4590,7 +4590,7 @@
             {
                 "name": "15 - External air temperature",
                 "reg_type": "holding",
-                "address": 11526,
+                "address": 11530,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -4874,7 +4874,7 @@
             {
                 "name": "16 - External air temperature",
                 "reg_type": "holding",
-                "address": 11626,
+                "address": 11630,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -5158,7 +5158,7 @@
             {
                 "name": "17 - External air temperature",
                 "reg_type": "holding",
-                "address": 11726,
+                "address": 11730,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -5442,7 +5442,7 @@
             {
                 "name": "18 - External air temperature",
                 "reg_type": "holding",
-                "address": 11826,
+                "address": 11830,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -5726,7 +5726,7 @@
             {
                 "name": "19 - External air temperature",
                 "reg_type": "holding",
-                "address": 11926,
+                "address": 11930,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -6010,7 +6010,7 @@
             {
                 "name": "20 - External air temperature",
                 "reg_type": "holding",
-                "address": 12026,
+                "address": 12030,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -6294,7 +6294,7 @@
             {
                 "name": "21 - External air temperature",
                 "reg_type": "holding",
-                "address": 12126,
+                "address": 12130,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -6578,7 +6578,7 @@
             {
                 "name": "22 - External air temperature",
                 "reg_type": "holding",
-                "address": 12226,
+                "address": 12230,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -6862,7 +6862,7 @@
             {
                 "name": "23 - External air temperature",
                 "reg_type": "holding",
-                "address": 12326,
+                "address": 12330,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -7146,7 +7146,7 @@
             {
                 "name": "24 - External air temperature",
                 "reg_type": "holding",
-                "address": 12426,
+                "address": 12430,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -7430,7 +7430,7 @@
             {
                 "name": "25 - External air temperature",
                 "reg_type": "holding",
-                "address": 12526,
+                "address": 12530,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -7714,7 +7714,7 @@
             {
                 "name": "26 - External air temperature",
                 "reg_type": "holding",
-                "address": 12626,
+                "address": 12630,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -7998,7 +7998,7 @@
             {
                 "name": "27 - External air temperature",
                 "reg_type": "holding",
-                "address": 12726,
+                "address": 12730,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -8282,7 +8282,7 @@
             {
                 "name": "28 - External air temperature",
                 "reg_type": "holding",
-                "address": 12826,
+                "address": 12830,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -8566,7 +8566,7 @@
             {
                 "name": "29 - External air temperature",
                 "reg_type": "holding",
-                "address": 12926,
+                "address": 12930,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -8850,7 +8850,7 @@
             {
                 "name": "30 - External air temperature",
                 "reg_type": "holding",
-                "address": 13026,
+                "address": 13030,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -9134,7 +9134,7 @@
             {
                 "name": "31 - External air temperature",
                 "reg_type": "holding",
-                "address": 13126,
+                "address": 13130,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -9418,7 +9418,7 @@
             {
                 "name": "32 - External air temperature",
                 "reg_type": "holding",
-                "address": 13226,
+                "address": 13230,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -9702,7 +9702,7 @@
             {
                 "name": "33 - External air temperature",
                 "reg_type": "holding",
-                "address": 13326,
+                "address": 13330,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -9986,7 +9986,7 @@
             {
                 "name": "34 - External air temperature",
                 "reg_type": "holding",
-                "address": 13426,
+                "address": 13430,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -10270,7 +10270,7 @@
             {
                 "name": "35 - External air temperature",
                 "reg_type": "holding",
-                "address": 13526,
+                "address": 13530,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -10554,7 +10554,7 @@
             {
                 "name": "36 - External air temperature",
                 "reg_type": "holding",
-                "address": 13626,
+                "address": 13630,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -10838,7 +10838,7 @@
             {
                 "name": "37 - External air temperature",
                 "reg_type": "holding",
-                "address": 13726,
+                "address": 13730,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -11122,7 +11122,7 @@
             {
                 "name": "38 - External air temperature",
                 "reg_type": "holding",
-                "address": 13826,
+                "address": 13830,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -11406,7 +11406,7 @@
             {
                 "name": "39 - External air temperature",
                 "reg_type": "holding",
-                "address": 13926,
+                "address": 13930,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -11690,7 +11690,7 @@
             {
                 "name": "40 - External air temperature",
                 "reg_type": "holding",
-                "address": 14026,
+                "address": 14030,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -11974,7 +11974,7 @@
             {
                 "name": "41 - External air temperature",
                 "reg_type": "holding",
-                "address": 14126,
+                "address": 14130,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -12258,7 +12258,7 @@
             {
                 "name": "42 - External air temperature",
                 "reg_type": "holding",
-                "address": 14226,
+                "address": 14230,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -12542,7 +12542,7 @@
             {
                 "name": "43 - External air temperature",
                 "reg_type": "holding",
-                "address": 14326,
+                "address": 14330,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -12826,7 +12826,7 @@
             {
                 "name": "44 - External air temperature",
                 "reg_type": "holding",
-                "address": 14426,
+                "address": 14430,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -13110,7 +13110,7 @@
             {
                 "name": "45 - External air temperature",
                 "reg_type": "holding",
-                "address": 14526,
+                "address": 14530,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -13394,7 +13394,7 @@
             {
                 "name": "46 - External air temperature",
                 "reg_type": "holding",
-                "address": 14626,
+                "address": 14630,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -13678,7 +13678,7 @@
             {
                 "name": "47 - External air temperature",
                 "reg_type": "holding",
-                "address": 14726,
+                "address": 14730,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -13962,7 +13962,7 @@
             {
                 "name": "48 - External air temperature",
                 "reg_type": "holding",
-                "address": 14826,
+                "address": 14830,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -14246,7 +14246,7 @@
             {
                 "name": "49 - External air temperature",
                 "reg_type": "holding",
-                "address": 14926,
+                "address": 14930,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -14530,7 +14530,7 @@
             {
                 "name": "50 - External air temperature",
                 "reg_type": "holding",
-                "address": 15026,
+                "address": 15030,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -14814,7 +14814,7 @@
             {
                 "name": "51 - External air temperature",
                 "reg_type": "holding",
-                "address": 15126,
+                "address": 15130,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -15098,7 +15098,7 @@
             {
                 "name": "52 - External air temperature",
                 "reg_type": "holding",
-                "address": 15226,
+                "address": 15230,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -15382,7 +15382,7 @@
             {
                 "name": "53 - External air temperature",
                 "reg_type": "holding",
-                "address": 15326,
+                "address": 15330,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -15666,7 +15666,7 @@
             {
                 "name": "54 - External air temperature",
                 "reg_type": "holding",
-                "address": 15426,
+                "address": 15430,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -15950,7 +15950,7 @@
             {
                 "name": "55 - External air temperature",
                 "reg_type": "holding",
-                "address": 15526,
+                "address": 15530,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -16234,7 +16234,7 @@
             {
                 "name": "56 - External air temperature",
                 "reg_type": "holding",
-                "address": 15626,
+                "address": 15630,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -16518,7 +16518,7 @@
             {
                 "name": "57 - External air temperature",
                 "reg_type": "holding",
-                "address": 15726,
+                "address": 15730,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -16802,7 +16802,7 @@
             {
                 "name": "58 - External air temperature",
                 "reg_type": "holding",
-                "address": 15826,
+                "address": 15830,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -17086,7 +17086,7 @@
             {
                 "name": "59 - External air temperature",
                 "reg_type": "holding",
-                "address": 15926,
+                "address": 15930,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -17370,7 +17370,7 @@
             {
                 "name": "60 - External air temperature",
                 "reg_type": "holding",
-                "address": 16026,
+                "address": 16030,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -17654,7 +17654,7 @@
             {
                 "name": "61 - External air temperature",
                 "reg_type": "holding",
-                "address": 16126,
+                "address": 16130,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -17938,7 +17938,7 @@
             {
                 "name": "62 - External air temperature",
                 "reg_type": "holding",
-                "address": 16226,
+                "address": 16230,
                 "type": "value",
                 "format": "s16",
                 "min": -30,
@@ -18222,7 +18222,7 @@
             {
                 "name": "63 - External air temperature",
                 "reg_type": "holding",
-                "address": 16326,
+                "address": 16330,
                 "type": "value",
                 "format": "s16",
                 "min": -30,

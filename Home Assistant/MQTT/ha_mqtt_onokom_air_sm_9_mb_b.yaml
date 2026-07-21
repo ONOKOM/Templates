@@ -1,0 +1,192 @@
+mqtt:
+  - climate:
+      unique_id: "hvac_ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>"
+      name: "ONOKOM-AIR-SM-9-MB-B"
+      power_command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Active/on"
+      power_command_template: >-
+        {% if value == 'OFF' %} 0
+        {% else %} 1
+        {% endif %} 
+      modes:
+        - "off"
+        - "auto"
+        - "cool"
+        - "heat"
+        - "fan_only"
+        - "dry"
+      mode_state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Active mode"
+      mode_state_template: >-
+        {% set m = value | string %}
+        {% if   m == '0' %} off
+        {% elif m == '1' %} heat
+        {% elif m == '2' %} cool
+        {% elif m == '3' %} auto
+        {% elif m == '4' %} dry
+        {% elif m == '5' %} fan_only
+        {% else %} off
+        {% endif %}
+      mode_command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Active mode/on"
+      mode_command_template: >-
+        {% if   value == 'off' %} 0
+        {% elif value == 'heat' %} 1
+        {% elif value == 'cool' %} 2
+        {% elif value == 'auto' %} 3
+        {% elif value == 'dry' %} 4
+        {% elif value == 'fan_only' %} 5
+        {% endif %}
+      temperature_state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Target temperature"
+      temperature_command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Target temperature/on"
+      min_temp: 16
+      max_temp: 30
+      precision: 0.5
+      temp_step: 0.5
+      current_temperature_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Indoor air temperature"
+      fan_modes:
+        - "Авто"
+        - "1 Скорость"
+        - "2 Скорость"
+        - "3 Скорость"
+      fan_mode_state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Fan speed"
+      fan_mode_state_template: >-
+        {% set  m = value | int %}
+        {% if   m == 0 %} Авто
+        {% elif m == 1 %} 1 Скорость
+        {% elif m == 2 %} 2 Скорость
+        {% elif m == 3 %} 3 Скорость
+        {% else %} Авто
+        {% endif %}
+      fan_mode_command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Fan speed/on"
+      fan_mode_command_template: >-
+        {% if   value == 'Авто' %} 0
+        {% elif value == '1 Скорость' %} 1
+        {% elif value == '2 Скорость' %} 2
+        {% elif value == '3 Скорость' %} 3
+        {% endif %}
+      swing_horizontal_modes:
+        - "Остановлены"
+        - "Качание"
+      swing_horizontal_mode_state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Horizontal vanes"
+      swing_horizontal_mode_state_template: >-
+        {% set  m = value | int %}
+        {% if   m == 0 %} Остановлены
+        {% elif m == 1 %} Качание
+        {% else %} Остановлены
+        {% endif %}
+      swing_horizontal_mode_command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Horizontal vanes/on"
+      swing_horizontal_mode_command_template: >-
+        {% if   value == 'Остановлены' %} 0
+        {% elif value == 'Качание' %} 1
+        {% endif %}
+  - select:
+      unique_id: "hvac_fan_speed_<впишите modbus-адрес устройства сюда>"
+      name: "Скорость вентилятора"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Fan speed"
+      command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Fan speed/on"
+      options:
+        - "Авто"
+        - "1 Скорость"
+        - "2 Скорость"
+        - "3 Скорость"
+      value_template: >-
+        {% set  m = value | int %}
+        {% if   m == 0 %} Авто
+        {% elif m == 1 %} 1 Скорость
+        {% elif m == 2 %} 2 Скорость
+        {% elif m == 3 %} 3 Скорость
+        {% else %} Авто
+        {% endif %}
+      command_template: >-
+        {% if   value == 'Авто' %} 0
+        {% elif value == '1 Скорость' %} 1
+        {% elif value == '2 Скорость' %} 2
+        {% elif value == '3 Скорость' %} 3
+        {% endif %}
+  - select:
+      unique_id: "hvac_smart_fan_speed_<впишите modbus-адрес устройства сюда>"
+      name: "Скорость вентилятора расширенная"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Smart fan speed"
+      command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Smart fan speed/on"
+      options:
+        - "Авто"
+        - "Режим тихий"
+        - "1 Скорость"
+        - "2 Скорость"
+        - "3 Скорость"
+      value_template: >-
+        {% set  m = value | int %}
+        {% if   m == 0 %} Авто
+        {% elif m == 1 %} Режим тихий
+        {% elif m == 2 %} 1 Скорость
+        {% elif m == 3 %} 2 Скорость
+        {% elif m == 4 %} 3 Скорость
+        {% else %} Авто
+        {% endif %}
+      command_template: >-
+        {% if   value == 'Авто' %} 0
+        {% elif value == 'Режим тихий' %} 1
+        {% elif value == '1 Скорость' %} 2
+        {% elif value == '2 Скорость' %} 3
+        {% elif value == '3 Скорость' %} 4
+        {% endif %}
+  - select:
+      unique_id: "hvac_horizontal_vanes_<впишите modbus-адрес устройства сюда>"
+      name: "Горизонтальные жалюзи"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Horizontal vanes"
+      command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Horizontal vanes/on"
+      options:
+        - "Остановлены"
+        - "Качание"
+      value_template: >-
+        {% set  m = value | int %}
+        {% if   m == 0 %} Остановлены
+        {% elif m == 1 %} Качание
+        {% else %} Остановлены
+        {% endif %}
+      command_template: >-
+        {% if   value == 'Остановлены' %} 0
+        {% elif value == 'Качание' %} 1
+        {% endif %}
+  - switch:
+      unique_id: "hvac_quiet_mode_<впишите modbus-адрес устройства сюда>"
+      name: "Режим тихий"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Quiet mode"
+      command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Quiet mode/on"
+      payload_on: "1"
+      payload_off: "0"
+      state_on: "1"
+      state_off: "0"
+      icon: "mdi:volume-off"
+  - switch:
+      unique_id: "hvac_sleep_mode_<впишите modbus-адрес устройства сюда>"
+      name: "Режим сна"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Sleep mode"
+      command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Sleep mode/on"
+      payload_on: "1"
+      payload_off: "0"
+      state_on: "1"
+      state_off: "0"
+      icon: "mdi:power-sleep"
+  - sensor:
+      unique_id: "hvac_ac_connected_<впишите modbus-адрес устройства сюда>"
+      name: "Кондиционер подключен"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/AC connected"
+      icon: "mdi:air-conditioner"
+      value_template: "{{ value | int == 1 and 'Подключен' or 'Не подключен' }}"
+  - sensor:
+      unique_id: "hvac_indoor_heat_exchanger_temperature_<впишите modbus-адрес устройства сюда>"
+      name: "Температура внутреннего теплообменника"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Indoor heat exchanger temperature"
+      icon: "mdi:temperature-celsius"
+      unit_of_measurement: "°C"
+      device_class: "temperature"
+      state_class: "measurement"
+      value_template: "{{ value | float }}"
+  - sensor:
+      unique_id: "hvac_outdoor_heat_exchanger_temperature_<впишите modbus-адрес устройства сюда>"
+      name: "Температура внешнего теплообменника"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Outdoor heat exchanger temperature"
+      icon: "mdi:temperature-celsius"
+      unit_of_measurement: "°C"
+      device_class: "temperature"
+      state_class: "measurement"
+      value_template: "{{ value | float }}"

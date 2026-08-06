@@ -30,6 +30,11 @@
                 "title": "HW Info",
                 "id": "hw_info",
                 "order": 6
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 9
             }
         ],
         "parameters": [
@@ -570,6 +575,15 @@
                 "type": "text",
                 "format": "u32",
                 "group": "hw_info"
+            },
+            {
+                "name": "AC connected",
+                "reg_type": "coil",
+                "address": 20,
+                "type": "switch",
+                "sporadic": true,
+                "group": "debug",
+                "readonly": true
             }
         ],
         "translations": {
@@ -581,6 +595,7 @@
                 "Temperature control": "Контроль температуры",
                 "Vanes": "Жалюзи",
                 "HW Info": "Данные модуля",
+                "Debug": "Диагностика",
                 "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
                 "No": "Нет",
                 "Yes": "Да",
@@ -636,6 +651,7 @@
                 "LISTEN_ONLY": "Слушатель",
                 "EMULATE_M_WRC": "Главный",
                 "EMULATE_S_WRC": "Ведомый",
+                "AC connected": "Кондиционер подключен",
                 "Normal mode": "Обычный режим",
                 "Disabled if no errors": "Отключен если нет ошибок",
                 "Disabled untill reboot": "Отключен до перезагрузки",

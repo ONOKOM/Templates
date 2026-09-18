@@ -34,6 +34,22 @@
         ],
         "parameters": [
             {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "temperatureControl",
+                "order": 1
+            },
+            {
                 "id": "baud_rate",
                 "title": "Baud rate",
                 "description": "baud_rate_description",
@@ -416,6 +432,7 @@
                 "Temperature control": "Контроль температуры",
                 "HW Info": "Данные модуля",
                 "Debug": "Диагностика",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
                 "No": "Нет",
                 "Yes": "Да",
                 "Baud rate": "Скорость обмена",

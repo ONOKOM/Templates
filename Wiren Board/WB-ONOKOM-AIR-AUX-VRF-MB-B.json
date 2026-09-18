@@ -44,7 +44,8 @@
                 "address": 100,
                 "reg_type": "holding",
                 "default": 1,
-                "order": 2
+                "order": 2,
+                "readonly": false
             },
             {
                 "id": "Allow_the_use_of_an_external_temperature_sensor",

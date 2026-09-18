@@ -2,26 +2,10 @@
     "name": "Кондиционер",
     "manufacturer": "ONOKOM",
     "model": "SM-9-MB-B",
-    "modelId": "SM9MBB",
-    "catalogId": 4905,
-    "init": [
-        {
-            "modelId": {
-                "type": "String",
-                "address": 200,
-                "function": "Holding",
-                "length": 20
-            }
-        },
-        {
-            "modelId": {
-                "type": "String",
-                "address": 250,
-                "function": "Holding",
-                "length": 16
-            }
-        }
+    "modelIds": [
+        "SM-9-MB-B"
     ],
+    "catalogId": 0,
     "services": [
         {
             "name": "Кондиционер",
@@ -124,10 +108,7 @@
                             "maxValue": 3,
                             "minStep": 1
                         }
-                    ],
-                    "minValue": 0,
-                    "maxValue": 100,
-                    "unit": ""
+                    ]
                 }
             ]
         },
@@ -146,6 +127,24 @@
                     ],
                     "minValue": 0,
                     "maxValue": 1
+                }
+            ]
+        },
+        {
+            "name": "Температура с внешнего датчика",
+            "visible": true,
+            "type": "TemperatureSensor",
+            "characteristics": [
+                {
+                    "type": "CurrentTemperature",
+                    "link": [
+                        {
+                            "address": 30,
+                            "function": "Holding",
+                            "scale": 0.01,
+                            "pollingTime": 1000
+                        }
+                    ]
                 }
             ]
         },

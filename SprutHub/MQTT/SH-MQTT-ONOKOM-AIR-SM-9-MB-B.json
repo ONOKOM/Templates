@@ -5,7 +5,7 @@
     "modelIds": [
         "/devices/(ONOKOM-AIR-SM-9-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type"
     ],
-    "catalogId": 4905,
+    "catalogId": 0,
     "services": [
         {
             "name": "Кондиционер",
@@ -121,6 +121,22 @@
                     ],
                     "minValue": 0,
                     "maxValue": 1
+                }
+            ]
+        },
+        {
+            "name": "Температура с внешнего датчика",
+            "type": "TemperatureSensor",
+            "characteristics": [
+                {
+                    "type": "CurrentTemperature",
+                    "write": false,
+                    "link": [
+                        {
+                            "type": "Double",
+                            "topicGet": "/devices/(1)/controls/External air temperature"
+                        }
+                    ]
                 }
             ]
         },

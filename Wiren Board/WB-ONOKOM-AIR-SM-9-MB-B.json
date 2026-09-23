@@ -467,7 +467,7 @@
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 1,
+                "max": 2,
                 "sporadic": true,
                 "group": "vanes",
                 "condition": "Show_vanes_as_range==1"
@@ -482,13 +482,24 @@
                 "group": "vanes",
                 "enum": [
                     0,
-                    1
+                    1,
+                    7
                 ],
                 "enum_titles": [
                     "Stop",
-                    "Swing"
+                    "Swing",
+                    "Gentle wind"
                 ],
                 "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Gentle wind",
+                "enabled": false,
+                "reg_type": "coil",
+                "address": 14,
+                "type": "switch",
+                "sporadic": true,
+                "group": "additional"
             },
             {
                 "name": "Quiet mode",
@@ -698,6 +709,7 @@
                 "Horizontal vanes": "Горизонтальные жалюзи",
                 "Stop": "Остановлены",
                 "Swing": "Качание",
+                "Gentle wind": "Мягкий поток",
                 "Sleep mode": "Режим сна",
                 "FW Version": "Версия прошивки",
                 "HW Version": "Версия устройства",

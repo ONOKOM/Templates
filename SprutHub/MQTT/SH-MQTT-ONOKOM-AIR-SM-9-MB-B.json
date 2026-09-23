@@ -108,10 +108,10 @@
         },
         {
             "name": "Горизонтальные жалюзи",
-            "type": "FanBasic",
+            "type": "Fan",
             "characteristics": [
                 {
-                    "type": "On",
+                    "type": "RotationSpeed",
                     "link": [
                         {
                             "type": "Integer",
@@ -120,7 +120,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 1
+                    "maxValue": 2
                 }
             ]
         },
@@ -167,6 +167,22 @@
                             "type": "Integer",
                             "topicGet": "/devices/(1)/controls/Sleep mode",
                             "topicSet": "/devices/(1)/controls/Sleep mode/on"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Мягкий поток",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": [
+                        {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Gentle wind",
+                            "topicSet": "/devices/(1)/controls/Gentle wind/on"
                         }
                     ]
                 }

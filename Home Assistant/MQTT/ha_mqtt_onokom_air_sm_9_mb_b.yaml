@@ -65,17 +65,20 @@ mqtt:
       swing_horizontal_modes:
         - "Остановлены"
         - "Качание"
+        - "Мягкий поток"
       swing_horizontal_mode_state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Horizontal vanes"
       swing_horizontal_mode_state_template: >-
         {% set  m = value | int %}
         {% if   m == 0 %} Остановлены
         {% elif m == 1 %} Качание
+        {% elif m == 7 %} Мягкий поток
         {% else %} Остановлены
         {% endif %}
       swing_horizontal_mode_command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Horizontal vanes/on"
       swing_horizontal_mode_command_template: >-
         {% if   value == 'Остановлены' %} 0
         {% elif value == 'Качание' %} 1
+        {% elif value == 'Мягкий поток' %} 7
         {% endif %}
   - select:
       unique_id: "hvac_fan_speed_<впишите modbus-адрес устройства сюда>"
@@ -136,15 +139,18 @@ mqtt:
       options:
         - "Остановлены"
         - "Качание"
+        - "Мягкий поток"
       value_template: >-
         {% set  m = value | int %}
         {% if   m == 0 %} Остановлены
         {% elif m == 1 %} Качание
+        {% elif m == 7 %} Мягкий поток
         {% else %} Остановлены
         {% endif %}
       command_template: >-
         {% if   value == 'Остановлены' %} 0
         {% elif value == 'Качание' %} 1
+        {% elif value == 'Мягкий поток' %} 7
         {% endif %}
   - switch:
       unique_id: "hvac_quiet_mode_<впишите modbus-адрес устройства сюда>"
@@ -166,6 +172,16 @@ mqtt:
       state_on: "1"
       state_off: "0"
       icon: "mdi:power-sleep"
+  - switch:
+      unique_id: "hvac_gentle_wind_<впишите modbus-адрес устройства сюда>"
+      name: "Мягкий поток"
+      state_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Gentle wind"
+      command_topic: "/devices/ONOKOM-AIR-SM-9-MB-B_<впишите modbus-адрес устройства сюда>/controls/Gentle wind/on"
+      payload_on: "1"
+      payload_off: "0"
+      state_on: "1"
+      state_off: "0"
+      icon: "mdi:weather-windy"
   - sensor:
       unique_id: "hvac_ac_connected_<впишите modbus-адрес устройства сюда>"
       name: "Кондиционер подключен"

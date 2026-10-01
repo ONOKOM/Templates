@@ -1,0 +1,1103 @@
+{
+    "title": "template_title",
+    "device_type": "ONOKOM-AIR-LG-8-MB-B",
+    "group": "g-air-conditioning",
+    "hw": [
+        {
+            "signature": "LG-8-MB-B"
+        }
+    ],
+    "device": {
+        "name": "ONOKOM-AIR-LG-8-MB-B",
+        "id": "ONOKOM-AIR-LG-8-MB-B",
+        "groups": [
+            {
+                "title": "General",
+                "id": "general",
+                "order": 1
+            },
+            {
+                "title": "Temperature control",
+                "id": "temperatureControl",
+                "order": 2
+            },
+            {
+                "title": "Vanes",
+                "id": "vanes",
+                "order": 3
+            },
+            {
+                "title": "Additional",
+                "id": "additional",
+                "order": 4
+            },
+            {
+                "title": "HW Info",
+                "id": "hw_info",
+                "order": 6
+            },
+            {
+                "title": "Errors",
+                "id": "errors",
+                "order": 8
+            },
+            {
+                "title": "Debug",
+                "id": "debug",
+                "order": 9
+            }
+        ],
+        "parameters": [
+            {
+                "id": "Allow_the_use_of_an_external_temperature_sensor",
+                "title": "Allow the use of an external temperature sensor",
+                "address": 100,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "temperatureControl",
+                "default": 0,
+                "order": 1
+            },
+            {
+                "id": "Show_modes_as_range",
+                "title": "Show modes as range",
+                "address": 95,
+                "default": 0,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_fan_as_range",
+                "title": "Show fan as range",
+                "address": 92,
+                "default": 0,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "general",
+                "order": 1
+            },
+            {
+                "id": "Show_vanes_as_range",
+                "title": "Show vanes as range",
+                "address": 94,
+                "default": 0,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "vanes",
+                "order": 1
+            },
+            {
+                "id": "Show_thermostat_state_as_range",
+                "title": "Show thermostat state as range",
+                "address": 94,
+                "default": 0,
+                "reg_type": "coil",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "temperatureControl",
+                "order": 1
+            },
+            {
+                "title": "Show error switches",
+                "id": "Show_error_switches",
+                "address": 100,
+                "reg_type": "coil",
+                "default": 0,
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "No",
+                    "Yes"
+                ],
+                "group": "errors",
+                "order": 1
+            },
+            {
+                "id": "baud_rate",
+                "title": "Baud rate",
+                "description": "baud_rate_description",
+                "address": 110,
+                "reg_type": "holding",
+                "enum": [
+                    96,
+                    192,
+                    384,
+                    576,
+                    1152
+                ],
+                "default": 96,
+                "enum_titles": [
+                    "9600",
+                    "19200",
+                    "38400",
+                    "57600",
+                    "115200"
+                ],
+                "group": "hw_info",
+                "order": 1
+            },
+            {
+                "id": "parity_bit",
+                "title": "Parity bit",
+                "description": "parity_bit_description",
+                "address": 111,
+                "reg_type": "holding",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "default": 0,
+                "enum_titles": [
+                    "none (N)",
+                    "odd (O)",
+                    "even (E)"
+                ],
+                "group": "hw_info",
+                "order": 1
+            }
+        ],
+        "channels": [
+            {
+                "name": "Active",
+                "reg_type": "coil",
+                "address": 1,
+                "type": "switch",
+                "format": "u16",
+                "sporadic": true,
+                "group": "general"
+            },
+            {
+                "name": "Mode",
+                "reg_type": "holding",
+                "address": 1,
+                "type": "range",
+                "format": "u16",
+                "min": 1,
+                "max": 5,
+                "sporadic": false,
+                "group": "general",
+                "condition": "Show_modes_as_range==1"
+            },
+            {
+                "name": "Mode",
+                "reg_type": "holding",
+                "address": 1,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "general",
+                "enum": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "enum_titles": [
+                    "Heat",
+                    "Cool",
+                    "Auto",
+                    "Dry",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1"
+            },
+            {
+                "name": "Active mode",
+                "reg_type": "holding",
+                "address": 2,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 5,
+                "sporadic": false,
+                "group": "general",
+                "condition": "Show_modes_as_range==1"
+            },
+            {
+                "name": "Active mode",
+                "reg_type": "holding",
+                "address": 2,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "general",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "enum_titles": [
+                    "Off",
+                    "Heat",
+                    "Cool",
+                    "Auto",
+                    "Dry",
+                    "Fan"
+                ],
+                "condition": "Show_modes_as_range!=1"
+            },
+            {
+                "name": "Fan speed",
+                "reg_type": "holding",
+                "address": 7,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 6,
+                "sporadic": false,
+                "group": "general",
+                "condition": "Show_fan_as_range==1"
+            },
+            {
+                "name": "Fan speed",
+                "reg_type": "holding",
+                "address": 7,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "general",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed",
+                    "4 Speed",
+                    "5 Speed",
+                    "6 Speed"
+                ],
+                "condition": "Show_fan_as_range!=1"
+            },
+            {
+                "name": "Smart fan speed",
+                "reg_type": "holding",
+                "address": 8,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 7,
+                "sporadic": false,
+                "group": "general",
+                "condition": "Show_fan_as_range==1"
+            },
+            {
+                "name": "Smart fan speed",
+                "reg_type": "holding",
+                "address": 8,
+                "type": "value",
+                "format": "u16",
+                "min": 0,
+                "max": 8,
+                "sporadic": false,
+                "group": "general",
+                "enum": [
+                    0,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                ],
+                "enum_titles": [
+                    "Auto",
+                    "1 Speed",
+                    "2 Speed",
+                    "3 Speed",
+                    "4 Speed",
+                    "5 Speed",
+                    "6 Speed",
+                    "Turbo mode"
+                ],
+                "condition": "Show_fan_as_range!=1"
+            },
+            {
+                "name": "Outdoor air supply",
+                "reg_type": "coil",
+                "address": 15,
+                "type": "switch",
+                "sporadic": true,
+                "group": "general"
+            },
+            {
+                "name": "External air temperature",
+                "reg_type": "holding",
+                "address": 30,
+                "type": "value",
+                "format": "s16",
+                "min": -30,
+                "max": 30,
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "Indoor air temperature",
+                "reg_type": "holding",
+                "address": 3,
+                "type": "value",
+                "format": "s16",
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor!=1"
+            },
+            {
+                "name": "Indoor air temperature",
+                "reg_type": "holding",
+                "address": 3,
+                "type": "value",
+                "format": "s16",
+                "min": -50,
+                "max": 50,
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "units": "deg C",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "Target temperature",
+                "reg_type": "holding",
+                "address": 5,
+                "type": "range",
+                "format": "s16",
+                "min": 18,
+                "max": 30,
+                "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "units": "deg C"
+            },
+            {
+                "name": "Temperature correction",
+                "reg_type": "holding",
+                "address": 20,
+                "type": "value",
+                "format": "s16",
+                "min": -30,
+                "max": 30,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "Thermostat state",
+                "reg_type": "holding",
+                "address": 6,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 2,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range==1"
+            },
+            {
+                "name": "Thermostat state",
+                "reg_type": "holding",
+                "address": 6,
+                "type": "value",
+                "format": "u16",
+                "sporadic": true,
+                "group": "temperatureControl",
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "enum_titles": [
+                    "Idle",
+                    "Heating",
+                    "Cooling"
+                ],
+                "readonly": true,
+                "condition": "Show_thermostat_state_as_range!=1"
+            },
+            {
+                "name": "Horizontal vane 1",
+                "reg_type": "holding",
+                "address": 70,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Lowest",
+                    "Low",
+                    "Middle Low",
+                    "Middle",
+                    "High",
+                    "Highest"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Horizontal vane 2",
+                "reg_type": "holding",
+                "address": 71,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Lowest",
+                    "Low",
+                    "Middle Low",
+                    "Middle",
+                    "High",
+                    "Highest"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Horizontal vane 3",
+                "reg_type": "holding",
+                "address": 72,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Lowest",
+                    "Low",
+                    "Middle Low",
+                    "Middle",
+                    "High",
+                    "Highest"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Horizontal vane 4",
+                "reg_type": "holding",
+                "address": 73,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Lowest",
+                    "Low",
+                    "Middle Low",
+                    "Middle",
+                    "High",
+                    "Highest"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Horizontal vanes",
+                "reg_type": "holding",
+                "address": 9,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 7,
+                "sporadic": false,
+                "group": "vanes",
+                "condition": "Show_vanes_as_range==1"
+            },
+            {
+                "name": "Horizontal vanes",
+                "reg_type": "holding",
+                "address": 9,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Swing",
+                    "Lowest",
+                    "Low",
+                    "Middle Low",
+                    "Middle",
+                    "High",
+                    "Highest"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Vanes swing",
+                "reg_type": "holding",
+                "address": 11,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 3,
+                "sporadic": false,
+                "group": "vanes",
+                "condition": "Show_vanes_as_range==1"
+            },
+            {
+                "name": "Vanes swing",
+                "reg_type": "holding",
+                "address": 11,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Horizontal and vertical vanes swing",
+                    "Horizontal vanes swing",
+                    "Vertical vanes swing"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Vertical vanes",
+                "reg_type": "holding",
+                "address": 10,
+                "type": "range",
+                "format": "u16",
+                "min": 0,
+                "max": 1,
+                "sporadic": false,
+                "group": "vanes",
+                "condition": "Show_vanes_as_range==1"
+            },
+            {
+                "name": "Vertical vanes",
+                "reg_type": "holding",
+                "address": 10,
+                "type": "value",
+                "format": "u16",
+                "sporadic": false,
+                "group": "vanes",
+                "enum": [
+                    0,
+                    1
+                ],
+                "enum_titles": [
+                    "Stop",
+                    "Swing"
+                ],
+                "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Defrosting",
+                "reg_type": "coil",
+                "address": 12,
+                "type": "switch",
+                "sporadic": true,
+                "group": "additional"
+            },
+            {
+                "name": "Eco mode",
+                "reg_type": "coil",
+                "address": 6,
+                "type": "switch",
+                "sporadic": false,
+                "group": "additional"
+            },
+            {
+                "name": "Ionization",
+                "reg_type": "coil",
+                "address": 9,
+                "type": "switch",
+                "sporadic": false,
+                "group": "additional"
+            },
+            {
+                "name": "Self cleaning",
+                "reg_type": "coil",
+                "address": 10,
+                "type": "switch",
+                "sporadic": false,
+                "group": "additional"
+            },
+            {
+                "name": "Turbo mode",
+                "reg_type": "coil",
+                "address": 7,
+                "type": "switch",
+                "sporadic": false,
+                "group": "additional"
+            },
+            {
+                "name": "FW Version",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 250,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 16
+            },
+            {
+                "name": "HW Version",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 200,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 20
+            },
+            {
+                "name": "MCU Temperature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 124,
+                "type": "temperature",
+                "format": "s16",
+                "scale": 0.1,
+                "group": "hw_info"
+            },
+            {
+                "name": "PROTO Version",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 400,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 16
+            },
+            {
+                "name": "Reboot Device",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 120,
+                "type": "pushbutton",
+                "group": "hw_info"
+            },
+            {
+                "name": "Serial",
+                "enabled": false,
+                "reg_type": "holding",
+                "address": 270,
+                "type": "text",
+                "format": "u32",
+                "group": "hw_info",
+                "readonly": true
+            },
+            {
+                "name": "Signature",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 290,
+                "type": "text",
+                "format": "string",
+                "sporadic": true,
+                "group": "hw_info",
+                "readonly": true,
+                "string_data_size": 12
+            },
+            {
+                "name": "Uptime",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 104,
+                "type": "text",
+                "format": "u32",
+                "group": "hw_info"
+            },
+            {
+                "name": "Error code",
+                "enabled": false,
+                "reg_type": "input",
+                "address": 1,
+                "type": "value",
+                "group": "errors",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    32,
+                    33,
+                    34,
+                    35,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    51,
+                    52,
+                    54,
+                    57,
+                    60,
+                    61,
+                    62,
+                    65,
+                    67,
+                    70
+                ],
+                "enum_titles": [
+                    "No error",
+                    "Error 1",
+                    "Error 2",
+                    "Error 3",
+                    "Error 4",
+                    "Error 5",
+                    "Error 6",
+                    "Error 7",
+                    "Error 8",
+                    "Error 9",
+                    "Error 10",
+                    "Error 11",
+                    "Error 21",
+                    "Error 22",
+                    "Error 23",
+                    "Error 24",
+                    "Error 25",
+                    "Error 26",
+                    "Error 27",
+                    "Error 28",
+                    "Error 32",
+                    "Error 33",
+                    "Error 34",
+                    "Error 35",
+                    "Error 40",
+                    "Error 41",
+                    "Error 42",
+                    "Error 43",
+                    "Error 44",
+                    "Error 45",
+                    "Error 46",
+                    "Error 47",
+                    "Error 48",
+                    "Error 49",
+                    "Error 51",
+                    "Error 52",
+                    "Error 54",
+                    "Error 57",
+                    "Error 60",
+                    "Error 61",
+                    "Error 62",
+                    "Error 65",
+                    "Error 67",
+                    "Error 70"
+                ],
+                "readonly": true,
+                "order": 0
+            },
+            {
+                "name": "AC connected",
+                "reg_type": "coil",
+                "address": 20,
+                "type": "switch",
+                "sporadic": true,
+                "group": "debug",
+                "readonly": true
+            }
+        ],
+        "translations": {
+            "en": {
+                "template_title": "ONOKOM AIR LG-8-MB-B (Adapter for household LG systems)",
+                "Error 1": "CH01 - Indoor unit return air sensor fault",
+                "Error 2": "CH02 - Indoor Pipe Sensor or Outdoor Sensor Assy fault, Open or Short",
+                "Error 3": "CH03 - Remote controller comms error",
+                "Error 4": "CH04 - RAC Product: Heat Sink Sensor Error / Commercial Product: Condensate pump float switch risen",
+                "Error 5": "CH05 - Comms Error, check your wiring",
+                "Error 6": "CH06 - Indoor unit coil sensor fault",
+                "Error 7": "CH07 - Multi Splits/Multi V: indoor unit is set to run in a different mode / RAC: Indoor unit BLDC Fan problem",
+                "Error 8": "CH08 - Check the fan motor turns freely / AC Voltage issue",
+                "Error 9": "CH09 - Split: Outdoor unit fan problem / Multi V: indoor PCB failure",
+                "Error 10": "CH10 - RAC Product: Compressor discharge sensor fault",
+                "Error 11": "CH11 - Multi V indoor unit not connected to an outdoor unit",
+                "Error 21": "CH21 - Inverter compressor run current high",
+                "Error 22": "CH22 - Inverter compressor run current high",
+                "Error 23": "CH23 - Inverter dc voltage low",
+                "Error 24": "CH24 - Splits and Multi Splits = High or low pressure trip",
+                "Error 25": "CH25 - Check power supply voltage to the outdoor unit is correct",
+                "Error 26": "CH26 - Inverter compressor seized",
+                "Error 27": "CH27 - Inverter current irregularity",
+                "Error 28": "CH28 - Inverter dc voltage too high",
+                "Error 32": "CH32 - Inverter compressor discharge temperature too high",
+                "Error 33": "CH33 - Excessive rise of standard compressor discharge temperature",
+                "Error 34": "CH34 - Excessive high pressure rise, over 35 bar at HP sensor",
+                "Error 35": "CH35 - Excessive low pressure drop under 1 Bar at LP sensor",
+                "Error 40": "CH40 - Inverter ac current abnormal",
+                "Error 41": "CH41 - Inverter compressor discharge sensor fault",
+                "Error 42": "CH42 - Low pressure sensor fault",
+                "Error 43": "CH43 - High pressure sensor fault",
+                "Error 44": "CH44 - Outdoor unit air sensor fault",
+                "Error 45": "CH45 - Outdoor unit coil sensor fault",
+                "Error 46": "CH46 - Outdoor unit suction sensor fault",
+                "Error 47": "CH47 - Compressor discharge sensor fault",
+                "Error 48": "CH48 - Outdoor unit discharge and air sensor both unplugged",
+                "Error 49": "CH49 - Check power supply voltage to the outdoor unit is correct",
+                "Error 51": "CH51 - Unit mismatch. Check model number of units",
+                "Error 52": "CH52 - Communication error between inverter PCB and main outdoor unit PCB",
+                "Error 54": "CH54 - Comms error indoor to outdoor unit",
+                "Error 57": "CH57 - Comms error between outdoor main PCB and inverter PCB",
+                "Error 60": "CH60 - Outdoor unit PCB EEPROM failure",
+                "Error 61": "CH61 - Condenser coil over 65°C",
+                "Error 62": "CH62 - Inverter over 85°C",
+                "Error 65": "CH65 - Outdoor unit inverter fin temperature sensor fault",
+                "Error 67": "CH67 - Outdoor Fan Motor seized, or rotation sensing circuit failure",
+                "Error 70": "Gateway error – line is noisy"
+            },
+            "ru": {
+                "General": "Основные режимы и функции",
+                "Temperature control": "Контроль температуры",
+                "Vanes": "Жалюзи",
+                "Additional": "Дополнительные режимы и функции",
+                "HW Info": "Данные модуля",
+                "Errors": "Ошибки",
+                "Debug": "Диагностика",
+                "Allow the use of an external temperature sensor": "Разрешить использование внешнего датчика температуры",
+                "No": "Нет",
+                "Yes": "Да",
+                "Show modes as range": "Отображать режимы как ползунок",
+                "Show fan as range": "Отображать вентилятор как ползунок",
+                "Show vanes as range": "Отображать жалюзи как ползунок",
+                "Show thermostat state as range": "Отображать состояние термостата как ползунок",
+                "Show error switches": "Показать переключатели ошибок",
+                "Baud rate": "Скорость обмена",
+                "baud_rate_description": "Перед изменением параметра убедитесь, что связь с устройством установлена. Выберите нужную скорость обмена, сохраните конфигурацию, а затем укажите в настройках порта эту же скорость.",
+                "Parity bit": "Бит чётности",
+                "parity_bit_description": "Перед изменением параметра убедитесь, что связь с устройством установлена. Выберите нужный бит четности, сохраните конфигурацию, а затем укажите в настройках порта этот же бит четности.",
+                "Active": "Состояние",
+                "Mode": "Режим",
+                "Heat": "Нагрев",
+                "Cool": "Охлаждение",
+                "Auto": "Авто",
+                "Dry": "Осушение",
+                "Fan": "Вентиляция",
+                "Active mode": "Состояние и режим",
+                "Off": "Выключен",
+                "Fan speed": "Скорость вентилятора",
+                "1 Speed": "1 Скорость",
+                "2 Speed": "2 Скорость",
+                "3 Speed": "3 Скорость",
+                "4 Speed": "4 Скорость",
+                "5 Speed": "5 Скорость",
+                "6 Speed": "6 Скорость",
+                "Smart fan speed": "Скорость вентилятора расширенная",
+                "Turbo mode": "Режим турбо",
+                "Outdoor air supply": "Подача воздуха с улицы",
+                "External air temperature": "Температура с внешнего датчика",
+                "Indoor air temperature": "Температура воздуха в помещении",
+                "Target temperature": "Целевая температура",
+                "Temperature correction": "Коррекция температуры",
+                "Thermostat state": "Состояние термостата",
+                "Idle": "Простаивает",
+                "Heating": "Нагрев",
+                "Cooling": "Охлаждение",
+                "Horizontal vane 1": "Горизонтальная жалюзи 1",
+                "Stop": "Остановлены",
+                "Lowest": "Самое низкое",
+                "Low": "Низкое",
+                "Middle Low": "Среднее низкое",
+                "Middle": "Среднее",
+                "High": "Высокое",
+                "Highest": "Самое высокое",
+                "Horizontal vane 2": "Горизонтальная жалюзи 2",
+                "Horizontal vane 3": "Горизонтальная жалюзи 3",
+                "Horizontal vane 4": "Горизонтальная жалюзи 4",
+                "Horizontal vanes": "Горизонтальные жалюзи",
+                "Swing": "Качание",
+                "Vanes swing": "Качание жалюзи",
+                "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
+                "Horizontal vanes swing": "Качание горизонтальных жалюзи",
+                "Vertical vanes swing": "Качание вертикальных жалюзи",
+                "Vertical vanes": "Вертикальные жалюзи",
+                "Defrosting": "Разморозка",
+                "Eco mode": "Режим эко",
+                "Ionization": "Ионизация",
+                "Self cleaning": "Самоочистка",
+                "FW Version": "Версия прошивки",
+                "HW Version": "Версия устройства",
+                "MCU Temperature": "Температура МК",
+                "PROTO Version": "Версия протокола",
+                "Reboot Device": "Перезагрузить устройство",
+                "Serial": "Серийный номер",
+                "Signature": "Сигнатура устройства",
+                "Uptime": "Время работы с момента включения (с)",
+                "Error code": "Код ошибки",
+                "No error": "Нет ошибки",
+                "Error 1": "CH01 - Неисправность датчика входящего (рециркуляционного) воздуха внутреннего блока",
+                "Error 2": "CH02 - Неисправность датчика трубы внутреннего блока или датчиков наружного блока (обрыв или короткое замыкание)",
+                "Error 3": "CH03 - Ошибка связи с проводным пультом управления",
+                "Error 4": "CH04 - RAC: Ошибка датчика радиатора охлаждения / Commercial: Сработал поплавковый выключатель дренажного насоса",
+                "Error 5": "CH05 - Ошибка связи между блоками, проверьте проводку",
+                "Error 6": "CH06 - Неисправность датчика температуры теплообменника внутреннего блока",
+                "Error 7": "CH07 - Multi V: Внутренний блок работает в несогласованном режиме / RAC: Неисправность мотора вентилятора внутреннего блока (BLDC)",
+                "Error 8": "CH08 - Блокировка вращения мотора вентилятора / Проблема с напряжением переменного тока",
+                "Error 9": "CH09 - Split: Неисправность мотора вентилятора наружного блока / Multi V: Сбой платы внутреннего блока",
+                "Error 10": "CH10 - Неисправность датчика температуры нагнетания компрессора",
+                "Error 11": "CH11 - Внутренний блок Multi V не подключен к наружному блоку",
+                "Error 21": "CH21 - Высокий рабочий ток инверторного компрессора",
+                "Error 22": "CH22 - Высокий рабочий ток инверторного компрессора",
+                "Error 23": "CH23 - Слишком низкое напряжение постоянного тока инвертора",
+                "Error 24": "CH24 - Срабатывание защиты по высокому или низкому давлению",
+                "Error 25": "CH25 - Неправильное напряжение питания наружного блока",
+                "Error 26": "CH26 - Заклинивание инверторного компрессора",
+                "Error 27": "CH27 - Аномальный ток инвертора",
+                "Error 28": "CH28 - Слишком высокое напряжение постоянного тока инвертора",
+                "Error 32": "CH32 - Слишком высокая температура нагнетания инверторного компрессора",
+                "Error 33": "CH33 - Чрезмерный перегрев нагнетания стандартного компрессора",
+                "Error 34": "CH34 - Чрезмерное повышение высокого давления (более 35 бар по датчику HP)",
+                "Error 35": "CH35 - Чрезмерное падение низкого давления (менее 1 бар по датчику LP)",
+                "Error 40": "CH40 - Аномальный переменный ток инвертора",
+                "Error 41": "CH41 - Неисправность датчика нагнетания инверторного компрессора",
+                "Error 42": "CH42 - Неисправность датчика низкого давления",
+                "Error 43": "CH43 - Неисправность датчика высокого давления",
+                "Error 44": "CH44 - Неисправность датчика температуры наружного воздуха",
+                "Error 45": "CH45 - Неисправность датчика теплообменника наружного блока",
+                "Error 46": "CH46 - Неисправность датчика трубы всасывания наружного блока",
+                "Error 47": "CH47 - Неисправность датчика температуры нагнетания компрессора",
+                "Error 48": "CH48 - Отключены оба датчика наружного блока (нагнетания и наружного воздуха)",
+                "Error 49": "CH49 - Проверьте правильность напряжения питания наружного блока",
+                "Error 51": "CH51 - Несовпадение блоков (проверьте номера моделей)",
+                "Error 52": "CH52 - Ошибка связи между инверторной платой и главной платой наружного блока",
+                "Error 54": "CH54 - Ошибка связи между внутренним и наружным блоками",
+                "Error 57": "CH57 - Ошибка связи между главной платой наружного блока и инверторной платой",
+                "Error 60": "CH60 - Сбой памяти EEPROM платы наружного блока",
+                "Error 61": "CH61 - Перегрев теплообменника конденсатора (выше 65°C)",
+                "Error 62": "CH62 - Перегрев инвертора (выше 85°C)",
+                "Error 65": "CH65 - Неисправность датчика температуры радиатора инвертора наружного блока",
+                "Error 67": "CH67 - Заклинил мотор вентилятора наружного блока или сбой цепи контроля вращения",
+                "Error 70": "Ошибка шлюза - линия зашумлена",
+                "AC connected": "Кондиционер подключен",
+                "template_title": "ONOKOM AIR LG-8-MB-B (Адаптер для бытовых систем LG)"
+            }
+        }
+    }
+}

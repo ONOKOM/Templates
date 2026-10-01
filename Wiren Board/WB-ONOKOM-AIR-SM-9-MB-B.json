@@ -62,12 +62,14 @@
                     "Yes"
                 ],
                 "group": "temperatureControl",
+                "default": 0,
                 "order": 1
             },
             {
                 "id": "Show_modes_as_range",
                 "title": "Show modes as range",
                 "address": 95,
+                "default": 0,
                 "reg_type": "coil",
                 "enum": [
                     0,
@@ -84,6 +86,7 @@
                 "id": "Show_fan_as_range",
                 "title": "Show fan as range",
                 "address": 92,
+                "default": 0,
                 "reg_type": "coil",
                 "enum": [
                     0,
@@ -100,6 +103,7 @@
                 "id": "Show_vanes_as_range",
                 "title": "Show vanes as range",
                 "address": 94,
+                "default": 0,
                 "reg_type": "coil",
                 "enum": [
                     0,
@@ -116,6 +120,7 @@
                 "id": "Show_thermostat_state_as_range",
                 "title": "Show thermostat state as range",
                 "address": 94,
+                "default": 0,
                 "reg_type": "coil",
                 "enum": [
                     0,
@@ -462,7 +467,7 @@
                 "type": "range",
                 "format": "u16",
                 "min": 0,
-                "max": 1,
+                "max": 2,
                 "sporadic": true,
                 "group": "vanes",
                 "condition": "Show_vanes_as_range==1"
@@ -477,13 +482,24 @@
                 "group": "vanes",
                 "enum": [
                     0,
-                    1
+                    1,
+                    7
                 ],
                 "enum_titles": [
                     "Stop",
-                    "Swing"
+                    "Swing",
+                    "Gentle wind"
                 ],
                 "condition": "Show_vanes_as_range!=1"
+            },
+            {
+                "name": "Gentle wind",
+                "enabled": false,
+                "reg_type": "coil",
+                "address": 14,
+                "type": "switch",
+                "sporadic": true,
+                "group": "additional"
             },
             {
                 "name": "Quiet mode",
@@ -693,6 +709,7 @@
                 "Horizontal vanes": "Горизонтальные жалюзи",
                 "Stop": "Остановлены",
                 "Swing": "Качание",
+                "Gentle wind": "Мягкий поток",
                 "Sleep mode": "Режим сна",
                 "FW Version": "Версия прошивки",
                 "HW Version": "Версия устройства",

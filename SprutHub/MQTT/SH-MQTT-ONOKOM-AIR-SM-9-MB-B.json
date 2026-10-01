@@ -5,7 +5,7 @@
     "modelIds": [
         "/devices/(ONOKOM-AIR-SM-9-MB-B_[0-9]{1,3}(?:_[0-9]{1,3})?)/controls/Indoor air temperature/meta/type"
     ],
-    "catalogId": 4905,
+    "catalogId": 0,
     "services": [
         {
             "name": "Кондиционер",
@@ -108,10 +108,10 @@
         },
         {
             "name": "Горизонтальные жалюзи",
-            "type": "FanBasic",
+            "type": "Fan",
             "characteristics": [
                 {
-                    "type": "On",
+                    "type": "RotationSpeed",
                     "link": [
                         {
                             "type": "Integer",
@@ -120,7 +120,23 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 1
+                    "maxValue": 2
+                }
+            ]
+        },
+        {
+            "name": "Температура с внешнего датчика",
+            "type": "TemperatureSensor",
+            "characteristics": [
+                {
+                    "type": "CurrentTemperature",
+                    "write": false,
+                    "link": [
+                        {
+                            "type": "Double",
+                            "topicGet": "/devices/(1)/controls/External air temperature"
+                        }
+                    ]
                 }
             ]
         },
@@ -151,6 +167,22 @@
                             "type": "Integer",
                             "topicGet": "/devices/(1)/controls/Sleep mode",
                             "topicSet": "/devices/(1)/controls/Sleep mode/on"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Мягкий поток",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": [
+                        {
+                            "type": "Integer",
+                            "topicGet": "/devices/(1)/controls/Gentle wind",
+                            "topicSet": "/devices/(1)/controls/Gentle wind/on"
                         }
                     ]
                 }

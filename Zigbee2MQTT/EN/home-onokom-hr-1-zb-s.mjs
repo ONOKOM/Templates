@@ -4,17 +4,42 @@ import * as m from 'zigbee-herdsman-converters/lib/modernExtend';
 import * as reporting from 'zigbee-herdsman-converters/lib/reporting';
 
 const manufacturerCode = 0x4703;
- export default {
-        zigbeeModel: ["OK-AC-H-HR-1-ZB-S-A"],
-        model: "OK-AC-H-HR-1-ZB-S-A",
-        vendor: "ONOKOM",
-        description: "Adapter for household and semi-industrial Haier systems",
-        ota: true,
-        extend: [
-            m.enumLookup({
+const onokomExtend = {
+    onokomHvacThermostatCluster: () => m.deviceAddCustomCluster("hvacThermostat", {
+            name: "hvacThermostat",
+            ID: Zcl.Clusters.hvacThermostat.ID,
+            attributes: {
+                mode: {name: "mode", ID: 0x4703, type: Zcl.DataType.ENUM8, write: true},
+                horizontalVanes: {name: "horizontalVanes", ID: 0x4700, type: Zcl.DataType.ENUM8, write: true},
+                verticalVanes: {name: "verticalVanes", ID: 0x4701, type: Zcl.DataType.ENUM8, write: true},
+                vanesSwing: {name: "vanesSwing", ID: 0x4702, type: Zcl.DataType.ENUM8, write: true},
+                statusLed: {name: "statusLed", ID: 0x4704, type: Zcl.DataType.ENUM8, write: true},
+                sleepMode: {name: "sleepMode", ID: 0x4728, type: Zcl.DataType.BOOLEAN, write: true},
+                ionization: {name: "ionization", ID: 0x4720, type: Zcl.DataType.BOOLEAN, write: true},
+                selfCleaning: {name: "selfCleaning", ID: 0x4721, type: Zcl.DataType.BOOLEAN, write: true},
+                screenLight: {name: "screenLight", ID: 0x4731, type: Zcl.DataType.BOOLEAN, write: true},
+                beeper: {name: "beeper", ID: 0x4730, type: Zcl.DataType.BOOLEAN, write: true},
+                acConnected: {name: "acConnected", ID: 0x4734, type: Zcl.DataType.ENUM8}
+            },
+            commands: {},
+            commandsResponse: {},
+        }),
+    onokomHvacFanCtrlCluster: () => m.deviceAddCustomCluster("hvacFanCtrl", {
+            name: "hvacFanCtrl",
+            ID: Zcl.Clusters.hvacFanCtrl.ID,
+            attributes: {
+                fanSpeed: {name: "fanSpeed", ID: 0x4700, type: Zcl.DataType.ENUM8, write: true},
+                smartFanSpeed: {name: "smartFanSpeed", ID: 0x4701, type: Zcl.DataType.ENUM8, write: true},
+                quietMode: {name: "quietMode", ID: 0x4710, type: Zcl.DataType.BOOLEAN, write: true},
+                turboMode: {name: "turboMode", ID: 0x4711, type: Zcl.DataType.BOOLEAN, write: true}
+            },
+            commands: {},
+            commandsResponse: {},
+        }),
+    acConnected: (args = {}) => m.enumLookup({
                 name: "ac_connected",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4734, type: Zcl.DataType.ENUM8},
+                attribute: "acConnected",
                 lookup: {
                     disconnected: 0,
                     invalid_data_recieved: 1,
@@ -23,12 +48,14 @@ const manufacturerCode = 0x4703;
                 },
                 description: "AC connected",
                 access: "STATE",
-            }),
-            m.onOff({
+            
+                ...args}),
+    onOff: (args = {}) => m.onOff({
                 powerOnBehavior: false,
                 description: "On/off state",
-            }),
-            m.numeric({
+            
+                ...args}),
+    currentTemperature: (args = {}) => m.numeric({
                 name: "current_temperature",
                 cluster: "hvacThermostat",
                 attribute: "localTemp",
@@ -36,8 +63,9 @@ const manufacturerCode = 0x4703;
                 unit: "°C",
                 description: "Indoor air temperature",
                 access: "STATE",
-            }),
-            m.numeric({
+            
+                ...args}),
+    targetTemperature: (args = {}) => m.numeric({
                 name: "target_temperature",
                 cluster: "hvacThermostat",
                 attribute: "occupiedCoolingSetpoint",
@@ -47,8 +75,9 @@ const manufacturerCode = 0x4703;
                 scale: 100,
                 unit: "°C",
                 description: "Target temperature",
-            }),
-            m.enumLookup({
+            
+                ...args}),
+    systemMode: (args = {}) => m.enumLookup({
                 name: "system_mode",
                 cluster: "hvacThermostat",
                 attribute: "systemMode",
@@ -61,11 +90,12 @@ const manufacturerCode = 0x4703;
                     dry: 8
                 },
                 description: "Active mode",
-            }),
-            m.enumLookup({
+            
+                ...args}),
+    mode: (args = {}) => m.enumLookup({
                 name: "mode",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4703, type: Zcl.DataType.ENUM8},
+                attribute: "mode",
                 lookup: {
                     heat: 1,
                     cool: 2,
@@ -75,8 +105,9 @@ const manufacturerCode = 0x4703;
                 },
                 description: "Mode",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.numeric({
+            
+                ...args}),
+    outdoorAirTemperature: (args = {}) => m.numeric({
                 name: "outdoor_air_temperature",
                 cluster: "hvacThermostat",
                 attribute: "outdoorTemp",
@@ -84,8 +115,9 @@ const manufacturerCode = 0x4703;
                 unit: "°C",
                 description: "Outdoor air temperature",
                 access: "STATE",
-            }),
-            m.numeric({
+            
+                ...args}),
+    zbFanSpeed: (args = {}) => m.numeric({
                 name: "zb_fan_speed",
                 cluster: "hvacFanCtrl",
                 attribute: "fanMode",
@@ -93,61 +125,67 @@ const manufacturerCode = 0x4703;
                 valueMax: 5,
                 valueStep: 1,
                 description: "Fan speed modes: Auto(5), Low(1), Medium(2), Maximum(3)",
-            }),
-            m.numeric({
+            
+                ...args}),
+    verticalVanes: (args = {}) => m.numeric({
                 name: "vertical_vanes",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4701, type: Zcl.DataType.ENUM8},
+                attribute: "verticalVanes",
                 valueMin: 0,
                 valueMax: 6,
                 valueStep: 1,
                 description: "Vertical vanes: Stopped(0), Swing(1), Leftmost position(2), Rightmost position(6)",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.numeric({
+            
+                ...args}),
+    horizontalVanes: (args = {}) => m.numeric({
                 name: "horizontal_vanes",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4700, type: Zcl.DataType.ENUM8},
+                attribute: "horizontalVanes",
                 valueMin: 0,
                 valueMax: 8,
                 valueStep: 1,
                 description: "Horizontal vanes: Stopped(0), Swing(1), Lowest postion(2), Highest position(8)",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.numeric({
+            
+                ...args}),
+    fanSpeed: (args = {}) => m.numeric({
                 name: "fan_speed",
                 cluster: "hvacFanCtrl",
-                attribute: {ID: 0x4700, type: Zcl.DataType.ENUM8},
+                attribute: "fanSpeed",
                 valueMin: 0,
                 valueMax: 3,
                 valueStep: 1,
                 description: "Fan speed: Auto(0), First(1) - Maximum(3)",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.numeric({
+            
+                ...args}),
+    smartFanSpeed: (args = {}) => m.numeric({
                 name: "smart_fan_speed",
                 cluster: "hvacFanCtrl",
-                attribute: {ID: 0x4701, type: Zcl.DataType.ENUM8},
+                attribute: "smartFanSpeed",
                 valueMin: 0,
                 valueMax: 5,
                 valueStep: 1,
                 description: "Smart fan speed: Auto (0), Quiet mode (1), First (2) ... Maximum (4), Turbo(5)",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.numeric({
+            
+                ...args}),
+    vanesSwing: (args = {}) => m.numeric({
                 name: "vanes_swing",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4702, type: Zcl.DataType.ENUM8},
+                attribute: "vanesSwing",
                 valueMin: 0,
                 valueMax: 3,
                 valueStep: 1,
                 description: "Vanes swing: Stopped(0), Horizontal and vertical swing(1), Horizontal swing(2), Vertical swing(3)",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.enumLookup({
+            
+                ...args}),
+    statusLed: (args = {}) => m.enumLookup({
                 name: "status_led",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4704, type: Zcl.DataType.ENUM8},
+                attribute: "statusLed",
                 lookup: {
                     normal_mode: 0,
                     disabled_if_no_errors: 1,
@@ -158,70 +196,257 @@ const manufacturerCode = 0x4703;
                 },
                 description: "Status LED",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.binary({
+            
+                ...args}),
+    quietMode: (args = {}) => m.binary({
                 name: "quiet_mode",
                 cluster: "hvacFanCtrl",
-                attribute: {ID: 0x4710, type: Zcl.DataType.BOOLEAN},
+                attribute: "quietMode",
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
                 description: "Quiet mode",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.binary({
+            
+                ...args}),
+    turboMode: (args = {}) => m.binary({
                 name: "turbo_mode",
                 cluster: "hvacFanCtrl",
-                attribute: {ID: 0x4711, type: Zcl.DataType.BOOLEAN},
+                attribute: "turboMode",
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
                 description: "Turbo mode",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.binary({
+            
+                ...args}),
+    sleepMode: (args = {}) => m.binary({
                 name: "sleep_mode",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4728, type: Zcl.DataType.BOOLEAN},
+                attribute: "sleepMode",
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
                 description: "Sleep mode",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.binary({
+            
+                ...args}),
+    ionization: (args = {}) => m.binary({
                 name: "ionization",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4720, type: Zcl.DataType.BOOLEAN},
+                attribute: "ionization",
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
                 description: "Ionization",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.binary({
+            
+                ...args}),
+    selfCleaning: (args = {}) => m.binary({
                 name: "self_cleaning",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4721, type: Zcl.DataType.BOOLEAN},
+                attribute: "selfCleaning",
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
                 description: "Self cleaning",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.binary({
+            
+                ...args}),
+    screenLight: (args = {}) => m.binary({
                 name: "screen_light",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4731, type: Zcl.DataType.BOOLEAN},
+                attribute: "screenLight",
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
                 description: "Screen light",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.binary({
+            
+                ...args}),
+    beeper: (args = {}) => m.binary({
                 name: "beeper",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4730, type: Zcl.DataType.BOOLEAN},
+                attribute: "beeper",
                 valueOn: ["ON", 1],
                 valueOff: ["OFF", 0],
                 description: "Beeper",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
+            
+                ...args}),
+};
+ export default {
+        zigbeeModel: ["OK-AC-H-HR-1-ZB-S-A"],
+        model: "OK-AC-H-HR-1-ZB-S-A",
+        vendor: "ONOKOM",
+        description: "Adapter for household and semi-industrial Haier systems",
+        ota: true,
+        extend: [
+            onokomExtend.onokomHvacThermostatCluster(),
+            onokomExtend.onokomHvacFanCtrlCluster(),
+            onokomExtend.acConnected({name: "ac_connected",
+                cluster: "hvacThermostat",
+                attribute: "acConnected",
+                lookup: {
+                    disconnected: 0,
+                    invalid_data_recieved: 1,
+                    connected_with_issues: 2,
+                    connected: 3
+                },
+                description: "AC connected",
+                access: "STATE",}),
+            onokomExtend.onOff({powerOnBehavior: false,
+                description: "On/off state",}),
+            onokomExtend.currentTemperature({name: "current_temperature",
+                cluster: "hvacThermostat",
+                attribute: "localTemp",
+                scale: 100,
+                unit: "°C",
+                description: "Indoor air temperature",
+                access: "STATE",}),
+            onokomExtend.targetTemperature({name: "target_temperature",
+                cluster: "hvacThermostat",
+                attribute: "occupiedCoolingSetpoint",
+                valueMin: 16,
+                valueMax: 30,
+                valueStep: 1,
+                scale: 100,
+                unit: "°C",
+                description: "Target temperature",}),
+            onokomExtend.systemMode({name: "system_mode",
+                cluster: "hvacThermostat",
+                attribute: "systemMode",
+                lookup: {
+                    off: 0,
+                    auto: 1,
+                    cool: 3,
+                    heat: 4,
+                    fan_only: 7,
+                    dry: 8
+                },
+                description: "Active mode",}),
+            onokomExtend.mode({name: "mode",
+                cluster: "hvacThermostat",
+                attribute: "mode",
+                lookup: {
+                    heat: 1,
+                    cool: 2,
+                    auto: 3,
+                    dry: 4,
+                    fan_only: 5
+                },
+                description: "Mode",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.outdoorAirTemperature({name: "outdoor_air_temperature",
+                cluster: "hvacThermostat",
+                attribute: "outdoorTemp",
+                scale: 100,
+                unit: "°C",
+                description: "Outdoor air temperature",
+                access: "STATE",}),
+            onokomExtend.zbFanSpeed({name: "zb_fan_speed",
+                cluster: "hvacFanCtrl",
+                attribute: "fanMode",
+                valueMin: 1,
+                valueMax: 5,
+                valueStep: 1,
+                description: "Fan speed modes: Auto(5), Low(1), Medium(2), Maximum(3)",}),
+            onokomExtend.verticalVanes({name: "vertical_vanes",
+                cluster: "hvacThermostat",
+                attribute: "verticalVanes",
+                valueMin: 0,
+                valueMax: 6,
+                valueStep: 1,
+                description: "Vertical vanes: Stopped(0), Swing(1), Leftmost position(2), Rightmost position(6)",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.horizontalVanes({name: "horizontal_vanes",
+                cluster: "hvacThermostat",
+                attribute: "horizontalVanes",
+                valueMin: 0,
+                valueMax: 8,
+                valueStep: 1,
+                description: "Horizontal vanes: Stopped(0), Swing(1), Lowest postion(2), Highest position(8)",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.fanSpeed({name: "fan_speed",
+                cluster: "hvacFanCtrl",
+                attribute: "fanSpeed",
+                valueMin: 0,
+                valueMax: 3,
+                valueStep: 1,
+                description: "Fan speed: Auto(0), First(1) - Maximum(3)",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.smartFanSpeed({name: "smart_fan_speed",
+                cluster: "hvacFanCtrl",
+                attribute: "smartFanSpeed",
+                valueMin: 0,
+                valueMax: 5,
+                valueStep: 1,
+                description: "Smart fan speed: Auto (0), Quiet mode (1), First (2) ... Maximum (4), Turbo(5)",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.vanesSwing({name: "vanes_swing",
+                cluster: "hvacThermostat",
+                attribute: "vanesSwing",
+                valueMin: 0,
+                valueMax: 3,
+                valueStep: 1,
+                description: "Vanes swing: Stopped(0), Horizontal and vertical swing(1), Horizontal swing(2), Vertical swing(3)",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.statusLed({name: "status_led",
+                cluster: "hvacThermostat",
+                attribute: "statusLed",
+                lookup: {
+                    normal_mode: 0,
+                    disabled_if_no_errors: 1,
+                    disabled_untill_reboot: 2,
+                    always_disabled: 3,
+                    green_untill_reboot: 8,
+                    red_untill_reboot: 9
+                },
+                description: "Status LED",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.quietMode({name: "quiet_mode",
+                cluster: "hvacFanCtrl",
+                attribute: "quietMode",
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Quiet mode",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.turboMode({name: "turbo_mode",
+                cluster: "hvacFanCtrl",
+                attribute: "turboMode",
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Turbo mode",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.sleepMode({name: "sleep_mode",
+                cluster: "hvacThermostat",
+                attribute: "sleepMode",
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Sleep mode",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.ionization({name: "ionization",
+                cluster: "hvacThermostat",
+                attribute: "ionization",
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Ionization",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.selfCleaning({name: "self_cleaning",
+                cluster: "hvacThermostat",
+                attribute: "selfCleaning",
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Self cleaning",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.screenLight({name: "screen_light",
+                cluster: "hvacThermostat",
+                attribute: "screenLight",
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Screen light",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.beeper({name: "beeper",
+                cluster: "hvacThermostat",
+                attribute: "beeper",
+                valueOn: ["ON", 1],
+                valueOff: ["OFF", 0],
+                description: "Beeper",
+                zigbeeCommandOptions: {manufacturerCode},})
         ],
         fromZigbee: [
         {

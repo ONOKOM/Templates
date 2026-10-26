@@ -4,17 +4,32 @@ import * as m from 'zigbee-herdsman-converters/lib/modernExtend';
 import * as reporting from 'zigbee-herdsman-converters/lib/reporting';
 
 const manufacturerCode = 0x4703;
- export default {
-        zigbeeModel: ["OK-AC-H-HT-1-ZB-S-A"],
-        model: "OK-AC-H-HT-1-ZB-S-A",
-        vendor: "ONOKOM",
-        description: "Adapter for household Hitachi systems",
-        ota: true,
-        extend: [
-            m.enumLookup({
+const onokomExtend = {
+    onokomHvacThermostatCluster: () => m.deviceAddCustomCluster("hvacThermostat", {
+            name: "hvacThermostat",
+            ID: Zcl.Clusters.hvacThermostat.ID,
+            attributes: {
+                mode: {name: "mode", ID: 0x4703, type: Zcl.DataType.ENUM8, write: true},
+                statusLed: {name: "statusLed", ID: 0x4704, type: Zcl.DataType.ENUM8, write: true},
+                acConnected: {name: "acConnected", ID: 0x4734, type: Zcl.DataType.ENUM8}
+            },
+            commands: {},
+            commandsResponse: {},
+        }),
+    onokomHvacFanCtrlCluster: () => m.deviceAddCustomCluster("hvacFanCtrl", {
+            name: "hvacFanCtrl",
+            ID: Zcl.Clusters.hvacFanCtrl.ID,
+            attributes: {
+                fanSpeed: {name: "fanSpeed", ID: 0x4700, type: Zcl.DataType.ENUM8, write: true},
+                smartFanSpeed: {name: "smartFanSpeed", ID: 0x4701, type: Zcl.DataType.ENUM8, write: true}
+            },
+            commands: {},
+            commandsResponse: {},
+        }),
+    acConnected: (args = {}) => m.enumLookup({
                 name: "ac_connected",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4734, type: Zcl.DataType.ENUM8},
+                attribute: "acConnected",
                 lookup: {
                     disconnected: 0,
                     invalid_data_recieved: 1,
@@ -23,12 +38,14 @@ const manufacturerCode = 0x4703;
                 },
                 description: "AC connected",
                 access: "STATE",
-            }),
-            m.onOff({
+            
+                ...args}),
+    onOff: (args = {}) => m.onOff({
                 powerOnBehavior: false,
                 description: "On/off state",
-            }),
-            m.numeric({
+            
+                ...args}),
+    currentTemperature: (args = {}) => m.numeric({
                 name: "current_temperature",
                 cluster: "hvacThermostat",
                 attribute: "localTemp",
@@ -36,8 +53,9 @@ const manufacturerCode = 0x4703;
                 unit: "°C",
                 description: "Indoor air temperature",
                 access: "STATE",
-            }),
-            m.numeric({
+            
+                ...args}),
+    targetTemperature: (args = {}) => m.numeric({
                 name: "target_temperature",
                 cluster: "hvacThermostat",
                 attribute: "occupiedCoolingSetpoint",
@@ -47,8 +65,9 @@ const manufacturerCode = 0x4703;
                 scale: 100,
                 unit: "°C",
                 description: "Target temperature",
-            }),
-            m.enumLookup({
+            
+                ...args}),
+    systemMode: (args = {}) => m.enumLookup({
                 name: "system_mode",
                 cluster: "hvacThermostat",
                 attribute: "systemMode",
@@ -61,11 +80,12 @@ const manufacturerCode = 0x4703;
                     dry: 8
                 },
                 description: "Active mode",
-            }),
-            m.enumLookup({
+            
+                ...args}),
+    mode: (args = {}) => m.enumLookup({
                 name: "mode",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4703, type: Zcl.DataType.ENUM8},
+                attribute: "mode",
                 lookup: {
                     heat: 1,
                     cool: 2,
@@ -75,9 +95,9 @@ const manufacturerCode = 0x4703;
                 },
                 description: "Mode",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
             
-            m.numeric({
+                ...args}),
+    zbFanSpeed: (args = {}) => m.numeric({
                 name: "zb_fan_speed",
                 cluster: "hvacFanCtrl",
                 attribute: "fanMode",
@@ -85,31 +105,34 @@ const manufacturerCode = 0x4703;
                 valueMax: 5,
                 valueStep: 1,
                 description: "Fan speed modes: Auto(5), Low(1), Medium(2), Maximum(3)",
-            }),
-            m.numeric({
+            
+                ...args}),
+    fanSpeed: (args = {}) => m.numeric({
                 name: "fan_speed",
                 cluster: "hvacFanCtrl",
-                attribute: {ID: 0x4700, type: Zcl.DataType.ENUM8},
+                attribute: "fanSpeed",
                 valueMin: 0,
                 valueMax: 3,
                 valueStep: 1,
                 description: "Fan speed: Auto(0), First(1) - Maximum(3)",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.numeric({
+            
+                ...args}),
+    smartFanSpeed: (args = {}) => m.numeric({
                 name: "smart_fan_speed",
                 cluster: "hvacFanCtrl",
-                attribute: {ID: 0x4701, type: Zcl.DataType.ENUM8},
+                attribute: "smartFanSpeed",
                 valueMin: 0,
                 valueMax: 4,
                 valueStep: 1,
                 description: "Smart fan speed: Auto (0), Low (1) ... Maximum (3)",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
-            m.enumLookup({
+            
+                ...args}),
+    statusLed: (args = {}) => m.enumLookup({
                 name: "status_led",
                 cluster: "hvacThermostat",
-                attribute: {ID: 0x4704, type: Zcl.DataType.ENUM8},
+                attribute: "statusLed",
                 lookup: {
                     normal_mode: 0,
                     disabled_if_no_errors: 1,
@@ -120,7 +143,107 @@ const manufacturerCode = 0x4703;
                 },
                 description: "Status LED",
                 zigbeeCommandOptions: {manufacturerCode},
-            }),
+            
+                ...args}),
+};
+ export default {
+        zigbeeModel: ["OK-AC-H-HT-1-ZB-S-A"],
+        model: "OK-AC-H-HT-1-ZB-S-A",
+        vendor: "ONOKOM",
+        description: "Adapter for household Hitachi systems",
+        ota: true,
+        extend: [
+            onokomExtend.onokomHvacThermostatCluster(),
+            onokomExtend.onokomHvacFanCtrlCluster(),
+            onokomExtend.acConnected({name: "ac_connected",
+                cluster: "hvacThermostat",
+                attribute: "acConnected",
+                lookup: {
+                    disconnected: 0,
+                    invalid_data_recieved: 1,
+                    connected_with_issues: 2,
+                    connected: 3
+                },
+                description: "AC connected",
+                access: "STATE",}),
+            onokomExtend.onOff({powerOnBehavior: false,
+                description: "On/off state",}),
+            onokomExtend.currentTemperature({name: "current_temperature",
+                cluster: "hvacThermostat",
+                attribute: "localTemp",
+                scale: 100,
+                unit: "°C",
+                description: "Indoor air temperature",
+                access: "STATE",}),
+            onokomExtend.targetTemperature({name: "target_temperature",
+                cluster: "hvacThermostat",
+                attribute: "occupiedCoolingSetpoint",
+                valueMin: 16,
+                valueMax: 32,
+                valueStep: 1,
+                scale: 100,
+                unit: "°C",
+                description: "Target temperature",}),
+            onokomExtend.systemMode({name: "system_mode",
+                cluster: "hvacThermostat",
+                attribute: "systemMode",
+                lookup: {
+                    off: 0,
+                    auto: 1,
+                    cool: 3,
+                    heat: 4,
+                    fan_only: 7,
+                    dry: 8
+                },
+                description: "Active mode",}),
+            onokomExtend.mode({name: "mode",
+                cluster: "hvacThermostat",
+                attribute: "mode",
+                lookup: {
+                    heat: 1,
+                    cool: 2,
+                    auto: 3,
+                    dry: 4,
+                    fan_only: 5
+                },
+                description: "Mode",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.zbFanSpeed({name: "zb_fan_speed",
+                cluster: "hvacFanCtrl",
+                attribute: "fanMode",
+                valueMin: 1,
+                valueMax: 5,
+                valueStep: 1,
+                description: "Fan speed modes: Auto(5), Low(1), Medium(2), Maximum(3)",}),
+            onokomExtend.fanSpeed({name: "fan_speed",
+                cluster: "hvacFanCtrl",
+                attribute: "fanSpeed",
+                valueMin: 0,
+                valueMax: 3,
+                valueStep: 1,
+                description: "Fan speed: Auto(0), First(1) - Maximum(3)",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.smartFanSpeed({name: "smart_fan_speed",
+                cluster: "hvacFanCtrl",
+                attribute: "smartFanSpeed",
+                valueMin: 0,
+                valueMax: 4,
+                valueStep: 1,
+                description: "Smart fan speed: Auto (0), Low (1) ... Maximum (3)",
+                zigbeeCommandOptions: {manufacturerCode},}),
+            onokomExtend.statusLed({name: "status_led",
+                cluster: "hvacThermostat",
+                attribute: "statusLed",
+                lookup: {
+                    normal_mode: 0,
+                    disabled_if_no_errors: 1,
+                    disabled_untill_reboot: 2,
+                    always_disabled: 3,
+                    green_untill_reboot: 8,
+                    red_untill_reboot: 9
+                },
+                description: "Status LED",
+                zigbeeCommandOptions: {manufacturerCode},})
         ],
         fromZigbee: [
         {

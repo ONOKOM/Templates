@@ -8,7 +8,7 @@
     "modelIds": [
         "MD-3-ZB-S"
     ],
-    "catalogId": -1,
+    "catalogId": 0,
     "init": [
         {
             "zcl": [
@@ -32,6 +32,13 @@
                     "attribute": "4701_SmartFanSpeed",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4751_ExternalAirTemperature",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "SIGNED_16_BIT_INTEGER"
                 },
                 {
                     "endpoint": 1,
@@ -81,6 +88,20 @@
                     "attribute": "4734_AcConnected",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4752_ExternalTemperatureSensorValidityPeriod",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "UNSIGNED_16_BIT_INTEGER"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4750_AllowTheUseOfAnExternalTemperatureSensor",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "ENUMERATION_8_BIT"
                 }
             ]
         },
@@ -116,6 +137,19 @@
                     "endpoint": 1,
                     "cluster": "0202_FanControl",
                     "attribute": "4701_SmartFanSpeed",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4751_ExternalAirTemperature",
                     "manufacturerCode": 18179
                 }
             ],
@@ -207,6 +241,19 @@
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
                     "attribute": "4734_AcConnected",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4752_ExternalTemperatureSensorValidityPeriod",
                     "manufacturerCode": 18179
                 }
             ],
@@ -409,6 +456,62 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "Разрешить использование внешнего датчика температуры",
+            "type": "Switch",
+            "characteristics": [
+                {
+                    "type": "On",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4750_AllowTheUseOfAnExternalTemperatureSensor",
+                            "manufacturerCode": 18179
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Время ожидания данных с внешнего датчика температуры",
+            "type": "C_Option",
+            "characteristics": [
+                {
+                    "type": "Integer",
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4752_ExternalTemperatureSensorValidityPeriod",
+                            "manufacturerCode": 18179
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Температура с внешнего датчика",
+            "type": "TemperatureSensor",
+            "characteristics": [
+                {
+                    "type": "CurrentTemperature",
+                    "write": true,
+                    "minValue": -30,
+                    "maxValue": 30,
+                    "link": [
+                        {
+                            "endpoint": 1,
+                            "cluster": "0201_Thermostat",
+                            "attribute": "4751_ExternalAirTemperature",
+                            "manufacturerCode": 18179,
+                            "inFunc": "Math.round(value / 100)",
+                            "outFunc": "Math.round(value * 100)"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "options": [
@@ -445,7 +548,7 @@
             ]
         },
         {
-            "name": "Версия прошивки (SW Build ID)",
+            "name": "Версия прошивки",
             "type": "String",
             "write": false,
             "value": "{{ attributes['0000_Basic/4000_SWBuildID'] }}",
@@ -458,7 +561,7 @@
             ]
         },
         {
-            "name": "Аппаратная версия",
+            "name": "Версия устройства",
             "type": "String",
             "write": false,
             "value": "{{ attributes['0000_Basic/0003_HWVersion'] }})",
@@ -484,7 +587,10 @@
                     "map": {
                         "0": 0,
                         "1": 1,
-                        "2": 2
+                        "2": 2,
+                        "3": 3,
+                        "8": 8,
+                        "9": 9
                     }
                 }
             ],
@@ -500,6 +606,18 @@
                 {
                     "name": "Отключен до перезагрузки",
                     "value": 2
+                },
+                {
+                    "name": "Всегда отключен",
+                    "value": 3
+                },
+                {
+                    "name": "Зеленый до перезагрузки",
+                    "value": 8
+                },
+                {
+                    "name": "Красный до перезагрузки",
+                    "value": 9
                 }
             ]
         },

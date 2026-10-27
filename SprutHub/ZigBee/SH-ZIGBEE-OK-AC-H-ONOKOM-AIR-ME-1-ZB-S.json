@@ -1,14 +1,14 @@
 {
     "name": "ONOKOM AIR",
     "manufacturer": "ONOKOM",
-    "model": "OK-AC-H-HR-1-ZB-S-A",
+    "model": "OK-AC-H-ME-1-ZB-S-A",
     "manufacturerIds": [
         "ONOKOM"
     ],
     "modelIds": [
-        "OK-AC-H-HR-1-ZB-S-A"
+        "OK-AC-H-ME-1-ZB-S-A"
     ],
-    "catalogId": -1,
+    "catalogId": 0,
     "init": [
         {
             "zcl": [
@@ -32,6 +32,13 @@
                     "attribute": "4701_SmartFanSpeed",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4751_ExternalAirTemperature",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "SIGNED_16_BIT_INTEGER"
                 },
                 {
                     "endpoint": 1,
@@ -70,52 +77,17 @@
                 },
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4711_TurboMode",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4728_SleepMode",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4720_Ionization",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4721_SelfCleaning",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4731_ScreenLight",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4730_Beeper",
-                    "manufacturerCode": 18179,
-                    "zclDataType": "BOOLEAN"
-                },
-                {
-                    "endpoint": 1,
                     "cluster": "0201_Thermostat",
                     "attribute": "4734_AcConnected",
                     "manufacturerCode": 18179,
                     "zclDataType": "ENUMERATION_8_BIT"
+                },
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4752_ExternalTemperatureSensorValidityPeriod",
+                    "manufacturerCode": 18179,
+                    "zclDataType": "UNSIGNED_16_BIT_INTEGER"
                 }
             ]
         },
@@ -163,6 +135,19 @@
                 {
                     "endpoint": 1,
                     "cluster": "0201_Thermostat",
+                    "attribute": "4751_ExternalAirTemperature",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
                     "attribute": "4700_HorizontalVanes",
                     "manufacturerCode": 18179
                 }
@@ -227,86 +212,21 @@
             "link": [
                 {
                     "endpoint": 1,
-                    "cluster": "0202_FanControl",
-                    "attribute": "4711_TurboMode",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4728_SleepMode",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4720_Ionization",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4721_SelfCleaning",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4731_ScreenLight",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
-                    "cluster": "0201_Thermostat",
-                    "attribute": "4730_Beeper",
-                    "manufacturerCode": 18179
-                }
-            ],
-            "bind": true,
-            "report": true,
-            "optional": true
-        },
-        {
-            "link": [
-                {
-                    "endpoint": 1,
                     "cluster": "0201_Thermostat",
                     "attribute": "4734_AcConnected",
+                    "manufacturerCode": 18179
+                }
+            ],
+            "bind": true,
+            "report": true,
+            "optional": true
+        },
+        {
+            "link": [
+                {
+                    "endpoint": 1,
+                    "cluster": "0201_Thermostat",
+                    "attribute": "4752_ExternalTemperatureSensorValidityPeriod",
                     "manufacturerCode": 18179
                 }
             ],
@@ -390,8 +310,8 @@
                         }
                     ],
                     "minValue": 16,
-                    "maxValue": 30,
-                    "minStep": 1
+                    "maxValue": 31,
+                    "minStep": 0.5
                 },
                 {
                     "type": "CurrentHeatingCoolingState",
@@ -448,12 +368,11 @@
                                 "QUIET": 1,
                                 "LOW": 2,
                                 "MEDIUM": 3,
-                                "HIGH": 4,
-                                "TURBO": 5
+                                "HIGH": 5
                             }
                         }
                     ],
-                    "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH,TURBO"
+                    "validValues": "AUTO,QUIET,LOW,MEDIUM,HIGH"
                 }
             ]
         },
@@ -493,7 +412,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 8
+                    "maxValue": 6
                 }
             ]
         },
@@ -512,7 +431,7 @@
                         }
                     ],
                     "minValue": 0,
-                    "maxValue": 3,
+                    "maxValue": 4,
                     "unit": ""
                 }
             ]
@@ -528,108 +447,6 @@
                             "endpoint": 1,
                             "cluster": "0202_FanControl",
                             "attribute": "4710_QuietMode",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Режим турбо",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0202_FanControl",
-                            "attribute": "4711_TurboMode",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Режим сна",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4728_SleepMode",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Ионизация",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4720_Ionization",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Самоочистка",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4721_SelfCleaning",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Подсветка экрана",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4731_ScreenLight",
-                            "manufacturerCode": 18179
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Звуковая индикация",
-            "type": "Switch",
-            "characteristics": [
-                {
-                    "type": "On",
-                    "link": [
-                        {
-                            "endpoint": 1,
-                            "cluster": "0201_Thermostat",
-                            "attribute": "4730_Beeper",
                             "manufacturerCode": 18179
                         }
                     ]
@@ -671,7 +488,7 @@
             ]
         },
         {
-            "name": "Версия прошивки (SW Build ID)",
+            "name": "Версия прошивки",
             "type": "String",
             "write": false,
             "value": "{{ attributes['0000_Basic/4000_SWBuildID'] }}",
@@ -684,7 +501,7 @@
             ]
         },
         {
-            "name": "Аппаратная версия",
+            "name": "Версия устройства",
             "type": "String",
             "write": false,
             "value": "{{ attributes['0000_Basic/0003_HWVersion'] }})",
@@ -710,7 +527,10 @@
                     "map": {
                         "0": 0,
                         "1": 1,
-                        "2": 2
+                        "2": 2,
+                        "3": 3,
+                        "8": 8,
+                        "9": 9
                     }
                 }
             ],
@@ -726,6 +546,18 @@
                 {
                     "name": "Отключен до перезагрузки",
                     "value": 2
+                },
+                {
+                    "name": "Всегда отключен",
+                    "value": 3
+                },
+                {
+                    "name": "Зеленый до перезагрузки",
+                    "value": 8
+                },
+                {
+                    "name": "Красный до перезагрузки",
+                    "value": 9
                 }
             ]
         }

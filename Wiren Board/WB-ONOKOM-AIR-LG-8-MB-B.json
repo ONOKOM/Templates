@@ -213,7 +213,7 @@
                 "format": "u16",
                 "min": 1,
                 "max": 5,
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "condition": "Show_modes_as_range==1"
             },
@@ -223,7 +223,7 @@
                 "address": 1,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "enum": [
                     1,
@@ -249,7 +249,7 @@
                 "format": "u16",
                 "min": 0,
                 "max": 5,
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "condition": "Show_modes_as_range==1"
             },
@@ -259,7 +259,7 @@
                 "address": 2,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "enum": [
                     0,
@@ -287,7 +287,7 @@
                 "format": "u16",
                 "min": 0,
                 "max": 6,
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "condition": "Show_fan_as_range==1"
             },
@@ -297,7 +297,7 @@
                 "address": 7,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "enum": [
                     0,
@@ -327,7 +327,7 @@
                 "format": "u16",
                 "min": 0,
                 "max": 7,
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "condition": "Show_fan_as_range==1"
             },
@@ -339,7 +339,7 @@
                 "format": "u16",
                 "min": 0,
                 "max": 8,
-                "sporadic": false,
+                "sporadic": true,
                 "group": "general",
                 "enum": [
                     0,
@@ -380,6 +380,18 @@
                 "min": -30,
                 "max": 30,
                 "scale": 0.01,
+                "sporadic": true,
+                "group": "temperatureControl",
+                "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
+            },
+            {
+                "name": "External temperature sensor validity period",
+                "reg_type": "holding",
+                "address": 40,
+                "type": "value",
+                "format": "s16",
+                "min": 0,
+                "max": 100,
                 "sporadic": true,
                 "group": "temperatureControl",
                 "condition": "Allow_the_use_of_an_external_temperature_sensor==1"
@@ -472,118 +484,6 @@
                 "condition": "Show_thermostat_state_as_range!=1"
             },
             {
-                "name": "Horizontal vane 1",
-                "reg_type": "holding",
-                "address": 70,
-                "type": "value",
-                "format": "u16",
-                "sporadic": false,
-                "group": "vanes",
-                "enum": [
-                    0,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
-                ],
-                "enum_titles": [
-                    "Stop",
-                    "Lowest",
-                    "Low",
-                    "Middle Low",
-                    "Middle",
-                    "High",
-                    "Highest"
-                ],
-                "condition": "Show_vanes_as_range!=1"
-            },
-            {
-                "name": "Horizontal vane 2",
-                "reg_type": "holding",
-                "address": 71,
-                "type": "value",
-                "format": "u16",
-                "sporadic": false,
-                "group": "vanes",
-                "enum": [
-                    0,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
-                ],
-                "enum_titles": [
-                    "Stop",
-                    "Lowest",
-                    "Low",
-                    "Middle Low",
-                    "Middle",
-                    "High",
-                    "Highest"
-                ],
-                "condition": "Show_vanes_as_range!=1"
-            },
-            {
-                "name": "Horizontal vane 3",
-                "reg_type": "holding",
-                "address": 72,
-                "type": "value",
-                "format": "u16",
-                "sporadic": false,
-                "group": "vanes",
-                "enum": [
-                    0,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
-                ],
-                "enum_titles": [
-                    "Stop",
-                    "Lowest",
-                    "Low",
-                    "Middle Low",
-                    "Middle",
-                    "High",
-                    "Highest"
-                ],
-                "condition": "Show_vanes_as_range!=1"
-            },
-            {
-                "name": "Horizontal vane 4",
-                "reg_type": "holding",
-                "address": 73,
-                "type": "value",
-                "format": "u16",
-                "sporadic": false,
-                "group": "vanes",
-                "enum": [
-                    0,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
-                ],
-                "enum_titles": [
-                    "Stop",
-                    "Lowest",
-                    "Low",
-                    "Middle Low",
-                    "Middle",
-                    "High",
-                    "Highest"
-                ],
-                "condition": "Show_vanes_as_range!=1"
-            },
-            {
                 "name": "Horizontal vanes",
                 "reg_type": "holding",
                 "address": 9,
@@ -591,7 +491,7 @@
                 "format": "u16",
                 "min": 0,
                 "max": 7,
-                "sporadic": false,
+                "sporadic": true,
                 "group": "vanes",
                 "condition": "Show_vanes_as_range==1"
             },
@@ -601,7 +501,7 @@
                 "address": 9,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "vanes",
                 "enum": [
                     0,
@@ -667,7 +567,7 @@
                 "format": "u16",
                 "min": 0,
                 "max": 1,
-                "sporadic": false,
+                "sporadic": true,
                 "group": "vanes",
                 "condition": "Show_vanes_as_range==1"
             },
@@ -677,7 +577,7 @@
                 "address": 10,
                 "type": "value",
                 "format": "u16",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "vanes",
                 "enum": [
                     0,
@@ -691,6 +591,7 @@
             },
             {
                 "name": "Defrosting",
+                "enabled": false,
                 "reg_type": "coil",
                 "address": 12,
                 "type": "switch",
@@ -699,34 +600,38 @@
             },
             {
                 "name": "Eco mode",
+                "enabled": false,
                 "reg_type": "coil",
                 "address": 6,
                 "type": "switch",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "additional"
             },
             {
                 "name": "Ionization",
+                "enabled": false,
                 "reg_type": "coil",
                 "address": 9,
                 "type": "switch",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "additional"
             },
             {
                 "name": "Self cleaning",
+                "enabled": false,
                 "reg_type": "coil",
                 "address": 10,
                 "type": "switch",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "additional"
             },
             {
                 "name": "Turbo mode",
+                "enabled": false,
                 "reg_type": "coil",
                 "address": 7,
                 "type": "switch",
-                "sporadic": false,
+                "sporadic": true,
                 "group": "additional"
             },
             {
@@ -1013,6 +918,7 @@
                 "Turbo mode": "Режим турбо",
                 "Outdoor air supply": "Подача воздуха с улицы",
                 "External air temperature": "Температура с внешнего датчика",
+                "External temperature sensor validity period": "Время ожидания данных с внешнего датчика температуры",
                 "Indoor air temperature": "Температура воздуха в помещении",
                 "Target temperature": "Целевая температура",
                 "Temperature correction": "Коррекция температуры",
@@ -1020,19 +926,15 @@
                 "Idle": "Простаивает",
                 "Heating": "Нагрев",
                 "Cooling": "Охлаждение",
-                "Horizontal vane 1": "Горизонтальная жалюзи 1",
+                "Horizontal vanes": "Горизонтальные жалюзи",
                 "Stop": "Остановлены",
+                "Swing": "Качание",
                 "Lowest": "Самое низкое",
                 "Low": "Низкое",
                 "Middle Low": "Среднее низкое",
                 "Middle": "Среднее",
                 "High": "Высокое",
                 "Highest": "Самое высокое",
-                "Horizontal vane 2": "Горизонтальная жалюзи 2",
-                "Horizontal vane 3": "Горизонтальная жалюзи 3",
-                "Horizontal vane 4": "Горизонтальная жалюзи 4",
-                "Horizontal vanes": "Горизонтальные жалюзи",
-                "Swing": "Качание",
                 "Vanes swing": "Качание жалюзи",
                 "Horizontal and vertical vanes swing": "Качание горизонтальных и вертикальных жалюзи",
                 "Horizontal vanes swing": "Качание горизонтальных жалюзи",

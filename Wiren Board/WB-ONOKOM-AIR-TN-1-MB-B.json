@@ -52,6 +52,7 @@
                 "id": "Show_modes_as_range",
                 "title": "Show modes as range",
                 "address": 95,
+                "default": 0,
                 "reg_type": "coil",
                 "enum": [
                     0,
@@ -68,6 +69,7 @@
                 "id": "Show_fan_as_range",
                 "title": "Show fan as range",
                 "address": 92,
+                "default": 0,
                 "reg_type": "coil",
                 "enum": [
                     0,
@@ -84,6 +86,7 @@
                 "id": "Show_thermostat_state_as_range",
                 "title": "Show thermostat state as range",
                 "address": 94,
+                "default": 0,
                 "reg_type": "coil",
                 "enum": [
                     0,
